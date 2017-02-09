@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_soP18O62EeaS-KplqWqCTg" name="SACM::Evidence::Root">
+  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wA3Xke62EeaS-KplqWqCTg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_y8pMMe62EeaS-KplqWqCTg" name="SACMEvidenceRoot" nsURI="http:///schemas/SACMEvidenceRoot/_y8pMMO62EeaS-KplqWqCTg/1" nsPrefix="SACMEvidenceRoot">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_y8pMMu62EeaS-KplqWqCTg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y8pMM-62EeaS-KplqWqCTg" key="originalName" value="SACM::Evidence::Root"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_y8pMNO62EeaS-KplqWqCTg" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="/safety.assurance.case.metamodel/sacm_commons.profile.uml#_yllMgO61EeaS-KplqWqCTg"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_y8pMOO62EeaS-KplqWqCTg" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y8pMOe62EeaS-KplqWqCTg" key="Version" value="0.0.2"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y8pMOu62EeaS-KplqWqCTg" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y8pMO-62EeaS-KplqWqCTg" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y8pMPO62EeaS-KplqWqCTg" key="Date" value="2017-02-09"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y8pMPe62EeaS-KplqWqCTg" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_y8pMNe62EeaS-KplqWqCTg" name="EvidenceElement">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_y8pMNu62EeaS-KplqWqCTg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_trQyIO62EeaS-KplqWqCTg"/>
+        <eSuperTypes xmi:type="ecore:EClass" href="/safety.assurance.case.metamodel/sacm_commons.profile.uml#_yllMg-61EeaS-KplqWqCTg"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_wA3-oO62EeaS-KplqWqCTg" name="SACMEvidenceRoot" nsURI="http:///schemas/SACMEvidenceRoot/_wA3XkO62EeaS-KplqWqCTg/0" nsPrefix="SACMEvidenceRoot">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wA3-oe62EeaS-KplqWqCTg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wA3-ou62EeaS-KplqWqCTg" key="originalName" value="SACM::Evidence::Root"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wA3-pe62EeaS-KplqWqCTg" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wA3-pu62EeaS-KplqWqCTg" key="Version" value="0.0.1"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wA3-p-62EeaS-KplqWqCTg" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wA3-qO62EeaS-KplqWqCTg" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wA3-qe62EeaS-KplqWqCTg" key="Date" value="2017-02-09"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wA3-qu62EeaS-KplqWqCTg" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_wA3-o-62EeaS-KplqWqCTg" name="EvidenceElement">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wA3-pO62EeaS-KplqWqCTg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_trQyIO62EeaS-KplqWqCTg"/>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_trQyIO62EeaS-KplqWqCTg" name="EvidenceElement">
+    <generalization xmi:type="uml:Generalization" xmi:id="_ykX2IO62EeaS-KplqWqCTg">
+      <general xmi:type="uml:Stereotype" href="/safety.assurance.case.metamodel/sacm_commons.profile.uml#_f--GsO4FEeaS-KplqWqCTg"/>
+    </generalization>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_soj_AO62EeaS-KplqWqCTg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sokmEO62EeaS-KplqWqCTg" source="PapyrusVersion">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sokmEe62EeaS-KplqWqCTg" key="Version" value="0.0.23"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sokmEu62EeaS-KplqWqCTg" key="Comment" value=""/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sokmE-62EeaS-KplqWqCTg" key="Copyright" value=""/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sokmFO62EeaS-KplqWqCTg" key="Date" value="2017-02-09"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sokmFe62EeaS-KplqWqCTg" key="Author" value=""/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_soj_Ae62EeaS-KplqWqCTg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="/safety.assurance.case.metamodel/sacm_commons.profile.uml#_yllMgO61EeaS-KplqWqCTg"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="/safety.assurance.case.metamodel/sacm_commons.profile.uml#_q5jrIO3oEeaS-KplqWqCTg"/>
+  </profileApplication>
+</uml:Profile>
