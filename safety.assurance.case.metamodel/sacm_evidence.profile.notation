@@ -31,7 +31,7 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_x_3a6-62EeaS-KplqWqCTg"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x_3a7O62EeaS-KplqWqCTg"/>
     </children>
-    <element xmi:type="uml:Stereotype" href="/safety.assurance.case.metamodel/sacm_commons.profile.uml#_f--GsO4FEeaS-KplqWqCTg"/>
+    <element xmi:type="uml:Stereotype" href="sacm_commons.profile.uml#_f--GsO4FEeaS-KplqWqCTg"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x_3a4e62EeaS-KplqWqCTg" x="241" y="99"/>
   </children>
   <styles xmi:type="notation:StringValueStyle" xmi:id="_soRrIe62EeaS-KplqWqCTg" name="diagram_compatibility_version" stringValue="1.2.0"/>
