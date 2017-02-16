@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_TrBK0PQxEeaFecJKcdTAJA" name="SACM::Packages::RootElement" metamodelReference="_packageImport.1">
+  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Du0-cPQyEeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_CI5MUfQ7EeaFecJKcdTAJA" name="SACMPackagesRootElement" nsURI="http:///schemas/SACMPackagesRootElement/_CI5MUPQ7EeaFecJKcdTAJA/1" nsPrefix="SACMPackagesRootElement">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CI5MUvQ7EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CI5MU_Q7EeaFecJKcdTAJA" key="originalName" value="SACM::Packages::RootElement"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CI5MVPQ7EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="sacm.commons.profile.uml#_tu_7AfQ6EeaFecJKcdTAJA"/>
+        <references xmi:type="ecore:EPackage" href="sacm.terminology.profile.uml#_Liw4APQ2EeaFecJKcdTAJA"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CI5zYPQ7EeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CI5zYfQ7EeaFecJKcdTAJA" key="Version" value="0.0.2"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CI5zYvQ7EeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CI5zY_Q7EeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CI5zZPQ7EeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CI5zZfQ7EeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CI5MVfQ7EeaFecJKcdTAJA" name="ArtefactElement" abstract="true">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CI5MVvQ7EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VlodYPQxEeaFecJKcdTAJA"/>
+        <eSuperTypes xmi:type="ecore:EClass" href="sacm.commons.profile.uml#_tu_7CfQ6EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CI5MWPQ7EeaFecJKcdTAJA" name="AssuranceCasePackage" eSuperTypes="_CI5MVfQ7EeaFecJKcdTAJA">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CI5MWfQ7EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_eV1uwPQxEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CI5MWvQ7EeaFecJKcdTAJA" name="assuranceCasePackage" ordered="false" upperBound="-1" eType="_CI5MWPQ7EeaFecJKcdTAJA" containment="true"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CI5MXPQ7EeaFecJKcdTAJA" name="interface" ordered="false" upperBound="-1" eType="_CI5MY_Q7EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CI5MXvQ7EeaFecJKcdTAJA" name="assuranceCasePackageCitation" ordered="false" upperBound="-1" eType="_CI5MZvQ7EeaFecJKcdTAJA" containment="true"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CI5MYPQ7EeaFecJKcdTAJA" name="terminologyPackage" ordered="false" upperBound="-1" containment="true">
+          <eType xmi:type="ecore:EClass" href="sacm.terminology.profile.uml#_Liw4B_Q2EeaFecJKcdTAJA"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CI5MY_Q7EeaFecJKcdTAJA" name="AssuranceCasePackageInterface" eSuperTypes="_CI5MWPQ7EeaFecJKcdTAJA">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CI5MZPQ7EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hfK3MPQxEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CI5MZvQ7EeaFecJKcdTAJA" name="AssuranceCasePackageCitation" eSuperTypes="_CI5MWPQ7EeaFecJKcdTAJA">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CI5MZ_Q7EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_xqVeQPQxEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CI5MaPQ7EeaFecJKcdTAJA" name="citedPackage" ordered="false" lowerBound="1" eType="_CI5MWPQ7EeaFecJKcdTAJA"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_ABwgsfQ7EeaFecJKcdTAJA" name="SACMPackagesRootElement" nsURI="http:///schemas/SACMPackagesRootElement/_ABwgsPQ7EeaFecJKcdTAJA/0" nsPrefix="SACMPackagesRootElement">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ABwgsvQ7EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ABwgs_Q7EeaFecJKcdTAJA" key="originalName" value="SACM::Packages::RootElement"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ABwgtPQ7EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="sacm.commons.profile.uml#_tu_7AfQ6EeaFecJKcdTAJA"/>
+        <references xmi:type="ecore:EPackage" href="sacm.terminology.profile.uml#_Liw4APQ2EeaFecJKcdTAJA"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ABxHxfQ7EeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ABxHxvQ7EeaFecJKcdTAJA" key="Version" value="0.0.1"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ABxHx_Q7EeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ABxHyPQ7EeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ABxHyfQ7EeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ABxHyvQ7EeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ABwgtfQ7EeaFecJKcdTAJA" name="ArtefactElement" abstract="true">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ABwgtvQ7EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VlodYPQxEeaFecJKcdTAJA"/>
+        <eSuperTypes xmi:type="ecore:EClass" href="sacm.commons.profile.uml#_tu_7CfQ6EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ABwguPQ7EeaFecJKcdTAJA" name="AssuranceCasePackage" eSuperTypes="_ABwgtfQ7EeaFecJKcdTAJA">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ABwgufQ7EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_eV1uwPQxEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_ABwguvQ7EeaFecJKcdTAJA" name="assuranceCasePackage" ordered="false" upperBound="-1" eType="_ABwguPQ7EeaFecJKcdTAJA" containment="true"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_ABwgvPQ7EeaFecJKcdTAJA" name="interface" ordered="false" upperBound="-1" eType="_ABwgw_Q7EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_ABwgvvQ7EeaFecJKcdTAJA" name="assuranceCasePackageCitation" ordered="false" upperBound="-1" eType="_ABwgxvQ7EeaFecJKcdTAJA" containment="true"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_ABwgwPQ7EeaFecJKcdTAJA" name="terminologyPackage" ordered="false" upperBound="-1" containment="true">
+          <eType xmi:type="ecore:EClass" href="sacm.terminology.profile.uml#_Liw4B_Q2EeaFecJKcdTAJA"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ABwgw_Q7EeaFecJKcdTAJA" name="AssuranceCasePackageInterface" eSuperTypes="_ABwguPQ7EeaFecJKcdTAJA">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ABwgxPQ7EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hfK3MPQxEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ABwgxvQ7EeaFecJKcdTAJA" name="AssuranceCasePackageCitation" eSuperTypes="_ABwguPQ7EeaFecJKcdTAJA">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ABwgx_Q7EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_xqVeQPQxEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_ABwgyPQ7EeaFecJKcdTAJA" name="citedPackage" ordered="false" lowerBound="1" eType="_ABwguPQ7EeaFecJKcdTAJA"/>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_packageImport.1">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_VlodYPQxEeaFecJKcdTAJA" name="ArtefactElement" isAbstract="true">
+    <generalization xmi:type="uml:Generalization" xmi:id="_8KcNsPQ2EeaFecJKcdTAJA">
+      <general xmi:type="uml:Stereotype" href="sacm.commons.profile.uml#_bdl54PNuEeajqaRIMf-0Ww"/>
+    </generalization>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_eV1uwPQxEeaFecJKcdTAJA" name="AssuranceCasePackage">
+    <generalization xmi:type="uml:Generalization" xmi:id="_fjAFcPQxEeaFecJKcdTAJA" general="_VlodYPQxEeaFecJKcdTAJA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_7H8BIPQxEeaFecJKcdTAJA" name="assuranceCasePackage" type="_eV1uwPQxEeaFecJKcdTAJA" aggregation="composite" association="_7H490PQxEeaFecJKcdTAJA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_95Y1EPQxEeaFecJKcdTAJA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_95cfcPQxEeaFecJKcdTAJA" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_E7EIEvQyEeaFecJKcdTAJA" name="interface" type="_hfK3MPQxEeaFecJKcdTAJA" association="_E7DhAPQyEeaFecJKcdTAJA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_G23GYPQyEeaFecJKcdTAJA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_G25ioPQyEeaFecJKcdTAJA" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_dFVTsvQyEeaFecJKcdTAJA" name="assuranceCasePackageCitation" type="_xqVeQPQxEeaFecJKcdTAJA" aggregation="composite" association="_dFUsoPQyEeaFecJKcdTAJA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fv6qoPQyEeaFecJKcdTAJA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fv9G4PQyEeaFecJKcdTAJA" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5qYu8PQ6EeaFecJKcdTAJA" name="terminologyPackage" aggregation="composite" association="_5qYH4PQ6EeaFecJKcdTAJA">
+      <type xmi:type="uml:Stereotype" href="sacm.terminology.profile.uml#_tE9jsPQzEeaFecJKcdTAJA"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__lhQoPQ6EeaFecJKcdTAJA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__liewPQ6EeaFecJKcdTAJA" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_hfK3MPQxEeaFecJKcdTAJA" name="AssuranceCasePackageInterface">
+    <generalization xmi:type="uml:Generalization" xmi:id="_l_QXMPQxEeaFecJKcdTAJA" general="_eV1uwPQxEeaFecJKcdTAJA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_xqVeQPQxEeaFecJKcdTAJA" name="AssuranceCasePackageCitation">
+    <generalization xmi:type="uml:Generalization" xmi:id="_2nJ9kPQxEeaFecJKcdTAJA" general="_eV1uwPQxEeaFecJKcdTAJA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_PhYmgPQyEeaFecJKcdTAJA" name="citedPackage" type="_eV1uwPQxEeaFecJKcdTAJA" association="_PhX_cPQyEeaFecJKcdTAJA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_7H490PQxEeaFecJKcdTAJA" memberEnd="_7H8BIPQxEeaFecJKcdTAJA _7H8oMPQxEeaFecJKcdTAJA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7H6zAPQxEeaFecJKcdTAJA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7H6zAfQxEeaFecJKcdTAJA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_7H8oMPQxEeaFecJKcdTAJA" name="parentPackage" type="_eV1uwPQxEeaFecJKcdTAJA" association="_7H490PQxEeaFecJKcdTAJA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_E7DhAPQyEeaFecJKcdTAJA" memberEnd="_E7EIEvQyEeaFecJKcdTAJA _E7EvIPQyEeaFecJKcdTAJA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_E7EIEPQyEeaFecJKcdTAJA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_E7EIEfQyEeaFecJKcdTAJA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_E7EvIPQyEeaFecJKcdTAJA" name="assuranceCasePackage" type="_eV1uwPQxEeaFecJKcdTAJA" association="_E7DhAPQyEeaFecJKcdTAJA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_PhX_cPQyEeaFecJKcdTAJA" memberEnd="_PhYmgPQyEeaFecJKcdTAJA _PhYmgfQyEeaFecJKcdTAJA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_PhX_cfQyEeaFecJKcdTAJA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_PhX_cvQyEeaFecJKcdTAJA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_PhYmgfQyEeaFecJKcdTAJA" name="assurancecasepackagecitation" type="_xqVeQPQxEeaFecJKcdTAJA" association="_PhX_cPQyEeaFecJKcdTAJA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_dFUsoPQyEeaFecJKcdTAJA" memberEnd="_dFVTsvQyEeaFecJKcdTAJA _dFVTs_QyEeaFecJKcdTAJA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dFVTsPQyEeaFecJKcdTAJA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dFVTsfQyEeaFecJKcdTAJA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_dFVTs_QyEeaFecJKcdTAJA" name="assuranceCasePackage" type="_eV1uwPQxEeaFecJKcdTAJA" association="_dFUsoPQyEeaFecJKcdTAJA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_5qYH4PQ6EeaFecJKcdTAJA" memberEnd="_5qYu8PQ6EeaFecJKcdTAJA _5qYu8fQ6EeaFecJKcdTAJA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_5qYH4fQ6EeaFecJKcdTAJA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_5qYH4vQ6EeaFecJKcdTAJA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_5qYu8fQ6EeaFecJKcdTAJA" name="assuranceCasePackage" type="_eV1uwPQxEeaFecJKcdTAJA" association="_5qYH4PQ6EeaFecJKcdTAJA"/>
+  </packagedElement>
+</uml:Profile>

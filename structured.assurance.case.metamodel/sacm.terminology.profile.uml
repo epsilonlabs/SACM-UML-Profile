@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_1sU3kPQyEeaFecJKcdTAJA" name="SACM::Terminology::RootElement" metamodelReference="_packageImport.1">
+  <eAnnotations xmi:id="_A3V-gfQzEeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_Liw4APQ2EeaFecJKcdTAJA" name="SACMTerminologyRootElement" nsURI="http:///schemas/SACMTerminologyRootElement/_LiwQ8PQ2EeaFecJKcdTAJA/15" nsPrefix="SACMTerminologyRootElement">
+      <eAnnotations xmi:id="_Liw4AfQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:id="_Liw4AvQ2EeaFecJKcdTAJA" key="originalName" value="SACM::Terminology::RootElement"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_Liw4A_Q2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="sacm.commons.profile.uml#_9Yi8YPQyEeaFecJKcdTAJA"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_LixfEvQ2EeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:id="_LixfE_Q2EeaFecJKcdTAJA" key="Version" value="0.0.16"/>
+        <details xmi:id="_LixfFPQ2EeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:id="_LixfFfQ2EeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:id="_LixfFvQ2EeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:id="_LixfF_Q2EeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_Liw4BPQ2EeaFecJKcdTAJA" name="TerminologyElement" abstract="true">
+        <eAnnotations xmi:id="_Liw4BfQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hZeM8PQzEeaFecJKcdTAJA"/>
+        <eSuperTypes href="sacm.commons.profile.uml#_9Yi8Z_QyEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_Liw4B_Q2EeaFecJKcdTAJA" name="TerminologyPackage" eSuperTypes="_Liw4BPQ2EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_Liw4CPQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_tE9jsPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Liw4CfQ2EeaFecJKcdTAJA" name="terminologyAsset" ordered="false" upperBound="-1" eType="_Liw4EPQ2EeaFecJKcdTAJA" containment="true"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Liw4C_Q2EeaFecJKcdTAJA" name="terminologyPackage" ordered="false" upperBound="-1" eType="_Liw4B_Q2EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Liw4DfQ2EeaFecJKcdTAJA" name="terminologyPackageCiataion" ordered="false" upperBound="-1" eType="_Liw4E_Q2EeaFecJKcdTAJA" containment="true"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_Liw4EPQ2EeaFecJKcdTAJA" name="TerminologyAsset" eSuperTypes="_Liw4BPQ2EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_Liw4EfQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ufQXcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_Liw4E_Q2EeaFecJKcdTAJA" name="TerminologyPackageCitation" eSuperTypes="_Liw4BPQ2EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_Liw4FPQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_vm1DgPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Liw4FfQ2EeaFecJKcdTAJA" name="citedPackage" ordered="false" lowerBound="1" eType="_Liw4B_Q2EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_Liw4GPQ2EeaFecJKcdTAJA" name="Category" eSuperTypes="_Liw4EPQ2EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_Liw4GfQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_7LJbQPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_Liw4G_Q2EeaFecJKcdTAJA" name="ExpressionElement" abstract="true" eSuperTypes="_Liw4EPQ2EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_Liw4HPQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_8L67wPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Liw4HfQ2EeaFecJKcdTAJA" name="categoryu" ordered="false" upperBound="-1" eType="_Liw4GPQ2EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_Liw4IPQ2EeaFecJKcdTAJA" name="Term" eSuperTypes="_Liw4G_Q2EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_Liw4IfQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_9ebFcPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_Liw4IvQ2EeaFecJKcdTAJA" name="value" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_Liw4JPQ2EeaFecJKcdTAJA" name="externalReference" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_Liw4J_Q2EeaFecJKcdTAJA" name="Expression" eSuperTypes="_Liw4G_Q2EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_Liw4KPQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_-qP_YPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_Liw4KfQ2EeaFecJKcdTAJA" name="value" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Liw4K_Q2EeaFecJKcdTAJA" name="form" ordered="false" eType="_Liw4J_Q2EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Liw4LfQ2EeaFecJKcdTAJA" name="element" ordered="false" upperBound="-1" eType="_Liw4G_Q2EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_Liw4MPQ2EeaFecJKcdTAJA" name="TerminologyAssetCitation" eSuperTypes="_Liw4G_Q2EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_Liw4MfQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="__0mSoPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Liw4MvQ2EeaFecJKcdTAJA" name="citedElement" ordered="false" lowerBound="1" eType="_Liw4EPQ2EeaFecJKcdTAJA"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_CfSFUPQ2EeaFecJKcdTAJA" name="SACMTerminologyRootElement" nsURI="http:///schemas/SACMTerminologyRootElement/_CfReQPQ2EeaFecJKcdTAJA/14" nsPrefix="SACMTerminologyRootElement">
+      <eAnnotations xmi:id="_CfSFUfQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:id="_CfSFUvQ2EeaFecJKcdTAJA" key="originalName" value="SACM::Terminology::RootElement"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_CfSFU_Q2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="sacm.commons.profile.uml#_9Yi8YPQyEeaFecJKcdTAJA"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_CfSFjfQ2EeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:id="_CfSFjvQ2EeaFecJKcdTAJA" key="Version" value="0.0.15"/>
+        <details xmi:id="_CfSFj_Q2EeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:id="_CfSFkPQ2EeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:id="_CfSFkfQ2EeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:id="_CfSFkvQ2EeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CfSFVPQ2EeaFecJKcdTAJA" name="TerminologyElement" abstract="true">
+        <eAnnotations xmi:id="_CfSFVfQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hZeM8PQzEeaFecJKcdTAJA"/>
+        <eSuperTypes href="sacm.commons.profile.uml#_9Yi8Z_QyEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CfSFV_Q2EeaFecJKcdTAJA" name="TerminologyPackage" eSuperTypes="_CfSFVPQ2EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_CfSFWPQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_tE9jsPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CfSFWfQ2EeaFecJKcdTAJA" name="terminologyAsset" ordered="false" upperBound="-1" eType="_CfSFYPQ2EeaFecJKcdTAJA" containment="true"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CfSFW_Q2EeaFecJKcdTAJA" name="terminologyPackage" ordered="false" upperBound="-1" eType="_CfSFV_Q2EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CfSFXfQ2EeaFecJKcdTAJA" name="terminologyPackageCiataion" ordered="false" upperBound="-1" eType="_CfSFY_Q2EeaFecJKcdTAJA" containment="true"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CfSFYPQ2EeaFecJKcdTAJA" name="TerminologyAsset" eSuperTypes="_CfSFVPQ2EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_CfSFYfQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ufQXcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CfSFY_Q2EeaFecJKcdTAJA" name="TerminologyPackageCitation" eSuperTypes="_CfSFVPQ2EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_CfSFZPQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_vm1DgPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CfSFZfQ2EeaFecJKcdTAJA" name="citedPackage" ordered="false" lowerBound="1" eType="_CfSFV_Q2EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CfSFaPQ2EeaFecJKcdTAJA" name="Category" eSuperTypes="_CfSFYPQ2EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_CfSFafQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_7LJbQPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CfSFa_Q2EeaFecJKcdTAJA" name="ExpressionElement" abstract="true" eSuperTypes="_CfSFYPQ2EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_CfSFbPQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_8L67wPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CfSFbfQ2EeaFecJKcdTAJA" name="categoryu" ordered="false" upperBound="-1" eType="_CfSFaPQ2EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CfSFcPQ2EeaFecJKcdTAJA" name="Term" eSuperTypes="_CfSFa_Q2EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_CfSFcfQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_9ebFcPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_CfSFcvQ2EeaFecJKcdTAJA" name="value" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_CfSFdPQ2EeaFecJKcdTAJA" name="externalReference" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CfSFd_Q2EeaFecJKcdTAJA" name="Expression" eSuperTypes="_CfSFa_Q2EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_CfSFePQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_-qP_YPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_CfSFefQ2EeaFecJKcdTAJA" name="value" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CfSFe_Q2EeaFecJKcdTAJA" name="form" ordered="false" eType="_CfSFd_Q2EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CfSFffQ2EeaFecJKcdTAJA" name="element" ordered="false" upperBound="-1" eType="_CfSFa_Q2EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CfSFgPQ2EeaFecJKcdTAJA" name="TerminologyAssetCitation" eSuperTypes="_CfSFa_Q2EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_CfSFgfQ2EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="__0mSoPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CfSFgvQ2EeaFecJKcdTAJA" name="citedElement" ordered="false" lowerBound="1" eType="_CfSFYPQ2EeaFecJKcdTAJA"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_zZ9E8PQ1EeaFecJKcdTAJA" name="SACMTerminologyRootElement" nsURI="http:///schemas/SACMTerminologyRootElement/_zZ8d4PQ1EeaFecJKcdTAJA/13" nsPrefix="SACMTerminologyRootElement">
+      <eAnnotations xmi:id="_zZ9E8fQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:id="_zZ9E8vQ1EeaFecJKcdTAJA" key="originalName" value="SACM::Terminology::RootElement"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_zZ9E8_Q1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="sacm.commons.profile.uml#_9Yi8YPQyEeaFecJKcdTAJA"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_zZ9sCPQ1EeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:id="_zZ9sCfQ1EeaFecJKcdTAJA" key="Version" value="0.0.14"/>
+        <details xmi:id="_zZ9sCvQ1EeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:id="_zZ9sC_Q1EeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:id="_zZ9sDPQ1EeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:id="_zZ9sDfQ1EeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_zZ9E9PQ1EeaFecJKcdTAJA" name="TerminologyElement" abstract="true">
+        <eAnnotations xmi:id="_zZ9E9fQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hZeM8PQzEeaFecJKcdTAJA"/>
+        <eSuperTypes href="sacm.commons.profile.uml#_9Yi8Z_QyEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_zZ9E9_Q1EeaFecJKcdTAJA" name="TerminologyPackage" eSuperTypes="_zZ9E9PQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_zZ9E-PQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_tE9jsPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_zZ9E-fQ1EeaFecJKcdTAJA" name="terminologyAsset" ordered="false" upperBound="-1" eType="_zZ9FAPQ1EeaFecJKcdTAJA" containment="true"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_zZ9E-_Q1EeaFecJKcdTAJA" name="terminologyPackage" ordered="false" upperBound="-1" eType="_zZ9E9_Q1EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_zZ9E_fQ1EeaFecJKcdTAJA" name="terminologyPackageCiataion" ordered="false" upperBound="-1" eType="_zZ9FA_Q1EeaFecJKcdTAJA" containment="true"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_zZ9FAPQ1EeaFecJKcdTAJA" name="TerminologyAsset" eSuperTypes="_zZ9E9PQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_zZ9FAfQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ufQXcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_zZ9FA_Q1EeaFecJKcdTAJA" name="TerminologyPackageCitation" eSuperTypes="_zZ9E9PQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_zZ9FBPQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_vm1DgPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_zZ9FBfQ1EeaFecJKcdTAJA" name="citedPackage" ordered="false" lowerBound="1" eType="_zZ9E9_Q1EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_zZ9FCPQ1EeaFecJKcdTAJA" name="Category" eSuperTypes="_zZ9FAPQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_zZ9FCfQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_7LJbQPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_zZ9FC_Q1EeaFecJKcdTAJA" name="ExpressionElement" abstract="true" eSuperTypes="_zZ9FAPQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_zZ9FDPQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_8L67wPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_zZ9FDfQ1EeaFecJKcdTAJA" name="categoryu" ordered="false" upperBound="-1" eType="_zZ9FCPQ1EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_zZ9FEPQ1EeaFecJKcdTAJA" name="Term" eSuperTypes="_zZ9FC_Q1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_zZ9FEfQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_9ebFcPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_zZ9FEvQ1EeaFecJKcdTAJA" name="value" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_zZ9FFPQ1EeaFecJKcdTAJA" name="externalReference" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_zZ9FF_Q1EeaFecJKcdTAJA" name="Expression" eSuperTypes="_zZ9FC_Q1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_zZ9FGPQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_-qP_YPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_zZ9FGfQ1EeaFecJKcdTAJA" name="value" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_zZ9FG_Q1EeaFecJKcdTAJA" name="form" ordered="false" eType="_zZ9FF_Q1EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_zZ9FHfQ1EeaFecJKcdTAJA" name="element" ordered="false" upperBound="-1" eType="_zZ9FC_Q1EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_zZ9FIPQ1EeaFecJKcdTAJA" name="TerminologyAssetCitation" eSuperTypes="_zZ9FC_Q1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_zZ9FIfQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="__0mSoPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_zZ9FIvQ1EeaFecJKcdTAJA" name="citedElement" ordered="false" lowerBound="1" eType="_zZ9FAPQ1EeaFecJKcdTAJA"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_k7B9QfQ1EeaFecJKcdTAJA" name="SACMTerminologyRootElement" nsURI="http:///schemas/SACMTerminologyRootElement/_k7B9QPQ1EeaFecJKcdTAJA/12" nsPrefix="SACMTerminologyRootElement">
+      <eAnnotations xmi:id="_k7B9QvQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:id="_k7B9Q_Q1EeaFecJKcdTAJA" key="originalName" value="SACM::Terminology::RootElement"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_k7B9RPQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="sacm.commons.profile.uml#_9Yi8YPQyEeaFecJKcdTAJA"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_k7DLYfQ1EeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:id="_k7DLYvQ1EeaFecJKcdTAJA" key="Version" value="0.0.13"/>
+        <details xmi:id="_k7DLY_Q1EeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:id="_k7DLZPQ1EeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:id="_k7DLZfQ1EeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:id="_k7DLZvQ1EeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_k7B9RfQ1EeaFecJKcdTAJA" name="TerminologyElement" abstract="true">
+        <eAnnotations xmi:id="_k7B9RvQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hZeM8PQzEeaFecJKcdTAJA"/>
+        <eSuperTypes href="sacm.commons.profile.uml#_9Yi8Z_QyEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_k7B9SPQ1EeaFecJKcdTAJA" name="TerminologyPackage" eSuperTypes="_k7B9RfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_k7B9SfQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_tE9jsPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_k7B9SvQ1EeaFecJKcdTAJA" name="terminologyAsset" ordered="false" upperBound="-1" eType="_k7B9UfQ1EeaFecJKcdTAJA" containment="true"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_k7B9TPQ1EeaFecJKcdTAJA" name="terminologyPackage" ordered="false" upperBound="-1" eType="_k7B9SPQ1EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_k7B9TvQ1EeaFecJKcdTAJA" name="terminologyPackageCiataion" ordered="false" upperBound="-1" eType="_k7B9VPQ1EeaFecJKcdTAJA" containment="true"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_k7B9UfQ1EeaFecJKcdTAJA" name="TerminologyAsset" eSuperTypes="_k7B9RfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_k7B9UvQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ufQXcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_k7B9VPQ1EeaFecJKcdTAJA" name="TerminologyPackageCitation" eSuperTypes="_k7B9RfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_k7B9VfQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_vm1DgPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_k7B9VvQ1EeaFecJKcdTAJA" name="citedPackage" ordered="false" lowerBound="1" eType="_k7B9SPQ1EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_k7B9WfQ1EeaFecJKcdTAJA" name="Category" eSuperTypes="_k7B9UfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_k7B9WvQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_7LJbQPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_k7B9XPQ1EeaFecJKcdTAJA" name="ExpressionElement" abstract="true" eSuperTypes="_k7B9UfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_k7B9XfQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_8L67wPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_k7B9XvQ1EeaFecJKcdTAJA" name="categoryu" ordered="false" upperBound="-1" eType="_k7B9WfQ1EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_k7B9YfQ1EeaFecJKcdTAJA" name="Term" eSuperTypes="_k7B9XPQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_k7B9YvQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_9ebFcPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_k7B9Y_Q1EeaFecJKcdTAJA" name="value" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_k7B9ZfQ1EeaFecJKcdTAJA" name="externalReference" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_k7B9aPQ1EeaFecJKcdTAJA" name="Expression" eSuperTypes="_k7B9XPQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_k7B9afQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_-qP_YPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_k7B9avQ1EeaFecJKcdTAJA" name="value" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_k7B9bPQ1EeaFecJKcdTAJA" name="form" ordered="false" eType="_k7B9aPQ1EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_k7B9bvQ1EeaFecJKcdTAJA" name="element" ordered="false" upperBound="-1" eType="_k7B9XPQ1EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_k7B9cfQ1EeaFecJKcdTAJA" name="TerminologyAssetCitation" eSuperTypes="_k7B9XPQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_k7B9cvQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="__0mSoPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_k7B9c_Q1EeaFecJKcdTAJA" name="citedElement" ordered="false" lowerBound="1" eType="_k7B9UfQ1EeaFecJKcdTAJA"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_bFuFAfQ1EeaFecJKcdTAJA" name="SACMTerminologyRootElement" nsURI="http:///schemas/SACMTerminologyRootElement/_bFuFAPQ1EeaFecJKcdTAJA/11" nsPrefix="SACMTerminologyRootElement">
+      <eAnnotations xmi:id="_bFuFAvQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:id="_bFuFA_Q1EeaFecJKcdTAJA" key="originalName" value="SACM::Terminology::RootElement"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_bFuFBPQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="sacm.commons.profile.uml#_9Yi8YPQyEeaFecJKcdTAJA"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_bFusF_Q1EeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:id="_bFusGPQ1EeaFecJKcdTAJA" key="Version" value="0.0.12"/>
+        <details xmi:id="_bFusGfQ1EeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:id="_bFusGvQ1EeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:id="_bFusG_Q1EeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:id="_bFusHPQ1EeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_bFuFBfQ1EeaFecJKcdTAJA" name="TerminologyElement" abstract="true">
+        <eAnnotations xmi:id="_bFuFBvQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hZeM8PQzEeaFecJKcdTAJA"/>
+        <eSuperTypes href="sacm.commons.profile.uml#_9Yi8Z_QyEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_bFuFCPQ1EeaFecJKcdTAJA" name="TerminologyPackage" eSuperTypes="_bFuFBfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_bFuFCfQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_tE9jsPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_bFuFCvQ1EeaFecJKcdTAJA" name="terminologyAsset" ordered="false" upperBound="-1" eType="_bFuFEfQ1EeaFecJKcdTAJA" containment="true"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_bFuFDPQ1EeaFecJKcdTAJA" name="terminologyPackage" ordered="false" upperBound="-1" eType="_bFuFCPQ1EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_bFuFDvQ1EeaFecJKcdTAJA" name="terminologyPackageCiataion" ordered="false" upperBound="-1" eType="_bFuFFPQ1EeaFecJKcdTAJA" containment="true"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_bFuFEfQ1EeaFecJKcdTAJA" name="TerminologyAsset" eSuperTypes="_bFuFBfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_bFuFEvQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ufQXcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_bFuFFPQ1EeaFecJKcdTAJA" name="TerminologyPackageCitation" eSuperTypes="_bFuFBfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_bFuFFfQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_vm1DgPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_bFuFFvQ1EeaFecJKcdTAJA" name="citedPackage" ordered="false" lowerBound="1" eType="_bFuFCPQ1EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_bFuFGfQ1EeaFecJKcdTAJA" name="Category" eSuperTypes="_bFuFEfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_bFuFGvQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_7LJbQPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_bFuFHPQ1EeaFecJKcdTAJA" name="ExpressionElement" abstract="true" eSuperTypes="_bFuFEfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_bFuFHfQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_8L67wPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_bFuFHvQ1EeaFecJKcdTAJA" name="categoryu" ordered="false" upperBound="-1" eType="_bFuFGfQ1EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_bFuFIfQ1EeaFecJKcdTAJA" name="Term" eSuperTypes="_bFuFHPQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_bFuFIvQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_9ebFcPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_bFuFI_Q1EeaFecJKcdTAJA" name="value" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_bFuFJfQ1EeaFecJKcdTAJA" name="externalReference" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_bFuFKPQ1EeaFecJKcdTAJA" name="Expression" eSuperTypes="_bFuFHPQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_bFuFKfQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_-qP_YPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_bFuFKvQ1EeaFecJKcdTAJA" name="value" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_bFuFLPQ1EeaFecJKcdTAJA" name="form" ordered="false" eType="_bFuFKPQ1EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_bFuFLvQ1EeaFecJKcdTAJA" name="element" ordered="false" upperBound="-1" eType="_bFuFHPQ1EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_bFuFMfQ1EeaFecJKcdTAJA" name="TerminologyAssetCitation" eSuperTypes="_bFuFHPQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_bFuFMvQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="__0mSoPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_ST1_sfQ1EeaFecJKcdTAJA" name="SACMTerminologyRootElement" nsURI="http:///schemas/SACMTerminologyRootElement/_ST1_sPQ1EeaFecJKcdTAJA/10" nsPrefix="SACMTerminologyRootElement">
+      <eAnnotations xmi:id="_ST1_svQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:id="_ST1_s_Q1EeaFecJKcdTAJA" key="originalName" value="SACM::Terminology::RootElement"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_ST1_tPQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="sacm.commons.profile.uml#_9Yi8YPQyEeaFecJKcdTAJA"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_ST2mx_Q1EeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:id="_ST2myPQ1EeaFecJKcdTAJA" key="Version" value="0.0.11"/>
+        <details xmi:id="_ST2myfQ1EeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:id="_ST2myvQ1EeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:id="_ST2my_Q1EeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:id="_ST2mzPQ1EeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ST1_tfQ1EeaFecJKcdTAJA" name="TerminologyElement" abstract="true">
+        <eAnnotations xmi:id="_ST1_tvQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hZeM8PQzEeaFecJKcdTAJA"/>
+        <eSuperTypes href="sacm.commons.profile.uml#_9Yi8Z_QyEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ST1_uPQ1EeaFecJKcdTAJA" name="TerminologyPackage" eSuperTypes="_ST1_tfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_ST1_ufQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_tE9jsPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_ST1_uvQ1EeaFecJKcdTAJA" name="terminologyAsset" ordered="false" upperBound="-1" eType="_ST1_wfQ1EeaFecJKcdTAJA" containment="true"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_ST1_vPQ1EeaFecJKcdTAJA" name="terminologyPackage" ordered="false" upperBound="-1" eType="_ST1_uPQ1EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_ST1_vvQ1EeaFecJKcdTAJA" name="terminologyPackageCiataion" ordered="false" upperBound="-1" eType="_ST1_xPQ1EeaFecJKcdTAJA" containment="true"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ST1_wfQ1EeaFecJKcdTAJA" name="TerminologyAsset" eSuperTypes="_ST1_tfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_ST1_wvQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ufQXcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ST1_xPQ1EeaFecJKcdTAJA" name="TerminologyPackageCitation" eSuperTypes="_ST1_tfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_ST1_xfQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_vm1DgPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_ST1_xvQ1EeaFecJKcdTAJA" name="citedPackage" ordered="false" lowerBound="1" eType="_ST1_uPQ1EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ST1_yfQ1EeaFecJKcdTAJA" name="Category" eSuperTypes="_ST1_wfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_ST1_yvQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_7LJbQPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ST1_zPQ1EeaFecJKcdTAJA" name="ExpressionElement" abstract="true" eSuperTypes="_ST1_wfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_ST1_zfQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_8L67wPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_ST1_zvQ1EeaFecJKcdTAJA" name="categoryu" ordered="false" upperBound="-1" eType="_ST1_yfQ1EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ST1_0fQ1EeaFecJKcdTAJA" name="Term" eSuperTypes="_ST1_zPQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_ST1_0vQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_9ebFcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ST1_1PQ1EeaFecJKcdTAJA" name="Expression" eSuperTypes="_ST1_zPQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_ST1_1fQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_-qP_YPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_ST1_1vQ1EeaFecJKcdTAJA" name="value" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_ST1_2PQ1EeaFecJKcdTAJA" name="form" ordered="false" eType="_ST1_1PQ1EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_ST1_2vQ1EeaFecJKcdTAJA" name="element" ordered="false" upperBound="-1" eType="_ST1_zPQ1EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ST1_3fQ1EeaFecJKcdTAJA" name="TerminologyAssetCitation" eSuperTypes="_ST1_zPQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_ST1_3vQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="__0mSoPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_AezQwfQ1EeaFecJKcdTAJA" name="SACMTerminologyRootElement" nsURI="http:///schemas/SACMTerminologyRootElement/_AezQwPQ1EeaFecJKcdTAJA/9" nsPrefix="SACMTerminologyRootElement">
+      <eAnnotations xmi:id="_AezQwvQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:id="_AezQw_Q1EeaFecJKcdTAJA" key="originalName" value="SACM::Terminology::RootElement"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_AezQxPQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="sacm.commons.profile.uml#_9Yi8YPQyEeaFecJKcdTAJA"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_Aez31fQ1EeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:id="_Aez31vQ1EeaFecJKcdTAJA" key="Version" value="0.0.10"/>
+        <details xmi:id="_Aez31_Q1EeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:id="_Aez32PQ1EeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:id="_Aez32fQ1EeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:id="_Aez32vQ1EeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_AezQxfQ1EeaFecJKcdTAJA" name="TerminologyElement" abstract="true">
+        <eAnnotations xmi:id="_AezQxvQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hZeM8PQzEeaFecJKcdTAJA"/>
+        <eSuperTypes href="sacm.commons.profile.uml#_9Yi8Z_QyEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_AezQyPQ1EeaFecJKcdTAJA" name="TerminologyPackage" eSuperTypes="_AezQxfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_AezQyfQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_tE9jsPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_AezQyvQ1EeaFecJKcdTAJA" name="terminologyAsset" ordered="false" upperBound="-1" eType="_AezQ0fQ1EeaFecJKcdTAJA" containment="true"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_AezQzPQ1EeaFecJKcdTAJA" name="terminologyPackage" ordered="false" upperBound="-1" eType="_AezQyPQ1EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_AezQzvQ1EeaFecJKcdTAJA" name="terminologyPackageCiataion" ordered="false" upperBound="-1" eType="_AezQ1PQ1EeaFecJKcdTAJA" containment="true"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_AezQ0fQ1EeaFecJKcdTAJA" name="TerminologyAsset" eSuperTypes="_AezQxfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_AezQ0vQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ufQXcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_AezQ1PQ1EeaFecJKcdTAJA" name="TerminologyPackageCitation" eSuperTypes="_AezQxfQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_AezQ1fQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_vm1DgPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_AezQ1vQ1EeaFecJKcdTAJA" name="citedPackage" ordered="false" lowerBound="1" eType="_AezQyPQ1EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_AezQ2fQ1EeaFecJKcdTAJA" name="Category" eSuperTypes="_AezQ0fQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_AezQ2vQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_7LJbQPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_AezQ3PQ1EeaFecJKcdTAJA" name="ExpressionElement" abstract="true" eSuperTypes="_AezQ0fQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_AezQ3fQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_8L67wPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_AezQ3vQ1EeaFecJKcdTAJA" name="categoryu" ordered="false" upperBound="-1" eType="_AezQ2fQ1EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_AezQ4fQ1EeaFecJKcdTAJA" name="Term" eSuperTypes="_AezQ3PQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_AezQ4vQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_9ebFcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_AezQ5PQ1EeaFecJKcdTAJA" name="Expression" eSuperTypes="_AezQ3PQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_AezQ5fQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_-qP_YPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_AezQ5vQ1EeaFecJKcdTAJA" name="value" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_AezQ6fQ1EeaFecJKcdTAJA" name="TerminologyAssetCitation" eSuperTypes="_AezQ3PQ1EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_AezQ6vQ1EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="__0mSoPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_84tT0fQ0EeaFecJKcdTAJA" name="SACMTerminologyRootElement" nsURI="http:///schemas/SACMTerminologyRootElement/_84tT0PQ0EeaFecJKcdTAJA/8" nsPrefix="SACMTerminologyRootElement">
+      <eAnnotations xmi:id="_84tT0vQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:id="_84tT0_Q0EeaFecJKcdTAJA" key="originalName" value="SACM::Terminology::RootElement"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_84tT1PQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="sacm.commons.profile.uml#_9Yi8YPQyEeaFecJKcdTAJA"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_84t65fQ0EeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:id="_84t65vQ0EeaFecJKcdTAJA" key="Version" value="0.0.9"/>
+        <details xmi:id="_84t65_Q0EeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:id="_84t66PQ0EeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:id="_84t66fQ0EeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:id="_84t66vQ0EeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_84tT1fQ0EeaFecJKcdTAJA" name="TerminologyElement" abstract="true">
+        <eAnnotations xmi:id="_84tT1vQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hZeM8PQzEeaFecJKcdTAJA"/>
+        <eSuperTypes href="sacm.commons.profile.uml#_9Yi8Z_QyEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_84tT2PQ0EeaFecJKcdTAJA" name="TerminologyPackage" eSuperTypes="_84tT1fQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_84tT2fQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_tE9jsPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_84tT2vQ0EeaFecJKcdTAJA" name="terminologyAsset" ordered="false" upperBound="-1" eType="_84tT4fQ0EeaFecJKcdTAJA" containment="true"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_84tT3PQ0EeaFecJKcdTAJA" name="terminologyPackage" ordered="false" upperBound="-1" eType="_84tT2PQ0EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_84tT3vQ0EeaFecJKcdTAJA" name="terminologyPackageCiataion" ordered="false" upperBound="-1" eType="_84tT5PQ0EeaFecJKcdTAJA" containment="true"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_84tT4fQ0EeaFecJKcdTAJA" name="TerminologyAsset" eSuperTypes="_84tT1fQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_84tT4vQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ufQXcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_84tT5PQ0EeaFecJKcdTAJA" name="TerminologyPackageCitation" eSuperTypes="_84tT1fQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_84tT5fQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_vm1DgPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_84tT5vQ0EeaFecJKcdTAJA" name="citedPackage" ordered="false" lowerBound="1" eType="_84tT2PQ0EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_84tT6fQ0EeaFecJKcdTAJA" name="Category" eSuperTypes="_84tT4fQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_84tT6vQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_7LJbQPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_84tT7PQ0EeaFecJKcdTAJA" name="ExpressionElement" abstract="true" eSuperTypes="_84tT4fQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_84tT7fQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_8L67wPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_84tT7vQ0EeaFecJKcdTAJA" name="categoryu" ordered="false" upperBound="-1" eType="_84tT6fQ0EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_84tT8fQ0EeaFecJKcdTAJA" name="Term" eSuperTypes="_84tT7PQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_84tT8vQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_9ebFcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_84tT9PQ0EeaFecJKcdTAJA" name="Expression" eSuperTypes="_84tT7PQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_84tT9fQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_-qP_YPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_84tT9_Q0EeaFecJKcdTAJA" name="TerminologyAssetCitation" eSuperTypes="_84tT7PQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_84tT-PQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="__0mSoPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_lqGfMfQ0EeaFecJKcdTAJA" name="SACMTerminologyRootElement" nsURI="http:///schemas/SACMTerminologyRootElement/_lqGfMPQ0EeaFecJKcdTAJA/7" nsPrefix="SACMTerminologyRootElement">
+      <eAnnotations xmi:id="_lqGfMvQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:id="_lqGfM_Q0EeaFecJKcdTAJA" key="originalName" value="SACM::Terminology::RootElement"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_lqGfNPQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="sacm.commons.profile.uml#_9Yi8YPQyEeaFecJKcdTAJA"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_lqHGRPQ0EeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:id="_lqHGRfQ0EeaFecJKcdTAJA" key="Version" value="0.0.8"/>
+        <details xmi:id="_lqHGRvQ0EeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:id="_lqHGR_Q0EeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:id="_lqHGSPQ0EeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:id="_lqHGSfQ0EeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_lqGfNfQ0EeaFecJKcdTAJA" name="TerminologyElement" abstract="true">
+        <eAnnotations xmi:id="_lqGfNvQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hZeM8PQzEeaFecJKcdTAJA"/>
+        <eSuperTypes href="sacm.commons.profile.uml#_9Yi8Z_QyEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_lqGfOPQ0EeaFecJKcdTAJA" name="TerminologyPackage" eSuperTypes="_lqGfNfQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_lqGfOfQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_tE9jsPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_lqGfOvQ0EeaFecJKcdTAJA" name="terminologyAsset" ordered="false" upperBound="-1" eType="_lqGfQfQ0EeaFecJKcdTAJA" containment="true"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_lqGfPPQ0EeaFecJKcdTAJA" name="terminologyPackage" ordered="false" upperBound="-1" eType="_lqGfOPQ0EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_lqGfPvQ0EeaFecJKcdTAJA" name="terminologyPackageCiataion" ordered="false" upperBound="-1" eType="_lqGfRPQ0EeaFecJKcdTAJA" containment="true"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_lqGfQfQ0EeaFecJKcdTAJA" name="TerminologyAsset" eSuperTypes="_lqGfNfQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_lqGfQvQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ufQXcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_lqGfRPQ0EeaFecJKcdTAJA" name="TerminologyPackageCitation" eSuperTypes="_lqGfNfQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_lqGfRfQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_vm1DgPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_lqGfRvQ0EeaFecJKcdTAJA" name="citedPackage" ordered="false" lowerBound="1" eType="_lqGfOPQ0EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_lqGfSfQ0EeaFecJKcdTAJA" name="Category" eSuperTypes="_lqGfQfQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_lqGfSvQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_7LJbQPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_lqGfTPQ0EeaFecJKcdTAJA" name="ExpressionElement" abstract="true" eSuperTypes="_lqGfQfQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_lqGfTfQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_8L67wPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_lqGfT_Q0EeaFecJKcdTAJA" name="Term" eSuperTypes="_lqGfTPQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_lqGfUPQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_9ebFcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_lqGfUvQ0EeaFecJKcdTAJA" name="Expression" eSuperTypes="_lqGfTPQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_lqGfU_Q0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_-qP_YPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_lqGfVfQ0EeaFecJKcdTAJA" name="TerminologyAssetCitation" eSuperTypes="_lqGfTPQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_lqGfVvQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="__0mSoPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_hwz5cPQ0EeaFecJKcdTAJA" name="SACMTerminologyRootElement" nsURI="http:///schemas/SACMTerminologyRootElement/_hwzSYPQ0EeaFecJKcdTAJA/6" nsPrefix="SACMTerminologyRootElement">
+      <eAnnotations xmi:id="_hwz5cfQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:id="_hwz5cvQ0EeaFecJKcdTAJA" key="originalName" value="SACM::Terminology::RootElement"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_hwz5c_Q0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="sacm.commons.profile.uml#_9Yi8YPQyEeaFecJKcdTAJA"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_hw0ggPQ0EeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:id="_hw0ggfQ0EeaFecJKcdTAJA" key="Version" value="0.0.7"/>
+        <details xmi:id="_hw0ggvQ0EeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:id="_hw0gg_Q0EeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:id="_hw0ghPQ0EeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:id="_hw0ghfQ0EeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hwz5dPQ0EeaFecJKcdTAJA" name="TerminologyElement" abstract="true">
+        <eAnnotations xmi:id="_hwz5dfQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hZeM8PQzEeaFecJKcdTAJA"/>
+        <eSuperTypes href="sacm.commons.profile.uml#_9Yi8Z_QyEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hwz5d_Q0EeaFecJKcdTAJA" name="TerminologyPackage" eSuperTypes="_hwz5dPQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_hwz5ePQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_tE9jsPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_hwz5efQ0EeaFecJKcdTAJA" name="terminologyAsset" ordered="false" upperBound="-1" eType="_hwz5gPQ0EeaFecJKcdTAJA" containment="true"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_hwz5e_Q0EeaFecJKcdTAJA" name="terminologyPackage" ordered="false" upperBound="-1" eType="_hwz5d_Q0EeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_hwz5ffQ0EeaFecJKcdTAJA" name="terminologyPackageCiataion" ordered="false" upperBound="-1" eType="_hwz5g_Q0EeaFecJKcdTAJA" containment="true"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hwz5gPQ0EeaFecJKcdTAJA" name="TerminologyAsset" eSuperTypes="_hwz5dPQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_hwz5gfQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ufQXcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hwz5g_Q0EeaFecJKcdTAJA" name="TerminologyPackageCitation" eSuperTypes="_hwz5dPQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_hwz5hPQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_vm1DgPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hwz5hvQ0EeaFecJKcdTAJA" name="Category" eSuperTypes="_hwz5gPQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_hwz5h_Q0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_7LJbQPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hwz5ifQ0EeaFecJKcdTAJA" name="ExpressionElement" abstract="true" eSuperTypes="_hwz5gPQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_hwz5ivQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_8L67wPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hwz5jPQ0EeaFecJKcdTAJA" name="Term" eSuperTypes="_hwz5ifQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_hwz5jfQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_9ebFcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hwz5j_Q0EeaFecJKcdTAJA" name="Expression" eSuperTypes="_hwz5ifQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_hwz5kPQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_-qP_YPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_hwz5kvQ0EeaFecJKcdTAJA" name="TerminologyAssetCitation" eSuperTypes="_hwz5ifQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_hwz5k_Q0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="__0mSoPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_YyU7gfQ0EeaFecJKcdTAJA" name="SACMTerminologyRootElement" nsURI="http:///schemas/SACMTerminologyRootElement/_YyU7gPQ0EeaFecJKcdTAJA/5" nsPrefix="SACMTerminologyRootElement">
+      <eAnnotations xmi:id="_YyU7gvQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:id="_YyU7g_Q0EeaFecJKcdTAJA" key="originalName" value="SACM::Terminology::RootElement"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_YyU7hPQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="sacm.commons.profile.uml#_9Yi8YPQyEeaFecJKcdTAJA"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_YyVikvQ0EeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:id="_YyVik_Q0EeaFecJKcdTAJA" key="Version" value="0.0.6"/>
+        <details xmi:id="_YyVilPQ0EeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:id="_YyVilfQ0EeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:id="_YyVilvQ0EeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:id="_YyVil_Q0EeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_YyU7hfQ0EeaFecJKcdTAJA" name="TerminologyElement" abstract="true">
+        <eAnnotations xmi:id="_YyU7hvQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hZeM8PQzEeaFecJKcdTAJA"/>
+        <eSuperTypes href="sacm.commons.profile.uml#_9Yi8Z_QyEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_YyU7iPQ0EeaFecJKcdTAJA" name="TerminologyPackage" eSuperTypes="_YyU7hfQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_YyU7ifQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_tE9jsPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_YyU7ivQ0EeaFecJKcdTAJA" name="terminologyAsset" ordered="false" upperBound="-1" eType="_YyU7j_Q0EeaFecJKcdTAJA" containment="true"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_YyU7jPQ0EeaFecJKcdTAJA" name="terminologyPackage" ordered="false" upperBound="-1" eType="_YyU7iPQ0EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_YyU7j_Q0EeaFecJKcdTAJA" name="TerminologyAsset" eSuperTypes="_YyU7hfQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_YyU7kPQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ufQXcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_YyU7kvQ0EeaFecJKcdTAJA" name="TerminologyPackageCitation" eSuperTypes="_YyU7hfQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_YyU7k_Q0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_vm1DgPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_YyU7lfQ0EeaFecJKcdTAJA" name="Category" eSuperTypes="_YyU7j_Q0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_YyU7lvQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_7LJbQPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_YyU7mPQ0EeaFecJKcdTAJA" name="ExpressionElement" abstract="true" eSuperTypes="_YyU7j_Q0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_YyU7mfQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_8L67wPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_YyU7m_Q0EeaFecJKcdTAJA" name="Term" eSuperTypes="_YyU7mPQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_YyU7nPQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_9ebFcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_YyU7nvQ0EeaFecJKcdTAJA" name="Expression" eSuperTypes="_YyU7mPQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_YyU7n_Q0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_-qP_YPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_YyU7ofQ0EeaFecJKcdTAJA" name="TerminologyAssetCitation" eSuperTypes="_YyU7mPQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_YyU7ovQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="__0mSoPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_VfDM4PQ0EeaFecJKcdTAJA" name="SACMTerminologyRootElement" nsURI="http:///schemas/SACMTerminologyRootElement/_VfCl0PQ0EeaFecJKcdTAJA/4" nsPrefix="SACMTerminologyRootElement">
+      <eAnnotations xmi:id="_VfDM4fQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:id="_VfDM4vQ0EeaFecJKcdTAJA" key="originalName" value="SACM::Terminology::RootElement"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_VfDM4_Q0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="sacm.commons.profile.uml#_9Yi8YPQyEeaFecJKcdTAJA"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_VfDNBfQ0EeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:id="_VfDNBvQ0EeaFecJKcdTAJA" key="Version" value="0.0.5"/>
+        <details xmi:id="_VfDNB_Q0EeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:id="_VfDNCPQ0EeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:id="_VfDNCfQ0EeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:id="_VfDNCvQ0EeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_VfDM5PQ0EeaFecJKcdTAJA" name="TerminologyElement" abstract="true">
+        <eAnnotations xmi:id="_VfDM5fQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hZeM8PQzEeaFecJKcdTAJA"/>
+        <eSuperTypes href="sacm.commons.profile.uml#_9Yi8Z_QyEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_VfDM5_Q0EeaFecJKcdTAJA" name="TerminologyPackage" eSuperTypes="_VfDM5PQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_VfDM6PQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_tE9jsPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_VfDM6fQ0EeaFecJKcdTAJA" name="terminologyAsset" ordered="false" upperBound="-1" eType="_VfDM7vQ0EeaFecJKcdTAJA" containment="true"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_VfDM6_Q0EeaFecJKcdTAJA" name="terminologyPackage" ordered="false" upperBound="-1" eType="_VfDM5_Q0EeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_VfDM7vQ0EeaFecJKcdTAJA" name="TerminologyAsset" eSuperTypes="_VfDM5PQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_VfDM7_Q0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ufQXcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_VfDM8fQ0EeaFecJKcdTAJA" name="TerminologyPackageCitation" eSuperTypes="_VfDM5PQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_VfDM8vQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_vm1DgPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_VfDM9PQ0EeaFecJKcdTAJA" name="Category" eSuperTypes="_VfDM7vQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_VfDM9fQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_7LJbQPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_VfDM9_Q0EeaFecJKcdTAJA" name="ExpressionElement" abstract="true" eSuperTypes="_VfDM7vQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_VfDM-PQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_8L67wPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_VfDM-vQ0EeaFecJKcdTAJA" name="Term" eSuperTypes="_VfDM9_Q0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_VfDM-_Q0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_9ebFcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_VfDM_fQ0EeaFecJKcdTAJA" name="Expression" eSuperTypes="_VfDM9_Q0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_VfDM_vQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_-qP_YPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_VfDNAPQ0EeaFecJKcdTAJA" name="TerminologyAssetCitation" eSuperTypes="_VfDM9_Q0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_VfDNAfQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="__0mSoPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_OPJQofQ0EeaFecJKcdTAJA" name="SACMTerminologyRootElement" nsURI="http:///schemas/SACMTerminologyRootElement/_OPJQoPQ0EeaFecJKcdTAJA/3" nsPrefix="SACMTerminologyRootElement">
+      <eAnnotations xmi:id="_OPJQovQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:id="_OPJQo_Q0EeaFecJKcdTAJA" key="originalName" value="SACM::Terminology::RootElement"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_OPJQpPQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="sacm.commons.profile.uml#_9Yi8YPQyEeaFecJKcdTAJA"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_OPJ3sPQ0EeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:id="_OPJ3sfQ0EeaFecJKcdTAJA" key="Version" value="0.0.4"/>
+        <details xmi:id="_OPJ3svQ0EeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:id="_OPJ3s_Q0EeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:id="_OPJ3tPQ0EeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:id="_OPJ3tfQ0EeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_OPJQpfQ0EeaFecJKcdTAJA" name="TerminologyElement" abstract="true">
+        <eAnnotations xmi:id="_OPJQpvQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hZeM8PQzEeaFecJKcdTAJA"/>
+        <eSuperTypes href="sacm.commons.profile.uml#_9Yi8Z_QyEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_OPJQqPQ0EeaFecJKcdTAJA" name="TerminologyPackage" eSuperTypes="_OPJQpfQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_OPJQqfQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_tE9jsPQzEeaFecJKcdTAJA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_OPJQqvQ0EeaFecJKcdTAJA" name="terminologyAsset" ordered="false" upperBound="-1" eType="_OPJQrfQ0EeaFecJKcdTAJA" containment="true"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_OPJQrfQ0EeaFecJKcdTAJA" name="TerminologyAsset" eSuperTypes="_OPJQpfQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_OPJQrvQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ufQXcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_OPJQsPQ0EeaFecJKcdTAJA" name="TerminologyPackageCitation" eSuperTypes="_OPJQpfQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_OPJQsfQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_vm1DgPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_OPJQs_Q0EeaFecJKcdTAJA" name="Category" eSuperTypes="_OPJQrfQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_OPJQtPQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_7LJbQPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_OPJQtvQ0EeaFecJKcdTAJA" name="ExpressionElement" abstract="true" eSuperTypes="_OPJQrfQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_OPJQt_Q0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_8L67wPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_OPJQufQ0EeaFecJKcdTAJA" name="Term" eSuperTypes="_OPJQtvQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_OPJQuvQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_9ebFcPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_OPJQvPQ0EeaFecJKcdTAJA" name="Expression" eSuperTypes="_OPJQtvQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_OPJQvfQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_-qP_YPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_OPJQv_Q0EeaFecJKcdTAJA" name="TerminologyAssetCitation" eSuperTypes="_OPJQtvQ0EeaFecJKcdTAJA">
+        <eAnnotations xmi:id="_OPJQwPQ0EeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="__0mSoPQzEeaFecJKcdTAJA"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_n3XdcfQzEeaFecJKcdTAJA" name="SACMTerminologyRootElement" nsURI="http:///schemas/SACMTerminologyRootElement/_n3XdcPQzEeaFecJKcdTAJA/2" nsPrefix="SACMTerminologyRootElement">
+      <eAnnotations xmi:id="_n3XdcvQzEeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:id="_n3Xdc_QzEeaFecJKcdTAJA" key="originalName" value="SACM::Terminology::RootElement"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_n3XddPQzEeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/4.1.0/UML">
+        <references xmi:type="ecore:EPackage" href="sacm.commons.profile.uml#_9Yi8YPQyEeaFecJKcdTAJA"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_n3XdePQzEeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:id="_n3XdefQzEeaFecJKcdTAJA" key="Version" value="0.0.3"/>
+        <details xmi:id="_n3XdevQzEeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:id="_n3Xde_QzEeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:id="_n3XdfPQzEeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:id="_n3XdffQzEeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_n3XddfQzEeaFecJKcdTAJA" name="TerminologyElement" abstract="true">
+        <eAnnotations xmi:id="_n3XddvQzEeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hZeM8PQzEeaFecJKcdTAJA"/>
+        <eSuperTypes href="sacm.commons.profile.uml#_9Yi8Z_QyEeaFecJKcdTAJA"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_f5MtAfQzEeaFecJKcdTAJA" name="SACMTerminologyRootElement" nsURI="http:///schemas/SACMTerminologyRootElement/_f5MtAPQzEeaFecJKcdTAJA/1" nsPrefix="SACMTerminologyRootElement">
+      <eAnnotations xmi:id="_f5MtAvQzEeaFecJKcdTAJA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <details xmi:id="_f5MtA_QzEeaFecJKcdTAJA" key="originalName" value="SACM::Terminology::RootElement"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_f5MtBPQzEeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:id="_f5MtBfQzEeaFecJKcdTAJA" key="Version" value="0.0.2"/>
+        <details xmi:id="_f5MtBvQzEeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:id="_f5MtB_QzEeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:id="_f5MtCPQzEeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:id="_f5MtCfQzEeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_A3WlkPQzEeaFecJKcdTAJA" name="RootElement" nsURI="http:///schemas/RootElement/_A3V-gPQzEeaFecJKcdTAJA/0" nsPrefix="RootElement">
+      <eAnnotations xmi:id="_A3WlkfQzEeaFecJKcdTAJA" source="PapyrusVersion">
+        <details xmi:id="_A3WlkvQzEeaFecJKcdTAJA" key="Version" value="0.0.1"/>
+        <details xmi:id="_A3Wlk_QzEeaFecJKcdTAJA" key="Comment" value=""/>
+        <details xmi:id="_A3WllPQzEeaFecJKcdTAJA" key="Copyright" value=""/>
+        <details xmi:id="_A3WllfQzEeaFecJKcdTAJA" key="Date" value="2017-02-16"/>
+        <details xmi:id="_A3WllvQzEeaFecJKcdTAJA" key="Author" value=""/>
+      </eAnnotations>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:id="_XJKQQPNuEeajqaRIMf-0Ww" alias="Class">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <packageImport xmi:id="_packageImport.1">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_hZeM8PQzEeaFecJKcdTAJA" name="TerminologyElement" isAbstract="true">
+    <generalization xmi:id="_K6qWMPQ2EeaFecJKcdTAJA">
+      <general xmi:type="uml:Stereotype" href="sacm.commons.profile.uml#_bdl54PNuEeajqaRIMf-0Ww"/>
+    </generalization>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_tE9jsPQzEeaFecJKcdTAJA" name="TerminologyPackage">
+    <generalization xmi:id="_DJP6QPQ0EeaFecJKcdTAJA" general="_hZeM8PQzEeaFecJKcdTAJA"/>
+    <ownedAttribute xmi:id="_MFutEvQ0EeaFecJKcdTAJA" name="terminologyAsset" type="_ufQXcPQzEeaFecJKcdTAJA" aggregation="composite" association="_MFuGAPQ0EeaFecJKcdTAJA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Niyg8PQ0EeaFecJKcdTAJA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ni09MPQ0EeaFecJKcdTAJA" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_QoV8ovQ0EeaFecJKcdTAJA" name="terminologyPackage" type="_tE9jsPQzEeaFecJKcdTAJA" association="_QoVVkPQ0EeaFecJKcdTAJA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UTZ5IPQ0EeaFecJKcdTAJA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UTcVYPQ0EeaFecJKcdTAJA" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_bGR7IPQ0EeaFecJKcdTAJA" name="terminologyPackageCiataion" type="_vm1DgPQzEeaFecJKcdTAJA" aggregation="composite" association="_bGRUEPQ0EeaFecJKcdTAJA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dgAyoPQ0EeaFecJKcdTAJA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dgCAwPQ0EeaFecJKcdTAJA" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_ufQXcPQzEeaFecJKcdTAJA" name="TerminologyAsset">
+    <generalization xmi:id="_CKcIoPQ0EeaFecJKcdTAJA" general="_hZeM8PQzEeaFecJKcdTAJA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_vm1DgPQzEeaFecJKcdTAJA" name="TerminologyPackageCitation">
+    <generalization xmi:id="_Cy5PwPQ0EeaFecJKcdTAJA" general="_hZeM8PQzEeaFecJKcdTAJA"/>
+    <ownedAttribute xmi:id="_iWGX0fQ0EeaFecJKcdTAJA" name="citedPackage" type="_tE9jsPQzEeaFecJKcdTAJA" association="_iWFJsPQ0EeaFecJKcdTAJA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_7LJbQPQzEeaFecJKcdTAJA" name="Category">
+    <generalization xmi:id="_D0vuUPQ0EeaFecJKcdTAJA" general="_ufQXcPQzEeaFecJKcdTAJA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_8L67wPQzEeaFecJKcdTAJA" name="ExpressionElement" isAbstract="true">
+    <generalization xmi:id="_EVcAkPQ0EeaFecJKcdTAJA" general="_ufQXcPQzEeaFecJKcdTAJA"/>
+    <ownedAttribute xmi:id="_3-OW0PQ0EeaFecJKcdTAJA" name="categoryu" type="_7LJbQPQzEeaFecJKcdTAJA" association="_3-L6kPQ0EeaFecJKcdTAJA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8Kj0YPQ0EeaFecJKcdTAJA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8KmQoPQ0EeaFecJKcdTAJA" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_9ebFcPQzEeaFecJKcdTAJA" name="Term">
+    <generalization xmi:id="_GiGFYPQ0EeaFecJKcdTAJA" general="_8L67wPQzEeaFecJKcdTAJA"/>
+    <ownedAttribute xmi:id="_YJC4gPQ1EeaFecJKcdTAJA" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_ZaAxIPQ1EeaFecJKcdTAJA" name="externalReference">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_-qP_YPQzEeaFecJKcdTAJA" name="Expression">
+    <generalization xmi:id="_G9ExMPQ0EeaFecJKcdTAJA" general="_8L67wPQzEeaFecJKcdTAJA"/>
+    <ownedAttribute xmi:id="__NSlkPQ0EeaFecJKcdTAJA" name="value">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_KiRg0vQ1EeaFecJKcdTAJA" name="form" type="_-qP_YPQzEeaFecJKcdTAJA" association="_KiQ5wPQ1EeaFecJKcdTAJA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_OKZeEPQ1EeaFecJKcdTAJA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_OKb6UPQ1EeaFecJKcdTAJA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_QXF_IPQ1EeaFecJKcdTAJA" name="element" type="_8L67wPQzEeaFecJKcdTAJA" association="_QXFYEPQ1EeaFecJKcdTAJA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RxTTUPQ1EeaFecJKcdTAJA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RxUhcPQ1EeaFecJKcdTAJA" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="__0mSoPQzEeaFecJKcdTAJA" name="TerminologyAssetCitation">
+    <generalization xmi:id="_HkuAAPQ0EeaFecJKcdTAJA" general="_8L67wPQzEeaFecJKcdTAJA"/>
+    <ownedAttribute xmi:id="_iDFfwvQ1EeaFecJKcdTAJA" name="citedElement" type="_ufQXcPQzEeaFecJKcdTAJA" association="_iDE4sPQ1EeaFecJKcdTAJA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MFuGAPQ0EeaFecJKcdTAJA" memberEnd="_MFutEvQ0EeaFecJKcdTAJA _MFutE_Q0EeaFecJKcdTAJA">
+    <eAnnotations xmi:id="_MFutEPQ0EeaFecJKcdTAJA" source="org.eclipse.papyrus">
+      <details xmi:id="_MFutEfQ0EeaFecJKcdTAJA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:id="_MFutE_Q0EeaFecJKcdTAJA" name="terminologypackage" type="_tE9jsPQzEeaFecJKcdTAJA" association="_MFuGAPQ0EeaFecJKcdTAJA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_QoVVkPQ0EeaFecJKcdTAJA" memberEnd="_QoV8ovQ0EeaFecJKcdTAJA _QoV8o_Q0EeaFecJKcdTAJA">
+    <eAnnotations xmi:id="_QoV8oPQ0EeaFecJKcdTAJA" source="org.eclipse.papyrus">
+      <details xmi:id="_QoV8ofQ0EeaFecJKcdTAJA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:id="_QoV8o_Q0EeaFecJKcdTAJA" name="parentPackage" type="_tE9jsPQzEeaFecJKcdTAJA" association="_QoVVkPQ0EeaFecJKcdTAJA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_bGRUEPQ0EeaFecJKcdTAJA" memberEnd="_bGR7IPQ0EeaFecJKcdTAJA _bGR7IfQ0EeaFecJKcdTAJA">
+    <eAnnotations xmi:id="_bGRUEfQ0EeaFecJKcdTAJA" source="org.eclipse.papyrus">
+      <details xmi:id="_bGRUEvQ0EeaFecJKcdTAJA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:id="_bGR7IfQ0EeaFecJKcdTAJA" name="terminologyPackage" type="_tE9jsPQzEeaFecJKcdTAJA" association="_bGRUEPQ0EeaFecJKcdTAJA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iWFJsPQ0EeaFecJKcdTAJA" memberEnd="_iWGX0fQ0EeaFecJKcdTAJA _iWGX0vQ0EeaFecJKcdTAJA">
+    <eAnnotations xmi:id="_iWFwwPQ0EeaFecJKcdTAJA" source="org.eclipse.papyrus">
+      <details xmi:id="_iWGX0PQ0EeaFecJKcdTAJA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:id="_iWGX0vQ0EeaFecJKcdTAJA" name="terminologyPackageCitation" type="_vm1DgPQzEeaFecJKcdTAJA" association="_iWFJsPQ0EeaFecJKcdTAJA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_3-L6kPQ0EeaFecJKcdTAJA" memberEnd="_3-OW0PQ0EeaFecJKcdTAJA _3-OW0fQ0EeaFecJKcdTAJA">
+    <eAnnotations xmi:id="_3-NvwPQ0EeaFecJKcdTAJA" source="org.eclipse.papyrus">
+      <details xmi:id="_3-NvwfQ0EeaFecJKcdTAJA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:id="_3-OW0fQ0EeaFecJKcdTAJA" name="expressionElement" type="_8L67wPQzEeaFecJKcdTAJA" association="_3-L6kPQ0EeaFecJKcdTAJA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_KiQ5wPQ1EeaFecJKcdTAJA" memberEnd="_KiRg0vQ1EeaFecJKcdTAJA _KiRg0_Q1EeaFecJKcdTAJA">
+    <eAnnotations xmi:id="_KiRg0PQ1EeaFecJKcdTAJA" source="org.eclipse.papyrus">
+      <details xmi:id="_KiRg0fQ1EeaFecJKcdTAJA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:id="_KiRg0_Q1EeaFecJKcdTAJA" name="expression" type="_-qP_YPQzEeaFecJKcdTAJA" association="_KiQ5wPQ1EeaFecJKcdTAJA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_QXFYEPQ1EeaFecJKcdTAJA" memberEnd="_QXF_IPQ1EeaFecJKcdTAJA _QXF_IfQ1EeaFecJKcdTAJA">
+    <eAnnotations xmi:id="_QXFYEfQ1EeaFecJKcdTAJA" source="org.eclipse.papyrus">
+      <details xmi:id="_QXFYEvQ1EeaFecJKcdTAJA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:id="_QXF_IfQ1EeaFecJKcdTAJA" name="expression" type="_-qP_YPQzEeaFecJKcdTAJA" association="_QXFYEPQ1EeaFecJKcdTAJA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iDE4sPQ1EeaFecJKcdTAJA" memberEnd="_iDFfwvQ1EeaFecJKcdTAJA _iDGG0PQ1EeaFecJKcdTAJA">
+    <eAnnotations xmi:id="_iDFfwPQ1EeaFecJKcdTAJA" source="org.eclipse.papyrus">
+      <details xmi:id="_iDFfwfQ1EeaFecJKcdTAJA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:id="_iDGG0PQ1EeaFecJKcdTAJA" name="terminologyAssetCitation" type="__0mSoPQzEeaFecJKcdTAJA" association="_iDE4sPQ1EeaFecJKcdTAJA"/>
+  </packagedElement>
+</uml:Profile>
