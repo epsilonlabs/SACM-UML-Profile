@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <uml:Profile xmi:id="_F3T5kPeCEeaRHv3dBLo5oQ" name="RootElement">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_F3T5lPeCEeaRHv3dBLo5oQ" name="Class">
+      <ownedAttribute xmi:id="_F3UgoPeCEeaRHv3dBLo5oQ" name="base_Class : Class"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_F3T5lfeCEeaRHv3dBLo5oQ" name="Flowchart">
+      <ownedAttribute xmi:id="_F3VHsPeCEeaRHv3dBLo5oQ" name="base_Class : Class"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_F3VHsfeCEeaRHv3dBLo5oQ" name="E_Flowchart_Class1" memberEnd="_F3VHsveCEeaRHv3dBLo5oQ">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_F3VHsveCEeaRHv3dBLo5oQ" name="extension_Flowchart : Flowchart" association="_F3VHsfeCEeaRHv3dBLo5oQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_F3T5lveCEeaRHv3dBLo5oQ" name="Node">
+      <ownedAttribute xmi:id="_F3WV0PeCEeaRHv3dBLo5oQ" name="base_Class : Class"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_F3W84PeCEeaRHv3dBLo5oQ" name="E_Node_Class1" memberEnd="_F3W84feCEeaRHv3dBLo5oQ">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_F3W84feCEeaRHv3dBLo5oQ" name="extension_Node : Node" association="_F3W84PeCEeaRHv3dBLo5oQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_F3T5l_eCEeaRHv3dBLo5oQ" name="Transition">
+      <ownedAttribute xmi:id="_F3W84veCEeaRHv3dBLo5oQ" name="base_Class : Class"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_F3Xj8PeCEeaRHv3dBLo5oQ" name="E_Transition_Class1" memberEnd="_F3Xj8feCEeaRHv3dBLo5oQ">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_F3Xj8feCEeaRHv3dBLo5oQ" name="extension_Transition : Transition" association="_F3Xj8PeCEeaRHv3dBLo5oQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_F3T5mPeCEeaRHv3dBLo5oQ" name="Subflow">
+      <generalization xmi:id="_F3YLAPeCEeaRHv3dBLo5oQ" general="_F3T5lfeCEeaRHv3dBLo5oQ"/>
+      <generalization xmi:id="_F3YyEPeCEeaRHv3dBLo5oQ" general="_F3T5lveCEeaRHv3dBLo5oQ"/>
+      <ownedAttribute xmi:id="_F3Xj8veCEeaRHv3dBLo5oQ" name="base_Class : Class"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_F3T5mfeCEeaRHv3dBLo5oQ" name="Action">
+      <generalization xmi:id="_F3ZZIfeCEeaRHv3dBLo5oQ" general="_F3T5lveCEeaRHv3dBLo5oQ"/>
+      <ownedAttribute xmi:id="_F3ZZIPeCEeaRHv3dBLo5oQ" name="base_Class : Class"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_F3T5mveCEeaRHv3dBLo5oQ" name="Decision">
+      <generalization xmi:id="_F3aAMPeCEeaRHv3dBLo5oQ" general="_F3T5lveCEeaRHv3dBLo5oQ"/>
+      <ownedAttribute xmi:id="_F3ZZIveCEeaRHv3dBLo5oQ" name="base_Class : Class"/>
+    </packagedElement>
+  </uml:Profile>
+  <uml:ElementImport xmi:id="_F3T5kfeCEeaRHv3dBLo5oQ" alias="Class"/>
+  <uml:ElementImport xmi:id="_F3T5kveCEeaRHv3dBLo5oQ" alias="Association"/>
+  <uml:Property xmi:id="_F3T5k_eCEeaRHv3dBLo5oQ" name="base_association"/>
+</xmi:XMI>

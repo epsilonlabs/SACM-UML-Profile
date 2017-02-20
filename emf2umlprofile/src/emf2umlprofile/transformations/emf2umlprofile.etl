@@ -1,0 +1,41 @@
+pre {
+	var profile = new Profile!Profile;
+	var classImport = new Profile!ElementImport;
+	classImport.`alias` = "Class";
+	var associationImport = new Profile!ElementImport;
+	associationImport.`alias` = "Association";
+	profile.name = "RootElement";
+	
+	var baseAssociationProperty = new Profile!Property;
+	baseAssociationProperty.name = "base_association";
+	//profile.MetaclassReference().add(classImport);
+	//profile.MetaclassReference().add(associationImport);
+}
+
+rule class2stereotype 
+	transform c : Flowchart!EClass 
+	to s : Profile!Stereotype {
+		s.name = c.name;
+		profile.ownedStereotype.add(s);
+		var baseClassProperty = new Profile!Property;
+		baseClassProperty.name = "base_Class : Class";
+		// TODO: Add property to stereotype
+		s.ownedAttribute.add(baseClassProperty);
+		if (not (c.eSupertypes.select(a | a.name.equals("Class"))).isEmpty) {
+			var extension = new Profile!Extension;			
+			extension.name = "E_" + c.name + "_Class1";
+			var extensionEnd = new Profile!ExtensionEnd;
+			extensionEnd.name = "extension_" + c.name + " : " + c.name;
+			// TODO: Add extension to profile
+			profile.packagedElements.add(extension);
+			extension.ownedEnd.add(extensionEnd);
+		}
+		for (st in c.eSupertypes) {
+			if (not st.name.equals("Class")) {
+				var generalisation = new Profile!Generalization;
+				var myParent = Profile!Stereotype.all().selectOne(stype | stype.name.equals(st.name)); 
+				generalisation.general = myParent;
+				s.generalization.add(generalisation);
+			}
+		}
+	}
