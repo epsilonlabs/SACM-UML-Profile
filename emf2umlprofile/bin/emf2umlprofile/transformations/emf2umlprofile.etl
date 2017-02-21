@@ -1,15 +1,18 @@
 pre {
 	var profile = new Profile!Profile;
+	UMLM2.resource.uri = UMLM2.resource.uri.createURI("pathmap://UML_METAMODELS/UML.metamodel.uml");
+	UMLM2.resource.load(null);
 	var classImport = new Profile!ElementImport;
 	classImport.`alias` = "Class";
-	var associationImport = new Profile!ElementImport;
-	associationImport.`alias` = "Association";
+	classImport.importedElement = UMLM2!Class.all.selectOne(c|c.name = "Class");
+	profile.metaclassReference.add(classImport);
+	//var associationImport = new Profile!ElementImport;
+	//associationImport.`alias` = "Association";
 	profile.name = "RootElement";
-	
-	var baseAssociationProperty = new Profile!Property;
-	baseAssociationProperty.name = "base_association";
-	//profile.MetaclassReference().add(classImport);
-	//profile.MetaclassReference().add(associationImport);
+	//var baseAssociationProperty = new Profile!Property;
+	//baseAssociationProperty.name = "base_association";
+	profile.elementImport.add(classImport);
+	//profile.elementImport.add(associationImport);
 }
 
 rule class2stereotype 
@@ -18,17 +21,23 @@ rule class2stereotype
 		s.name = c.name;
 		profile.ownedStereotype.add(s);
 		var baseClassProperty = new Profile!Property;
-		baseClassProperty.name = "base_Class : Class";
+		baseClassProperty.name = "base_Class";
+		baseClassProperty.type = UMLM2!Class.all.selectOne(c|c.name = "Class");
 		// TODO: Add property to stereotype
 		s.ownedAttribute.add(baseClassProperty);
 		if (not (c.eSupertypes.select(a | a.name.equals("Class"))).isEmpty) {
 			var extension = new Profile!Extension;			
 			extension.name = "E_" + c.name + "_Class1";
 			var extensionEnd = new Profile!ExtensionEnd;
-			extensionEnd.name = "extension_" + c.name + " : " + c.name;
-			// TODO: Add extension to profile
+			extensionEnd.name = "extension_" + c.name;
+			extensionEnd.isComposite = true;
+			extensionEnd.type = s;
 			profile.packagedElements.add(extension);
 			extension.ownedEnd.add(extensionEnd);
+			extension.memberEnd.add(baseClassProperty);
+			extension.endType.add(UMLM2!Class.all.selectOne(c|c.name = "Class"));
+			//extension.metaclass = new Profile!Class;
+			//extension.relatedElement.add(s);
 		}
 		for (st in c.eSupertypes) {
 			if (not st.name.equals("Class")) {

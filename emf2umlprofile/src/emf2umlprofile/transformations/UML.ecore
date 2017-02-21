@@ -16744,4 +16744,6 @@
   <ecore:EClass name="Steretype"/>
   <ecore:EClass name="Steretype"/>
   <ecore:EClass name="Steretype"/>
+  <ecore:EClass/>
+  <ecore:EClass/>
 </xmi:XMI>

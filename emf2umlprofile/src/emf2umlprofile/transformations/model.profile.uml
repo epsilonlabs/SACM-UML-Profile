@@ -1,215 +1,210 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
-  <uml:Profile xmi:id="_EbfOUPH8Eeavesbv6PLofw" name="RootElement" metaclassReference="_JP6moPH8Eeavesbv6PLofw">
-    <eAnnotations xmi:id="_LA4N8PH8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML">
-      <contents xmi:type="ecore:EPackage" xmi:id="_R92xsPH9Eeavesbv6PLofw" name="RootElement" nsURI="http:///schemas/RootElement/_R92KoPH9Eeavesbv6PLofw/4" nsPrefix="RootElement">
-        <eAnnotations xmi:id="_R93YwvH9Eeavesbv6PLofw" source="PapyrusVersion">
-          <details xmi:id="_R93Yw_H9Eeavesbv6PLofw" key="Version" value="0.0.5"/>
-          <details xmi:id="_R93YxPH9Eeavesbv6PLofw" key="Comment" value=""/>
-          <details xmi:id="_R93YxfH9Eeavesbv6PLofw" key="Copyright" value=""/>
-          <details xmi:id="_R93YxvH9Eeavesbv6PLofw" key="Date" value="2017-02-13"/>
-          <details xmi:id="_R93Yx_H9Eeavesbv6PLofw" key="Author" value=""/>
-        </eAnnotations>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_R92xsfH9Eeavesbv6PLofw" name="Flowchart">
-          <eAnnotations xmi:id="_R92xsvH9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_GdBoQPH8Eeavesbv6PLofw"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_R92xs_H9Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
-            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
-          </eStructuralFeatures>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_R92xtfH9Eeavesbv6PLofw" name="Node">
-          <eAnnotations xmi:id="_R92xtvH9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HZDysPH8Eeavesbv6PLofw"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_R92xt_H9Eeavesbv6PLofw" name="Node_base_Class" ordered="false" lowerBound="1">
-            <eAnnotations xmi:id="_R92xuPH9Eeavesbv6PLofw" source="redefines" references="_R92xs_H9Eeavesbv6PLofw"/>
-            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
-          </eStructuralFeatures>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_R92xuvH9Eeavesbv6PLofw" name="Transition">
-          <eAnnotations xmi:id="_R92xu_H9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VdsLEPH8Eeavesbv6PLofw"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_R92xvPH9Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
-            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
-          </eStructuralFeatures>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_R92xvvH9Eeavesbv6PLofw" name="Subflow" eSuperTypes="_R92xsfH9Eeavesbv6PLofw _R92xtfH9Eeavesbv6PLofw">
-          <eAnnotations xmi:id="_R92xv_H9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_WSYXYPH8Eeavesbv6PLofw"/>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_R92xwvH9Eeavesbv6PLofw" name="Action" eSuperTypes="_R92xtfH9Eeavesbv6PLofw">
-          <eAnnotations xmi:id="_R92xw_H9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_XSsk4PH8Eeavesbv6PLofw"/>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_R92xxfH9Eeavesbv6PLofw" name="Decision" eSuperTypes="_R92xtfH9Eeavesbv6PLofw">
-          <eAnnotations xmi:id="_R92xxvH9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Yv5isPH8Eeavesbv6PLofw"/>
-        </eClassifiers>
-      </contents>
-      <contents xmi:type="ecore:EPackage" xmi:id="_CXlncfH9Eeavesbv6PLofw" name="RootElement" nsURI="http:///schemas/RootElement/_CXlncPH9Eeavesbv6PLofw/3" nsPrefix="RootElement">
-        <eAnnotations xmi:id="_CXmOg_H9Eeavesbv6PLofw" source="PapyrusVersion">
-          <details xmi:id="_CXmOhPH9Eeavesbv6PLofw" key="Version" value="0.0.4"/>
-          <details xmi:id="_CXmOhfH9Eeavesbv6PLofw" key="Comment" value=""/>
-          <details xmi:id="_CXmOhvH9Eeavesbv6PLofw" key="Copyright" value=""/>
-          <details xmi:id="_CXmOh_H9Eeavesbv6PLofw" key="Date" value="2017-02-13"/>
-          <details xmi:id="_CXmOiPH9Eeavesbv6PLofw" key="Author" value=""/>
-        </eAnnotations>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_CXlncvH9Eeavesbv6PLofw" name="Flowchart">
-          <eAnnotations xmi:id="_CXlnc_H9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_GdBoQPH8Eeavesbv6PLofw"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CXlndPH9Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
-            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
-          </eStructuralFeatures>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_CXlndvH9Eeavesbv6PLofw" name="Node">
-          <eAnnotations xmi:id="_CXlnd_H9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HZDysPH8Eeavesbv6PLofw"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CXlnePH9Eeavesbv6PLofw" name="Node_base_Class" ordered="false" lowerBound="1">
-            <eAnnotations xmi:id="_CXlnefH9Eeavesbv6PLofw" source="redefines" references="_CXlndPH9Eeavesbv6PLofw"/>
-            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
-          </eStructuralFeatures>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_CXlne_H9Eeavesbv6PLofw" name="Transition">
-          <eAnnotations xmi:id="_CXlnfPH9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VdsLEPH8Eeavesbv6PLofw"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CXlnffH9Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
-            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
-          </eStructuralFeatures>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_CXlnf_H9Eeavesbv6PLofw" name="Subflow" eSuperTypes="_CXlncvH9Eeavesbv6PLofw _CXlndvH9Eeavesbv6PLofw">
-          <eAnnotations xmi:id="_CXlngPH9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_WSYXYPH8Eeavesbv6PLofw"/>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_CXlng_H9Eeavesbv6PLofw" name="Action" eSuperTypes="_CXlndvH9Eeavesbv6PLofw">
-          <eAnnotations xmi:id="_CXlnhPH9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_XSsk4PH8Eeavesbv6PLofw"/>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_CXlnhvH9Eeavesbv6PLofw" name="Decision" eSuperTypes="_CXlndvH9Eeavesbv6PLofw">
-          <eAnnotations xmi:id="_CXlnh_H9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Yv5isPH8Eeavesbv6PLofw"/>
-        </eClassifiers>
-      </contents>
-      <contents xmi:type="ecore:EPackage" xmi:id="_xI8KIfH8Eeavesbv6PLofw" name="RootElement" nsURI="http:///schemas/RootElement/_xI8KIPH8Eeavesbv6PLofw/2" nsPrefix="RootElement">
-        <eAnnotations xmi:id="_xI8xM_H8Eeavesbv6PLofw" source="PapyrusVersion">
-          <details xmi:id="_xI8xNPH8Eeavesbv6PLofw" key="Version" value="0.0.3"/>
-          <details xmi:id="_xI8xNfH8Eeavesbv6PLofw" key="Comment" value=""/>
-          <details xmi:id="_xI8xNvH8Eeavesbv6PLofw" key="Copyright" value=""/>
-          <details xmi:id="_xI8xN_H8Eeavesbv6PLofw" key="Date" value="2017-02-13"/>
-          <details xmi:id="_xI8xOPH8Eeavesbv6PLofw" key="Author" value=""/>
-        </eAnnotations>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_xI8KIvH8Eeavesbv6PLofw" name="Flowchart">
-          <eAnnotations xmi:id="_xI8KI_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_GdBoQPH8Eeavesbv6PLofw"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_xI8KJPH8Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
-            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
-          </eStructuralFeatures>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_xI8KJvH8Eeavesbv6PLofw" name="Node">
-          <eAnnotations xmi:id="_xI8KJ_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HZDysPH8Eeavesbv6PLofw"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_xI8KKPH8Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
-            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
-          </eStructuralFeatures>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_xI8KKvH8Eeavesbv6PLofw" name="Transition">
-          <eAnnotations xmi:id="_xI8KK_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VdsLEPH8Eeavesbv6PLofw"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_xI8KLPH8Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
-            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
-          </eStructuralFeatures>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_xI8KLvH8Eeavesbv6PLofw" name="Subflow" eSuperTypes="_xI8KIvH8Eeavesbv6PLofw">
-          <eAnnotations xmi:id="_xI8KL_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_WSYXYPH8Eeavesbv6PLofw"/>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_xI8KMfH8Eeavesbv6PLofw" name="Action" eSuperTypes="_xI8KJvH8Eeavesbv6PLofw">
-          <eAnnotations xmi:id="_xI8KMvH8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_XSsk4PH8Eeavesbv6PLofw"/>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_xI8KNPH8Eeavesbv6PLofw" name="Decision" eSuperTypes="_xI8KJvH8Eeavesbv6PLofw">
-          <eAnnotations xmi:id="_xI8KNfH8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Yv5isPH8Eeavesbv6PLofw"/>
-        </eClassifiers>
-      </contents>
-      <contents xmi:type="ecore:EPackage" xmi:id="_cp6hMPH8Eeavesbv6PLofw" name="RootElement" nsURI="http:///schemas/RootElement/_cp220PH8Eeavesbv6PLofw/1" nsPrefix="RootElement">
-        <eAnnotations xmi:id="_cp7IQPH8Eeavesbv6PLofw" source="PapyrusVersion">
-          <details xmi:id="_cp7IQfH8Eeavesbv6PLofw" key="Version" value="0.0.2"/>
-          <details xmi:id="_cp7IQvH8Eeavesbv6PLofw" key="Comment" value=""/>
-          <details xmi:id="_cp7IQ_H8Eeavesbv6PLofw" key="Copyright" value=""/>
-          <details xmi:id="_cp7IRPH8Eeavesbv6PLofw" key="Date" value="2017-02-13"/>
-          <details xmi:id="_cp7IRfH8Eeavesbv6PLofw" key="Author" value=""/>
-        </eAnnotations>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_cp6hMfH8Eeavesbv6PLofw" name="Flowchart">
-          <eAnnotations xmi:id="_cp6hMvH8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_GdBoQPH8Eeavesbv6PLofw"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_cp6hM_H8Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
-            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
-          </eStructuralFeatures>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_cp6hNfH8Eeavesbv6PLofw" name="Node">
-          <eAnnotations xmi:id="_cp6hNvH8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HZDysPH8Eeavesbv6PLofw"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_cp6hN_H8Eeavesbv6PLofw" name="Node_base_Class" ordered="false" lowerBound="1">
-            <eAnnotations xmi:id="_cp6hOPH8Eeavesbv6PLofw" source="redefines" references="_cp6hM_H8Eeavesbv6PLofw"/>
-            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
-          </eStructuralFeatures>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_cp6hOvH8Eeavesbv6PLofw" name="Transition">
-          <eAnnotations xmi:id="_cp6hO_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VdsLEPH8Eeavesbv6PLofw"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_cp6hPPH8Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
-            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
-          </eStructuralFeatures>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_cp6hPvH8Eeavesbv6PLofw" name="Subflow" eSuperTypes="_cp6hMfH8Eeavesbv6PLofw _cp6hNfH8Eeavesbv6PLofw">
-          <eAnnotations xmi:id="_cp6hP_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_WSYXYPH8Eeavesbv6PLofw"/>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_cp6hQvH8Eeavesbv6PLofw" name="Action" eSuperTypes="_cp6hNfH8Eeavesbv6PLofw">
-          <eAnnotations xmi:id="_cp6hQ_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_XSsk4PH8Eeavesbv6PLofw"/>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_cp6hRfH8Eeavesbv6PLofw" name="Decision" eSuperTypes="_cp6hNfH8Eeavesbv6PLofw">
-          <eAnnotations xmi:id="_cp6hRvH8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Yv5isPH8Eeavesbv6PLofw"/>
-        </eClassifiers>
-      </contents>
-      <contents xmi:type="ecore:EPackage" xmi:id="_LA4N8fH8Eeavesbv6PLofw" name="RootElement" nsURI="http:///schemas/RootElement/_LA1xsPH8Eeavesbv6PLofw/0" nsPrefix="RootElement">
-        <eAnnotations xmi:id="_LA6DIvH8Eeavesbv6PLofw" source="PapyrusVersion">
-          <details xmi:id="_LA6DI_H8Eeavesbv6PLofw" key="Version" value="0.0.1"/>
-          <details xmi:id="_LA6DJPH8Eeavesbv6PLofw" key="Comment" value=""/>
-          <details xmi:id="_LA6DJfH8Eeavesbv6PLofw" key="Copyright" value=""/>
-          <details xmi:id="_LA6DJvH8Eeavesbv6PLofw" key="Date" value="2017-02-13"/>
-          <details xmi:id="_LA6DJ_H8Eeavesbv6PLofw" key="Author" value=""/>
-        </eAnnotations>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_LA4N8vH8Eeavesbv6PLofw" name="Flowchart">
-          <eAnnotations xmi:id="_LA4N8_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_GdBoQPH8Eeavesbv6PLofw"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_LA4N9PH8Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
-            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
-          </eStructuralFeatures>
-        </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_LA4N9vH8Eeavesbv6PLofw" name="Node">
-          <eAnnotations xmi:id="_LA4N9_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HZDysPH8Eeavesbv6PLofw"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_LA4N-PH8Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
-            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
-          </eStructuralFeatures>
-        </eClassifiers>
-      </contents>
-    </eAnnotations>
-    <elementImport xmi:id="_JP6moPH8Eeavesbv6PLofw" alias="Class">
-      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
-    </elementImport>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_GdBoQPH8Eeavesbv6PLofw" name="Flowchart">
-      <ownedAttribute xmi:id="_Jk0fofH8Eeavesbv6PLofw" name="base_Class" association="_JkxcUPH8Eeavesbv6PLofw">
-        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
-      </ownedAttribute>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HZDysPH8Eeavesbv6PLofw" name="Node">
-      <ownedAttribute xmi:id="_J4d0YfH8Eeavesbv6PLofw" name="base_Class" association="_J4dNUPH8Eeavesbv6PLofw">
-        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
-      </ownedAttribute>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_JkxcUPH8Eeavesbv6PLofw" name="E_Flowchart_Class1" memberEnd="_Jk0foPH8Eeavesbv6PLofw _Jk0fofH8Eeavesbv6PLofw">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Jk0foPH8Eeavesbv6PLofw" name="extension_Flowchart" type="_GdBoQPH8Eeavesbv6PLofw" aggregation="composite" association="_JkxcUPH8Eeavesbv6PLofw"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_J4dNUPH8Eeavesbv6PLofw" name="E_Node_Class1" memberEnd="_J4d0YPH8Eeavesbv6PLofw _J4d0YfH8Eeavesbv6PLofw">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_J4d0YPH8Eeavesbv6PLofw" name="extension_Node" type="_HZDysPH8Eeavesbv6PLofw" aggregation="composite" association="_J4dNUPH8Eeavesbv6PLofw"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_VdsLEPH8Eeavesbv6PLofw" name="Transition">
-      <ownedAttribute xmi:id="_aAscMfH8Eeavesbv6PLofw" name="base_Class" association="_aAr1IPH8Eeavesbv6PLofw">
-        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
-      </ownedAttribute>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_WSYXYPH8Eeavesbv6PLofw" name="Subflow">
-      <generalization xmi:id="_a1cS4PH8Eeavesbv6PLofw" general="_GdBoQPH8Eeavesbv6PLofw"/>
-      <generalization xmi:id="_B4bmQPH9Eeavesbv6PLofw" general="_HZDysPH8Eeavesbv6PLofw"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_XSsk4PH8Eeavesbv6PLofw" name="Action">
-      <generalization xmi:id="_b42QoPH8Eeavesbv6PLofw" general="_HZDysPH8Eeavesbv6PLofw"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_Yv5isPH8Eeavesbv6PLofw" name="Decision">
-      <generalization xmi:id="_cQ1S0PH8Eeavesbv6PLofw" general="_HZDysPH8Eeavesbv6PLofw"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_aAr1IPH8Eeavesbv6PLofw" name="E_Transition_Class1" memberEnd="_aAscMPH8Eeavesbv6PLofw _aAscMfH8Eeavesbv6PLofw">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_aAscMPH8Eeavesbv6PLofw" name="extension_Transition" type="_VdsLEPH8Eeavesbv6PLofw" aggregation="composite" association="_aAr1IPH8Eeavesbv6PLofw"/>
-    </packagedElement>
-  </uml:Profile>
-  <uml:Property xmi:id="_J94DIPd-EeaRHv3dBLo5oQ"/>
-  <uml:Property xmi:id="_N2SfIPd-EeaRHv3dBLo5oQ"/>
-  <uml:Property xmi:id="_ZHSSQPd-EeaRHv3dBLo5oQ"/>
-</xmi:XMI>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_EbfOUPH8Eeavesbv6PLofw" name="RootElement" metaclassReference="_JP6moPH8Eeavesbv6PLofw">
+  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_LA4N8PH8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_R92xsPH9Eeavesbv6PLofw" name="RootElement" nsURI="http:///schemas/RootElement/_R92KoPH9Eeavesbv6PLofw/4" nsPrefix="RootElement">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_R93YwvH9Eeavesbv6PLofw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_R93Yw_H9Eeavesbv6PLofw" key="Version" value="0.0.5"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_R93YxPH9Eeavesbv6PLofw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_R93YxfH9Eeavesbv6PLofw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_R93YxvH9Eeavesbv6PLofw" key="Date" value="2017-02-13"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_R93Yx_H9Eeavesbv6PLofw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_R92xsfH9Eeavesbv6PLofw" name="Flowchart">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_R92xsvH9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_GdBoQPH8Eeavesbv6PLofw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_R92xs_H9Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_R92xtfH9Eeavesbv6PLofw" name="Node">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_R92xtvH9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HZDysPH8Eeavesbv6PLofw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_R92xt_H9Eeavesbv6PLofw" name="Node_base_Class" ordered="false" lowerBound="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_R92xuPH9Eeavesbv6PLofw" source="redefines" references="_R92xs_H9Eeavesbv6PLofw"/>
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_R92xuvH9Eeavesbv6PLofw" name="Transition">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_R92xu_H9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VdsLEPH8Eeavesbv6PLofw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_R92xvPH9Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_R92xvvH9Eeavesbv6PLofw" name="Subflow" eSuperTypes="_R92xsfH9Eeavesbv6PLofw _R92xtfH9Eeavesbv6PLofw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_R92xv_H9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_WSYXYPH8Eeavesbv6PLofw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_R92xwvH9Eeavesbv6PLofw" name="Action" eSuperTypes="_R92xtfH9Eeavesbv6PLofw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_R92xw_H9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_XSsk4PH8Eeavesbv6PLofw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_R92xxfH9Eeavesbv6PLofw" name="Decision" eSuperTypes="_R92xtfH9Eeavesbv6PLofw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_R92xxvH9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Yv5isPH8Eeavesbv6PLofw"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_CXlncfH9Eeavesbv6PLofw" name="RootElement" nsURI="http:///schemas/RootElement/_CXlncPH9Eeavesbv6PLofw/3" nsPrefix="RootElement">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CXmOg_H9Eeavesbv6PLofw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CXmOhPH9Eeavesbv6PLofw" key="Version" value="0.0.4"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CXmOhfH9Eeavesbv6PLofw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CXmOhvH9Eeavesbv6PLofw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CXmOh_H9Eeavesbv6PLofw" key="Date" value="2017-02-13"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CXmOiPH9Eeavesbv6PLofw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CXlncvH9Eeavesbv6PLofw" name="Flowchart">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CXlnc_H9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_GdBoQPH8Eeavesbv6PLofw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CXlndPH9Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CXlndvH9Eeavesbv6PLofw" name="Node">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CXlnd_H9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HZDysPH8Eeavesbv6PLofw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CXlnePH9Eeavesbv6PLofw" name="Node_base_Class" ordered="false" lowerBound="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CXlnefH9Eeavesbv6PLofw" source="redefines" references="_CXlndPH9Eeavesbv6PLofw"/>
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CXlne_H9Eeavesbv6PLofw" name="Transition">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CXlnfPH9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VdsLEPH8Eeavesbv6PLofw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_CXlnffH9Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CXlnf_H9Eeavesbv6PLofw" name="Subflow" eSuperTypes="_CXlncvH9Eeavesbv6PLofw _CXlndvH9Eeavesbv6PLofw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CXlngPH9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_WSYXYPH8Eeavesbv6PLofw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CXlng_H9Eeavesbv6PLofw" name="Action" eSuperTypes="_CXlndvH9Eeavesbv6PLofw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CXlnhPH9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_XSsk4PH8Eeavesbv6PLofw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_CXlnhvH9Eeavesbv6PLofw" name="Decision" eSuperTypes="_CXlndvH9Eeavesbv6PLofw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CXlnh_H9Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Yv5isPH8Eeavesbv6PLofw"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_xI8KIfH8Eeavesbv6PLofw" name="RootElement" nsURI="http:///schemas/RootElement/_xI8KIPH8Eeavesbv6PLofw/2" nsPrefix="RootElement">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xI8xM_H8Eeavesbv6PLofw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xI8xNPH8Eeavesbv6PLofw" key="Version" value="0.0.3"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xI8xNfH8Eeavesbv6PLofw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xI8xNvH8Eeavesbv6PLofw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xI8xN_H8Eeavesbv6PLofw" key="Date" value="2017-02-13"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xI8xOPH8Eeavesbv6PLofw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_xI8KIvH8Eeavesbv6PLofw" name="Flowchart">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xI8KI_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_GdBoQPH8Eeavesbv6PLofw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_xI8KJPH8Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_xI8KJvH8Eeavesbv6PLofw" name="Node">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xI8KJ_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HZDysPH8Eeavesbv6PLofw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_xI8KKPH8Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_xI8KKvH8Eeavesbv6PLofw" name="Transition">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xI8KK_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VdsLEPH8Eeavesbv6PLofw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_xI8KLPH8Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_xI8KLvH8Eeavesbv6PLofw" name="Subflow" eSuperTypes="_xI8KIvH8Eeavesbv6PLofw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xI8KL_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_WSYXYPH8Eeavesbv6PLofw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_xI8KMfH8Eeavesbv6PLofw" name="Action" eSuperTypes="_xI8KJvH8Eeavesbv6PLofw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xI8KMvH8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_XSsk4PH8Eeavesbv6PLofw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_xI8KNPH8Eeavesbv6PLofw" name="Decision" eSuperTypes="_xI8KJvH8Eeavesbv6PLofw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xI8KNfH8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Yv5isPH8Eeavesbv6PLofw"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_cp6hMPH8Eeavesbv6PLofw" name="RootElement" nsURI="http:///schemas/RootElement/_cp220PH8Eeavesbv6PLofw/1" nsPrefix="RootElement">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cp7IQPH8Eeavesbv6PLofw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cp7IQfH8Eeavesbv6PLofw" key="Version" value="0.0.2"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cp7IQvH8Eeavesbv6PLofw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cp7IQ_H8Eeavesbv6PLofw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cp7IRPH8Eeavesbv6PLofw" key="Date" value="2017-02-13"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cp7IRfH8Eeavesbv6PLofw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_cp6hMfH8Eeavesbv6PLofw" name="Flowchart">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cp6hMvH8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_GdBoQPH8Eeavesbv6PLofw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_cp6hM_H8Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_cp6hNfH8Eeavesbv6PLofw" name="Node">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cp6hNvH8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HZDysPH8Eeavesbv6PLofw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_cp6hN_H8Eeavesbv6PLofw" name="Node_base_Class" ordered="false" lowerBound="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cp6hOPH8Eeavesbv6PLofw" source="redefines" references="_cp6hM_H8Eeavesbv6PLofw"/>
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_cp6hOvH8Eeavesbv6PLofw" name="Transition">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cp6hO_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VdsLEPH8Eeavesbv6PLofw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_cp6hPPH8Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_cp6hPvH8Eeavesbv6PLofw" name="Subflow" eSuperTypes="_cp6hMfH8Eeavesbv6PLofw _cp6hNfH8Eeavesbv6PLofw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cp6hP_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_WSYXYPH8Eeavesbv6PLofw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_cp6hQvH8Eeavesbv6PLofw" name="Action" eSuperTypes="_cp6hNfH8Eeavesbv6PLofw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cp6hQ_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_XSsk4PH8Eeavesbv6PLofw"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_cp6hRfH8Eeavesbv6PLofw" name="Decision" eSuperTypes="_cp6hNfH8Eeavesbv6PLofw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cp6hRvH8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Yv5isPH8Eeavesbv6PLofw"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_LA4N8fH8Eeavesbv6PLofw" name="RootElement" nsURI="http:///schemas/RootElement/_LA1xsPH8Eeavesbv6PLofw/0" nsPrefix="RootElement">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_LA6DIvH8Eeavesbv6PLofw" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_LA6DI_H8Eeavesbv6PLofw" key="Version" value="0.0.1"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_LA6DJPH8Eeavesbv6PLofw" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_LA6DJfH8Eeavesbv6PLofw" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_LA6DJvH8Eeavesbv6PLofw" key="Date" value="2017-02-13"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_LA6DJ_H8Eeavesbv6PLofw" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_LA4N8vH8Eeavesbv6PLofw" name="Flowchart">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_LA4N8_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_GdBoQPH8Eeavesbv6PLofw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_LA4N9PH8Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_LA4N9vH8Eeavesbv6PLofw" name="Node">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_LA4N9_H8Eeavesbv6PLofw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HZDysPH8Eeavesbv6PLofw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_LA4N-PH8Eeavesbv6PLofw" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:type="uml:ElementImport" xmi:id="_JP6moPH8Eeavesbv6PLofw" alias="Class">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_GdBoQPH8Eeavesbv6PLofw" name="Flowchart">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Jk0fofH8Eeavesbv6PLofw" name="base_Class" association="_JkxcUPH8Eeavesbv6PLofw">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_HZDysPH8Eeavesbv6PLofw" name="Node">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_J4d0YfH8Eeavesbv6PLofw" name="base_Class" association="_J4dNUPH8Eeavesbv6PLofw">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_JkxcUPH8Eeavesbv6PLofw" name="E_Flowchart_Class1" memberEnd="_Jk0foPH8Eeavesbv6PLofw _Jk0fofH8Eeavesbv6PLofw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Jk0foPH8Eeavesbv6PLofw" name="extension_Flowchart" type="_GdBoQPH8Eeavesbv6PLofw" aggregation="composite" association="_JkxcUPH8Eeavesbv6PLofw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_J4dNUPH8Eeavesbv6PLofw" name="E_Node_Class1" memberEnd="_J4d0YPH8Eeavesbv6PLofw _J4d0YfH8Eeavesbv6PLofw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_J4d0YPH8Eeavesbv6PLofw" name="extension_Node" type="_HZDysPH8Eeavesbv6PLofw" aggregation="composite" association="_J4dNUPH8Eeavesbv6PLofw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_VdsLEPH8Eeavesbv6PLofw" name="Transition">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_aAscMfH8Eeavesbv6PLofw" name="base_Class" association="_aAr1IPH8Eeavesbv6PLofw">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_WSYXYPH8Eeavesbv6PLofw" name="Subflow">
+    <generalization xmi:type="uml:Generalization" xmi:id="_a1cS4PH8Eeavesbv6PLofw" general="_GdBoQPH8Eeavesbv6PLofw"/>
+    <generalization xmi:type="uml:Generalization" xmi:id="_B4bmQPH9Eeavesbv6PLofw" general="_HZDysPH8Eeavesbv6PLofw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_XSsk4PH8Eeavesbv6PLofw" name="Action">
+    <generalization xmi:type="uml:Generalization" xmi:id="_b42QoPH8Eeavesbv6PLofw" general="_HZDysPH8Eeavesbv6PLofw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_Yv5isPH8Eeavesbv6PLofw" name="Decision">
+    <generalization xmi:type="uml:Generalization" xmi:id="_cQ1S0PH8Eeavesbv6PLofw" general="_HZDysPH8Eeavesbv6PLofw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_aAr1IPH8Eeavesbv6PLofw" name="E_Transition_Class1" memberEnd="_aAscMPH8Eeavesbv6PLofw _aAscMfH8Eeavesbv6PLofw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_aAscMPH8Eeavesbv6PLofw" name="extension_Transition" type="_VdsLEPH8Eeavesbv6PLofw" aggregation="composite" association="_aAr1IPH8Eeavesbv6PLofw"/>
+  </packagedElement>
+</uml:Profile>
