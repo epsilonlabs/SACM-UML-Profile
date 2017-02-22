@@ -1,31 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_trBusPjUEeaMM-_yCGvknA" name="RootElement" metaclassReference="_trBusfjUEeaMM-_yCGvknA">
-  <eAnnotations xmi:id="_trC80fjUEeaMM-_yCGvknA" source="http://www.eclipse.org/uml2/2.0.0/UML">
-    <contents xmi:type="ecore:EPackage" xmi:id="_trC80PjUEeaMM-_yCGvknA" name="RootElement" nsURI="http:///schemas/RootElement/something/1" nsPrefix="RootElement">
-      <eAnnotations xmi:id="_trDj4PjUEeaMM-_yCGvknA" source="PapyrusVersion">
-        <details xmi:id="_trDj4fjUEeaMM-_yCGvknA" key="Version" value="0.0.1"/>
-        <details xmi:id="_trDj4vjUEeaMM-_yCGvknA" key="Comment" value=""/>
-        <details xmi:id="_trDj4_jUEeaMM-_yCGvknA" key="Copyright" value=""/>
-        <details xmi:id="_trDj5PjUEeaMM-_yCGvknA" key="Date" value="2017-02-01"/>
-        <details xmi:id="_trEK8PjUEeaMM-_yCGvknA" key="Author" value=""/>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_XOhGwPkTEeaMM-_yCGvknA" name="RootElement" metaclassReference="_XOhGwfkTEeaMM-_yCGvknA">
+  <eAnnotations xmi:id="_XOi78vkTEeaMM-_yCGvknA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_XOi78fkTEeaMM-_yCGvknA" name="RootElement" nsURI="http:///schemas/RootElement/something/1" nsPrefix="RootElement">
+      <eAnnotations xmi:id="_XOjjAPkTEeaMM-_yCGvknA" source="PapyrusVersion">
+        <details xmi:id="_XOjjAfkTEeaMM-_yCGvknA" key="Version" value="0.0.1"/>
+        <details xmi:id="_XOjjAvkTEeaMM-_yCGvknA" key="Comment" value=""/>
+        <details xmi:id="_XOjjA_kTEeaMM-_yCGvknA" key="Copyright" value=""/>
+        <details xmi:id="_XOjjBPkTEeaMM-_yCGvknA" key="Date" value="2017-02-01"/>
+        <details xmi:id="_XOkKEPkTEeaMM-_yCGvknA" key="Author" value=""/>
       </eAnnotations>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_trEyAPjUEeaMM-_yCGvknA" name="Test">
-        <eAnnotations xmi:id="_trEyAfjUEeaMM-_yCGvknA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_trEK8fjUEeaMM-_yCGvknA"/>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_trFZEPjUEeaMM-_yCGvknA" name="base_Class" ordered="false" lowerBound="1">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_XOkKE_kTEeaMM-_yCGvknA" name="Test">
+        <eAnnotations xmi:id="_XOkxIPkTEeaMM-_yCGvknA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_XOkKEfkTEeaMM-_yCGvknA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_XOkxIvkTEeaMM-_yCGvknA" name="base_Class" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_XOuiIPkTEeaMM-_yCGvknA" name="StereotypeForAssociations">
+        <eAnnotations xmi:id="_XOuiIfkTEeaMM-_yCGvknA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_XOkKEvkTEeaMM-_yCGvknA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_XOvJMfkTEeaMM-_yCGvknA" name="base_Association" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Association"/>
         </eStructuralFeatures>
       </eClassifiers>
     </contents>
   </eAnnotations>
-  <elementImport xmi:id="_trBusfjUEeaMM-_yCGvknA" alias="Class">
+  <elementImport xmi:id="_XOhGwfkTEeaMM-_yCGvknA" alias="Class">
     <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
   </elementImport>
-  <packagedElement xmi:type="uml:Stereotype" xmi:id="_trEK8fjUEeaMM-_yCGvknA" name="Test">
-    <ownedAttribute xmi:id="_trEyAvjUEeaMM-_yCGvknA" name="base_Class" association="_trFZEvjUEeaMM-_yCGvknA">
+  <elementImport xmi:id="_XOi78PkTEeaMM-_yCGvknA" alias="Association">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Association"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_XOkKEfkTEeaMM-_yCGvknA" name="Test">
+    <ownedAttribute xmi:id="_XOkxIfkTEeaMM-_yCGvknA" name="base_Class" association="_XOkxI_kTEeaMM-_yCGvknA">
       <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_trFZEvjUEeaMM-_yCGvknA" name="E_Test_Class1" memberEnd="_trFZE_jUEeaMM-_yCGvknA _trEyAvjUEeaMM-_yCGvknA">
-    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_trFZE_jUEeaMM-_yCGvknA" name="extension_Test" type="_trEK8fjUEeaMM-_yCGvknA" aggregation="composite" association="_trFZEvjUEeaMM-_yCGvknA"/>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_XOkxI_kTEeaMM-_yCGvknA" name="E_Test_Class1" memberEnd="_XOlYMPkTEeaMM-_yCGvknA _XOkxIfkTEeaMM-_yCGvknA">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_XOlYMPkTEeaMM-_yCGvknA" name="extension_Test" type="_XOkKEfkTEeaMM-_yCGvknA" aggregation="composite" association="_XOkxI_kTEeaMM-_yCGvknA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_XOkKEvkTEeaMM-_yCGvknA" name="StereotypeForAssociations">
+    <ownedAttribute xmi:id="_XOvJMPkTEeaMM-_yCGvknA" name="base_Association" association="_XOvJMvkTEeaMM-_yCGvknA">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Association"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_XOvJMvkTEeaMM-_yCGvknA" name="E_StereotypeForAssociations_Association1" memberEnd="_XOvJM_kTEeaMM-_yCGvknA _XOvJMPkTEeaMM-_yCGvknA">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_XOvJM_kTEeaMM-_yCGvknA" name="extension_StereotypeForAssociations" type="_XOkKEvkTEeaMM-_yCGvknA" aggregation="composite" association="_XOvJMvkTEeaMM-_yCGvknA"/>
   </packagedElement>
 </uml:Profile>

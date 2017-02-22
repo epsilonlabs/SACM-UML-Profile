@@ -5,6 +5,7 @@ class Class {
 	
 }
 
+@TestAnnotation
 class Flowchart extends Class {
    val Node[*] nodes;
    val Transition[*] transitions;
@@ -22,7 +23,7 @@ class Transition extends Class {
    ref Node#incoming target;
 }
 
-class Subflow extends Flowchart, Node {
+class Subflow extends Flowchart {
    
 }
 
