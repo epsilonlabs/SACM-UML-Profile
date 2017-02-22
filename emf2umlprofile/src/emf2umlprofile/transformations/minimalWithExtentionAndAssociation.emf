@@ -1,0 +1,24 @@
+@namespace(uri="minimalWithEntentionAndAssociation",prefix="minimalWithEntentionAndAssociation")
+package top;
+
+class Class {
+	
+}
+
+class Association {
+	
+}
+
+class Test extends Class {
+	
+}
+
+class StereotypeForAssociations extends Association {
+
+}
+
+class ThisStereotypeExtendsTest extends Test {
+	
+}
+
+

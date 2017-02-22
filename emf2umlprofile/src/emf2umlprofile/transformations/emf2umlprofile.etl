@@ -28,15 +28,15 @@ rule class2stereotype
 		profile.ownedStereotype.add(s);
 		// The stereotype needs to refer to the EClass object via its eClassifiers association. 
 		// I do a workaround by creating a copy of the current EClass instance and assign it 
+		var newClass = new Profile!EClass;
+		newClass.name = c.name;
+		ePackage.eClassifiers.add(newClass);
+		var theEAnnotationOfThisStereotype = new Profile!EAnnotation;
+		theEAnnotationOfThisStereotype.source = "http://www.eclipse.org/uml2/2.0.0/UML";
+		theEAnnotationOfThisStereotype.references.add(s);
+		newClass.eAnnotations.add(theEAnnotationOfThisStereotype);
 		if (not (c.eSupertypes.select(a | a.name.equals("Class"))).isEmpty) {
-			var newClass = new Profile!EClass;
-			newClass.name = c.name;
-			ePackage.eClassifiers.add(newClass);
 			// Each stereotype needs to have an EAnnotation. The EClass created before needs to point to this EAnnotation.
-			var theEAnnotationOfThisStereotype = new Profile!EAnnotation;
-			theEAnnotationOfThisStereotype.source = "http://www.eclipse.org/uml2/2.0.0/UML";
-			theEAnnotationOfThisStereotype.references.add(s);
-			newClass.eAnnotations.add(theEAnnotationOfThisStereotype);
 			var baseClassProperty = new Profile!Property;
 			baseClassProperty.name = "base_Class";
 			baseClassProperty.type = UMLM2!Class.all.selectOne(c|c.name = "Class"); // This way we get the Class metaclass as declared in the UML metamodel
@@ -60,13 +60,6 @@ rule class2stereotype
 			theEReferenceBaseClass.eGenericType = theEGenericType;
 			theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = "Class").println();
 		} else if (not (c.eSupertypes.select(a | a.name.equals("Association"))).isEmpty) {
-			var newClass = new Profile!EClass;
-			newClass.name = c.name;
-			ePackage.eClassifiers.add(newClass);
-			var theEAnnotationOfThisStereotype = new Profile!EAnnotation;
-			theEAnnotationOfThisStereotype.source = "http://www.eclipse.org/uml2/2.0.0/UML";
-			theEAnnotationOfThisStereotype.references.add(s);
-			newClass.eAnnotations.add(theEAnnotationOfThisStereotype);
 			var baseAssociationProperty = new Profile!Property;
 			baseAssociationProperty.name = "base_Association";
 			baseAssociationProperty.type = UMLM2!Class.all.selectOne(c|c.name = "Association"); // This way we get the Association metaclass as declared in the UML metamodel
@@ -89,13 +82,14 @@ rule class2stereotype
 			var theEGenericType = new Profile!EGenericType;
 			theEReferenceBaseAssociation.eGenericType = theEGenericType;
 			theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = "Association").println();
-		}
+		} 
 		for (st in c.eSupertypes) {
 			if (not (st.name.equals("Class") or st.name.equals("Association"))) {
 				var generalisation = new Profile!Generalization;
 				var myParent = Profile!Stereotype.all().selectOne(stype | stype.name.equals(st.name)); 
 				generalisation.general = myParent;
 				s.generalization.add(generalisation);
+				newClass.eSupertypes.add(ePackage.eClassifiers.selectOne(ec | ec.name.equals(st.name)));
 			}
 		}
 	}
