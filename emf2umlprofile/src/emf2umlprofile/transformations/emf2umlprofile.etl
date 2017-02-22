@@ -1,11 +1,11 @@
 pre {
 	var profile = new Profile!Profile;
-	UMLM2.resource.uri = UMLM2.resource.uri.createURI("pathmap://UML_METAMODELS/UML.metamodel.uml");
-	UMLM2.resource.load(null);
 	var classImport = new Profile!ElementImport;
 	classImport.`alias` = "Class";
 	classImport.importedElement = UMLM2!Class.all.selectOne(c|c.name = "Class");
 	profile.metaclassReference.add(classImport);
+	var ePackage = new Profile!EPackage;
+	createUMLAnnotationsForVersions(profile);
 	//var associationImport = new Profile!ElementImport;
 	//associationImport.`alias` = "Association";
 	profile.name = "RootElement";
@@ -16,13 +16,33 @@ pre {
 }
 
 rule class2stereotype 
-	transform c : Flowchart!EClass 
+	transform c : Source!EClass 
 	to s : Profile!Stereotype {
+	guard : not (c.name = "Class") 
 		s.name = c.name;
+		("Hello").println();
 		profile.ownedStereotype.add(s);
+		var newClass = new Profile!EClass;
+		newClass.name = c.name;
+		ePackage.eClassifiers.add(newClass);
+		var theEAnnotationOfThisStereotype = new Profile!EAnnotation;
+		theEAnnotationOfThisStereotype.source = "http://www.eclipse.org/uml2/2.0.0/UML";
+		theEAnnotationOfThisStereotype.references.add(s);
+		newClass.eAnnotations.add(theEAnnotationOfThisStereotype);
 		var baseClassProperty = new Profile!Property;
 		baseClassProperty.name = "base_Class";
+		//theEReferenceBaseClass.EType = Profile!EClass.all.selectOne(c|c.name = "Class");
 		baseClassProperty.type = UMLM2!Class.all.selectOne(c|c.name = "Class");
+		
+		var theEReferenceBaseClass = new Profile!EReference;
+		theEReferenceBaseClass.name = "base_Class";
+		theEReferenceBaseClass.lowerBound = 1;
+		theEReferenceBaseClass.ordered = false;
+		newClass.eStructuralFeatures.add(theEReferenceBaseClass);
+		var theEGenericType = new Profile!EGenericType;
+		("Hi").println();
+		theEReferenceBaseClass.eGenericType = theEGenericType;
+		
 		// TODO: Add property to stereotype
 		s.ownedAttribute.add(baseClassProperty);
 		if (not (c.eSupertypes.select(a | a.name.equals("Class"))).isEmpty) {
@@ -47,4 +67,38 @@ rule class2stereotype
 				s.generalization.add(generalisation);
 			}
 		}
+		theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = "Class").println();
 	}
+	
+operation createUMLAnnotationsForVersions(profile) {
+	var theAnnotation = new Profile!EAnnotation;
+	theAnnotation.source = "http://www.eclipse.org/uml2/2.0.0/UML";
+	profile.eAnnotations.add(theAnnotation);
+	ePackage.name = "RootElement";
+	ePackage.NsPrefix = "RootElement";
+	ePackage.nsUri = "http:///schemas/RootElement/something/1";
+	theAnnotation.contents.add(ePackage);
+	var papyrusVersionEAnnotation = new Profile!EAnnotation;
+	papyrusVersionEAnnotation.source = "PapyrusVersion";
+	ePackage.eAnnotations.add(papyrusVersionEAnnotation);
+	var versionMap = new Profile!EStringToStringMapEntry;
+	versionMap.key = "Version";
+	versionMap.value = "0.0.1";
+	papyrusVersionEAnnotation.details.add(versionMap);
+	var commentMap = new Profile!EStringToStringMapEntry;
+	commentMap.key = "Comment";
+	commentMap.value = "";
+	papyrusVersionEAnnotation.details.add(commentMap);
+	var copyrightMap = new Profile!EStringToStringMapEntry;
+	copyrightMap.key = "Copyright";
+	copyrightMap.value = "";
+	papyrusVersionEAnnotation.details.add(copyrightMap);
+	var dateMap = new Profile!EStringToStringMapEntry;
+	dateMap.key = "Date";
+	dateMap.value = "2017-02-01";
+	papyrusVersionEAnnotation.details.add(dateMap);
+	var authorMap = new Profile!EStringToStringMapEntry;
+	authorMap.key = "Author";
+	authorMap.value = "";
+	papyrusVersionEAnnotation.details.add(authorMap);
+}

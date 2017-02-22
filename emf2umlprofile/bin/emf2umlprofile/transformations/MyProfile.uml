@@ -3,11 +3,6 @@
   <elementImport xmi:id="_pvSx0Pg4EeaMM-_yCGvknA" alias="Class">
     <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
   </elementImport>
-  <packagedElement xmi:type="uml:Stereotype" xmi:id="_pvUnAPg4EeaMM-_yCGvknA" name="Class">
-    <ownedAttribute xmi:id="_pvUnB_g4EeaMM-_yCGvknA" name="base_Class">
-      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
-    </ownedAttribute>
-  </packagedElement>
   <packagedElement xmi:type="uml:Stereotype" xmi:id="_pvUnAfg4EeaMM-_yCGvknA" name="Flowchart">
     <ownedAttribute xmi:id="_pvV1IPg4EeaMM-_yCGvknA" name="base_Class" association="_pvWcMPg4EeaMM-_yCGvknA">
       <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
