@@ -12,3 +12,6 @@ for (anExtension in extensions) {
 */
 
 allContents.get(0).id.println();
+
+var myTestClass = minimal!EClass.all.get(0).println();
+myTestClass.eAnnotations.get(0).source.println();
