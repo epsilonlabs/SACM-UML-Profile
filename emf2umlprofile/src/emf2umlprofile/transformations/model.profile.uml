@@ -1,66 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_8db4kPnQEeaNrPcQQwEZYQ" name="RootElement" metaclassReference="_8db4kfnQEeaNrPcQQwEZYQ">
-  <eAnnotations xmi:id="_8dhYIfnQEeaNrPcQQwEZYQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
-    <contents xmi:type="ecore:EPackage" xmi:id="_8dhYIPnQEeaNrPcQQwEZYQ" name="RootElement" nsURI="http:///schemas/RootElement/something/1" nsPrefix="RootElement">
-      <eAnnotations xmi:id="_8dh_MPnQEeaNrPcQQwEZYQ" source="PapyrusVersion">
-        <details xmi:id="_8dh_MfnQEeaNrPcQQwEZYQ" key="Version" value="0.0.1"/>
-        <details xmi:id="_8dh_MvnQEeaNrPcQQwEZYQ" key="Comment" value=""/>
-        <details xmi:id="_8dimQPnQEeaNrPcQQwEZYQ" key="Copyright" value=""/>
-        <details xmi:id="_8dimQfnQEeaNrPcQQwEZYQ" key="Date" value="2017-02-01"/>
-        <details xmi:id="_8dimQvnQEeaNrPcQQwEZYQ" key="Author" value=""/>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_Yy-JwPncEeaNrPcQQwEZYQ" name="RootElement" metaclassReference="_Yy-w0PncEeaNrPcQQwEZYQ">
+  <eAnnotations xmi:id="_YzBNEfncEeaNrPcQQwEZYQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_YzBNEPncEeaNrPcQQwEZYQ" name="RootElement" nsURI="http:///schemas/RootElement/something/1" nsPrefix="RootElement">
+      <eAnnotations xmi:id="_YzB0IPncEeaNrPcQQwEZYQ" source="PapyrusVersion">
+        <details xmi:id="_YzB0IfncEeaNrPcQQwEZYQ" key="Version" value="0.0.1"/>
+        <details xmi:id="_YzB0IvncEeaNrPcQQwEZYQ" key="Comment" value=""/>
+        <details xmi:id="_YzB0I_ncEeaNrPcQQwEZYQ" key="Copyright" value=""/>
+        <details xmi:id="_YzB0JPncEeaNrPcQQwEZYQ" key="Date" value="2017-02-01"/>
+        <details xmi:id="_YzB0JfncEeaNrPcQQwEZYQ" key="Author" value=""/>
       </eAnnotations>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_8djNUPnQEeaNrPcQQwEZYQ" name="Flowchart">
-        <eAnnotations xmi:id="_8djNUfnQEeaNrPcQQwEZYQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_8dimQ_nQEeaNrPcQQwEZYQ"/>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_8dkbcPnQEeaNrPcQQwEZYQ" name="base_Class" ordered="false" lowerBound="1">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_YzCbMvncEeaNrPcQQwEZYQ" name="Flowchart">
+        <eAnnotations xmi:id="_YzCbM_ncEeaNrPcQQwEZYQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_YzB0JvncEeaNrPcQQwEZYQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_YzDpUPncEeaNrPcQQwEZYQ" name="base_Class" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_8dsXQPnQEeaNrPcQQwEZYQ" name="name">
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_YzLlIPncEeaNrPcQQwEZYQ" name="name">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_8dsXQvnQEeaNrPcQQwEZYQ" name="Node">
-        <eAnnotations xmi:id="_8dsXQ_nQEeaNrPcQQwEZYQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_8dimRPnQEeaNrPcQQwEZYQ"/>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_8ds-UfnQEeaNrPcQQwEZYQ" name="base_Class" ordered="false" lowerBound="1">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_YzMMMfncEeaNrPcQQwEZYQ" name="Node">
+        <eAnnotations xmi:id="_YzMMMvncEeaNrPcQQwEZYQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_YzCbMPncEeaNrPcQQwEZYQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_YzMzQPncEeaNrPcQQwEZYQ" name="base_Class" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_8duzgPnQEeaNrPcQQwEZYQ" name="testInt">
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_YzPPgPncEeaNrPcQQwEZYQ" name="testInt">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_8dvakfnQEeaNrPcQQwEZYQ" name="testBool">
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_YzP2kfncEeaNrPcQQwEZYQ" name="testBool">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_YzQdoPncEeaNrPcQQwEZYQ" name="nodes">
+        <eAnnotations xmi:id="_YzQdofncEeaNrPcQQwEZYQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_YzCbMfncEeaNrPcQQwEZYQ"/>
+        <eOperations xmi:id="_YzS54vncEeaNrPcQQwEZYQ" name="Constraint1">
+          <eParameters xmi:id="_YzTg8PncEeaNrPcQQwEZYQ" name="diagnostics">
+            <eAnnotations xmi:id="_YzTg8fncEeaNrPcQQwEZYQ" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_YzTg8vncEeaNrPcQQwEZYQ" key="documentation" value="The chain of diagnostics to which problems are to be appended."/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+          </eParameters>
+          <eParameters xmi:id="_YzTg9PncEeaNrPcQQwEZYQ" name="context">
+            <eAnnotations xmi:id="_YzTg9fncEeaNrPcQQwEZYQ">
+              <details xmi:id="_YzUIAPncEeaNrPcQQwEZYQ" key="documentation" value="The cache of context-specific information."/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+          </eParameters>
+        </eOperations>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_YzRrwPncEeaNrPcQQwEZYQ" name="base_Association" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Association"/>
         </eStructuralFeatures>
       </eClassifiers>
     </contents>
   </eAnnotations>
-  <elementImport xmi:id="_8db4kfnQEeaNrPcQQwEZYQ" alias="Class">
+  <elementImport xmi:id="_Yy-w0PncEeaNrPcQQwEZYQ" alias="Class">
     <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
   </elementImport>
-  <elementImport xmi:id="_8dfi8PnQEeaNrPcQQwEZYQ" alias="Association">
+  <elementImport xmi:id="_YzAmAPncEeaNrPcQQwEZYQ" alias="Association">
     <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Association"/>
   </elementImport>
-  <packagedElement xmi:type="uml:Stereotype" xmi:id="_8dimQ_nQEeaNrPcQQwEZYQ" name="Flowchart">
-    <ownedAttribute xmi:id="_8djNUvnQEeaNrPcQQwEZYQ" name="base_Class" association="_8dkbcfnQEeaNrPcQQwEZYQ">
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_YzB0JvncEeaNrPcQQwEZYQ" name="Flowchart">
+    <ownedAttribute xmi:id="_YzDCQPncEeaNrPcQQwEZYQ" name="base_Class" association="_YzDpUfncEeaNrPcQQwEZYQ">
       <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_8dqiEPnQEeaNrPcQQwEZYQ" name="name">
+    <ownedAttribute xmi:id="_YzJv8PncEeaNrPcQQwEZYQ" name="name">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_8dkbcfnQEeaNrPcQQwEZYQ" name="E_Flowchart_Class1" memberEnd="_8dkbcvnQEeaNrPcQQwEZYQ _8djNUvnQEeaNrPcQQwEZYQ">
-    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_8dkbcvnQEeaNrPcQQwEZYQ" name="extension_Flowchart" type="_8dimQ_nQEeaNrPcQQwEZYQ" aggregation="composite" association="_8dkbcfnQEeaNrPcQQwEZYQ"/>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_YzDpUfncEeaNrPcQQwEZYQ" name="E_Flowchart_Class1" memberEnd="_YzDpUvncEeaNrPcQQwEZYQ _YzDCQPncEeaNrPcQQwEZYQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_YzDpUvncEeaNrPcQQwEZYQ" name="extension_Flowchart" type="_YzB0JvncEeaNrPcQQwEZYQ" aggregation="composite" association="_YzDpUfncEeaNrPcQQwEZYQ"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Stereotype" xmi:id="_8dimRPnQEeaNrPcQQwEZYQ" name="Node">
-    <ownedAttribute xmi:id="_8ds-UPnQEeaNrPcQQwEZYQ" name="base_Class" association="_8ds-UvnQEeaNrPcQQwEZYQ">
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_YzCbMPncEeaNrPcQQwEZYQ" name="Node">
+    <ownedAttribute xmi:id="_YzMMM_ncEeaNrPcQQwEZYQ" name="base_Class" association="_YzNaUPncEeaNrPcQQwEZYQ">
       <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_8duMcPnQEeaNrPcQQwEZYQ" name="testInt">
+    <ownedAttribute xmi:id="_YzOBYfncEeaNrPcQQwEZYQ" name="testInt">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_8dvakPnQEeaNrPcQQwEZYQ" name="testBool">
+    <ownedAttribute xmi:id="_YzP2kPncEeaNrPcQQwEZYQ" name="testBool">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBooleanObject"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_8ds-UvnQEeaNrPcQQwEZYQ" name="E_Node_Class1" memberEnd="_8dtlYPnQEeaNrPcQQwEZYQ _8ds-UPnQEeaNrPcQQwEZYQ">
-    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_8dtlYPnQEeaNrPcQQwEZYQ" name="extension_Node" type="_8dimRPnQEeaNrPcQQwEZYQ" aggregation="composite" association="_8ds-UvnQEeaNrPcQQwEZYQ"/>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_YzNaUPncEeaNrPcQQwEZYQ" name="E_Node_Class1" memberEnd="_YzNaUfncEeaNrPcQQwEZYQ _YzMMM_ncEeaNrPcQQwEZYQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_YzNaUfncEeaNrPcQQwEZYQ" name="extension_Node" type="_YzCbMPncEeaNrPcQQwEZYQ" aggregation="composite" association="_YzNaUPncEeaNrPcQQwEZYQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_YzCbMfncEeaNrPcQQwEZYQ" name="nodes">
+    <ownedRule xmi:id="_YzS54PncEeaNrPcQQwEZYQ" name="Constraint1" constrainedElement="_YzCbMfncEeaNrPcQQwEZYQ">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_YzS54fncEeaNrPcQQwEZYQ">
+        <language>OCL</language>
+        <body>Hardcoded OCL for now</body>
+      </specification>
+    </ownedRule>
+    <ownedAttribute xmi:id="_YzREsPncEeaNrPcQQwEZYQ" name="base_Association" association="_YzRrwfncEeaNrPcQQwEZYQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Association"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_YzRrwfncEeaNrPcQQwEZYQ" name="E_nodes_Association1" memberEnd="_YzRrwvncEeaNrPcQQwEZYQ _YzREsPncEeaNrPcQQwEZYQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_YzRrwvncEeaNrPcQQwEZYQ" name="extension_nodes" type="_YzCbMfncEeaNrPcQQwEZYQ" aggregation="composite" association="_YzRrwfncEeaNrPcQQwEZYQ"/>
   </packagedElement>
 </uml:Profile>

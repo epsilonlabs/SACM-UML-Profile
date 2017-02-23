@@ -10,4 +10,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="testInt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="testBool" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="nodes">
+    <eAnnotations source="Association"/>
+  </eClassifiers>
 </ecore:EPackage>

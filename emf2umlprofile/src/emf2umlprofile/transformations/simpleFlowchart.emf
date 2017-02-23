@@ -11,3 +11,8 @@ class Node {
 	attr int testInt;
 	attr Boolean testBool;
 }
+
+@Association
+class nodes {
+	
+}
