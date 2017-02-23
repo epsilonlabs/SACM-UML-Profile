@@ -22,7 +22,7 @@ rule class2stereotype
 	transform c : Source!EClass 
 	to s : Profile!Stereotype {
 		s.name = c.name;
-		c.name.println();
+		//c.name.println();
 		// Add stereotype to the profile
 		profile.ownedStereotype.add(s);
 		// The stereotype needs to refer to the EClass object via its eClassifiers association. 
@@ -57,7 +57,7 @@ rule class2stereotype
 			extension.endType.add(UMLM2!Class.all.selectOne(c|c.name = "Class"));
 			var theEGenericType = new Profile!EGenericType;
 			theEReferenceBaseClass.eGenericType = theEGenericType;
-			theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = "Class").println();
+			theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = "Class");
 		} else if (c.eAnnotations.select(an | an.source.equals("Association")).size() > 0) {
 			var baseAssociationProperty = new Profile!Property;
 			baseAssociationProperty.name = "base_Association";
@@ -80,7 +80,7 @@ rule class2stereotype
 			extension.endType.add(UMLM2!Class.all.selectOne(c|c.name = "Association"));
 			var theEGenericType = new Profile!EGenericType;
 			theEReferenceBaseAssociation.eGenericType = theEGenericType;
-			theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = "Association").println();
+			theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = "Association");
 		} 
 		for (st in c.eSupertypes) {
 			var generalisation = new Profile!Generalization;
@@ -89,6 +89,8 @@ rule class2stereotype
 			s.generalization.add(generalisation);
 			newClass.eSupertypes.add(ePackage.eClassifiers.selectOne(ec | ec.name.equals(st.name)));
 		}
+		populateWithAttributes(newClass,s,c);
+		
 	}
 	
 operation createUMLAnnotationsForVersions(profile) {
@@ -122,4 +124,19 @@ operation createUMLAnnotationsForVersions(profile) {
 	authorMap.key = "Author";
 	authorMap.value = "";
 	papyrusVersionEAnnotation.details.add(authorMap);
+}
+
+operation populateWithAttributes(newClass,s,c) {
+	for (feat in c.eAttributes) {
+		// Creation of attribute at the Profile (M1 Level)) 
+		var attrProperty = new Profile!Property;
+		attrProperty.name = feat.name;
+		attrProperty.type = ECorePrimitiveTypes!PrimitiveType.all().selectOne(c|c.name.equals(feat.etype.name));
+		s.ownedAttribute.add(attrProperty);
+		// Creation of attribute at the UML EAnnotation (M2 Level)
+		var attr = new Profile!EAttribute;
+		attr.name = feat.name;
+		attr.eType = feat.eType;
+		newClass.eStructuralFeatures.add(attr);
+	}
 }
