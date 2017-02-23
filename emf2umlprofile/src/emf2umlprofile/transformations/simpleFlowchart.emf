@@ -1,0 +1,13 @@
+@namespace(uri="simpleFlowchart", prefix="simpleFlowchart")
+package simpleFlowchart;
+
+@Class
+class Flowchart {
+	attr String name;
+}
+
+@Class
+class Node {
+	attr int testInt;
+	attr Boolean testBool;
+}
