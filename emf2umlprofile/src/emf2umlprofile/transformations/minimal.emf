@@ -1,0 +1,11 @@
+@namespace(uri="minimal",prefix="manimal")
+package top;
+
+class Class {
+	
+}
+
+class Test extends Class {
+	
+}
+

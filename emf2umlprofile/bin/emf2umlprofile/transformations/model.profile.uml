@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_trBusPjUEeaMM-_yCGvknA" name="RootElement" metaclassReference="_trBusfjUEeaMM-_yCGvknA">
+  <eAnnotations xmi:id="_trC80fjUEeaMM-_yCGvknA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_trC80PjUEeaMM-_yCGvknA" name="RootElement" nsURI="http:///schemas/RootElement/something/1" nsPrefix="RootElement">
+      <eAnnotations xmi:id="_trDj4PjUEeaMM-_yCGvknA" source="PapyrusVersion">
+        <details xmi:id="_trDj4fjUEeaMM-_yCGvknA" key="Version" value="0.0.1"/>
+        <details xmi:id="_trDj4vjUEeaMM-_yCGvknA" key="Comment" value=""/>
+        <details xmi:id="_trDj4_jUEeaMM-_yCGvknA" key="Copyright" value=""/>
+        <details xmi:id="_trDj5PjUEeaMM-_yCGvknA" key="Date" value="2017-02-01"/>
+        <details xmi:id="_trEK8PjUEeaMM-_yCGvknA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_trEyAPjUEeaMM-_yCGvknA" name="Test">
+        <eAnnotations xmi:id="_trEyAfjUEeaMM-_yCGvknA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_trEK8fjUEeaMM-_yCGvknA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_trFZEPjUEeaMM-_yCGvknA" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:id="_trBusfjUEeaMM-_yCGvknA" alias="Class">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_trEK8fjUEeaMM-_yCGvknA" name="Test">
+    <ownedAttribute xmi:id="_trEyAvjUEeaMM-_yCGvknA" name="base_Class" association="_trFZEvjUEeaMM-_yCGvknA">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_trFZEvjUEeaMM-_yCGvknA" name="E_Test_Class1" memberEnd="_trFZE_jUEeaMM-_yCGvknA _trEyAvjUEeaMM-_yCGvknA">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_trFZE_jUEeaMM-_yCGvknA" name="extension_Test" type="_trEK8fjUEeaMM-_yCGvknA" aggregation="composite" association="_trFZEvjUEeaMM-_yCGvknA"/>
+  </packagedElement>
+</uml:Profile>

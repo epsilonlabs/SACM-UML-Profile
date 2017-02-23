@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_Y6K74PhFEeaiLIyQ-fvSiQ" name="RootElement" metaclassReference="_VaRXcPhOEeaiLIyQ-fvSiQ _vxlO4Pj9EeaiLIyQ-fvSiQ">
+  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ftjUMfhFEeaiLIyQ-fvSiQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_xRp6gfj9EeaiLIyQ-fvSiQ" name="RootElement" nsURI="http:///schemas/RootElement/_xRp6gPj9EeaiLIyQ-fvSiQ/4" nsPrefix="RootElement">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xRqhkvj9EeaiLIyQ-fvSiQ" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xRqhk_j9EeaiLIyQ-fvSiQ" key="Version" value="0.0.5"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xRqhlPj9EeaiLIyQ-fvSiQ" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xRqhlfj9EeaiLIyQ-fvSiQ" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xRqhlvj9EeaiLIyQ-fvSiQ" key="Date" value="2017-02-22"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xRqhl_j9EeaiLIyQ-fvSiQ" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_xRp6gvj9EeaiLIyQ-fvSiQ" name="Test">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xRp6g_j9EeaiLIyQ-fvSiQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_etY3sPhFEeaiLIyQ-fvSiQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_xRp6hPj9EeaiLIyQ-fvSiQ" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_xRp6hvj9EeaiLIyQ-fvSiQ" name="StereoForAssociations">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xRp6h_j9EeaiLIyQ-fvSiQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_n1AZ4Pj9EeaiLIyQ-fvSiQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_xRp6iPj9EeaiLIyQ-fvSiQ" name="base_Association" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Association"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_tcwskPj9EeaiLIyQ-fvSiQ" name="RootElement" nsURI="http:///schemas/RootElement/_tcwFgPj9EeaiLIyQ-fvSiQ/3" nsPrefix="RootElement">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_tcwsmPj9EeaiLIyQ-fvSiQ" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_tcwsmfj9EeaiLIyQ-fvSiQ" key="Version" value="0.0.4"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_tcwsmvj9EeaiLIyQ-fvSiQ" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_tcwsm_j9EeaiLIyQ-fvSiQ" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_tcwsnPj9EeaiLIyQ-fvSiQ" key="Date" value="2017-02-22"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_tcwsnfj9EeaiLIyQ-fvSiQ" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_tcwskfj9EeaiLIyQ-fvSiQ" name="Test">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_tcwskvj9EeaiLIyQ-fvSiQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_etY3sPhFEeaiLIyQ-fvSiQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_tcwsk_j9EeaiLIyQ-fvSiQ" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_tcwslfj9EeaiLIyQ-fvSiQ" name="StereoForAssociations">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_tcwslvj9EeaiLIyQ-fvSiQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_n1AZ4Pj9EeaiLIyQ-fvSiQ"/>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_WjKSIfhOEeaiLIyQ-fvSiQ" name="RootElement" nsURI="http:///schemas/RootElement/_WjKSIPhOEeaiLIyQ-fvSiQ/2" nsPrefix="RootElement">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WjK5MfhOEeaiLIyQ-fvSiQ" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_WjK5MvhOEeaiLIyQ-fvSiQ" key="Version" value="0.0.3"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_WjK5M_hOEeaiLIyQ-fvSiQ" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_WjK5NPhOEeaiLIyQ-fvSiQ" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_WjK5NfhOEeaiLIyQ-fvSiQ" key="Date" value="2017-02-21"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_WjK5NvhOEeaiLIyQ-fvSiQ" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_WjKSIvhOEeaiLIyQ-fvSiQ" name="Test">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WjKSI_hOEeaiLIyQ-fvSiQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_etY3sPhFEeaiLIyQ-fvSiQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WjKSJPhOEeaiLIyQ-fvSiQ" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:type="uml:ElementImport" xmi:id="_VaRXcPhOEeaiLIyQ-fvSiQ" alias="Class">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <elementImport xmi:type="uml:ElementImport" xmi:id="_vxlO4Pj9EeaiLIyQ-fvSiQ" alias="Association">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Association"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_etY3sPhFEeaiLIyQ-fvSiQ" name="Test">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_WCa8kfhOEeaiLIyQ-fvSiQ" name="base_Class" association="_WCWEEPhOEeaiLIyQ-fvSiQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_WCWEEPhOEeaiLIyQ-fvSiQ" name="E_Test_Class1" memberEnd="_WCa8kPhOEeaiLIyQ-fvSiQ _WCa8kfhOEeaiLIyQ-fvSiQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_WCa8kPhOEeaiLIyQ-fvSiQ" name="extension_Test" type="_etY3sPhFEeaiLIyQ-fvSiQ" aggregation="composite" association="_WCWEEPhOEeaiLIyQ-fvSiQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_n1AZ4Pj9EeaiLIyQ-fvSiQ" name="StereoForAssociations">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_wzO5IPj9EeaiLIyQ-fvSiQ" name="base_Association" association="_wzNrAPj9EeaiLIyQ-fvSiQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Association"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_wzNrAPj9EeaiLIyQ-fvSiQ" name="E_StereoForAssociations_Association1" memberEnd="_wzOSEPj9EeaiLIyQ-fvSiQ _wzO5IPj9EeaiLIyQ-fvSiQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_wzOSEPj9EeaiLIyQ-fvSiQ" name="extension_StereoForAssociations" type="_n1AZ4Pj9EeaiLIyQ-fvSiQ" aggregation="composite" association="_wzNrAPj9EeaiLIyQ-fvSiQ"/>
+  </packagedElement>
+</uml:Profile>

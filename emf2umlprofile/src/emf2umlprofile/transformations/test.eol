@@ -1,0 +1,17 @@
+var allContents = M.allContents();
+
+//var theProfile = Profile.all.selectOne(p | p.name.equals("RootElement")).println();
+//theProfile.ownedElement.println();
+//var aProperty = new Property;
+/*
+var extensions = Extension.all();
+for (anExtension in extensions) {
+	anExtension.name.println();
+	anExtension.metaclass.println();
+}
+*/
+
+allContents.get(0).id.println();
+
+var myTestClass = minimal!EClass.all.get(0).println();
+myTestClass.eAnnotations.get(0).source.println();

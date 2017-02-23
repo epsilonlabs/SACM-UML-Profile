@@ -1,0 +1,35 @@
+@namespace(uri="flowchart", prefix="flowchart")
+package flowchart;
+
+class Class {
+	
+}
+
+class Flowchart extends Class {
+   val Node[*] nodes;
+   val Transition[*] transitions;
+}
+
+abstract class Node extends Class {
+   attr String name;
+   ref Transition[*]#source outgoing;
+   ref Transition[*]#target incoming;
+}
+
+class Transition extends Class {
+   attr String name;
+   ref Node#outgoing source;
+   ref Node#incoming target;
+}
+
+class Subflow extends Flowchart, Node {
+   
+}
+
+class Action extends Node {
+   
+}
+
+class Decision extends Node {
+   
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_pvRjsPg4EeaMM-_yCGvknA" name="RootElement" metaclassReference="_pvSx0Pg4EeaMM-_yCGvknA">
+  <elementImport xmi:id="_pvSx0Pg4EeaMM-_yCGvknA" alias="Class">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_pvUnAfg4EeaMM-_yCGvknA" name="Flowchart">
+    <ownedAttribute xmi:id="_pvV1IPg4EeaMM-_yCGvknA" name="base_Class" association="_pvWcMPg4EeaMM-_yCGvknA">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_pvWcMPg4EeaMM-_yCGvknA" name="E_Flowchart_Class1" memberEnd="_pvXDQPg4EeaMM-_yCGvknA _pvV1IPg4EeaMM-_yCGvknA">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_pvXDQPg4EeaMM-_yCGvknA" name="extension_Flowchart" type="_pvUnAfg4EeaMM-_yCGvknA" aggregation="composite" association="_pvWcMPg4EeaMM-_yCGvknA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_pvUnAvg4EeaMM-_yCGvknA" name="Node">
+    <ownedAttribute xmi:id="_pvXqUPg4EeaMM-_yCGvknA" name="base_Class" association="_pvZfgPg4EeaMM-_yCGvknA">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_pvZfgPg4EeaMM-_yCGvknA" name="E_Node_Class1" memberEnd="_pvZfgfg4EeaMM-_yCGvknA _pvXqUPg4EeaMM-_yCGvknA">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_pvZfgfg4EeaMM-_yCGvknA" name="extension_Node" type="_pvUnAvg4EeaMM-_yCGvknA" aggregation="composite" association="_pvZfgPg4EeaMM-_yCGvknA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_pvUnA_g4EeaMM-_yCGvknA" name="Transition">
+    <ownedAttribute xmi:id="_pvbUsPg4EeaMM-_yCGvknA" name="base_Class" association="_pveYAPg4EeaMM-_yCGvknA">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_pveYAPg4EeaMM-_yCGvknA" name="E_Transition_Class1" memberEnd="_pveYAfg4EeaMM-_yCGvknA _pvbUsPg4EeaMM-_yCGvknA">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_pveYAfg4EeaMM-_yCGvknA" name="extension_Transition" type="_pvUnA_g4EeaMM-_yCGvknA" aggregation="composite" association="_pveYAPg4EeaMM-_yCGvknA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_pvUnBPg4EeaMM-_yCGvknA" name="Subflow">
+    <generalization xmi:id="_pvhbUPg4EeaMM-_yCGvknA" general="_pvUnAfg4EeaMM-_yCGvknA"/>
+    <generalization xmi:id="_pvhbUfg4EeaMM-_yCGvknA" general="_pvUnAvg4EeaMM-_yCGvknA"/>
+    <ownedAttribute xmi:id="_pvg0QPg4EeaMM-_yCGvknA" name="base_Class">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_pvUnBfg4EeaMM-_yCGvknA" name="Action">
+    <generalization xmi:id="_pviCYfg4EeaMM-_yCGvknA" general="_pvUnAvg4EeaMM-_yCGvknA"/>
+    <ownedAttribute xmi:id="_pviCYPg4EeaMM-_yCGvknA" name="base_Class">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_pvUnBvg4EeaMM-_yCGvknA" name="Decision">
+    <generalization xmi:id="_pvipcfg4EeaMM-_yCGvknA" general="_pvUnAvg4EeaMM-_yCGvknA"/>
+    <ownedAttribute xmi:id="_pvipcPg4EeaMM-_yCGvknA" name="base_Class">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+</uml:Profile>

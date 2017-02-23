@@ -1,0 +1,128 @@
+pre {
+	var profile = new Profile!Profile;
+	
+	var classImport = new Profile!ElementImport;
+	classImport.`alias` = "Class";
+	classImport.importedElement = UMLM2!Class.all.selectOne(c|c.name = "Class");
+	profile.metaclassReference.add(classImport);
+	profile.elementImport.add(classImport);
+	
+	var associationImport = new Profile!ElementImport;
+	associationImport.`alias` = "Association";
+	associationImport.importedElement = UMLM2!Class.all.selectOne(c|c.name = "Association");
+	profile.elementImport.add(associationImport);
+	
+	var ePackage = new Profile!EPackage;
+	createUMLAnnotationsForVersions(profile);
+	
+	profile.name = "RootElement";
+}
+
+rule class2stereotype 
+	transform c : Source!EClass 
+	to s : Profile!Stereotype {
+	guard : not ((c.name = "Class") or (c.name = "Association"))
+		s.name = c.name;
+		c.name.println();
+		// Add stereotype to the profile
+		profile.ownedStereotype.add(s);
+		// The stereotype needs to refer to the EClass object via its eClassifiers association. 
+		// I do a workaround by creating a copy of the current EClass instance and assign it 
+		var newClass = new Profile!EClass;
+		newClass.name = c.name;
+		ePackage.eClassifiers.add(newClass);
+		var theEAnnotationOfThisStereotype = new Profile!EAnnotation;
+		theEAnnotationOfThisStereotype.source = "http://www.eclipse.org/uml2/2.0.0/UML";
+		theEAnnotationOfThisStereotype.references.add(s);
+		newClass.eAnnotations.add(theEAnnotationOfThisStereotype);
+		if (not (c.eSupertypes.select(a | a.name.equals("Class"))).isEmpty) {
+			// Each stereotype needs to have an EAnnotation. The EClass created before needs to point to this EAnnotation.
+			var baseClassProperty = new Profile!Property;
+			baseClassProperty.name = "base_Class";
+			baseClassProperty.type = UMLM2!Class.all.selectOne(c|c.name = "Class"); // This way we get the Class metaclass as declared in the UML metamodel
+			s.ownedAttribute.add(baseClassProperty);
+			var theEReferenceBaseClass = new Profile!EReference;
+			theEReferenceBaseClass.name = "base_Class";
+			theEReferenceBaseClass.lowerBound = 1;
+			theEReferenceBaseClass.ordered = false;
+			newClass.eStructuralFeatures.add(theEReferenceBaseClass);
+			var extension = new Profile!Extension;			
+			extension.name = "E_" + c.name + "_Class1";
+			var extensionEnd = new Profile!ExtensionEnd;
+			extensionEnd.name = "extension_" + c.name;
+			extensionEnd.isComposite = true;
+			extensionEnd.type = s;
+			profile.packagedElements.add(extension);
+			extension.ownedEnd.add(extensionEnd);
+			extension.memberEnd.add(baseClassProperty);
+			extension.endType.add(UMLM2!Class.all.selectOne(c|c.name = "Class"));
+			var theEGenericType = new Profile!EGenericType;
+			theEReferenceBaseClass.eGenericType = theEGenericType;
+			theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = "Class").println();
+		} else if (not (c.eSupertypes.select(a | a.name.equals("Association"))).isEmpty) {
+			var baseAssociationProperty = new Profile!Property;
+			baseAssociationProperty.name = "base_Association";
+			baseAssociationProperty.type = UMLM2!Class.all.selectOne(c|c.name = "Association"); // This way we get the Association metaclass as declared in the UML metamodel
+			s.ownedAttribute.add(baseAssociationProperty);
+			var theEReferenceBaseAssociation = new Profile!EReference;
+			theEReferenceBaseAssociation.name = "base_Association";
+			theEReferenceBaseAssociation.lowerBound = 1;
+			theEReferenceBaseAssociation.ordered = false;
+			newClass.eStructuralFeatures.add(theEReferenceBaseAssociation);
+			var extension = new Profile!Extension;			
+			extension.name = "E_" + c.name + "_Association1";
+			var extensionEnd = new Profile!ExtensionEnd;
+			extensionEnd.name = "extension_" + c.name;
+			extensionEnd.isComposite = true;
+			extensionEnd.type = s;
+			profile.packagedElements.add(extension);
+			extension.ownedEnd.add(extensionEnd);
+			extension.memberEnd.add(baseAssociationProperty);
+			extension.endType.add(UMLM2!Class.all.selectOne(c|c.name = "Association"));
+			var theEGenericType = new Profile!EGenericType;
+			theEReferenceBaseAssociation.eGenericType = theEGenericType;
+			theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = "Association").println();
+		} 
+		for (st in c.eSupertypes) {
+			if (not (st.name.equals("Class") or st.name.equals("Association"))) {
+				var generalisation = new Profile!Generalization;
+				var myParent = Profile!Stereotype.all().selectOne(stype | stype.name.equals(st.name)); 
+				generalisation.general = myParent;
+				s.generalization.add(generalisation);
+				newClass.eSupertypes.add(ePackage.eClassifiers.selectOne(ec | ec.name.equals(st.name)));
+			}
+		}
+	}
+	
+operation createUMLAnnotationsForVersions(profile) {
+	var theAnnotation = new Profile!EAnnotation;
+	theAnnotation.source = "http://www.eclipse.org/uml2/2.0.0/UML";
+	profile.eAnnotations.add(theAnnotation);
+	ePackage.name = "RootElement";
+	ePackage.NsPrefix = "RootElement";
+	ePackage.nsUri = "http:///schemas/RootElement/something/1";
+	theAnnotation.contents.add(ePackage);
+	var papyrusVersionEAnnotation = new Profile!EAnnotation;
+	papyrusVersionEAnnotation.source = "PapyrusVersion";
+	ePackage.eAnnotations.add(papyrusVersionEAnnotation);
+	var versionMap = new Profile!EStringToStringMapEntry;
+	versionMap.key = "Version";
+	versionMap.value = "0.0.1";
+	papyrusVersionEAnnotation.details.add(versionMap);
+	var commentMap = new Profile!EStringToStringMapEntry;
+	commentMap.key = "Comment";
+	commentMap.value = "";
+	papyrusVersionEAnnotation.details.add(commentMap);
+	var copyrightMap = new Profile!EStringToStringMapEntry;
+	copyrightMap.key = "Copyright";
+	copyrightMap.value = "";
+	papyrusVersionEAnnotation.details.add(copyrightMap);
+	var dateMap = new Profile!EStringToStringMapEntry;
+	dateMap.key = "Date";
+	dateMap.value = "2017-02-01";
+	papyrusVersionEAnnotation.details.add(dateMap);
+	var authorMap = new Profile!EStringToStringMapEntry;
+	authorMap.key = "Author";
+	authorMap.value = "";
+	papyrusVersionEAnnotation.details.add(authorMap);
+}

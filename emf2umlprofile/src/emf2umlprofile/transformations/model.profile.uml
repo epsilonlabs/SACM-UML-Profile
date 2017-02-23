@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_ZaJBEPkkEeaMM-_yCGvknA" name="RootElement" metaclassReference="_ZaJBEfkkEeaMM-_yCGvknA">
+  <eAnnotations xmi:id="_ZaNSgPkkEeaMM-_yCGvknA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_ZaMrcPkkEeaMM-_yCGvknA" name="RootElement" nsURI="http:///schemas/RootElement/something/1" nsPrefix="RootElement">
+      <eAnnotations xmi:id="_ZaOgoPkkEeaMM-_yCGvknA" source="PapyrusVersion">
+        <details xmi:id="_ZaOgofkkEeaMM-_yCGvknA" key="Version" value="0.0.1"/>
+        <details xmi:id="_ZaPHsPkkEeaMM-_yCGvknA" key="Comment" value=""/>
+        <details xmi:id="_ZaPHsfkkEeaMM-_yCGvknA" key="Copyright" value=""/>
+        <details xmi:id="_ZaPHsvkkEeaMM-_yCGvknA" key="Date" value="2017-02-01"/>
+        <details xmi:id="_ZaPHs_kkEeaMM-_yCGvknA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ZaQV0PkkEeaMM-_yCGvknA" name="Flowchart">
+        <eAnnotations xmi:id="_ZaQV0fkkEeaMM-_yCGvknA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ZaPHtPkkEeaMM-_yCGvknA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_ZaRj8PkkEeaMM-_yCGvknA" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ZaaG0PkkEeaMM-_yCGvknA" name="Node">
+        <eAnnotations xmi:id="_ZaaG0fkkEeaMM-_yCGvknA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ZaPHtfkkEeaMM-_yCGvknA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Zaat4fkkEeaMM-_yCGvknA" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_Zab8AfkkEeaMM-_yCGvknA" name="Transition">
+        <eAnnotations xmi:id="_ZacjEPkkEeaMM-_yCGvknA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ZaPHtvkkEeaMM-_yCGvknA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_ZadKIPkkEeaMM-_yCGvknA" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ZaeYQPkkEeaMM-_yCGvknA" name="Subflow" eSuperTypes="_ZaQV0PkkEeaMM-_yCGvknA">
+        <eAnnotations xmi:id="_ZaeYQfkkEeaMM-_yCGvknA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ZaPHt_kkEeaMM-_yCGvknA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ZafmYPkkEeaMM-_yCGvknA" name="Action" eSuperTypes="_ZaaG0PkkEeaMM-_yCGvknA">
+        <eAnnotations xmi:id="_ZafmYfkkEeaMM-_yCGvknA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ZaPHuPkkEeaMM-_yCGvknA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ZagNcfkkEeaMM-_yCGvknA" name="Decision" eSuperTypes="_ZaaG0PkkEeaMM-_yCGvknA">
+        <eAnnotations xmi:id="_ZagNcvkkEeaMM-_yCGvknA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ZaPuwPkkEeaMM-_yCGvknA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Zag0gfkkEeaMM-_yCGvknA" name="base_Association" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Association"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:id="_ZaJBEfkkEeaMM-_yCGvknA" alias="Class">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <elementImport xmi:id="_ZaMEYPkkEeaMM-_yCGvknA" alias="Association">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Association"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_ZaPHtPkkEeaMM-_yCGvknA" name="Flowchart">
+    <ownedAttribute xmi:id="_ZaQ84PkkEeaMM-_yCGvknA" name="base_Class" association="_ZaRj8fkkEeaMM-_yCGvknA">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_ZaRj8fkkEeaMM-_yCGvknA" name="E_Flowchart_Class1" memberEnd="_ZaRj8vkkEeaMM-_yCGvknA _ZaQ84PkkEeaMM-_yCGvknA">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_ZaRj8vkkEeaMM-_yCGvknA" name="extension_Flowchart" type="_ZaPHtPkkEeaMM-_yCGvknA" aggregation="composite" association="_ZaRj8fkkEeaMM-_yCGvknA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_ZaPHtfkkEeaMM-_yCGvknA" name="Node">
+    <ownedAttribute xmi:id="_Zaat4PkkEeaMM-_yCGvknA" name="base_Class" association="_Zaat4vkkEeaMM-_yCGvknA">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_Zaat4vkkEeaMM-_yCGvknA" name="E_Node_Class1" memberEnd="_Zaat4_kkEeaMM-_yCGvknA _Zaat4PkkEeaMM-_yCGvknA">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Zaat4_kkEeaMM-_yCGvknA" name="extension_Node" type="_ZaPHtfkkEeaMM-_yCGvknA" aggregation="composite" association="_Zaat4vkkEeaMM-_yCGvknA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_ZaPHtvkkEeaMM-_yCGvknA" name="Transition">
+    <ownedAttribute xmi:id="_ZacjEfkkEeaMM-_yCGvknA" name="base_Class" association="_ZadKIfkkEeaMM-_yCGvknA">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_ZadKIfkkEeaMM-_yCGvknA" name="E_Transition_Class1" memberEnd="_ZadKIvkkEeaMM-_yCGvknA _ZacjEfkkEeaMM-_yCGvknA">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_ZadKIvkkEeaMM-_yCGvknA" name="extension_Transition" type="_ZaPHtvkkEeaMM-_yCGvknA" aggregation="composite" association="_ZadKIfkkEeaMM-_yCGvknA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_ZaPHt_kkEeaMM-_yCGvknA" name="Subflow">
+    <generalization xmi:id="_ZaeYQvkkEeaMM-_yCGvknA" general="_ZaPHtPkkEeaMM-_yCGvknA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_ZaPHuPkkEeaMM-_yCGvknA" name="Action">
+    <generalization xmi:id="_ZafmYvkkEeaMM-_yCGvknA" general="_ZaPHtfkkEeaMM-_yCGvknA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_ZaPuwPkkEeaMM-_yCGvknA" name="Decision">
+    <generalization xmi:id="_ZaipsPkkEeaMM-_yCGvknA" general="_ZaPHtfkkEeaMM-_yCGvknA"/>
+    <ownedAttribute xmi:id="_Zag0gPkkEeaMM-_yCGvknA" name="base_Association" association="_ZahbkPkkEeaMM-_yCGvknA">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Association"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_ZahbkPkkEeaMM-_yCGvknA" name="E_Decision_Association1" memberEnd="_ZahbkfkkEeaMM-_yCGvknA _Zag0gPkkEeaMM-_yCGvknA">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_ZahbkfkkEeaMM-_yCGvknA" name="extension_Decision" type="_ZaPuwPkkEeaMM-_yCGvknA" aggregation="composite" association="_ZahbkPkkEeaMM-_yCGvknA"/>
+  </packagedElement>
+</uml:Profile>

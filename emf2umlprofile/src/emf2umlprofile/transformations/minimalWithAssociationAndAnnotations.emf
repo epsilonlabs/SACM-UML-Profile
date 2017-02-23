@@ -1,0 +1,15 @@
+@namespace(uri="minimalWithAssociationAndAnnotations",prefix="minimalWithAssociationAndAnnotations")
+package top;
+
+@Class
+class Test {
+	
+}
+
+@Association
+class StereotypeForAssociations  {
+
+}
+
+
+
