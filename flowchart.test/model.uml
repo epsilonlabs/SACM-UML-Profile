@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:RootElement="http:///schemas/RootElement/_7Or7YPmtEeaiYZWL9iQA0g/77" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/RootElement/_7Or7YPmtEeaiYZWL9iQA0g/77 ../flowchart/model.profile.uml#_7OtwkPmtEeaiYZWL9iQA0g">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:RootElement="http:///schemas/RootElement/_7Or7YPmtEeaiYZWL9iQA0g/77" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/RootElement/_7Or7YPmtEeaiYZWL9iQA0g/77 ../flowchart/model.profile.uml">
   <uml:Model xmi:id="_ots5gPN4EeajqaRIMf-0Ww" name="RootElement">
     <packagedElement xmi:type="uml:Class" xmi:id="_p5mE4PN4EeajqaRIMf-0Ww" name="Flowchart"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_s9iXAPN4EeajqaRIMf-0Ww" name="Class1">
@@ -12,19 +12,6 @@
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_K96Ic_N7EeajqaRIMf-0Ww" name="class1" type="_s9iXAPN4EeajqaRIMf-0Ww" association="_K95hYPN7EeajqaRIMf-0Ww"/>
     </packagedElement>
-    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_CIBKsPmuEeax29NQovo0ag">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CIKUoPmuEeax29NQovo0ag" source="PapyrusVersion">
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CIKUofmuEeax29NQovo0ag" key="Version" value="0.0.78"/>
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CIKUovmuEeax29NQovo0ag" key="Comment" value=""/>
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CIKUo_muEeax29NQovo0ag" key="Copyright" value=""/>
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CIKUpPmuEeax29NQovo0ag" key="Date" value="2017-02-23"/>
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CIKUpfmuEeax29NQovo0ag" key="Author" value=""/>
-      </eAnnotations>
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CIGqQPmuEeax29NQovo0ag" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="../flowchart/model.profile.uml#_7OtwkPmtEeaiYZWL9iQA0g"/>
-      </eAnnotations>
-      <appliedProfile xmi:type="uml:Profile" href="../flowchart/model.profile.uml#__6gj8PKfEeavesbv6PLofw"/>
-    </profileApplication>
   </uml:Model>
   <RootElement:Node xmi:id="_DXYg0PmuEeax29NQovo0ag" base_Class="_0ZXPYPN4EeajqaRIMf-0Ww"/>
   <RootElement:nodes xmi:id="_D7cQIPmuEeax29NQovo0ag" base_Association="_K95hYPN7EeajqaRIMf-0Ww"/>
