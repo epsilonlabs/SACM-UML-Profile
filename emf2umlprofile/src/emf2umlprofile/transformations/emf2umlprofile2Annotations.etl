@@ -180,15 +180,12 @@ operation createTheAssociationCheckEndTypeOCLConstraint(newClass,s,c) {
 	theEStringMapEntryForContext.value = "The cache of context-specific information.";
 	theContextEAnnotation.details.add(theEStringMapEntryForContext);
 	var theContextEGenType = new Profile!EGenericType;
-	contextParam.eGenericType = theContextEGenType;
-	// When I change this to an EMap, the eTypeArguments are lost. ATM I use it, I comment out the addition of the eTypeArguments (see below) and I them manually drag and drop them.
-	contextParam.eType = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EMap"));
+	theContextEGenType.eClassifier = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EMap"));
 	var theContextMapEGenKey = new Profile!EGenericType;
 	theContextMapEGenKey.eClassifier = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EJavaObject"));
 	var theContextMapEGenValue = new Profile!EGenericType;
-	// Look 4 lines above...
-	//theContextEGenType.eTypeArguments.add(theContextMapEGenKey);
-	//theContextEGenType.eTypeArguments.add(theContextMapEGenValue);
+	theContextMapEGenValue.eClassifier = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EJavaObject"));
+	contextParam.eGenericType = theContextEGenType;
 	var theConstraintEAnnotation = new Profile!EAnnotation;
 	theConstraintEAnnotation.source = "http://www.eclipse.org/emf/2002/Ecore/OCL";
 	theConstraintOperation.eAnnotations.add(theConstraintEAnnotation);
@@ -203,6 +200,8 @@ operation createTheAssociationCheckEndTypeOCLConstraint(newClass,s,c) {
 	theValidationDelegationEStringToStringMapEntry.key = "validationDelegates";
 	theValidationDelegationEStringToStringMapEntry.value = "http://www.eclipse.org/emf/2002/Ecore/OCL";
 	theValidationDelegationEAnnotation.details.add(theValidationDelegationEStringToStringMapEntry);
+	theContextEGenType.eTypeArguments.add(theContextMapEGenKey);
+	theContextEGenType.eTypeArguments.add(theContextMapEGenValue);
 }
 
 operation calculateTheBodyOfTheCheckEndTypesConstraint(s,c) {
