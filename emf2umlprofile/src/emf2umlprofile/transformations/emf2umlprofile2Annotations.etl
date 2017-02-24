@@ -81,13 +81,78 @@ rule class2stereotype
 			var theEGenericType = new Profile!EGenericType;
 			theEReferenceBaseAssociation.eGenericType = theEGenericType;
 			theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = "Association");
-			createTheAssociationOCLConstraint(newClass,s,c);		
+			//createTheAssociationOCLConstraint(newClass,s,c);		
 		} 
 		populateWithGeneralisationElements(newClass,s,c);
 		populateWithAttributes(newClass,s,c);
 	}
 	
+rule reference2Stereotype 
+	transform ref : Source!EReference 
+	to s : Profile!Stereotype { 
+	s.name = ref.name;
+	// Add stereotype to the profile
+	profile.ownedStereotype.add(s);
+	// The stereotype needs to refer to the EClass object via its eClassifiers association. 
+	// I do a workaround by creating a new EClass instance 
+	var newClass = new Profile!EClass;
+	newClass.name = ref.name;
+	ePackage.eClassifiers.add(newClass);
+	var theEAnnotationOfThisStereotype = new Profile!EAnnotation;
+	theEAnnotationOfThisStereotype.source = "http://www.eclipse.org/uml2/2.0.0/UML";
+	theEAnnotationOfThisStereotype.references.add(s);
+	newClass.eAnnotations.add(theEAnnotationOfThisStereotype);
+	var baseAssociationProperty = new Profile!Property;
+	baseAssociationProperty.name = "base_Association";
+	baseAssociationProperty.type = UMLM2!Class.all.selectOne(c|c.name = "Association"); // This way we get the Association metaclass as declared in the UML metamodel
+	s.ownedAttribute.add(baseAssociationProperty);
+	var theEReferenceBaseAssociation = new Profile!EReference;
+	theEReferenceBaseAssociation.name = "base_Association";
+	theEReferenceBaseAssociation.lowerBound = 1;
+	theEReferenceBaseAssociation.ordered = false;
+	newClass.eStructuralFeatures.add(theEReferenceBaseAssociation);
+	var extension = new Profile!Extension;			
+	extension.name = "E_" + ref.name + "_Association1";
+	var extensionEnd = new Profile!ExtensionEnd;
+	extensionEnd.name = "extension_" + ref.name;
+	extensionEnd.isComposite = true;
+	extensionEnd.type = s;
+	profile.packagedElements.add(extension);
+	extension.ownedEnd.add(extensionEnd);
+	extension.memberEnd.add(baseAssociationProperty);
+	extension.endType.add(UMLM2!Class.all.selectOne(c|c.name = "Association"));
+	var theEGenericType = new Profile!EGenericType;
+	theEReferenceBaseAssociation.eGenericType = theEGenericType;
+	theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = "Association");
+	//createTheAssociationOCLConstraint(newClass,s,c);
+}
 	
+operation populateWithStereotypesForEachReference(newClass,s,c) {
+	for (ref in c.eReferences) {
+		var baseAssociationProperty = new Profile!Property;
+		baseAssociationProperty.name = "base_Association";
+		baseAssociationProperty.type = UMLM2!Class.all.selectOne(c|c.name = "Association"); // This way we get the Association metaclass as declared in the UML metamodel
+		s.ownedAttribute.add(baseAssociationProperty);
+		var theEReferenceBaseAssociation = new Profile!EReference;
+		theEReferenceBaseAssociation.name = "base_Association";
+		theEReferenceBaseAssociation.lowerBound = 1;
+		theEReferenceBaseAssociation.ordered = false;
+		newClass.eStructuralFeatures.add(theEReferenceBaseAssociation);
+		var extension = new Profile!Extension;			
+		extension.name = "E_" + ref.name + "_Association1";
+		var extensionEnd = new Profile!ExtensionEnd;
+		extensionEnd.name = "extension_" + ref.name;
+		extensionEnd.isComposite = true;
+		extensionEnd.type = s;
+		profile.packagedElements.add(extension);
+		extension.ownedEnd.add(extensionEnd);
+		extension.memberEnd.add(baseAssociationProperty);
+		extension.endType.add(UMLM2!Class.all.selectOne(c|c.name = "Association"));
+		var theEGenericType = new Profile!EGenericType;
+		theEReferenceBaseAssociation.eGenericType = theEGenericType;
+		theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = "Association");		
+	}
+}	
 	
 operation createTheAssociationOCLConstraint(newClass,s,c) {
 	// Creation of the constraint at the Stereotype (M1 level)
