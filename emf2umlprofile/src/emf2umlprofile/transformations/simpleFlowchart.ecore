@@ -4,13 +4,23 @@
   <eClassifiers xsi:type="ecore:EClass" name="Flowchart">
     <eAnnotations source="Class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
+        eType="#//Node"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="moreNodes" upperBound="-1"
+        eType="#//anotherNode" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Node">
     <eAnnotations source="Class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="testInt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="testBool" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="nodes">
-    <eAnnotations source="Association"/>
+  <eClassifiers xsi:type="ecore:EClass" name="anotherNode">
+    <eAnnotations source="Class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="nodeClass2Association">
+    <eAnnotations source="Association">
+      <details key="source" value="Flowchart"/>
+      <details key="target" value="Node"/>
+    </eAnnotations>
   </eClassifiers>
 </ecore:EPackage>

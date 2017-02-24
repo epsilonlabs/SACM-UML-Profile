@@ -38,13 +38,13 @@ rule class2stereotype
 			createTheClassStereotypeDetails(newClass,s,c);
 		} else if (c.eAnnotations.select(an | an.source.equals("Association")).size() > 0) {
 			createTheAssociationStereotypeDetails(newClass,s,c);
-			//createTheAssociationOCLConstraint(newClass,s,c);		
+			createTheAssociationCheckEndTypeOCLConstraint(newClass,s,c);		
 		} 
 		populateWithGeneralisationElements(newClass,s,c);
 		populateWithAttributes(newClass,s,c);
 	}
 	
-rule reference2Stereotype 
+rule reference2stereotype 
 	transform ref : Source!EReference 
 	to s : Profile!Stereotype { 
 	s.name = ref.name;
@@ -60,7 +60,7 @@ rule reference2Stereotype
 	theEAnnotationOfThisStereotype.references.add(s);
 	newClass.eAnnotations.add(theEAnnotationOfThisStereotype);
 	createTheAssociationStereotypeDetails(newClass,s,ref);
-	//createTheAssociationOCLConstraint(newClass,s,c);
+	createTheAssociationCheckEndTypeOCLConstraint(newClass,s,ref);
 }
 
 operation createTheClassStereotypeDetails(newClass,s,c) {
@@ -140,15 +140,16 @@ operation populateWithStereotypesForEachReference(newClass,s,c) {
 	}
 }	
 	
-operation createTheAssociationOCLConstraint(newClass,s,c) {
+operation createTheAssociationCheckEndTypeOCLConstraint(newClass,s,c) {
 	// Creation of the constraint at the Stereotype (M1 level)
 	var theConstraint = new Profile!Constraint;
-	theConstraint.name = "Constraint1";
+	theConstraint.name = "CheckEndTypes";
 	s.ownedRule.add(theConstraint);
 	theConstraint.constrainedElement.add(s);
 	var theOpaqueExpression = new Profile!OpaqueExpression;
 	theOpaqueExpression.language.add("OCL");
-	theOpaqueExpression.body.add("let classes = self.base_Association.endType->selectByKind(UML::Class), memberEnds = self.base_Association.memberEnd in classes->exists(c|c.extension_Flowchart->notEmpty()) and classes->exists(c|c.extension_Node -> notEmpty())");
+	var theBodyOfTheConstraint = calculateTheBodyOfTheCheckEndTypesConstraint(s,c);
+	theOpaqueExpression.body.add(theBodyOfTheConstraint);
 	theConstraint.specification = theOpaqueExpression;
 	// Creation of the constraint at the UML EAnnotation (M2 Level)
 	var theConstraintOperation = new Profile!EOperation;
@@ -180,14 +181,14 @@ operation createTheAssociationOCLConstraint(newClass,s,c) {
 	theContextEAnnotation.details.add(theEStringMapEntryForContext);
 	var theContextEGenType = new Profile!EGenericType;
 	contextParam.eGenericType = theContextEGenType;
-	//TODO: When I change this to an EMap
-	//contextParam.eType = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EMap"));
+	// When I change this to an EMap, the eTypeArguments are lost. ATM I use it, I comment out the addition of the eTypeArguments (see below) and I them manually drag and drop them.
+	contextParam.eType = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EMap"));
 	var theContextMapEGenKey = new Profile!EGenericType;
 	theContextMapEGenKey.eClassifier = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EJavaObject"));
 	var theContextMapEGenValue = new Profile!EGenericType;
-	//theContextMapEGenValue.eClassifier = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EJavaObject"));
-	theContextEGenType.eTypeArguments.add(theContextMapEGenKey);
-	theContextEGenType.eTypeArguments.add(theContextMapEGenValue);
+	// Look 4 lines above...
+	//theContextEGenType.eTypeArguments.add(theContextMapEGenKey);
+	//theContextEGenType.eTypeArguments.add(theContextMapEGenValue);
 	var theConstraintEAnnotation = new Profile!EAnnotation;
 	theConstraintEAnnotation.source = "http://www.eclipse.org/emf/2002/Ecore/OCL";
 	theConstraintOperation.eAnnotations.add(theConstraintEAnnotation);
@@ -202,6 +203,19 @@ operation createTheAssociationOCLConstraint(newClass,s,c) {
 	theValidationDelegationEStringToStringMapEntry.key = "validationDelegates";
 	theValidationDelegationEStringToStringMapEntry.value = "http://www.eclipse.org/emf/2002/Ecore/OCL";
 	theValidationDelegationEAnnotation.details.add(theValidationDelegationEStringToStringMapEntry);
+}
+
+operation calculateTheBodyOfTheCheckEndTypesConstraint(s,c) {
+	var source;
+	var target;
+	if (c.isTypeOf(EcoreM2!EClass)) {
+		source = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("source");
+		target = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("target");
+	} else if (c.isTypeOf(EcoreM2!EReference)) {
+		source = c.eContainingClass.name;
+		target = c.etype.name;
+	}
+	return "let classes = self.base_Association.endType->selectByKind(UML::Class), memberEnds = self.base_Association.memberEnd in classes->exists(c|c.extension_" + source + "->notEmpty()) and classes->exists(c|c.extension_" + target + " -> notEmpty())";
 }
 	
 operation createUMLAnnotationsForVersions(profile) {

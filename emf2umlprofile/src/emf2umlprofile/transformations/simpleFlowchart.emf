@@ -4,6 +4,8 @@ package simpleFlowchart;
 @Class
 class Flowchart {
 	attr String name;
+	ref Node[*] nodes;
+	val anotherNode[*] moreNodes;
 }
 
 @Class
@@ -12,7 +14,12 @@ class Node {
 	attr Boolean testBool;
 }
 
-@Association
-class nodes {
+@Class
+class anotherNode {
+	
+}
+
+@Association(source="Flowchart", target="Node")
+class nodeClass2Association {
 	
 }
