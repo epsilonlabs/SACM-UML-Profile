@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="top" nsURI="minimalWithEntentionAndAssociation" nsPrefix="minimalWithEntentionAndAssociation">
-  <eClassifiers xsi:type="ecore:EClass" name="Class"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Association"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Test" eSuperTypes="#//Class"/>
-  <eClassifiers xsi:type="ecore:EClass" name="StereotypeForAssociations" eSuperTypes="#//Association"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ThisStereotypeExtendsTest" eSuperTypes="#//Test"/>
-</ecore:EPackage>
