@@ -29,7 +29,7 @@
         <eAnnotations xmi:id="_YMSHnvm4EeaiLIyQ-fvSiQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_p64tEPNyEeajqaRIMf-0Ww"/>
         <eOperations xmi:id="_YMSHn_m4EeaiLIyQ-fvSiQ" name="Constraint1">
           <eAnnotations xmi:id="_YMSHoPm4EeaiLIyQ-fvSiQ" source="http://www.eclipse.org/emf/2002/Ecore/OCL">
-            <details xmi:id="_YMSHofm4EeaiLIyQ-fvSiQ" key="body" value="let classes = self.base_Association.endType->selectByKind(UML::Class), memberEnds = self.base_Association.memberEnd in classes->exists(c|c.extension_Flowchart->notEmpty()) and classes->exists(c|c.extension_Node -> notEmpty())&#xA;"/>
+            <details xmi:id="_YMSHofm4EeaiLIyQ-fvSiQ" key="body" value="let classes = self.base_Association.endType->selectByKind(UML::Class), memberEnds = self.base_Association.memberEnd in classes->exists(c|c.extension_Flowchart->notEmpty()) and classes->exists(c|c.extension_Node -> notEmpty())&#xD;&#xA;"/>
           </eAnnotations>
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
           <eParameters xmi:id="_YMSHo_m4EeaiLIyQ-fvSiQ" name="diagnostics">

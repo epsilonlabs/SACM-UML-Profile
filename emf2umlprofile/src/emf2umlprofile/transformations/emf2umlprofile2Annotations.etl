@@ -81,49 +81,77 @@ rule class2stereotype
 			var theEGenericType = new Profile!EGenericType;
 			theEReferenceBaseAssociation.eGenericType = theEGenericType;
 			theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = "Association");
-			
-			// Creation of the constraint at the Stereotype (M1 level)
-			var theConstraint = new Profile!Constraint;
-			theConstraint.name = "Constraint1";
-			s.ownedRule.add(theConstraint);
-			theConstraint.constrainedElement.add(s);
-			var theOpaqueExpression = new Profile!OpaqueExpression;
-			theOpaqueExpression.language.add("OCL");
-			theOpaqueExpression.body.add("Hardcoded OCL for now");
-			theConstraint.specification = theOpaqueExpression;
-			// Creation of the constraint at the UML EAnnotation (M2 Level)
-			var theConstraintOperation = new Profile!EOperation;
-			theConstraintOperation.name = "Constraint1";
-			//theConstraintOperation.eType = "EBoolean";
-			newClass.eOperations.add(theConstraintOperation);
-			var diagnosticsParam = new Profile!EParameter;
-			diagnosticsParam.name = "diagnostics";
-			theConstraintOperation.eParameters.add(diagnosticsParam);
-			var theDiagnosticsEAnnotation = new Profile!EAnnotation;
-			diagnosticsParam.eAnnotations.add(theDiagnosticsEAnnotation);
-			theDiagnosticsEAnnotation.source = "http://www.eclipse.org/emf/2002/GenModel";
-			var theEStringMapEntryForDiagnostics = new Profile!EStringToStringMapEntry;
-			theEStringMapEntryForDiagnostics.key = "documentation";
-			theEStringMapEntryForDiagnostics.value = "The chain of diagnostics to which problems are to be appended.";
-			theDiagnosticsEAnnotation.details.add(theEStringMapEntryForDiagnostics);
-			var theDiagnosticsEGenType = new Profile!EGenericType;
-			diagnosticsParam.eGenericType = theDiagnosticsEGenType;
-			var contextParam = new Profile!EParameter;
-			contextParam.name = "context";
-			theConstraintOperation.eParameters.add(contextParam);
-			var theContextEAnnotation = new Profile!EAnnotation;
-			contextParam.eAnnotations.add(theContextEAnnotation);
-			var theEStringMapEntryForContext = new Profile!EStringToStringMapEntry;
-			theEStringMapEntryForContext.key = "documentation";
-			theEStringMapEntryForContext.value = "The cache of context-specific information.";
-			theContextEAnnotation.details.add(theEStringMapEntryForContext);
-			var theContextEGenType = new Profile!EGenericType;
-			contextParam.eGenericType = theContextEGenType;
-						
+			createTheAssociationOCLConstraint(newClass,s,c);		
 		} 
 		populateWithGeneralisationElements(newClass,s,c);
 		populateWithAttributes(newClass,s,c);
 	}
+	
+	
+	
+operation createTheAssociationOCLConstraint(newClass,s,c) {
+	// Creation of the constraint at the Stereotype (M1 level)
+	var theConstraint = new Profile!Constraint;
+	theConstraint.name = "Constraint1";
+	s.ownedRule.add(theConstraint);
+	theConstraint.constrainedElement.add(s);
+	var theOpaqueExpression = new Profile!OpaqueExpression;
+	theOpaqueExpression.language.add("OCL");
+	theOpaqueExpression.body.add("let classes = self.base_Association.endType->selectByKind(UML::Class), memberEnds = self.base_Association.memberEnd in classes->exists(c|c.extension_Flowchart->notEmpty()) and classes->exists(c|c.extension_Node -> notEmpty())");
+	theConstraint.specification = theOpaqueExpression;
+	// Creation of the constraint at the UML EAnnotation (M2 Level)
+	var theConstraintOperation = new Profile!EOperation;
+	theConstraintOperation.name = "CheckEndTypes";
+	theConstraintOperation.eType = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EBoolean"));
+	newClass.eOperations.add(theConstraintOperation);
+	var diagnosticsParam = new Profile!EParameter;
+	diagnosticsParam.name = "diagnostics";
+	theConstraintOperation.eParameters.add(diagnosticsParam);
+	var theDiagnosticsEAnnotation = new Profile!EAnnotation;
+	diagnosticsParam.eAnnotations.add(theDiagnosticsEAnnotation);
+	theDiagnosticsEAnnotation.source = "http://www.eclipse.org/emf/2002/GenModel";
+	var theEStringMapEntryForDiagnostics = new Profile!EStringToStringMapEntry;
+	theEStringMapEntryForDiagnostics.key = "documentation";
+	theEStringMapEntryForDiagnostics.value = "The chain of diagnostics to which problems are to be appended.";
+	theDiagnosticsEAnnotation.details.add(theEStringMapEntryForDiagnostics);
+	var theDiagnosticsEGenType = new Profile!EGenericType;
+	diagnosticsParam.eGenericType = theDiagnosticsEGenType;
+	diagnosticsParam.eType = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EDiagnosticChain"));
+	var contextParam = new Profile!EParameter;
+	contextParam.name = "context";
+	theConstraintOperation.eParameters.add(contextParam);
+	var theContextEAnnotation = new Profile!EAnnotation;
+	theContextEAnnotation.source = "http://www.eclipse.org/emf/2002/GenModel";
+	contextParam.eAnnotations.add(theContextEAnnotation);
+	var theEStringMapEntryForContext = new Profile!EStringToStringMapEntry;
+	theEStringMapEntryForContext.key = "documentation";
+	theEStringMapEntryForContext.value = "The cache of context-specific information.";
+	theContextEAnnotation.details.add(theEStringMapEntryForContext);
+	var theContextEGenType = new Profile!EGenericType;
+	contextParam.eGenericType = theContextEGenType;
+	//TODO: When I change this to an EMap
+	//contextParam.eType = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EMap"));
+	var theContextMapEGenKey = new Profile!EGenericType;
+	theContextMapEGenKey.eClassifier = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EJavaObject"));
+	var theContextMapEGenValue = new Profile!EGenericType;
+	//theContextMapEGenValue.eClassifier = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EJavaObject"));
+	theContextEGenType.eTypeArguments.add(theContextMapEGenKey);
+	theContextEGenType.eTypeArguments.add(theContextMapEGenValue);
+	var theConstraintEAnnotation = new Profile!EAnnotation;
+	theConstraintEAnnotation.source = "http://www.eclipse.org/emf/2002/Ecore/OCL";
+	theConstraintOperation.eAnnotations.add(theConstraintEAnnotation);
+	var theEStringToStringMapEntryForConstraint = new Profile!EStringToStringMapEntry;
+	theEStringToStringMapEntryForConstraint.key = "body";
+	theEStringToStringMapEntryForConstraint.value = "let classes = self.base_Association.endType->selectByKind(UML::Class), memberEnds = self.base_Association.memberEnd in classes->exists(c|c.extension_Flowchart->notEmpty()) and classes->exists(c|c.extension_Node -> notEmpty())";
+	theConstraintEAnnotation.details.add(theEStringToStringMapEntryForConstraint);
+	var theValidationDelegationEAnnotation = new Profile!EAnnotation;
+	ePackage.eAnnotations.add(theValidationDelegationEAnnotation);
+	theValidationDelegationEAnnotation.source = "http://www.eclipse.org/emf/2002/Ecore";
+	var theValidationDelegationEStringToStringMapEntry = new Profile!EStringToStringMapEntry;
+	theValidationDelegationEStringToStringMapEntry.key = "validationDelegates";
+	theValidationDelegationEStringToStringMapEntry.value = "http://www.eclipse.org/emf/2002/Ecore/OCL";
+	theValidationDelegationEAnnotation.details.add(theValidationDelegationEStringToStringMapEntry);
+}
 	
 operation createUMLAnnotationsForVersions(profile) {
 	var theAnnotation = new Profile!EAnnotation;
