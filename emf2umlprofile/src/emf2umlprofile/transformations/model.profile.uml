@@ -1,100 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_Yy-JwPncEeaNrPcQQwEZYQ" name="RootElement" metaclassReference="_Yy-w0PncEeaNrPcQQwEZYQ">
-  <eAnnotations xmi:id="_YzBNEfncEeaNrPcQQwEZYQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
-    <contents xmi:type="ecore:EPackage" xmi:id="_YzBNEPncEeaNrPcQQwEZYQ" name="RootElement" nsURI="http:///schemas/RootElement/something/1" nsPrefix="RootElement">
-      <eAnnotations xmi:id="_YzB0IPncEeaNrPcQQwEZYQ" source="PapyrusVersion">
-        <details xmi:id="_YzB0IfncEeaNrPcQQwEZYQ" key="Version" value="0.0.1"/>
-        <details xmi:id="_YzB0IvncEeaNrPcQQwEZYQ" key="Comment" value=""/>
-        <details xmi:id="_YzB0I_ncEeaNrPcQQwEZYQ" key="Copyright" value=""/>
-        <details xmi:id="_YzB0JPncEeaNrPcQQwEZYQ" key="Date" value="2017-02-01"/>
-        <details xmi:id="_YzB0JfncEeaNrPcQQwEZYQ" key="Author" value=""/>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_icoRwPqDEeaqttiwFx2Vvg" name="RootElement" metaclassReference="_ico40PqDEeaqttiwFx2Vvg">
+  <eAnnotations xmi:id="_icuYYfqDEeaqttiwFx2Vvg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_icuYYPqDEeaqttiwFx2Vvg" name="RootElement" nsURI="http:///schemas/RootElement/something/1" nsPrefix="RootElement">
+      <eAnnotations xmi:id="_icvmgPqDEeaqttiwFx2Vvg" source="PapyrusVersion">
+        <details xmi:id="_icwNkPqDEeaqttiwFx2Vvg" key="Version" value="0.0.1"/>
+        <details xmi:id="_icwNkfqDEeaqttiwFx2Vvg" key="Comment" value=""/>
+        <details xmi:id="_icwNkvqDEeaqttiwFx2Vvg" key="Copyright" value=""/>
+        <details xmi:id="_icwNk_qDEeaqttiwFx2Vvg" key="Date" value="2017-02-01"/>
+        <details xmi:id="_icw0oPqDEeaqttiwFx2Vvg" key="Author" value=""/>
       </eAnnotations>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_YzCbMvncEeaNrPcQQwEZYQ" name="Flowchart">
-        <eAnnotations xmi:id="_YzCbM_ncEeaNrPcQQwEZYQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_YzB0JvncEeaNrPcQQwEZYQ"/>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_YzDpUPncEeaNrPcQQwEZYQ" name="base_Class" ordered="false" lowerBound="1">
+      <eAnnotations xmi:id="_idZGwfqDEeaqttiwFx2Vvg" source="http://www.eclipse.org/emf/2002/Ecore">
+        <details xmi:id="_idZGwvqDEeaqttiwFx2Vvg" key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_icxbsPqDEeaqttiwFx2Vvg" name="Flowchart">
+        <eAnnotations xmi:id="_icxbsfqDEeaqttiwFx2Vvg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_icw0ofqDEeaqttiwFx2Vvg"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_iczQ4PqDEeaqttiwFx2Vvg" name="base_Class" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_YzLlIPncEeaNrPcQQwEZYQ" name="name">
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_idBTUPqDEeaqttiwFx2Vvg" name="name">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_YzMMMfncEeaNrPcQQwEZYQ" name="Node">
-        <eAnnotations xmi:id="_YzMMMvncEeaNrPcQQwEZYQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_YzCbMPncEeaNrPcQQwEZYQ"/>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_YzMzQPncEeaNrPcQQwEZYQ" name="base_Class" ordered="false" lowerBound="1">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_idBTUvqDEeaqttiwFx2Vvg" name="Node">
+        <eAnnotations xmi:id="_idBTU_qDEeaqttiwFx2Vvg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_icw0ovqDEeaqttiwFx2Vvg"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_idDIgPqDEeaqttiwFx2Vvg" name="base_Class" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_YzPPgPncEeaNrPcQQwEZYQ" name="testInt">
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_idRK8PqDEeaqttiwFx2Vvg" name="testInt">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_YzP2kfncEeaNrPcQQwEZYQ" name="testBool">
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_idRyAfqDEeaqttiwFx2Vvg" name="testBool">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_YzQdoPncEeaNrPcQQwEZYQ" name="nodes">
-        <eAnnotations xmi:id="_YzQdofncEeaNrPcQQwEZYQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_YzCbMfncEeaNrPcQQwEZYQ"/>
-        <eOperations xmi:id="_YzS54vncEeaNrPcQQwEZYQ" name="Constraint1">
-          <eParameters xmi:id="_YzTg8PncEeaNrPcQQwEZYQ" name="diagnostics">
-            <eAnnotations xmi:id="_YzTg8fncEeaNrPcQQwEZYQ" source="http://www.eclipse.org/emf/2002/GenModel">
-              <details xmi:id="_YzTg8vncEeaNrPcQQwEZYQ" key="documentation" value="The chain of diagnostics to which problems are to be appended."/>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_idSZEPqDEeaqttiwFx2Vvg" name="nodes">
+        <eAnnotations xmi:id="_idSZEfqDEeaqttiwFx2Vvg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_icw0o_qDEeaqttiwFx2Vvg"/>
+        <eOperations xmi:id="_idVcYPqDEeaqttiwFx2Vvg" name="CheckEndTypes">
+          <eAnnotations xmi:id="_idYfsfqDEeaqttiwFx2Vvg" source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+            <details xmi:id="_idZGwPqDEeaqttiwFx2Vvg" key="body" value="let classes = self.base_Association.endType->selectByKind(UML::Class), memberEnds = self.base_Association.memberEnd in classes->exists(c|c.extension_Flowchart->notEmpty()) and classes->exists(c|c.extension_Node -> notEmpty())"/>
+          </eAnnotations>
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+          <eParameters xmi:id="_idWqgfqDEeaqttiwFx2Vvg" name="diagnostics">
+            <eAnnotations xmi:id="_idWqgvqDEeaqttiwFx2Vvg" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_idWqg_qDEeaqttiwFx2Vvg" key="documentation" value="The chain of diagnostics to which problems are to be appended."/>
             </eAnnotations>
-            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
           </eParameters>
-          <eParameters xmi:id="_YzTg9PncEeaNrPcQQwEZYQ" name="context">
-            <eAnnotations xmi:id="_YzTg9fncEeaNrPcQQwEZYQ">
-              <details xmi:id="_YzUIAPncEeaNrPcQQwEZYQ" key="documentation" value="The cache of context-specific information."/>
+          <eParameters xmi:id="_idXRkfqDEeaqttiwFx2Vvg" name="context">
+            <eAnnotations xmi:id="_idX4oPqDEeaqttiwFx2Vvg" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_idX4ofqDEeaqttiwFx2Vvg" key="documentation" value="The cache of context-specific information."/>
             </eAnnotations>
-            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+            <eGenericType xmi:id="_idX4ovqDEeaqttiwFx2Vvg">
+              <eTypeArguments xmi:id="_idX4o_qDEeaqttiwFx2Vvg">
+                <eClassifier xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+              </eTypeArguments>
+              <eTypeArguments xmi:id="_idYfsPqDEeaqttiwFx2Vvg"/>
+            </eGenericType>
           </eParameters>
         </eOperations>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_YzRrwPncEeaNrPcQQwEZYQ" name="base_Association" ordered="false" lowerBound="1">
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_idTnMPqDEeaqttiwFx2Vvg" name="base_Association" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Association"/>
         </eStructuralFeatures>
       </eClassifiers>
     </contents>
   </eAnnotations>
-  <elementImport xmi:id="_Yy-w0PncEeaNrPcQQwEZYQ" alias="Class">
+  <elementImport xmi:id="_ico40PqDEeaqttiwFx2Vvg" alias="Class">
     <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
   </elementImport>
-  <elementImport xmi:id="_YzAmAPncEeaNrPcQQwEZYQ" alias="Association">
+  <elementImport xmi:id="_ictKQPqDEeaqttiwFx2Vvg" alias="Association">
     <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Association"/>
   </elementImport>
-  <packagedElement xmi:type="uml:Stereotype" xmi:id="_YzB0JvncEeaNrPcQQwEZYQ" name="Flowchart">
-    <ownedAttribute xmi:id="_YzDCQPncEeaNrPcQQwEZYQ" name="base_Class" association="_YzDpUfncEeaNrPcQQwEZYQ">
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_icw0ofqDEeaqttiwFx2Vvg" name="Flowchart">
+    <ownedAttribute xmi:id="_icyCwPqDEeaqttiwFx2Vvg" name="base_Class" association="_iczQ4fqDEeaqttiwFx2Vvg">
       <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_YzJv8PncEeaNrPcQQwEZYQ" name="name">
+    <ownedAttribute xmi:id="_ic-QAPqDEeaqttiwFx2Vvg" name="name">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_YzDpUfncEeaNrPcQQwEZYQ" name="E_Flowchart_Class1" memberEnd="_YzDpUvncEeaNrPcQQwEZYQ _YzDCQPncEeaNrPcQQwEZYQ">
-    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_YzDpUvncEeaNrPcQQwEZYQ" name="extension_Flowchart" type="_YzB0JvncEeaNrPcQQwEZYQ" aggregation="composite" association="_YzDpUfncEeaNrPcQQwEZYQ"/>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_iczQ4fqDEeaqttiwFx2Vvg" name="E_Flowchart_Class1" memberEnd="_iczQ4vqDEeaqttiwFx2Vvg _icyCwPqDEeaqttiwFx2Vvg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_iczQ4vqDEeaqttiwFx2Vvg" name="extension_Flowchart" type="_icw0ofqDEeaqttiwFx2Vvg" aggregation="composite" association="_iczQ4fqDEeaqttiwFx2Vvg"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Stereotype" xmi:id="_YzCbMPncEeaNrPcQQwEZYQ" name="Node">
-    <ownedAttribute xmi:id="_YzMMM_ncEeaNrPcQQwEZYQ" name="base_Class" association="_YzNaUPncEeaNrPcQQwEZYQ">
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_icw0ovqDEeaqttiwFx2Vvg" name="Node">
+    <ownedAttribute xmi:id="_idB6YPqDEeaqttiwFx2Vvg" name="base_Class" association="_idDIgfqDEeaqttiwFx2Vvg">
       <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_YzOBYfncEeaNrPcQQwEZYQ" name="testInt">
+    <ownedAttribute xmi:id="_idE9sPqDEeaqttiwFx2Vvg" name="testInt">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_YzP2kPncEeaNrPcQQwEZYQ" name="testBool">
+    <ownedAttribute xmi:id="_idRyAPqDEeaqttiwFx2Vvg" name="testBool">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBooleanObject"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_YzNaUPncEeaNrPcQQwEZYQ" name="E_Node_Class1" memberEnd="_YzNaUfncEeaNrPcQQwEZYQ _YzMMM_ncEeaNrPcQQwEZYQ">
-    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_YzNaUfncEeaNrPcQQwEZYQ" name="extension_Node" type="_YzCbMPncEeaNrPcQQwEZYQ" aggregation="composite" association="_YzNaUPncEeaNrPcQQwEZYQ"/>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_idDIgfqDEeaqttiwFx2Vvg" name="E_Node_Class1" memberEnd="_idDIgvqDEeaqttiwFx2Vvg _idB6YPqDEeaqttiwFx2Vvg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_idDIgvqDEeaqttiwFx2Vvg" name="extension_Node" type="_icw0ovqDEeaqttiwFx2Vvg" aggregation="composite" association="_idDIgfqDEeaqttiwFx2Vvg"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Stereotype" xmi:id="_YzCbMfncEeaNrPcQQwEZYQ" name="nodes">
-    <ownedRule xmi:id="_YzS54PncEeaNrPcQQwEZYQ" name="Constraint1" constrainedElement="_YzCbMfncEeaNrPcQQwEZYQ">
-      <specification xmi:type="uml:OpaqueExpression" xmi:id="_YzS54fncEeaNrPcQQwEZYQ">
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_icw0o_qDEeaqttiwFx2Vvg" name="nodes">
+    <ownedRule xmi:id="_idU1UfqDEeaqttiwFx2Vvg" name="Constraint1" constrainedElement="_icw0o_qDEeaqttiwFx2Vvg">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_idU1UvqDEeaqttiwFx2Vvg">
         <language>OCL</language>
-        <body>Hardcoded OCL for now</body>
+        <body>let classes = self.base_Association.endType->selectByKind(UML::Class), memberEnds = self.base_Association.memberEnd in classes->exists(c|c.extension_Flowchart->notEmpty()) and classes->exists(c|c.extension_Node -> notEmpty())</body>
       </specification>
     </ownedRule>
-    <ownedAttribute xmi:id="_YzREsPncEeaNrPcQQwEZYQ" name="base_Association" association="_YzRrwfncEeaNrPcQQwEZYQ">
+    <ownedAttribute xmi:id="_idSZEvqDEeaqttiwFx2Vvg" name="base_Association" association="_idTnMfqDEeaqttiwFx2Vvg">
       <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Association"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_YzRrwfncEeaNrPcQQwEZYQ" name="E_nodes_Association1" memberEnd="_YzRrwvncEeaNrPcQQwEZYQ _YzREsPncEeaNrPcQQwEZYQ">
-    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_YzRrwvncEeaNrPcQQwEZYQ" name="extension_nodes" type="_YzCbMfncEeaNrPcQQwEZYQ" aggregation="composite" association="_YzRrwfncEeaNrPcQQwEZYQ"/>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_idTnMfqDEeaqttiwFx2Vvg" name="E_nodes_Association1" memberEnd="_idTnMvqDEeaqttiwFx2Vvg _idSZEvqDEeaqttiwFx2Vvg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_idTnMvqDEeaqttiwFx2Vvg" name="extension_nodes" type="_icw0o_qDEeaqttiwFx2Vvg" aggregation="composite" association="_idTnMfqDEeaqttiwFx2Vvg"/>
   </packagedElement>
 </uml:Profile>
