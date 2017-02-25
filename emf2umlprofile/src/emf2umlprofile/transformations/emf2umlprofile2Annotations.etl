@@ -38,7 +38,7 @@ rule class2stereotype
 			createTheClassStereotypeDetails(newClass,s,c);
 		} else if (c.eAnnotations.select(an | an.source.equals("Association")).size() > 0) {
 			createTheAssociationStereotypeDetails(newClass,s,c);
-			createTheAssociationCheckEndTypeOCLConstraint(newClass,s,c);		
+			createOCLConstraintsForAssociation(newClass,s,c);		
 		} 
 		populateWithGeneralisationElements(newClass,s,c);
 		populateWithAttributes(newClass,s,c);
@@ -60,7 +60,79 @@ rule reference2stereotype
 	theEAnnotationOfThisStereotype.references.add(s);
 	newClass.eAnnotations.add(theEAnnotationOfThisStereotype);
 	createTheAssociationStereotypeDetails(newClass,s,ref);
-	createTheAssociationCheckEndTypeOCLConstraint(newClass,s,ref);
+	createOCLConstraintsForAssociation(newClass,s,ref);
+}
+
+operation createOCLConstraintsForAssociation(newClass,s,c) {
+	var theValidationDelegationEAnnotation = new Profile!EAnnotation;
+	ePackage.eAnnotations.add(theValidationDelegationEAnnotation);
+	theValidationDelegationEAnnotation.source = "http://www.eclipse.org/emf/2002/Ecore";
+	var theValidationDelegationEStringToStringMapEntry = new Profile!EStringToStringMapEntry;
+	theValidationDelegationEStringToStringMapEntry.key = "validationDelegates";
+	theValidationDelegationEStringToStringMapEntry.value = "http://www.eclipse.org/emf/2002/Ecore/OCL";
+	theValidationDelegationEAnnotation.details.add(theValidationDelegationEStringToStringMapEntry);
+	createTheAssociationCheckEndTypeOCLConstraint(newClass,s,c);
+	createTheAssociationCheckMultiplicityOCLConstraint(newClass,s,c);
+	createTheAssociationCheckAggregationOCLConstraint(newClass,s,c);
+}
+
+operation createTheAssociationCheckAggregationOCLConstraint(newClass,s,c) {
+	// Creation of the constraint at the Stereotype (M1 level)
+	var theConstraint = new Profile!Constraint;
+	theConstraint.name = "CheckAggregation";
+	s.ownedRule.add(theConstraint);
+	theConstraint.constrainedElement.add(s);
+	var theOpaqueExpression = new Profile!OpaqueExpression;
+	theOpaqueExpression.language.add("OCL");
+	var theBodyOfTheConstraint = calculateTheBodyOfTheCheckAggregationConstraint(s,c);
+	theOpaqueExpression.body.add(theBodyOfTheConstraint);
+	theConstraint.specification = theOpaqueExpression;
+	// Creation of the constraint at the UML EAnnotation (M2 Level)
+	var theConstraintOperation = new Profile!EOperation;
+	theConstraintOperation.name = "CheckAggregation";
+	theConstraintOperation.eType = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EBoolean"));
+	newClass.eOperations.add(theConstraintOperation);
+	createTheOCLConstraintDetails(theConstraintOperation);
+}
+
+
+
+operation createTheAssociationCheckMultiplicityOCLConstraint(newClass,s,c) {
+	// Creation of the constraint at the Stereotype (M1 level)
+	var theConstraint = new Profile!Constraint;
+	theConstraint.name = "CheckMultiplicity";
+	s.ownedRule.add(theConstraint);
+	theConstraint.constrainedElement.add(s);
+	var theOpaqueExpression = new Profile!OpaqueExpression;
+	theOpaqueExpression.language.add("OCL");
+	var theBodyOfTheConstraint = calculateTheBodyOfTheCheckMultiplicityConstraint(s,c);
+	theOpaqueExpression.body.add(theBodyOfTheConstraint);
+	theConstraint.specification = theOpaqueExpression;
+	// Creation of the constraint at the UML EAnnotation (M2 Level)
+	var theConstraintOperation = new Profile!EOperation;
+	theConstraintOperation.name = "CheckMultiplicity";
+	theConstraintOperation.eType = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EBoolean"));
+	newClass.eOperations.add(theConstraintOperation);
+	createTheOCLConstraintDetails(theConstraintOperation);
+}
+
+operation createTheAssociationCheckEndTypeOCLConstraint(newClass,s,c) {
+	// Creation of the constraint at the Stereotype (M1 level)
+	var theConstraint = new Profile!Constraint;
+	theConstraint.name = "CheckEndTypes";
+	s.ownedRule.add(theConstraint);
+	theConstraint.constrainedElement.add(s);
+	var theOpaqueExpression = new Profile!OpaqueExpression;
+	theOpaqueExpression.language.add("OCL");
+	var theBodyOfTheConstraint = calculateTheBodyOfTheCheckEndTypesConstraint(s,c);
+	theOpaqueExpression.body.add(theBodyOfTheConstraint);
+	theConstraint.specification = theOpaqueExpression;
+	// Creation of the constraint at the UML EAnnotation (M2 Level)
+	var theConstraintOperation = new Profile!EOperation;
+	theConstraintOperation.name = "CheckEndTypes";
+	theConstraintOperation.eType = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EBoolean"));
+	newClass.eOperations.add(theConstraintOperation);
+	createTheOCLConstraintDetails(theConstraintOperation);
 }
 
 operation createTheClassStereotypeDetails(newClass,s,c) {
@@ -140,22 +212,81 @@ operation populateWithStereotypesForEachReference(newClass,s,c) {
 	}
 }	
 	
-operation createTheAssociationCheckEndTypeOCLConstraint(newClass,s,c) {
-	// Creation of the constraint at the Stereotype (M1 level)
-	var theConstraint = new Profile!Constraint;
-	theConstraint.name = "CheckEndTypes";
-	s.ownedRule.add(theConstraint);
-	theConstraint.constrainedElement.add(s);
-	var theOpaqueExpression = new Profile!OpaqueExpression;
-	theOpaqueExpression.language.add("OCL");
-	var theBodyOfTheConstraint = calculateTheBodyOfTheCheckEndTypesConstraint(s,c);
-	theOpaqueExpression.body.add(theBodyOfTheConstraint);
-	theConstraint.specification = theOpaqueExpression;
-	// Creation of the constraint at the UML EAnnotation (M2 Level)
-	var theConstraintOperation = new Profile!EOperation;
-	theConstraintOperation.name = "CheckEndTypes";
-	theConstraintOperation.eType = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EBoolean"));
-	newClass.eOperations.add(theConstraintOperation);
+
+
+operation calculateTheBodyOfTheCheckEndTypesConstraint(s,c) {
+	var source;
+	var target;
+	if (c.isTypeOf(EcoreM2!EClass)) {
+		source = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("source");
+		target = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("target");
+	} else if (c.isTypeOf(EcoreM2!EReference)) {
+		source = c.eContainingClass.name;
+		target = c.etype.name;
+	}
+	return "let classes = self.base_Association.endType->selectByKind(UML::Class), memberEnds = self.base_Association.memberEnd in classes->exists(c|c.extension_" + source + "->notEmpty()) and classes->exists(c|c.extension_" + target + " -> notEmpty())";
+}
+
+operation calculateTheBodyOfTheCheckAggregationConstraint(s,c) {
+	var source;
+	var target;
+	if (c.isTypeOf(EcoreM2!EClass)) {
+		source = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("source");
+		target = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("target");
+	} else if (c.isTypeOf(EcoreM2!EReference)) {
+		source = c.eContainingClass.name;
+		target = c.etype.name;
+	}
+	return "true";
+}
+
+operation calculateTheBodyOfTheCheckMultiplicityConstraint(s,c) {
+	var source;
+	var target;
+	if (c.isTypeOf(EcoreM2!EClass)) {
+		source = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("source");
+		target = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("target");
+	} else if (c.isTypeOf(EcoreM2!EReference)) {
+		source = c.eContainingClass.name;
+		target = c.etype.name;
+	}
+	return "true";
+}
+	
+operation createUMLAnnotationsForVersions(profile) {
+	var theAnnotation = new Profile!EAnnotation;
+	theAnnotation.source = "http://www.eclipse.org/uml2/2.0.0/UML";
+	profile.eAnnotations.add(theAnnotation);
+	ePackage.name = "RootElement";
+	ePackage.NsPrefix = "RootElement";
+	ePackage.nsUri = "http:///schemas/RootElement/something/1";
+	theAnnotation.contents.add(ePackage);
+	var papyrusVersionEAnnotation = new Profile!EAnnotation;
+	papyrusVersionEAnnotation.source = "PapyrusVersion";
+	ePackage.eAnnotations.add(papyrusVersionEAnnotation);
+	var versionMap = new Profile!EStringToStringMapEntry;
+	versionMap.key = "Version";
+	versionMap.value = "0.0.1";
+	papyrusVersionEAnnotation.details.add(versionMap);
+	var commentMap = new Profile!EStringToStringMapEntry;
+	commentMap.key = "Comment";
+	commentMap.value = "";
+	papyrusVersionEAnnotation.details.add(commentMap);
+	var copyrightMap = new Profile!EStringToStringMapEntry;
+	copyrightMap.key = "Copyright";
+	copyrightMap.value = "";
+	papyrusVersionEAnnotation.details.add(copyrightMap);
+	var dateMap = new Profile!EStringToStringMapEntry;
+	dateMap.key = "Date";
+	dateMap.value = "2017-02-01";
+	papyrusVersionEAnnotation.details.add(dateMap);
+	var authorMap = new Profile!EStringToStringMapEntry;
+	authorMap.key = "Author";
+	authorMap.value = "";
+	papyrusVersionEAnnotation.details.add(authorMap);
+}
+
+operation createTheOCLConstraintDetails(theConstraintOperation) {
 	var diagnosticsParam = new Profile!EParameter;
 	diagnosticsParam.name = "diagnostics";
 	theConstraintOperation.eParameters.add(diagnosticsParam);
@@ -193,61 +324,8 @@ operation createTheAssociationCheckEndTypeOCLConstraint(newClass,s,c) {
 	theEStringToStringMapEntryForConstraint.key = "body";
 	theEStringToStringMapEntryForConstraint.value = "let classes = self.base_Association.endType->selectByKind(UML::Class), memberEnds = self.base_Association.memberEnd in classes->exists(c|c.extension_Flowchart->notEmpty()) and classes->exists(c|c.extension_Node -> notEmpty())";
 	theConstraintEAnnotation.details.add(theEStringToStringMapEntryForConstraint);
-	var theValidationDelegationEAnnotation = new Profile!EAnnotation;
-	ePackage.eAnnotations.add(theValidationDelegationEAnnotation);
-	theValidationDelegationEAnnotation.source = "http://www.eclipse.org/emf/2002/Ecore";
-	var theValidationDelegationEStringToStringMapEntry = new Profile!EStringToStringMapEntry;
-	theValidationDelegationEStringToStringMapEntry.key = "validationDelegates";
-	theValidationDelegationEStringToStringMapEntry.value = "http://www.eclipse.org/emf/2002/Ecore/OCL";
-	theValidationDelegationEAnnotation.details.add(theValidationDelegationEStringToStringMapEntry);
 	theContextEGenType.eTypeArguments.add(theContextMapEGenKey);
 	theContextEGenType.eTypeArguments.add(theContextMapEGenValue);
-}
-
-operation calculateTheBodyOfTheCheckEndTypesConstraint(s,c) {
-	var source;
-	var target;
-	if (c.isTypeOf(EcoreM2!EClass)) {
-		source = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("source");
-		target = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("target");
-	} else if (c.isTypeOf(EcoreM2!EReference)) {
-		source = c.eContainingClass.name;
-		target = c.etype.name;
-	}
-	return "let classes = self.base_Association.endType->selectByKind(UML::Class), memberEnds = self.base_Association.memberEnd in classes->exists(c|c.extension_" + source + "->notEmpty()) and classes->exists(c|c.extension_" + target + " -> notEmpty())";
-}
-	
-operation createUMLAnnotationsForVersions(profile) {
-	var theAnnotation = new Profile!EAnnotation;
-	theAnnotation.source = "http://www.eclipse.org/uml2/2.0.0/UML";
-	profile.eAnnotations.add(theAnnotation);
-	ePackage.name = "RootElement";
-	ePackage.NsPrefix = "RootElement";
-	ePackage.nsUri = "http:///schemas/RootElement/something/1";
-	theAnnotation.contents.add(ePackage);
-	var papyrusVersionEAnnotation = new Profile!EAnnotation;
-	papyrusVersionEAnnotation.source = "PapyrusVersion";
-	ePackage.eAnnotations.add(papyrusVersionEAnnotation);
-	var versionMap = new Profile!EStringToStringMapEntry;
-	versionMap.key = "Version";
-	versionMap.value = "0.0.1";
-	papyrusVersionEAnnotation.details.add(versionMap);
-	var commentMap = new Profile!EStringToStringMapEntry;
-	commentMap.key = "Comment";
-	commentMap.value = "";
-	papyrusVersionEAnnotation.details.add(commentMap);
-	var copyrightMap = new Profile!EStringToStringMapEntry;
-	copyrightMap.key = "Copyright";
-	copyrightMap.value = "";
-	papyrusVersionEAnnotation.details.add(copyrightMap);
-	var dateMap = new Profile!EStringToStringMapEntry;
-	dateMap.key = "Date";
-	dateMap.value = "2017-02-01";
-	papyrusVersionEAnnotation.details.add(dateMap);
-	var authorMap = new Profile!EStringToStringMapEntry;
-	authorMap.key = "Author";
-	authorMap.value = "";
-	papyrusVersionEAnnotation.details.add(authorMap);
 }
 
 operation populateWithAttributes(newClass,s,c) {
