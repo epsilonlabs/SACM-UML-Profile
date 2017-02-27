@@ -1,0 +1,16 @@
+"begin execution...".println();
+
+var classes = m!Class.all;
+
+var flowchart = classes.select(c|c.name = "Class1").first;
+
+
+flowchart.getProperty("nodes").println();
+
+
+"end execution".println();
+
+operation Any getProperty(name: String)
+{
+	return self.attributes.select(a|a.name = name).first;
+}
