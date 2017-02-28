@@ -4,6 +4,7 @@ package simpleFlowchart;
 @Class
 class Flowchart {
 	attr String name;
+	@Association
 	ref Node[*] nodes;
 	val AnotherNode[*] moreNodes;
 }

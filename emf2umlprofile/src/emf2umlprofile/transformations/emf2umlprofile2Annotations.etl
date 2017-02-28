@@ -34,9 +34,9 @@ rule class2stereotype
 		theEAnnotationOfThisStereotype.source = "http://www.eclipse.org/uml2/2.0.0/UML";
 		theEAnnotationOfThisStereotype.references.add(s);
 		newClass.eAnnotations.add(theEAnnotationOfThisStereotype);
-		if (c.eAnnotations.select(an | an.source.equals("Class")).size() > 0) {
+		if (c.eAnnotations.select(an | an.source.equals("Class")).notEmpty()) {
 			createTheClassStereotypeDetails(newClass,s,c);
-		} else if (c.eAnnotations.select(an | an.source.equals("Association")).size() > 0) {
+		} else if (c.eAnnotations.select(an | an.source.equals("Association")).notEmpty()) {
 			createTheAssociationStereotypeDetails(newClass,s,c);
 			createOCLConstraintsForAssociation(newClass,s,c);		
 		} 
@@ -47,6 +47,7 @@ rule class2stereotype
 rule reference2stereotype 
 	transform ref : Source!EReference 
 	to s : Profile!Stereotype { 
+	guard : ref.eAnnotations.select(an | an.source.equals("Association")).notEmpty() 
 	s.name = ref.name;
 	// Add stereotype to the profile
 	profile.ownedStereotype.add(s);
@@ -74,6 +75,7 @@ operation createOCLConstraintsForAssociation(newClass,s,c) {
 	createTheAssociationCheckEndTypeOCLConstraint(newClass,s,c);
 	createTheAssociationCheckMultiplicityOCLConstraint(newClass,s,c);
 	createTheAssociationCheckAggregationOCLConstraint(newClass,s,c);
+	createTheAssociationNavigabilityOCLConstraint(newClass,s,c);
 }
 
 operation createTheAssociationCheckAggregationOCLConstraint(newClass,s,c) {
@@ -92,7 +94,7 @@ operation createTheAssociationCheckAggregationOCLConstraint(newClass,s,c) {
 	theConstraintOperation.name = "CheckAggregation";
 	theConstraintOperation.eType = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EBoolean"));
 	newClass.eOperations.add(theConstraintOperation);
-	createTheOCLConstraintDetails(theConstraintOperation);
+	createTheOCLConstraintDetails(theConstraintOperation, theBodyOfTheConstraint);
 }
 
 
@@ -113,7 +115,7 @@ operation createTheAssociationCheckMultiplicityOCLConstraint(newClass,s,c) {
 	theConstraintOperation.name = "CheckMultiplicity";
 	theConstraintOperation.eType = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EBoolean"));
 	newClass.eOperations.add(theConstraintOperation);
-	createTheOCLConstraintDetails(theConstraintOperation);
+	createTheOCLConstraintDetails(theConstraintOperation, theBodyOfTheConstraint);
 }
 
 operation createTheAssociationCheckEndTypeOCLConstraint(newClass,s,c) {
@@ -132,7 +134,26 @@ operation createTheAssociationCheckEndTypeOCLConstraint(newClass,s,c) {
 	theConstraintOperation.name = "CheckEndTypes";
 	theConstraintOperation.eType = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EBoolean"));
 	newClass.eOperations.add(theConstraintOperation);
-	createTheOCLConstraintDetails(theConstraintOperation);
+	createTheOCLConstraintDetails(theConstraintOperation, theBodyOfTheConstraint);
+}
+
+operation createTheAssociationNavigabilityOCLConstraint(newClass,s,c) {
+	// Creation of the constraint at the Stereotype (M1 level)
+	var theConstraint = new Profile!Constraint;
+	theConstraint.name = "CheckNavigability";
+	s.ownedRule.add(theConstraint);
+	theConstraint.constrainedElement.add(s);
+	var theOpaqueExpression = new Profile!OpaqueExpression;
+	theOpaqueExpression.language.add("OCL");
+	var theBodyOfTheConstraint = calculateTheBodyOfTheCheckNavigabilityConstraint(s,c);
+	theOpaqueExpression.body.add(theBodyOfTheConstraint);
+	theConstraint.specification = theOpaqueExpression;
+	// Creation of the constraint at the UML EAnnotation (M2 Level)
+	var theConstraintOperation = new Profile!EOperation;
+	theConstraintOperation.name = "CheckNavigability";
+	theConstraintOperation.eType = EcoreM2!EDataType.all().selectOne(edt|edt.name.equals("EBoolean"));
+	newClass.eOperations.add(theConstraintOperation);
+	createTheOCLConstraintDetails(theConstraintOperation, theBodyOfTheConstraint);
 }
 
 operation createTheClassStereotypeDetails(newClass,s,c) {
@@ -227,6 +248,23 @@ operation calculateTheBodyOfTheCheckEndTypesConstraint(s,c) {
 	return "let classes = self.base_Association.endType->selectByKind(UML::Class), memberEnds = self.base_Association.memberEnd in classes->exists(c|c.extension_" + source + "->notEmpty()) and classes->exists(c|c.extension_" + target + " -> notEmpty())";
 }
 
+operation calculateTheBodyOfTheCheckNavigabilityConstraint(s,c) {
+	var source;
+	var target;
+	if (c.isTypeOf(EcoreM2!EClass)) {
+		source = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("source").println();
+		target = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("target").println();
+	} else if (c.isTypeOf(EcoreM2!EReference)) {
+		source = c.eContainingClass.name.println();
+		target = c.etype.name.println();
+	}
+	return "let memberEnds = self.base_Association.memberEnd in let " + target +"End = " +
+	"memberEnds->select(type.oclIsKindOf(UML::Class) and type.oclAsType(UML::Class).extension_" + source +"->notEmpty()), " + source + "End = " +
+	"memberEnds->select(type.oclIsKindOf(UML::Class) and type.oclAsType(UML::Class).extension_" + source + "->notEmpty())in " +
+	"if " + source + "End->notEmpty() and " + target + "End->notEmpty() then " + source + "End->first().isNavigable() = " +
+	"true and " + target + "End->first().isNavigable() = false else false endif";
+}
+
 operation calculateTheBodyOfTheCheckAggregationConstraint(s,c) {
 	var source;
 	var target;
@@ -286,7 +324,7 @@ operation createUMLAnnotationsForVersions(profile) {
 	papyrusVersionEAnnotation.details.add(authorMap);
 }
 
-operation createTheOCLConstraintDetails(theConstraintOperation) {
+operation createTheOCLConstraintDetails(theConstraintOperation, body) {
 	var diagnosticsParam = new Profile!EParameter;
 	diagnosticsParam.name = "diagnostics";
 	theConstraintOperation.eParameters.add(diagnosticsParam);
@@ -322,7 +360,7 @@ operation createTheOCLConstraintDetails(theConstraintOperation) {
 	theConstraintOperation.eAnnotations.add(theConstraintEAnnotation);
 	var theEStringToStringMapEntryForConstraint = new Profile!EStringToStringMapEntry;
 	theEStringToStringMapEntryForConstraint.key = "body";
-	theEStringToStringMapEntryForConstraint.value = "let classes = self.base_Association.endType->selectByKind(UML::Class), memberEnds = self.base_Association.memberEnd in classes->exists(c|c.extension_Flowchart->notEmpty()) and classes->exists(c|c.extension_Node -> notEmpty())";
+	theEStringToStringMapEntryForConstraint.value = body;
 	theConstraintEAnnotation.details.add(theEStringToStringMapEntryForConstraint);
 	theContextEGenType.eTypeArguments.add(theContextMapEGenKey);
 	theContextEGenType.eTypeArguments.add(theContextMapEGenValue);
