@@ -1,0 +1,26 @@
+[%
+var ePackName = Source!EPackage.all().first().name;
+%]
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<paletteDefinition>
+	<content>
+		<drawer iconpath="" id="[%=ePackName%]_Drawer" name="[%=ePackName%]">
+			[%
+			for (aClass in Source!EClass.all().select(c|c.getEAnnotation("Class").isDefined())) { %]
+			<aspectTool description="Create a [%=aClass.name%] (Class)"
+				iconpath=""
+				id="clazz.tool.class_[%=aClass.name%]_[%=aClass.name%]"
+				name="[%=aClass.name%] (Class)"
+				refToolId="clazz.tool.class">
+				<postAction id="???">
+					<stereotypesToApply>
+						<stereotype stereotypeName="RootElement::[%=aClass.name%]" />
+					</stereotypesToApply>
+				</postAction>
+			</aspectTool>
+			[%
+			}
+			%]
+		</drawer>
+	</content>
+</paletteDefinition>
