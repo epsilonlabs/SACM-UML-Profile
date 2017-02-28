@@ -73,9 +73,9 @@ operation createOCLConstraintsForAssociation(newClass,s,c) {
 	theValidationDelegationEStringToStringMapEntry.value = "http://www.eclipse.org/emf/2002/Ecore/OCL";
 	theValidationDelegationEAnnotation.details.add(theValidationDelegationEStringToStringMapEntry);
 	createTheAssociationCheckEndTypeOCLConstraint(newClass,s,c);
-	createTheAssociationCheckMultiplicityOCLConstraint(newClass,s,c);
-	createTheAssociationCheckAggregationOCLConstraint(newClass,s,c);
-	createTheAssociationNavigabilityOCLConstraint(newClass,s,c);
+	//createTheAssociationCheckMultiplicityOCLConstraint(newClass,s,c);
+	//createTheAssociationCheckAggregationOCLConstraint(newClass,s,c);
+	//createTheAssociationNavigabilityOCLConstraint(newClass,s,c);
 }
 
 operation createTheAssociationCheckAggregationOCLConstraint(newClass,s,c) {
@@ -238,9 +238,13 @@ operation populateWithStereotypesForEachReference(newClass,s,c) {
 operation calculateTheBodyOfTheCheckEndTypesConstraint(s,c) {
 	var source;
 	var target;
+	var sourceAnnot;
+	var targetAnnot;
 	if (c.isTypeOf(EcoreM2!EClass)) {
-		source = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("source");
-		target = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("target");
+		sourceAnnot = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("source");
+		targetAnnot = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("target");
+		source = c.eReferences.selectOne(r|r.name.equals(sourceAnnot)).eType.name;
+		target = c.eReferences.selectOne(r|r.name.equals(targetAnnot)).eType.name;
 	} else if (c.isTypeOf(EcoreM2!EReference)) {
 		source = c.eContainingClass.name;
 		target = c.etype.name;

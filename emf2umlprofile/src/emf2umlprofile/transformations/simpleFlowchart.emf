@@ -6,6 +6,7 @@ class Flowchart {
 	attr String name;
 	@Association
 	ref Node[*] nodes;
+	@Association
 	val AnotherNode[*] moreNodes;
 }
 
@@ -20,7 +21,8 @@ class AnotherNode {
 	
 }
 
-@Association(source="Flowchart", target="Node")
+@Association(source="source", target="target")
 class nodeClass2Association {
-	
+	ref Flowchart[1] source;
+	ref Node[*] target;
 }
