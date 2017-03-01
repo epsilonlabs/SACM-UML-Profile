@@ -34,6 +34,20 @@ var ePackName = Source!EPackage.all().first().name;
 			</aspectTool>
 			[%
 			}
+			for (aRef in Source!EReference.all().select(c|c.getEAnnotation("Association").isDefined())) { %]
+				<aspectTool description="Create a [%=aRef.name%] (Association)"
+				iconpath="platform:/plugin/autoGenedProf/icons/f.gif"
+				id="clazz.tool.association_[%=aRef.name%]_[%=aRef.name%]"
+				name="[%=aRef.name%] (Association)"
+				refToolId="clazz.tool.association">
+				<postAction id="org.eclipse.papyrus.applystereotypeactionprovider">
+					<stereotypesToApply>
+						<stereotype stereotypeName="RootElement::[%=aRef.name%]" />
+					</stereotypesToApply>
+				</postAction>
+			</aspectTool>
+			[%
+			}
 			%]
 		</drawer>
 	</content>

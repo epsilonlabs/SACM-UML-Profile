@@ -46,6 +46,28 @@
 					</stereotypesToApply>
 				</postAction>
 			</aspectTool>
+				<aspectTool description="Create a nodes (Association)"
+				iconpath="platform:/plugin/autoGenedProf/icons/f.gif"
+				id="clazz.tool.association_nodes_nodes"
+				name="nodes (Association)"
+				refToolId="clazz.tool.association">
+				<postAction id="org.eclipse.papyrus.applystereotypeactionprovider">
+					<stereotypesToApply>
+						<stereotype stereotypeName="RootElement::nodes" />
+					</stereotypesToApply>
+				</postAction>
+			</aspectTool>
+				<aspectTool description="Create a moreNodes (Association)"
+				iconpath="platform:/plugin/autoGenedProf/icons/f.gif"
+				id="clazz.tool.association_moreNodes_moreNodes"
+				name="moreNodes (Association)"
+				refToolId="clazz.tool.association">
+				<postAction id="org.eclipse.papyrus.applystereotypeactionprovider">
+					<stereotypesToApply>
+						<stereotype stereotypeName="RootElement::moreNodes" />
+					</stereotypesToApply>
+				</postAction>
+			</aspectTool>
 		</drawer>
 	</content>
 </paletteDefinition>
