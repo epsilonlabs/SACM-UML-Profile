@@ -1,5 +1,5 @@
 [%
-var ePackName = Source!EPackage.all().first().name;
+var ePackName = Source!EPackage.all().first().name.println();
 for (aClass in Source!EClass.all().select(c|c.getEAnnotation("Class").isDefined())) {
 	aClass.getEAnnotation("Class").details.get("icon").isDefined().println();
 }

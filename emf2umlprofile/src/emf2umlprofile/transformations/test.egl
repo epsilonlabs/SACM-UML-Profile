@@ -1,0 +1,5 @@
+[%
+var pal = test!t_paletteDefinition.all().println();
+var test = new test!t_testTag;
+
+%]
