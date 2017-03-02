@@ -1,0 +1,36 @@
+pre {
+	var ePackName = Source!EPackage.all().first().name;
+	var thePlugin = new Target!t_plugin;
+	Target.root = thePlugin;
+	
+	var theUMLProfileExtention = new Target!t_extension;
+	theUMLProfileExtention.a_point = "org.eclipse.papyrus.uml.extensionpoints.UMLProfile";
+	thePlugin.appendChild(theUMLProfileExtention);
+	var theProfile = new Target!t_profile;
+	theProfile.a_description = ePackName + " Profile";
+	theProfile.a_name = ePackName + " Profile";
+	theProfile.a_path = "pathmap://resources/" + ePackName + "/model.profile.uml";
+	theProfile.a_provider = "Epsilon";
+	theUMLProfileExtention.appendChild(theProfile);
+	
+	var theUriMappingExtension = new Target!t_extension;
+	theUriMappingExtension.a_point = "org.eclipse.emf.ecore.uri_mapping";
+	thePlugin.appendChild(theUriMappingExtension);
+	var theMapping = new Target!t_mapping;
+	theMapping.a_source = "pathmap://resources/" + ePackName + "/";
+	theMapping.a_target = "platform:/plugin/" + ePackName + "/";
+	theUriMappingExtension.appendChild(theMapping);
+	
+	var thePaletteExtension = new Target!t_extension;
+	thePaletteExtension.a_point = "org.eclipse.papyrus.uml.diagram.common.paletteDefinition";
+	thePlugin.appendChild(thePaletteExtension);
+	var thePaletteDefinition = new Target!t_paletteDefinition;
+	thePaletteDefinition.a_ID = ePackName + ".palette";
+	thePaletteDefinition.a_class = "org.eclipse.papyrus.uml.diagram.common.service.PluginPaletteProvider";
+	thePaletteDefinition.a_name = ePackName + " Diagram Elements";
+	thePaletteDefinition.a_path = "palette.xml";
+	var thePriority = new Target!t_Priority;
+	thePriority.a_name = "Medium";
+	thePaletteDefinition.appendChild(thePriority);
+	thePaletteExtension.appendChild(thePaletteDefinition);
+}

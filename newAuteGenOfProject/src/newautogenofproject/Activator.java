@@ -37,6 +37,8 @@ public class Activator extends AbstractUIPlugin {
 		ThingsAreHappeningHere tahh = new ThingsAreHappeningHere();
 		tahh.createPluginProject();
 		tahh.createThePalette();
+		tahh.createThePluginXml();
+		tahh.createTheManifestFile();
 	}
 
 	/*
