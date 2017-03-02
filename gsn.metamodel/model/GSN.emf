@@ -4,6 +4,7 @@ package GSN;
 @namespace(uri="http://www.goalstructuringnotation.info/gsn/core", prefix="GSN_Core")
 package Core {
   abstract class GSNElement {
+  	val ArgumentPatterns.UninstantiatedEntity[1] uninstantiatedEntity;
   }
 
   abstract class IdentifiableElement extends GSNElement {
@@ -49,7 +50,7 @@ package Core {
     val ModularExtensions.Visibility[1] visibility;
   }
 
-  abstract interface UndevelopedElement extends GSNElement {
+  abstract class UndevelopedElement extends GSNElement {
   }
 
   class UndevelopedEntity extends UndevelopedElement {
@@ -92,18 +93,11 @@ package ArgumentPatterns {
   class OptionalStrategySupportedBy extends OptionalSupportedBy, Core.StrategySupportedBy {
   }
 
-  abstract interface UninstantiatedElement extends Core.GSNElement {
+  abstract class UninstantiatedElement extends Core.GSNElement {
   }
 
   class UninstantiatedEntity extends UninstantiatedElement {
   }
-
-  class UninstantGoal extends Core.Goal, UninstantiatedElement {
-  }
-
-  class UndevelopedAndUninstantiatedEntity extends UninstantiatedEntity, Core.UndevelopedEntity {
-  }
-
 }
 
 @namespace(uri="http://www.goalstructuringnotation.info/gsn/modularextensions", prefix="GSN_ModularExtensions")
