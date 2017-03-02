@@ -30,7 +30,7 @@ package Core {
 
   abstract class DescomposableStructuringElement extends SturcturingElement {
     val InContextOf[*]#source inContextOf;
-    val UndevelopedEntity[*] undevelopedEntity;
+    val UndevelopedEntity[1] undevelopedEntity;
   }
   
   abstract interface ModularStructuringElement extends SturcturingElement {
