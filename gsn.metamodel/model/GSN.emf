@@ -23,19 +23,21 @@ package Core {
   class Assumption extends ContextualElement {
   }
 
-  abstract class ArugmentationElement extends IdentifiableElement {
-  }
-
-  abstract interface SturcturingElement extends ArugmentationElement {
-     	 val ModularExtensions.Visibility[1] visibility;
+  abstract class SturcturingElement extends IdentifiableElement {
   }
 
   abstract class DescomposableStructuringElement extends SturcturingElement {
   	    val InContextOf[*]#source inContextOf;
+	    val ModularExtensions.Visibility[1] visibility;
   }
-
+  
+  abstract interface ModularStructuringElement extends SturcturingElement {
+  	
+  }
+  
   class Goal extends DescomposableStructuringElement {
     val GoalSupportedBy[*] supportedBy;
+    val ModularExtensions.ToBeSupportedByContract[*] toBeSupportedByContract;
   }
 
   class Strategy extends DescomposableStructuringElement {
@@ -62,11 +64,11 @@ package Core {
   }
 
   class GoalSupportedBy extends SupportedBy {
-    val ArugmentationElement[1] target;
+    val SturcturingElement[1] target;
   }
 
   class StrategySupportedBy extends SupportedBy {
-    val Goal[1] target;
+    val ModularStructuringElement[1] target;
   }
 
   class InContextOf extends Relationship {
@@ -109,21 +111,24 @@ package ModularExtensions {
 		attr String moduleIdentifier;
 	}
 
-	class AwayGoal extends Core.Goal, Core.ContextualElement, AwayElement {
+	class AwayGoal extends Core.ModularStructuringElement, AwayElement, Core.ContextualElement {
 	}
 	
-	class AwaySolution extends Core.Solution, AwayElement {
+	class AwaySolution extends Core.ModularStructuringElement, AwayElement {
 	}
 	
 	class AwayContext extends Core.Context, AwayElement {
 	}
 	
-	class Module extends Core.SturcturingElement {
-		
+	class Module extends Core.ModularStructuringElement, Core.ContextualElement {
+		val Core.Goal[1] argument;
+		val ContractModule[*] contracts;
+		ref ContractModule[*] contracted;
 	}
 	
-	class ContractModule extends Module {
-		
+	class ContractModule extends Core.ModularStructuringElement, Core.ContextualElement {
+		ref Module[1] client;
+		ref Module[1] contractor;
 	}
 	
 	abstract class Visibility extends Core.GSNElement {
