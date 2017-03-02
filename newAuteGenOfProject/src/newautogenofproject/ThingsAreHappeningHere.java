@@ -192,4 +192,37 @@ public class ThingsAreHappeningHere {
 	    etlModule.execute();
 	    etlModule.getContext().getModelRepository().getModelByName("Profile").dispose();
 	}
+	
+	public void createTheModelProfileNotationFile() throws IOException {
+		BufferedWriter output = new BufferedWriter(new FileWriter(project.getLocation() + File.separator + "model.profile.notation", false));
+		try {
+			output.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+					+ "<xmi:XMI xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\"/>\n");
+			output.close();
+		} catch(IOException ex) {
+            System.out.println("Error writing to file...");
+    	}
+	}
+	
+	public void createTheModelProfileDiFile() throws IOException {
+		BufferedWriter output = new BufferedWriter(new FileWriter(project.getLocation() + File.separator + "model.profile.di", false));
+		try {
+			output.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+					+ "<xmi:XMI xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\"/>\n");
+			output.close();
+		} catch(IOException ex) {
+            System.out.println("Error writing to file...");
+    	}
+	}
+	
+	public void createThebuildPropertiesFile() throws IOException {
+		BufferedWriter output = new BufferedWriter(new FileWriter(project.getLocation() + File.separator + "build.properties", false));
+		try {
+			output.write("bin.includes = META-INF/,\\\n"
+					+ "plugin.xml\n");
+			output.close();
+		} catch(IOException ex) {
+            System.out.println("Error writing to file...");
+    	}
+	}	
 }
