@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="GSN" nsURI="http://www.goalstructuringnotation.info/1.0" nsPrefix="gsn">
+  <eSubpackages name="Core" nsURI="http://www.goalstructuringnotation.info/gsn/core"
+      nsPrefix="GSN_Core">
+    <eClassifiers xsi:type="ecore:EClass" name="GSNElement" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IdentifiableElement" abstract="true"
+        eSuperTypes="#//Core/GSNElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="statement" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ContextualElement" abstract="true"
+        interface="true" eSuperTypes="#//Core/IdentifiableElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Context" eSuperTypes="#//Core/ContextualElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Justification" eSuperTypes="#//Core/ContextualElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Assumption" eSuperTypes="#//Core/ContextualElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ArugmentationElement" abstract="true"
+        eSuperTypes="#//Core/IdentifiableElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="visibility" lowerBound="1"
+          eType="#//ModularExtensions/Visibility" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SturcturingElement" abstract="true"
+        interface="true" eSuperTypes="#//Core/ArugmentationElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="DescomposableStructuringElement" abstract="true"
+        eSuperTypes="#//Core/SturcturingElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="inContextOf" upperBound="-1"
+          eType="#//Core/InContextOf" containment="true" eOpposite="#//Core/InContextOf/source"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Goal" eSuperTypes="#//Core/DescomposableStructuringElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="supportedBy" upperBound="-1"
+          eType="#//Core/GoalSupportedBy" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Strategy" eSuperTypes="#//Core/DescomposableStructuringElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="supportedBy" upperBound="-1"
+          eType="#//Core/StrategySupportedBy" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Solution" eSuperTypes="#//Core/ArugmentationElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="UndevelopedElement" abstract="true"
+        interface="true" eSuperTypes="#//Core/GSNElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="UndevelopedEntity" eSuperTypes="#//Core/UndevelopedElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="UndevelopedGoal" eSuperTypes="#//Core/Goal #//Core/UndevelopedElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Relationship" abstract="true" eSuperTypes="#//Core/GSNElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="SupportedBy" abstract="true" eSuperTypes="#//Core/Relationship">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+          eType="#//Core/SturcturingElement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="GoalSupportedBy" eSuperTypes="#//Core/SupportedBy">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="#//Core/ArugmentationElement" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="StrategySupportedBy" eSuperTypes="#//Core/SupportedBy">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="#//Core/Goal" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="InContextOf" eSuperTypes="#//Core/Relationship">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+          eType="#//Core/DescomposableStructuringElement" eOpposite="#//Core/DescomposableStructuringElement/inContextOf"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="#//Core/ContextualElement" containment="true"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="ArgumentPatterns" nsURI="http://www.goalstructuringnotation.info/gsn/argumentpatterns"
+      nsPrefix="GSN_ArgumentPatterns">
+    <eClassifiers xsi:type="ecore:EClass" name="OptionalSupportedBy" abstract="true"
+        eSuperTypes="#//Core/SupportedBy">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OptionalGoalSupportedBy" eSuperTypes="#//ArgumentPatterns/OptionalSupportedBy #//Core/GoalSupportedBy"/>
+    <eClassifiers xsi:type="ecore:EClass" name="OptionalStrategySupportedBy" eSuperTypes="#//ArgumentPatterns/OptionalSupportedBy #//Core/StrategySupportedBy"/>
+    <eClassifiers xsi:type="ecore:EClass" name="UninstantiatedElement" abstract="true"
+        interface="true" eSuperTypes="#//Core/GSNElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="UninstantiatedEntity" eSuperTypes="#//ArgumentPatterns/UninstantiatedElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="UninstantGoal" eSuperTypes="#//Core/Goal #//ArgumentPatterns/UninstantiatedElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="UndevelopedAndUninstantiatedEntity"
+        eSuperTypes="#//ArgumentPatterns/UninstantiatedEntity #//Core/UndevelopedEntity"/>
+  </eSubpackages>
+  <eSubpackages name="ModularExtensions" nsURI="http://www.goalstructuringnotation.info/gsn/modularextensions"
+      nsPrefix="GSN_ModularExtensions">
+    <eClassifiers xsi:type="ecore:EClass" name="AwayElement" abstract="true" interface="true"
+        eSuperTypes="#//Core/GSNElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="moduleIdentifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AwayGoal" eSuperTypes="#//Core/Goal #//Core/ContextualElement #//ModularExtensions/AwayElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="AwaySolution" eSuperTypes="#//Core/Solution #//ModularExtensions/AwayElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="AwayContext" eSuperTypes="#//Core/Context #//ModularExtensions/AwayElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//Core/SturcturingElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ContractModule" eSuperTypes="#//ModularExtensions/Module"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Visibility" abstract="true" eSuperTypes="#//Core/GSNElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="PublicIndicator" eSuperTypes="#//ModularExtensions/Visibility"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ToBeSupportedByContract" eSuperTypes="#//Core/GSNElement"/>
+  </eSubpackages>
+</ecore:EPackage>

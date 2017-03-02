@@ -1,0 +1,141 @@
+@namespace(uri="http://www.goalstructuringnotation.info/1.0", prefix="gsn")
+package GSN;
+
+@namespace(uri="http://www.goalstructuringnotation.info/gsn/core", prefix="GSN_Core")
+package Core {
+  abstract class GSNElement {
+  }
+
+  abstract class IdentifiableElement extends GSNElement {
+    attr String identifier;
+    attr String statement;
+  }
+
+  abstract interface ContextualElement extends IdentifiableElement {
+  }
+
+  class Context extends ContextualElement {
+  }
+
+  class Justification extends ContextualElement {
+  }
+
+  class Assumption extends ContextualElement {
+  }
+
+  abstract class ArugmentationElement extends IdentifiableElement {
+  }
+
+  abstract interface SturcturingElement extends ArugmentationElement {
+     	 val ModularExtensions.Visibility[1] visibility;
+  }
+
+  abstract class DescomposableStructuringElement extends SturcturingElement {
+  	    val InContextOf[*]#source inContextOf;
+  }
+
+  class Goal extends DescomposableStructuringElement {
+    val GoalSupportedBy[*] supportedBy;
+  }
+
+  class Strategy extends DescomposableStructuringElement {
+    val StrategySupportedBy[*] supportedBy;
+  }
+
+  class Solution extends SturcturingElement {
+  }
+
+  abstract interface UndevelopedElement extends GSNElement {
+  }
+
+  class UndevelopedEntity extends UndevelopedElement {
+  }
+
+  class UndevelopedGoal extends Goal, UndevelopedElement {
+  }
+
+  abstract class Relationship extends GSNElement {
+  }
+
+  abstract class SupportedBy extends Relationship {
+    ref SturcturingElement[1] source;
+  }
+
+  class GoalSupportedBy extends SupportedBy {
+    val ArugmentationElement[1] target;
+  }
+
+  class StrategySupportedBy extends SupportedBy {
+    val Goal[1] target;
+  }
+
+  class InContextOf extends Relationship {
+    ref DescomposableStructuringElement[1]#inContextOf source;
+    val ContextualElement[1] target;
+  }
+
+}
+
+@namespace(uri="http://www.goalstructuringnotation.info/gsn/argumentpatterns", prefix="GSN_ArgumentPatterns")
+package ArgumentPatterns {
+  abstract class OptionalSupportedBy extends Core.SupportedBy {
+    attr int required;
+  }
+
+  class OptionalGoalSupportedBy extends OptionalSupportedBy, Core.GoalSupportedBy {
+  }
+
+  class OptionalStrategySupportedBy extends OptionalSupportedBy, Core.StrategySupportedBy {
+  }
+
+  abstract interface UninstantiatedElement extends Core.GSNElement {
+  }
+
+  class UninstantiatedEntity extends UninstantiatedElement {
+  }
+
+  class UninstantGoal extends Core.Goal, UninstantiatedElement {
+  }
+
+  class UndevelopedAndUninstantiatedEntity extends UninstantiatedEntity, Core.UndevelopedEntity {
+  }
+
+}
+
+@namespace(uri="http://www.goalstructuringnotation.info/gsn/modularextensions", prefix="GSN_ModularExtensions")
+package ModularExtensions {
+
+	abstract interface AwayElement extends Core.GSNElement {
+		attr String moduleIdentifier;
+	}
+
+	class AwayGoal extends Core.Goal, Core.ContextualElement, AwayElement {
+	}
+	
+	class AwaySolution extends Core.Solution, AwayElement {
+	}
+	
+	class AwayContext extends Core.Context, AwayElement {
+	}
+	
+	class Module extends Core.SturcturingElement {
+		
+	}
+	
+	class ContractModule extends Module {
+		
+	}
+	
+	abstract class Visibility extends Core.GSNElement {
+		
+	}
+	
+	class PublicIndicator extends Visibility {
+		
+	}
+
+	class ToBeSupportedByContract extends Core.GSNElement {
+		
+	}
+}
+
