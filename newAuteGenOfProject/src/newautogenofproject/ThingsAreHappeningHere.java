@@ -1,6 +1,14 @@
 package newautogenofproject;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -23,7 +31,7 @@ import org.eclipse.epsilon.etl.EtlModule;
 
 public class ThingsAreHappeningHere {
 	
-	String name = "GeneratedProfile";
+	String name = "simpleFlowchart";
 	IProgressMonitor progresMonitor = new NullProgressMonitor();
 	IWorkspace workspace = ResourcesPlugin.getWorkspace();
 	IWorkspaceRoot root = workspace.getRoot();
@@ -96,6 +104,23 @@ public class ThingsAreHappeningHere {
 	    etlModule.execute();
 	    etlModule.getContext().getModelRepository().dispose();
 	}
+	
+	public void createTheManifestFile() throws IOException {
+		//File sourceFile = new File("C:\\Git\\SACM\\SACM-UML-Profile\\newAuteGenOfProject\\files\\MANIFEST.MF");
+		new File(project.getLocation() + File.separator + "META-INF").mkdir();
+		BufferedWriter output = new BufferedWriter(new FileWriter(project.getLocation() + File.separator + "META-INF" + File.separator + "MANIFEST.MF", false));
+		try {
+			output.write("Manifest-Version: 1.0\n"
+					+ "Bundle-ManifestVersion: 2\n"
+					+ "Bundle-Name: simpleFlowchart\n"
+					+ "Bundle-SymbolicName: autoGenedProf;singleton:=true\n"
+					+ "Bundle-Version: 1.0.0.qualifier\n"
+					+ "Require-Bundle: org.eclipse.papyrus.uml.diagram.common,"
+					+ "org.eclipse.papyrus.uml.extensionpoints,"
+					+ "org.eclipse.papyrus.uml.diagram.clazz;bundle-version=\"2.0.0\"\n");
+			output.close();
+		} catch(IOException ex) {
+            System.out.println("Error writing to file...");
+    	}
+	}
 }
-
-

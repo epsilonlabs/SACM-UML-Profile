@@ -38,6 +38,7 @@ public class Activator extends AbstractUIPlugin {
 		tahh.createPluginProject();
 		tahh.createThePalette();
 		tahh.createThePluginXml();
+		tahh.createTheManifestFile();
 	}
 
 	/*
