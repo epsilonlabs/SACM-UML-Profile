@@ -4,7 +4,7 @@ package GSN;
 @namespace(uri="http://www.goalstructuringnotation.info/gsn/core", prefix="GSN_Core")
 package Core {
   abstract class GSNElement {
-  	val ArgumentPatterns.UninstantiatedEntity[1] uninstantiatedEntity;
+  	val ArgumentPatterns.UninstantiatedEntity uninstantiatedEntity;
   }
 
   abstract class IdentifiableElement extends GSNElement {
@@ -30,16 +30,16 @@ package Core {
 
   abstract class DescomposableStructuringElement extends SturcturingElement {
     val InContextOf[*]#source inContextOf;
-    val UndevelopedEntity[1] undevelopedEntity;
+    val UndevelopedEntity undevelopedEntity;
   }
   
   abstract interface ModularStructuringElement extends SturcturingElement {
   }
   
   class Goal extends DescomposableStructuringElement, ModularStructuringElement {
-    val ModularExtensions.Visibility[1] visibility;
+    val ModularExtensions.Visibility visibility;
     val GoalSupportedBy[*] supportedBy;
-    val ModularExtensions.ToBeSupportedByContract[*] toBeSupportedByContract;
+    val ModularExtensions.ToBeSupportedByContract toBeSupportedByContract;
   }
 
   class Strategy extends DescomposableStructuringElement {
@@ -125,6 +125,8 @@ package ModularExtensions {
 	class ContractModule extends Core.ModularStructuringElement, Core.ContextualElement {
 		ref Module[1] client;
 		ref Module[1] contractor;
+		ref Core.Goal[1] sourceClaim;
+		ref Core.Goal[1] targetClaim;
 	}
 	
 	abstract class Visibility extends Core.GSNElement {
