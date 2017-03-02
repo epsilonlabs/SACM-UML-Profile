@@ -1,15 +1,1 @@
-var allContents = M.allContents();
-
-//var theProfile = Profile.all.selectOne(p | p.name.equals("RootElement")).println();
-//theProfile.ownedElement.println();
-//var aProperty = new Property;
-/*
-var extensions = Extension.all();
-for (anExtension in extensions) {
-	anExtension.name.println();
-	anExtension.metaclass.println();
-}
-*/
-
-var allClasses = simple!EClass.all.selectOne(c|c.eAnnotations.get(0).source.equals("Association"));
-allClasses.eAnnotations.get(0).details.get("source1").println();
+var allContents = EClass.all().println();
