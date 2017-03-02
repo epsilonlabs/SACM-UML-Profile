@@ -68,4 +68,34 @@ public class ThingsAreHappeningHere {
 	    etlModule.execute();
 	    etlModule.getContext().getModelRepository().dispose();
 	}
+	
+	public void createThePluginXml() throws Exception {
+		EtlModule etlModule = new EtlModule();
+		EmfModel sourceModel = new EmfModel();
+		
+	    StringProperties sourceProperties = new StringProperties();
+	    sourceProperties.put(EmfModel.PROPERTY_METAMODEL_URI,"http://www.eclipse.org/emf/2002/Ecore");
+	    sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, "C:\\Git\\SACM\\SACM-UML-Profile\\newAuteGenOfProject\\files\\simpleFlowchart.ecore");
+	    sourceProperties.put(EmfModel.PROPERTY_NAME, "Source");
+	    sourceProperties.put(EmfModel.PROPERTY_READONLOAD, "true");
+	    sourceProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "false");
+	    sourceModel.load(sourceProperties, (IRelativePathResolver) null);
+
+		PlainXmlModel targetModel = new PlainXmlModel();
+		StringProperties targetProperties = new StringProperties();
+		targetProperties.put(PlainXmlModel.PROPERTY_FILE, project.getLocation() + File.separator + "plugin.xml");
+		targetProperties.put(PlainXmlModel.PROPERTY_NAME, "Target");
+		targetProperties.put(PlainXmlModel.PROPERTY_READONLOAD, "false");
+		targetProperties.put(PlainXmlModel.PROPERTY_STOREONDISPOSAL, "true");
+	    targetModel.load(targetProperties);
+	    
+	    etlModule.getContext().getModelRepository().addModel(sourceModel);
+	    etlModule.getContext().getModelRepository().addModel(targetModel);
+	    File etlFile = new File("C:\\Git\\SACM\\SACM-UML-Profile\\newAuteGenOfProject\\files\\pluginXmlGenerationM2M.etl");
+	    etlModule.parse(etlFile);
+	    etlModule.execute();
+	    etlModule.getContext().getModelRepository().dispose();
+	}
 }
+
+
