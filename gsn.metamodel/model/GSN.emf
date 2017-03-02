@@ -11,10 +11,11 @@ package Core {
     attr String statement;
   }
 
-  abstract interface ContextualElement extends IdentifiableElement {
+  abstract class ContextualElement extends IdentifiableElement {
   }
 
   class Context extends ContextualElement {
+    val ModularExtensions.Visibility[1] visibility;
   }
 
   class Justification extends ContextualElement {
@@ -27,15 +28,15 @@ package Core {
   }
 
   abstract class DescomposableStructuringElement extends SturcturingElement {
-  	    val InContextOf[*]#source inContextOf;
-	    val ModularExtensions.Visibility[1] visibility;
+    val InContextOf[*]#source inContextOf;
+    val UndevelopedEntity[*] undevelopedEntity;
   }
   
   abstract interface ModularStructuringElement extends SturcturingElement {
-  	
   }
   
-  class Goal extends DescomposableStructuringElement {
+  class Goal extends DescomposableStructuringElement, ModularStructuringElement {
+    val ModularExtensions.Visibility[1] visibility;
     val GoalSupportedBy[*] supportedBy;
     val ModularExtensions.ToBeSupportedByContract[*] toBeSupportedByContract;
   }
@@ -45,6 +46,7 @@ package Core {
   }
 
   class Solution extends SturcturingElement {
+    val ModularExtensions.Visibility[1] visibility;
   }
 
   abstract interface UndevelopedElement extends GSNElement {
