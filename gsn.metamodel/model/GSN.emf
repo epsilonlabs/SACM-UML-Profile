@@ -24,23 +24,25 @@ package Core {
   }
 
   abstract class ArugmentationElement extends IdentifiableElement {
-   	 val ModularExtensions.Visibility[1] visibility;
   }
 
   abstract interface SturcturingElement extends ArugmentationElement {
+     	 val ModularExtensions.Visibility[1] visibility;
   }
 
-  class Goal extends SturcturingElement {
+  abstract class DescomposableStructuringElement extends SturcturingElement {
+  	    val InContextOf[*]#source inContextOf;
+  }
+
+  class Goal extends DescomposableStructuringElement {
     val GoalSupportedBy[*] supportedBy;
-    val InContextOf[*]#source inContextOf;
   }
 
-  class Strategy extends SturcturingElement {
+  class Strategy extends DescomposableStructuringElement {
     val StrategySupportedBy[*] supportedBy;
-    val InContextOf[*]#source inContextOf;
   }
 
-  class Solution extends ArugmentationElement {
+  class Solution extends SturcturingElement {
   }
 
   abstract interface UndevelopedElement extends GSNElement {
@@ -68,7 +70,7 @@ package Core {
   }
 
   class InContextOf extends Relationship {
-    ref SturcturingElement[1]#inContextOf source;
+    ref DescomposableStructuringElement[1]#inContextOf source;
     val ContextualElement[1] target;
   }
 
