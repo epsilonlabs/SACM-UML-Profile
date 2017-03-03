@@ -112,7 +112,7 @@ public class ThingsAreHappeningHere {
 	    
 	    etlModule.getContext().getModelRepository().addModel(sourceModel);
 	    etlModule.getContext().getModelRepository().addModel(targetModel);
-	    java.net.URI etlFile = Activator.getDefault().getBundle().getResource("files/paletteGenerationM2M.etl").toURI();
+	    java.net.URI etlFile = Activator.getDefault().getBundle().getResource("files/pluginXmlGenerationM2M.etl").toURI();
 	    etlModule.parse(etlFile);
 	    etlModule.execute();
 	    etlModule.getContext().getModelRepository().dispose();
