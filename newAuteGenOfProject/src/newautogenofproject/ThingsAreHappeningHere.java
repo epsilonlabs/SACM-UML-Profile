@@ -4,40 +4,53 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
-import org.eclipse.pde.internal.core.natures.PDE;
 import org.eclipse.epsilon.common.util.StringProperties;
-import org.eclipse.epsilon.egl.parse.Egx_EolParserRules.additiveExpression_return;
 import org.eclipse.epsilon.emc.emf.EmfMetaModel;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.emc.plainxml.PlainXmlModel;
 import org.eclipse.epsilon.emc.uml.UmlModel;
-import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.models.IRelativePathResolver;
 import org.eclipse.epsilon.etl.EtlModule;
+import org.eclipse.pde.internal.core.natures.PDE;
+import org.osgi.framework.Bundle;
+
+import newautogenofproject.popup.Activator;
 
 public class ThingsAreHappeningHere {
 	
-	String name = getNameOfEPackage();
+	String name;
 	IProgressMonitor progresMonitor = new NullProgressMonitor();
 	IWorkspace workspace = ResourcesPlugin.getWorkspace();
 	IWorkspaceRoot root = workspace.getRoot();
-	IProject project = root.getProject(name);
+	IProject project;
 	
-	public void createPluginProject() throws CoreException {
+	public ThingsAreHappeningHere(String theSelectedFilePath) {
+		this.name = getNameOfEPackage(theSelectedFilePath);
+		project = root.getProject(name);
+		File test = new File("");
+	}
+	
+	public void createPluginProject(String theSelectedFile) throws CoreException {
 		if (!project.exists()) {
 			project.create(progresMonitor);
 		}
@@ -48,14 +61,13 @@ public class ThingsAreHappeningHere {
 		project.setDescription(desc, progresMonitor);
 	}
 		
-	public void createThePalette() throws Exception {
-		
+	public void createThePalette(String theSelectedFilePath) throws Exception {
 		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = new EmfModel();
 		
 	    StringProperties sourceProperties = new StringProperties();
 	    sourceProperties.put(EmfModel.PROPERTY_METAMODEL_URI,"http://www.eclipse.org/emf/2002/Ecore");
-	    sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, "C:\\Git\\SACM\\SACM-UML-Profile\\newAuteGenOfProject\\files\\simpleFlowchart.ecore");
+	    sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, theSelectedFilePath);
 	    sourceProperties.put(EmfModel.PROPERTY_NAME, "Source");
 	    sourceProperties.put(EmfModel.PROPERTY_READONLOAD, "true");
 	    sourceProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "false");
@@ -71,19 +83,20 @@ public class ThingsAreHappeningHere {
 	    
 	    etlModule.getContext().getModelRepository().addModel(sourceModel);
 	    etlModule.getContext().getModelRepository().addModel(targetModel);
-	    File etlFile = new File("C:\\Git\\SACM\\SACM-UML-Profile\\newAuteGenOfProject\\files\\paletteGenerationM2M.etl");
+	    
+	    java.net.URI etlFile = Activator.getDefault().getBundle().getResource("files/paletteGenerationM2M.etl").toURI();
 	    etlModule.parse(etlFile);
 	    etlModule.execute();
 	    etlModule.getContext().getModelRepository().dispose();
 	}
 	
-	public void createThePluginXml() throws Exception {
+	public void createThePluginXml(String theSelectedFilePath) throws Exception {
 		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = new EmfModel();
 		
 	    StringProperties sourceProperties = new StringProperties();
 	    sourceProperties.put(EmfModel.PROPERTY_METAMODEL_URI,"http://www.eclipse.org/emf/2002/Ecore");
-	    sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, "C:\\Git\\SACM\\SACM-UML-Profile\\newAuteGenOfProject\\files\\simpleFlowchart.ecore");
+	    sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, theSelectedFilePath);
 	    sourceProperties.put(EmfModel.PROPERTY_NAME, "Source");
 	    sourceProperties.put(EmfModel.PROPERTY_READONLOAD, "true");
 	    sourceProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "false");
@@ -99,13 +112,13 @@ public class ThingsAreHappeningHere {
 	    
 	    etlModule.getContext().getModelRepository().addModel(sourceModel);
 	    etlModule.getContext().getModelRepository().addModel(targetModel);
-	    File etlFile = new File("C:\\Git\\SACM\\SACM-UML-Profile\\newAuteGenOfProject\\files\\pluginXmlGenerationM2M.etl");
+	    java.net.URI etlFile = Activator.getDefault().getBundle().getResource("files/paletteGenerationM2M.etl").toURI();
 	    etlModule.parse(etlFile);
 	    etlModule.execute();
 	    etlModule.getContext().getModelRepository().dispose();
 	}
 	
-	public void createTheManifestFile() throws IOException {
+	public void createTheManifestFile(String theSelectedFilePath) throws IOException {
 		new File(project.getLocation() + File.separator + "META-INF").mkdir();
 		BufferedWriter output = new BufferedWriter(new FileWriter(project.getLocation() + File.separator + "META-INF" + File.separator + "MANIFEST.MF", false));
 		try {
@@ -123,14 +136,14 @@ public class ThingsAreHappeningHere {
     	}
 	}
 	
-	public void createTheProfileUmlFile() throws Exception {
+	public void createTheProfileUmlFile(String theSelectedFilePath) throws Exception {
 		EtlModule etlModule = new EtlModule();
 	    
 		// The emfatic (ecore) source
 		EmfModel sourceModel = new EmfModel();
 	    StringProperties sourceProperties = new StringProperties();
 	    sourceProperties.put(EmfModel.PROPERTY_METAMODEL_URI,"http://www.eclipse.org/emf/2002/Ecore");
-	    sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, "C:\\Git\\SACM\\SACM-UML-Profile\\newAuteGenOfProject\\files\\simpleFlowchart.ecore");
+	    sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, theSelectedFilePath);
 	    sourceProperties.put(EmfModel.PROPERTY_NAME, "Source");
 	    sourceProperties.put(EmfModel.PROPERTY_READONLOAD, "true");
 	    sourceProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "false");
@@ -192,7 +205,8 @@ public class ThingsAreHappeningHere {
 	    etlModule.getContext().getModelRepository().addModel(umlEcoreMetaModel);
 	    etlModule.getContext().getModelRepository().addModel(ECoreMetaModel);
 	    etlModule.getContext().getModelRepository().addModel(ecorePrimitiveTypesModel);
-	    File etlFile = new File("C:\\Git\\SACM\\SACM-UML-Profile\\newAuteGenOfProject\\files\\emf2umlprofile2Annotations.etl");
+	    
+	    java.net.URI etlFile = Activator.getDefault().getBundle().getResource("files/emf2umlprofile2Annotations.etl").toURI();
 	    etlModule.parse(etlFile);
 	    etlModule.execute();
 	    etlModule.getContext().getModelRepository().getModelByName("Profile").dispose();
@@ -231,9 +245,9 @@ public class ThingsAreHappeningHere {
     	}
 	}	
 	
-	private String getNameOfEPackage() {
+	private String getNameOfEPackage(String theSelectedFilePath) {
 		// The emfatic (ecore) source
-		File f = new File("C:\\Git\\SACM\\SACM-UML-Profile\\newAuteGenOfProject\\files\\simpleFlowchart.ecore");
+		File f = new File(theSelectedFilePath);
 		URI fileURI = URI.createFileURI(f.getAbsolutePath());
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl ());
 					
