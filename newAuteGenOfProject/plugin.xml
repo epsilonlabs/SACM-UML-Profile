@@ -1,38 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-
-   <extension
-         point="org.eclipse.ui.views">
-      <category
-            name="Sample Category"
-            id="newAutoGenOfProject">
-      </category>
-      <view
-            name="Sample View"
-            icon="icons/sample.gif"
-            category="newAutoGenOfProject"
-            class="newautogenofproject.views.SampleView"
-            id="newautogenofproject.views.SampleView">
-      </view>
+	<extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            nameFilter="*.ecore"
+            id="newautogenofproject.contribution1">
+         <menu
+               label="Papyrus Profiles"
+               path="additions"
+               id="newautogenofproject.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Generate Papyrus Profile project"
+               class="newautogenofproject.popup.actions.CreatePapyrusProjectAction"
+               menubarPath="newautogenofproject.menu1/group1"
+               enablesFor="1"
+               id="newautogenofproject.createPapyrusProjectAction">
+         </action>
+      </objectContribution>
    </extension>
-   <extension
-         point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension
-            targetID="org.eclipse.jdt.ui.JavaPerspective">
-         <view
-               ratio="0.5"
-               relative="org.eclipse.ui.views.ProblemView"
-               relationship="right"
-               id="newautogenofproject.views.SampleView">
-         </view>
-      </perspectiveExtension>
-   </extension>
-   <extension
-         point="org.eclipse.help.contexts">
-      <contexts
-            file="contexts.xml">
-      </contexts>
-   </extension>
-
 </plugin>
