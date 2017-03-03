@@ -17,12 +17,12 @@
 
 /*The elements with the "Flowchart" stereotype must be displayed in bold. */
 [appliedStereotypes~="Flowchart"]{
-	fillColor: ghostwhite;
+	fillColor: tomato;
+	shadow: true;
     bold:true;
     fontColor: #0000FF;
     followSVGSymbol: true;
     maintainAspectRatio: true;
-    svgFile: "platform:/resource/flowchartSimpleProfile/icons/ring.svg";
 }
 /* 
 Class {
