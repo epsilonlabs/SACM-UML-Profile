@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<paletteDefinition>
+  <content>
+    <drawer iconpath="/icons/f.gif" id="simpleFlowchart_Drawer" name="simpleFlowchart">
+      <aspectTool 
+      		description="Create a Flowchart (Class)" 
+      		iconpath="platform:/plugin/flowchartSimpleProfile/icons/sample.gif" 
+      		id="clazz.tool.class_Flowchart_Flowchart" 
+      		name="Flowchart (Class)" 
+      		refToolId="clazz.tool.class">
+        <postAction id="org.eclipse.papyrus.applystereotypeactionprovider">
+          <stereotypesToApply>
+            <stereotype stereotypeName="RootElement::Flowchart"/>
+          </stereotypesToApply>
+        </postAction>
+      </aspectTool>
+      <aspectTool 
+      		description="Create a Node (Class)" 
+       		iconpath="platform:/plugin/flowchartSimpleProfile/icons/sample.gif"      		
+      		id="clazz.tool.class_Node_Node" 
+      		name="Node (Class)" 
+      		refToolId="clazz.tool.class">
+        <postAction id="org.eclipse.papyrus.applystereotypeactionprovider">
+          <stereotypesToApply>
+            <stereotype stereotypeName="RootElement::Node"/>
+          </stereotypesToApply>
+        </postAction>
+      </aspectTool>
+      <aspectTool 
+      		description="Create a nodeClass2Association (Association)" 
+       		iconpath="platform:/plugin/flowchartSimpleProfile/icons/sample.gif"      		
+      		id="clazz.tool.association_nodeClass2Association_nodeClass2Association" 
+      		name="nodeClass2Association (Association)" 
+      		refToolId="clazz.tool.association">
+        <postAction id="org.eclipse.papyrus.applystereotypeactionprovider">
+          <stereotypesToApply>
+            <stereotype stereotypeName="RootElement::nodeClass2Association"/>
+          </stereotypesToApply>
+        </postAction>
+      </aspectTool>
+      <aspectTool 
+      		description="Create a nodes (Association)" 
+       		iconpath="platform:/plugin/flowchartSimpleProfile/icons/sample.gif"      		
+      		id="clazz.tool.association_nodes_nodes" 
+      		name="nodes (Association)" 
+      		refToolId="clazz.tool.association">
+        <postAction id="org.eclipse.papyrus.applystereotypeactionprovider">
+          <stereotypesToApply>
+            <stereotype stereotypeName="RootElement::nodes"/>
+          </stereotypesToApply>
+        </postAction>
+      </aspectTool>
+      <aspectTool 
+      		description="Create a moreNodes (Association)" 
+       		iconpath="platform:/plugin/flowchartSimpleProfile/icons/sample.gif"      		
+      		id="clazz.tool.association_moreNodes_moreNodes" 
+      		name="moreNodes (Association)" 
+      		refToolId="clazz.tool.association">
+        <postAction id="org.eclipse.papyrus.applystereotypeactionprovider">
+          <stereotypesToApply>
+            <stereotype stereotypeName="RootElement::moreNodes"/>
+          </stereotypesToApply>
+        </postAction>
+      </aspectTool>
+    </drawer>
+  </content>
+</paletteDefinition>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<paletteDefinition>
+	<content>			
+   		<drawer iconpath="/icons/f.gif" id="simpleFlowchart_Drawer" name="simpleFlowchart">
+			<aspectTool description="Create a Flowchart (Class)" 
+						iconpath="platform:/plugin/flowchartSimpleProfile/icons/sample.gif" 
+						id="clazz.tool.class_Flowchart_Flowchart" 
+						name="Flowchart (Class)" 
+						refToolId="clazz.tool.class">
+		        <postAction id="org.eclipse.papyrus.applystereotypeactionprovider">
+		          <stereotypesToApply>
+		            <stereotype stereotypeName="RootElement::Flowchart"/>
+		          </stereotypesToApply>
+		        </postAction>
+	      	</aspectTool>
+		</drawer>
+	</content>
+</paletteDefinition>

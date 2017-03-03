@@ -1,0 +1,37 @@
+/*all elements should be filled in red, and all texts should be blue*/
+/** {
+    fillColor: aqua;
+    fontColor: #0000FF;
+}*/
+
+
+/* All UML Classes will have a white and vertical gradient. 
+ * The Element icon and the shadow will be displayed, as well as their fully qualified name.*/
+/*Class {
+    gradient: white vertical;
+    elementIcon:true;
+    shadow:true;
+    qualifiedNameDepth:full;
+}*/
+
+
+/*The elements with the "Flowchart" stereotype must be displayed in bold. */
+[appliedStereotypes~="Flowchart"]{
+	fillColor: ghostwhite;
+    bold:true;
+    fontColor: #0000FF;
+    followSVGSymbol: true;
+    maintainAspectRatio: true;
+    svgFile: "platform:/resource/flowchartSimpleProfile/icons/ring.svg";
+}
+/* 
+Class {
+	fontName:"Segoe UI";
+	bold:true;
+	fillColor:#00FFFF;
+	transparency:0.0;
+	gradient:#FFFFFF vertical;
+	lineColor:#000000;
+	shadow: false;
+}*/
+
