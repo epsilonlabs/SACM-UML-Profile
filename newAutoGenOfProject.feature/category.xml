@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/newAutoGenOfProject.feature_1.0.0.qualifier.jar" id="newAutoGenOfProject.feature" version="1.0.0.qualifier">
+      <category name="epsilon_papyrus"/>
+   </feature>
+   <category-def name="epsilon_papyrus" label="Epsilon Papyrus Generation"/>
+</site>

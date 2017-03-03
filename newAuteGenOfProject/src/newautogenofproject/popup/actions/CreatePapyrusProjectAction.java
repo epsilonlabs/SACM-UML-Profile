@@ -55,6 +55,14 @@ public class CreatePapyrusProjectAction implements IObjectActionDelegate {
 				protected IStatus run(IProgressMonitor monitor) {
 					try {
 						tahh.createPluginProject(theSelectedFilePath);
+						tahh.createThePalette(theSelectedFilePath);
+						tahh.createThePluginXml(theSelectedFilePath);
+						tahh.createTheProfileUmlFile(theSelectedFilePath);
+						tahh.createTheManifestFile(theSelectedFilePath);
+						tahh.createTheModelProfileNotationFile();
+						tahh.createTheModelProfileDiFile();
+						tahh.createThebuildPropertiesFile();
+						tahh.refresh();	
 					} catch (Exception ex) {
 						LogUtil.log(ex);
 						PlatformUI.getWorkbench().getDisplay()
@@ -74,89 +82,6 @@ public class CreatePapyrusProjectAction implements IObjectActionDelegate {
 			};
 			job1.setPriority(Job.SHORT);
 			job1.schedule();
-			Job job2 = new Job("Generating the Palette.") {
-				protected IStatus run(IProgressMonitor monitor) {
-					try {
-						tahh.createThePalette(theSelectedFilePath);
-					} catch (Exception ex) {
-						LogUtil.log(ex);
-						PlatformUI.getWorkbench().getDisplay()
-								.syncExec(new Runnable() {
-									public void run() {
-										MessageDialog
-												.openError(shell, "Error",
-														"An error has occured. Please see the Error Log.");
-									}
-
-								});
-					} finally {
-						CachedResourceSet.getCache().clear();
-					}
-					return Status.OK_STATUS;
-				}
-			};
-			job2.setPriority(Job.SHORT);
-			job2.schedule();
-			Job job3 = new Job("Generating the Plugin XML.") {
-				protected IStatus run(IProgressMonitor monitor) {
-					try {
-						tahh.createThePluginXml(theSelectedFilePath);
-					} catch (Exception ex) {
-						LogUtil.log(ex);
-						PlatformUI.getWorkbench().getDisplay()
-								.syncExec(new Runnable() {
-									public void run() {
-										MessageDialog
-												.openError(shell, "Error",
-														"An error has occured. Please see the Error Log.");
-									}
-
-								});
-					} finally {
-						CachedResourceSet.getCache().clear();
-					}
-					return Status.OK_STATUS;
-				}
-			};
-			job3.setPriority(Job.SHORT);
-			job3.schedule();
-			Job job4 = new Job("Generating the Profile.") {
-				protected IStatus run(IProgressMonitor monitor) {
-					try {
-						tahh.createTheProfileUmlFile(theSelectedFilePath);
-						tahh.createTheManifestFile(theSelectedFilePath);
-						tahh.createTheModelProfileNotationFile();
-						tahh.createTheModelProfileDiFile();
-						tahh.createThebuildPropertiesFile();
-						tahh.refresh();
-					} catch (Exception ex) {
-						LogUtil.log(ex);
-						PlatformUI.getWorkbench().getDisplay()
-								.syncExec(new Runnable() {
-									public void run() {
-										MessageDialog
-												.openError(shell, "Error",
-														"An error has occured. Please see the Error Log.");
-									}
-
-								});
-					} finally {
-						CachedResourceSet.getCache().clear();
-					}
-					return Status.OK_STATUS;
-				}
-			};
-			job4.setPriority(Job.SHORT);
-			job4.schedule();
-			/*
-			tahh.createPluginProject(theSelectedFilePath);
-			tahh.createThePalette(theSelectedFilePath);
-			tahh.createThePluginXml(theSelectedFilePath);
-			tahh.createTheProfileUmlFile(theSelectedFilePath);
-			*/
-			
-			
-
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
