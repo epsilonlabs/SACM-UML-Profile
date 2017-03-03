@@ -20,14 +20,14 @@ rule class2stereotype
 	at.a_name = c.name + " (Class)";
 	at.a_refToolId="clazz.tool.class";
 	if (c.getEAnnotation("Class").details.get("icon").isDefined()) {
-		at.a_iconpath = "platform:/plugin/autoGenedProf/" + c.getEAnnotation("Class").details.get("icon");
+		at.a_iconpath = "platform:/plugin/" + ePackName + "/" + c.getEAnnotation("Class").details.get("icon");
 	}
 	var thePostAction = new Target!t_postAction;
 	thePostAction.a_id="org.eclipse.papyrus.applystereotypeactionprovider";
 	var theStereotypesToApply = new Target!t_stereotypesToApply;
 	thePostAction.appendChild(theStereotypesToApply);
 	var theStereotype = new Target!t_stereotype;
-	theStereotype.a_stereotypeName = "RootElement::" + c.name;
+	theStereotype.a_stereotypeName = ePackName + "::" + c.name;
 	theStereotypesToApply.appendChild(theStereotype);
 	at.appendChild(thePostAction);
 	theDrawer.appendChild(at);
@@ -42,14 +42,14 @@ rule classAssociation2stereotype
 		at.a_name = c.name + " (Association)";
 		at.a_refToolId="clazz.tool.association";
 		if (c.getEAnnotation("Association").details.get("icon").isDefined()) {
-			at.a_iconpath = "platform:/plugin/autoGenedProf/" + c.getEAnnotation("Association").details.get("icon");
+			at.a_iconpath = "platform:/plugin/" + ePackName + "/" + c.getEAnnotation("Association").details.get("icon");
 		}
 		var thePostAction = new Target!t_postAction;
 		thePostAction.a_id="org.eclipse.papyrus.applystereotypeactionprovider";
 		var theStereotypesToApply = new Target!t_stereotypesToApply;
 		thePostAction.appendChild(theStereotypesToApply);
 		var theStereotype = new Target!t_stereotype;
-		theStereotype.a_stereotypeName = "RootElement::" + c.name;
+		theStereotype.a_stereotypeName = ePackName + "::" + c.name;
 		theStereotypesToApply.appendChild(theStereotype);
 		at.appendChild(thePostAction);
 		theDrawer.appendChild(at);
@@ -64,14 +64,14 @@ rule eRef2stereotype
 		at.a_name = ref.name + " (Association)";
 		at.a_refToolId="clazz.tool.association";
 		if (ref.getEAnnotation("Association").details.get("icon").isDefined()) {
-			at.a_iconpath = "platform:/plugin/autoGenedProf/" + ref.getEAnnotation("Association").details.get("icon");
+			at.a_iconpath = "platform:/plugin/" + ePackName + "/" + ref.getEAnnotation("Association").details.get("icon");
 		}
 		var thePostAction = new Target!t_postAction;
 		thePostAction.a_id="org.eclipse.papyrus.applystereotypeactionprovider";
 		var theStereotypesToApply = new Target!t_stereotypesToApply;
 		thePostAction.appendChild(theStereotypesToApply);
 		var theStereotype = new Target!t_stereotype;
-		theStereotype.a_stereotypeName = "RootElement::" + ref.name;
+		theStereotype.a_stereotypeName = ePackName + "::" + ref.name;
 		theStereotypesToApply.appendChild(theStereotype);
 		at.appendChild(thePostAction);
 		theDrawer.appendChild(at);
