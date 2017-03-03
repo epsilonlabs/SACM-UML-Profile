@@ -1,21 +1,19 @@
 pre {
+	var ePackName = Source!EPackage.all().first().name;
 	var profile = new Profile!Profile;
-	
 	var classImport = new Profile!ElementImport;
 	classImport.`alias` = "Class";
 	classImport.importedElement = UMLM2!Class.all.selectOne(c|c.name = "Class");
 	profile.metaclassReference.add(classImport);
 	profile.elementImport.add(classImport);
-	
 	var associationImport = new Profile!ElementImport;
 	associationImport.`alias` = "Association";
 	associationImport.importedElement = UMLM2!Class.all.selectOne(c|c.name = "Association");
 	profile.elementImport.add(associationImport);
-	
 	var ePackage = new Profile!EPackage;
 	createUMLAnnotationsForVersions(profile);
 	
-	profile.name = "RootElement";
+	profile.name = ePackName;
 }
 
 rule class2stereotype 
@@ -299,9 +297,9 @@ operation createUMLAnnotationsForVersions(profile) {
 	var theAnnotation = new Profile!EAnnotation;
 	theAnnotation.source = "http://www.eclipse.org/uml2/2.0.0/UML";
 	profile.eAnnotations.add(theAnnotation);
-	ePackage.name = "RootElement";
-	ePackage.NsPrefix = "RootElement";
-	ePackage.nsUri = "http:///schemas/RootElement/something/1";
+	ePackage.name = ePackName;
+	ePackage.NsPrefix = ePackName;
+	ePackage.nsUri = "http:///schemas/" + ePackName + "/something/1";
 	theAnnotation.contents.add(ePackage);
 	var papyrusVersionEAnnotation = new Profile!EAnnotation;
 	papyrusVersionEAnnotation.source = "PapyrusVersion";

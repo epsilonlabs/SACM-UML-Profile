@@ -12,7 +12,12 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.pde.internal.core.natures.PDE;
 import org.eclipse.epsilon.common.util.StringProperties;
 import org.eclipse.epsilon.egl.parse.Egx_EolParserRules.additiveExpression_return;
@@ -26,7 +31,7 @@ import org.eclipse.epsilon.etl.EtlModule;
 
 public class ThingsAreHappeningHere {
 	
-	String name = "simpleFlowchart";
+	String name = getNameOfEPackage();
 	IProgressMonitor progresMonitor = new NullProgressMonitor();
 	IWorkspace workspace = ResourcesPlugin.getWorkspace();
 	IWorkspaceRoot root = workspace.getRoot();
@@ -42,7 +47,7 @@ public class ThingsAreHappeningHere {
 		      PDE.PLUGIN_NATURE});
 		project.setDescription(desc, progresMonitor);
 	}
-	
+		
 	public void createThePalette() throws Exception {
 		
 		EtlModule etlModule = new EtlModule();
@@ -106,8 +111,8 @@ public class ThingsAreHappeningHere {
 		try {
 			output.write("Manifest-Version: 1.0\n"
 					+ "Bundle-ManifestVersion: 2\n"
-					+ "Bundle-Name: simpleFlowchart\n"
-					+ "Bundle-SymbolicName: autoGenedProf;singleton:=true\n"
+					+ "Bundle-Name: " + name + "\n"
+					+ "Bundle-SymbolicName: " + name + ";singleton:=true\n"
 					+ "Bundle-Version: 1.0.0.qualifier\n"
 					+ "Require-Bundle: org.eclipse.papyrus.uml.diagram.common,"
 					+ "org.eclipse.papyrus.uml.extensionpoints,"
@@ -120,8 +125,8 @@ public class ThingsAreHappeningHere {
 	
 	public void createTheProfileUmlFile() throws Exception {
 		EtlModule etlModule = new EtlModule();
-
-		// The ultimate goal: the UML profile
+	    
+		// The emfatic (ecore) source
 		EmfModel sourceModel = new EmfModel();
 	    StringProperties sourceProperties = new StringProperties();
 	    sourceProperties.put(EmfModel.PROPERTY_METAMODEL_URI,"http://www.eclipse.org/emf/2002/Ecore");
@@ -131,7 +136,7 @@ public class ThingsAreHappeningHere {
 	    sourceProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "false");
 	    sourceModel.load(sourceProperties, (IRelativePathResolver) null);
 		
-	    // The emfatic (ecore) source
+		// The ultimate goal: the UML profile
 		UmlModel targetModel = new UmlModel();
 		StringProperties targetProperties = new StringProperties();
 		targetProperties.put(UmlModel.PROPERTY_METAMODEL_URI,"http://www.eclipse.org/uml2/5.0.0/UML");
@@ -225,4 +230,18 @@ public class ThingsAreHappeningHere {
             System.out.println("Error writing to file...");
     	}
 	}	
+	
+	private String getNameOfEPackage() {
+		// The emfatic (ecore) source
+		File f = new File("C:\\Git\\SACM\\SACM-UML-Profile\\newAuteGenOfProject\\files\\simpleFlowchart.ecore");
+		URI fileURI = URI.createFileURI(f.getAbsolutePath());
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl ());
+					
+		ResourceSet resourceSet = new ResourceSetImpl(); 
+		Resource resource1 = resourceSet.getResource(fileURI, true);
+		EPackage wdwPackage = (EPackage)resource1.getContents().get(0);
+	   
+	    return wdwPackage.getName();
+	}
+
 }
