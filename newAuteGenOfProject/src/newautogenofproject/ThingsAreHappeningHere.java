@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -39,7 +40,7 @@ import newautogenofproject.popup.Activator;
 public class ThingsAreHappeningHere {
 	
 	String name;
-	IProgressMonitor progresMonitor = new NullProgressMonitor();
+	IProgressMonitor progressMonitor = new NullProgressMonitor();
 	IWorkspace workspace = ResourcesPlugin.getWorkspace();
 	IWorkspaceRoot root = workspace.getRoot();
 	IProject project;
@@ -52,16 +53,18 @@ public class ThingsAreHappeningHere {
 	
 	public void createPluginProject(String theSelectedFile) throws CoreException {
 		if (!project.exists()) {
-			project.create(progresMonitor);
+			project.create(progressMonitor);
 		}
-		project.open(progresMonitor);
+		project.open(progressMonitor);
 		IProjectDescription desc = project.getDescription();
 		desc.setNatureIds(new String[] {
 		      PDE.PLUGIN_NATURE});
-		project.setDescription(desc, progresMonitor);
+		project.setDescription(desc, progressMonitor);
 	}
 		
 	public void createThePalette(String theSelectedFilePath) throws Exception {
+		
+		
 		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = new EmfModel();
 		
@@ -256,6 +259,10 @@ public class ThingsAreHappeningHere {
 		EPackage wdwPackage = (EPackage)resource1.getContents().get(0);
 	   
 	    return wdwPackage.getName();
+	}
+
+	public void refresh() throws CoreException {
+		project.refreshLocal(1, null);
 	}
 
 }
