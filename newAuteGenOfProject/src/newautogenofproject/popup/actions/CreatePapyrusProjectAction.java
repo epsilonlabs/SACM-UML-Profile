@@ -24,6 +24,7 @@ public class CreatePapyrusProjectAction implements IObjectActionDelegate {
 
 	private Shell shell;
 	private String theSelectedFilePath;
+	private String theParentFolder;
 	
 	/**
 	 * Constructor for Action1.
@@ -40,7 +41,8 @@ public class CreatePapyrusProjectAction implements IObjectActionDelegate {
 		IStructuredSelection theSelectedFile = (IStructuredSelection) targetPart.getSite().getWorkbenchWindow().getSelectionService().getSelection();
         Object firstElement = theSelectedFile.getFirstElement();
         IFile file = (IFile) Platform.getAdapterManager().getAdapter(firstElement,IFile.class);
-        theSelectedFilePath = file.getLocation().toString();
+        theParentFolder = file.getParent().getLocation().toOSString();
+        theSelectedFilePath = file.getLocation().toOSString();
 	}
 
 	/**
@@ -62,6 +64,7 @@ public class CreatePapyrusProjectAction implements IObjectActionDelegate {
 						tahh.createTheModelProfileNotationFile();
 						tahh.createTheModelProfileDiFile();
 						tahh.createThebuildPropertiesFile();
+						tahh.copyTheIcons(theSelectedFilePath, theParentFolder);
 						tahh.refresh();	
 					} catch (Exception ex) {
 						LogUtil.log(ex);

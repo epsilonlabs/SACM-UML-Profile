@@ -1,7 +1,7 @@
 @namespace(uri="simpleFlowchart", prefix="simpleFlowchart")
 package simpleFlowchart;
 
-@Class(icon="icons/f.gif")
+@Class(icon="icons/epsilon_icon.gif")
 class Flowchart {
 	attr String name;
 	@Association(icon="icons/f.gif")

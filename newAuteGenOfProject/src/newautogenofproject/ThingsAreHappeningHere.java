@@ -4,6 +4,13 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -13,7 +20,10 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -241,6 +251,60 @@ public class ThingsAreHappeningHere {
             System.out.println("Error writing to file...");
     	}
 	}	
+	
+	public void copyTheIcons(String theSelectedFilePath, String theParentFolder) throws IOException, URISyntaxException {
+		
+		ArrayList<String> iconPaths = getTheListOfIconPathsInModel(theSelectedFilePath);
+		for (String iconPath : iconPaths) {
+			// We only accept gifs
+			if (iconPath.substring(iconPath.lastIndexOf('.') + 1).equals("gif")){
+				// In order to be able to do the copy, I need firstly to crete the target directory. I do that by striping the name of the file.
+				// The target directory is: the target project location + the content of the icon details set in EMF without the file name.
+				String theTargetDirectory = project.getLocation() + File.separator + iconPath.substring(0, iconPath.lastIndexOf("/"));
+				File targetDir = new File(theTargetDirectory);
+				if (!targetDir.exists()) {
+					targetDir.mkdir();
+				}
+				String fromIconPath = theParentFolder + File.separator + iconPath;
+				String toIconPath = project.getLocation() + File.separator + iconPath;
+				copyImageFiles(fromIconPath, toIconPath);
+			}
+		}
+	}
+	
+	private void copyImageFiles(String from, String to) throws IOException {
+		
+		Path fromPath = Paths.get(from);
+		Path toPath = Paths.get(to);
+		CopyOption[] options = new CopyOption[]{
+		  StandardCopyOption.REPLACE_EXISTING,
+		  StandardCopyOption.COPY_ATTRIBUTES
+		}; 
+		java.nio.file.Files.copy(fromPath, toPath, options);
+	}
+	
+	private ArrayList<String> getTheListOfIconPathsInModel(String theSelectedFilePath) {
+		File f = new File(theSelectedFilePath);
+		URI fileURI = URI.createFileURI(f.getAbsolutePath());
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl ());
+					
+		ResourceSet resourceSet = new ResourceSetImpl(); 
+		Resource resource1 = resourceSet.getResource(fileURI, true);
+		ArrayList<String> iconPaths = new ArrayList<String>();
+		TreeIterator<EObject> allContents = resource1.getAllContents();
+		while (allContents.hasNext()) {
+			EObject next = allContents.next();
+			if (next instanceof EAnnotation) {
+				EAnnotation annotation = (EAnnotation) next;
+				for (String theKey : annotation.getDetails().keySet()){
+					if (theKey.equals("icon")) {
+						iconPaths.add(annotation.getDetails().get(theKey));
+					}
+				}
+			}
+		}
+		return iconPaths;
+	}
 	
 	private String getNameOfEPackage(String theSelectedFilePath) {
 		// The emfatic (ecore) source
