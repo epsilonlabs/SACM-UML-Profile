@@ -177,6 +177,18 @@ operation createTheClassStereotypeDetails(newClass,s,c) {
 	var theEGenericType = new Profile!EGenericType;
 	theEReferenceBaseClass.eGenericType = theEGenericType;
 	theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = "Class");
+	if (c.eAnnotations.selectOne(ean|ean.source.equals("Class")).details.get("shape").isDefined()) {
+		var theImage = new Profile!Image;
+		theImage.location = "platform:/plugin/" + ePackName + "/" + c.eAnnotations.selectOne(ean|ean.source.equals("Class")).details.get("shape");
+		s.icon.add(theImage);
+		var theImageEAnnotation = new Profile!EAnnotation;
+		theImageEAnnotation.source = "image_papyrus";
+		theImage.eAnnotations.add(theImageEAnnotation);
+		var theImageAnnotationEStringToStringMapEntry = new Profile!EStringToStringMapEntry;
+		theImageAnnotationEStringToStringMapEntry.key = "image_kind_key";
+		theImageAnnotationEStringToStringMapEntry.value = "shape";
+		theImageEAnnotation.details.add(theImageAnnotationEStringToStringMapEntry);
+	}
 }
 
 operation createTheAssociationStereotypeDetails(newClass,s,c) {

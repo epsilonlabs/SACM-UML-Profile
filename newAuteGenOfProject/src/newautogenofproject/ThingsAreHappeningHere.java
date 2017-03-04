@@ -273,22 +273,18 @@ public class ThingsAreHappeningHere {
 	}
 	
 	public void copyTheShapes(String theSelectedFilePath, String theParentFolder) throws IOException {
-		
 		ArrayList<String> shapePaths = getTheListOfShapePathsInModel(theSelectedFilePath);
 		for (String shapePath : shapePaths) {
-			// We only accept svgs
-			if (shapePath.substring(shapePath.lastIndexOf('.') + 1).equals("svg")){
-				// In order to be able to do the copy, I need firstly to create the target directory. I do that by striping the name of the file.
-				// The target directory is: the target project location + the content of the shape details set in EMF without the file name.
-				String theTargetDirectory = project.getLocation() + File.separator + shapePath.substring(0, shapePath.lastIndexOf("/"));
-				File targetDir = new File(theTargetDirectory);
-				if (!targetDir.exists()) {
-					targetDir.mkdir();
-				}
-				String fromShapePath = theParentFolder + File.separator + shapePath;
-				String toShapePath = project.getLocation() + File.separator + shapePath;
-				copyFiles(fromShapePath, toShapePath);
+			// In order to be able to do the copy, I need firstly to create the target directory. I do that by striping the name of the file.
+			// The target directory is: the target project location + the content of the shape details set in EMF without the file name.
+			String theTargetDirectory = project.getLocation() + File.separator + shapePath.substring(0, shapePath.lastIndexOf("/"));
+			File targetDir = new File(theTargetDirectory);
+			if (!targetDir.exists()) {
+				targetDir.mkdir();
 			}
+			String fromShapePath = theParentFolder + File.separator + shapePath;
+			String toShapePath = project.getLocation() + File.separator + shapePath;
+			copyFiles(fromShapePath, toShapePath);
 		}
 	}
 	

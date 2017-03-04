@@ -4,7 +4,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Flowchart">
     <eAnnotations source="Class">
       <details key="icon" value="bigIcons/epsilon_icon.gif"/>
-      <details key="shape" value="shapes/ring.svg"/>
+      <details key="shape" value="icons/fpng.png"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
