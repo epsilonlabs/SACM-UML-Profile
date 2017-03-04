@@ -252,13 +252,13 @@ public class ThingsAreHappeningHere {
     	}
 	}	
 	
-	public void copyTheIcons(String theSelectedFilePath, String theParentFolder) throws IOException, URISyntaxException {
+	public void copyTheIcons(String theSelectedFilePath, String theParentFolder) throws IOException {
 		
 		ArrayList<String> iconPaths = getTheListOfIconPathsInModel(theSelectedFilePath);
 		for (String iconPath : iconPaths) {
 			// We only accept gifs
 			if (iconPath.substring(iconPath.lastIndexOf('.') + 1).equals("gif")){
-				// In order to be able to do the copy, I need firstly to crete the target directory. I do that by striping the name of the file.
+				// In order to be able to do the copy, I need firstly to create the target directory. I do that by striping the name of the file.
 				// The target directory is: the target project location + the content of the icon details set in EMF without the file name.
 				String theTargetDirectory = project.getLocation() + File.separator + iconPath.substring(0, iconPath.lastIndexOf("/"));
 				File targetDir = new File(theTargetDirectory);
@@ -267,12 +267,32 @@ public class ThingsAreHappeningHere {
 				}
 				String fromIconPath = theParentFolder + File.separator + iconPath;
 				String toIconPath = project.getLocation() + File.separator + iconPath;
-				copyImageFiles(fromIconPath, toIconPath);
+				copyFiles(fromIconPath, toIconPath);
 			}
 		}
 	}
 	
-	private void copyImageFiles(String from, String to) throws IOException {
+	public void copyTheShapes(String theSelectedFilePath, String theParentFolder) throws IOException {
+		
+		ArrayList<String> shapePaths = getTheListOfShapePathsInModel(theSelectedFilePath);
+		for (String shapePath : shapePaths) {
+			// We only accept svgs
+			if (shapePath.substring(shapePath.lastIndexOf('.') + 1).equals("svg")){
+				// In order to be able to do the copy, I need firstly to create the target directory. I do that by striping the name of the file.
+				// The target directory is: the target project location + the content of the shape details set in EMF without the file name.
+				String theTargetDirectory = project.getLocation() + File.separator + shapePath.substring(0, shapePath.lastIndexOf("/"));
+				File targetDir = new File(theTargetDirectory);
+				if (!targetDir.exists()) {
+					targetDir.mkdir();
+				}
+				String fromShapePath = theParentFolder + File.separator + shapePath;
+				String toShapePath = project.getLocation() + File.separator + shapePath;
+				copyFiles(fromShapePath, toShapePath);
+			}
+		}
+	}
+	
+	private void copyFiles(String from, String to) throws IOException {
 		
 		Path fromPath = Paths.get(from);
 		Path toPath = Paths.get(to);
@@ -304,6 +324,29 @@ public class ThingsAreHappeningHere {
 			}
 		}
 		return iconPaths;
+	}
+	
+	private ArrayList<String> getTheListOfShapePathsInModel(String theSelectedFilePath) {
+		File f = new File(theSelectedFilePath);
+		URI fileURI = URI.createFileURI(f.getAbsolutePath());
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl ());
+					
+		ResourceSet resourceSet = new ResourceSetImpl(); 
+		Resource resource1 = resourceSet.getResource(fileURI, true);
+		ArrayList<String> shapePaths = new ArrayList<String>();
+		TreeIterator<EObject> allContents = resource1.getAllContents();
+		while (allContents.hasNext()) {
+			EObject next = allContents.next();
+			if (next instanceof EAnnotation) {
+				EAnnotation annotation = (EAnnotation) next;
+				for (String theKey : annotation.getDetails().keySet()){
+					if (theKey.equals("shape")) {
+						shapePaths.add(annotation.getDetails().get(theKey));
+					}
+				}
+			}
+		}
+		return shapePaths;
 	}
 	
 	private String getNameOfEPackage(String theSelectedFilePath) {

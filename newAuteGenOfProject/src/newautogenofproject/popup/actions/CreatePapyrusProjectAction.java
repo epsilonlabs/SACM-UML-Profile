@@ -65,6 +65,7 @@ public class CreatePapyrusProjectAction implements IObjectActionDelegate {
 						tahh.createTheModelProfileDiFile();
 						tahh.createThebuildPropertiesFile();
 						tahh.copyTheIcons(theSelectedFilePath, theParentFolder);
+						tahh.copyTheShapes(theSelectedFilePath, theParentFolder);
 						tahh.refresh();	
 					} catch (Exception ex) {
 						LogUtil.log(ex);
