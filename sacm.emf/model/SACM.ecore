@@ -2,45 +2,52 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="SACM" nsURI="http://www.omg.org/spec/SACM/2.0" nsPrefix="sacm">
   <eSubpackages name="Commons" nsURI="http://www.omg.org/spec/SACM/2.0/Commons" nsPrefix="SACM_Commons">
-    <eClassifiers xsi:type="ecore:EClass" name="SACMElement" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="SACMElement" abstract="true">
+      <eAnnotations source="Comment">
+        <details key="text" value="Base class for SACM"/>
+      </eAnnotations>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ModelElement" abstract="true" eSuperTypes="#//Commons/SACMElement">
+      <eAnnotations source="Comment">
+        <details key="text" value="Base element for the majority of modeling elements"/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="gid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
         <eAnnotations source="Comment">
-          <details key="text" value="gid uniquely identifies the element within the scope of the model"/>
+          <details key="text" value="To uniquely identifies the element within the scope of the model"/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
         <eAnnotations source="Comment">
-          <details key="text" value="name of the element"/>
+          <details key="text" value="The name of the element"/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAbstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
         <eAnnotations source="Comment">
-          <details key="text" value="flag to indicate if the element is abstract"/>
+          <details key="text" value="Flag to indicate if the element is abstract"/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//Commons/Description"
           containment="true">
         <eAnnotations source="Comment">
-          <details key="text" value="the description of the element"/>
+          <details key="text" value="The description of the element"/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="inplementationConstraint"
           upperBound="-1" eType="#//Commons/ImplementationConstraint" containment="true">
         <eAnnotations source="Comment">
-          <details key="text" value="allows constraints to be added to the element"/>
+          <details key="text" value="Allows constraints to be added to the element"/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="note" upperBound="-1"
           eType="#//Commons/Note" containment="true">
         <eAnnotations source="Comment">
-          <details key="text" value="annotations on the element"/>
+          <details key="text" value="Annotations on the element"/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="taggedValue" upperBound="-1"
           eType="#//Commons/TaggedValue" containment="true">
         <eAnnotations source="Comment">
-          <details key="text" value="tagged value"/>
+          <details key="text" value="Tagged value"/>
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
@@ -51,7 +58,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
           eType="#//Terminology/Expression" containment="true">
         <eAnnotations source="Comment">
-          <details key="text" value="expression that contains the value of the element"/>
+          <details key="text" value="Expression that contains the value of the element"/>
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
@@ -87,12 +94,7 @@
     <eAnnotations source="Comment">
       <details key="text" value=""/>
     </eAnnotations>
-    <eClassifiers xsi:type="ecore:EClass" name="ArtefactElement" abstract="true" eSuperTypes="#//Commons/ModelElement">
-      <eAnnotations source="Comment">
-        <details key="text" value="To specify all the identifiable units of data modeled and managed in a structured assurance case"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="AssuranceCasePackage" eSuperTypes="#//Packages/ArtefactElement">
+    <eClassifiers xsi:type="ecore:EClass" name="AssuranceCasePackage" eSuperTypes="#//Artefact/ArtefactElement">
       <eAnnotations source="Comment">
         <details key="text" value="Root class for creating structured assurance cases"/>
       </eAnnotations>
@@ -105,13 +107,19 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="assuranceCasePackage"
           upperBound="-1" eType="#//Packages/AssuranceCasePackage" containment="true">
         <eAnnotations source="Comment">
-          <details key="text" value="Optional sub-paciages"/>
+          <details key="text" value="Optional sub-packages"/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="interface" upperBound="-1"
           eType="#//Packages/AssuranceCasePackageInterface" containment="true">
         <eAnnotations source="Comment">
           <details key="text" value="A number of interfaces that the current package may implement"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="argumentPackage" upperBound="-1"
+          eType="#//Argumentation/ArgumentPackage" containment="true">
+        <eAnnotations source="Comment">
+          <details key="text" value="A number of argument packages"/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="artefactPackage" upperBound="-1"
@@ -140,9 +148,284 @@
           eType="#//Packages/AssuranceCasePackage"/>
     </eClassifiers>
   </eSubpackages>
+  <eSubpackages name="Terminology" nsURI="http://www.omg.org/spec/SACM/2.0/Terminology"
+      nsPrefix="SACM_Terminology">
+    <eClassifiers xsi:type="ecore:EClass" name="TerminologyElement" abstract="true"
+        eSuperTypes="#//Commons/ModelElement">
+      <eAnnotations source="Comment">
+        <details key="text" value="Base class for specifying the terminology aspects of an assurance case"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TerminologyPackage" eSuperTypes="#//Terminology/TerminologyElement">
+      <eAnnotations source="Comment">
+        <details key="text" value="Container class for SACM terminology assets"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="terminologyAsset" upperBound="-1"
+          eType="#//Terminology/TerminologyAsset" containment="true">
+        <eAnnotations source="Comment">
+          <details key="text" value="Contained assets"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="terminologyPackage" upperBound="-1"
+          eType="#//Terminology/TerminologyPackage" containment="true">
+        <eAnnotations source="Comment">
+          <details key="text" value="Sub packages"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="terminologyPackageCitation"
+          upperBound="-1" eType="#//Terminology/TerminologyPackageCitation" containment="true">
+        <eAnnotations source="Comment">
+          <details key="text" value="Citations contained in the current TerminologyPackage"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TerminologyPackageCitation" eSuperTypes="#//Terminology/TerminologyElement">
+      <eAnnotations source="Comment">
+        <details key="text" value="Used to refer to another TerminologyPackage"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="citedPackage" eType="#//Terminology/TerminologyPackage">
+        <eAnnotations source="Comment">
+          <details key="text" value="Cited TerminologyPackage"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TerminologyAsset" abstract="true"
+        eSuperTypes="#//Terminology/TerminologyElement">
+      <eAnnotations source="Comment">
+        <details key="text" value="Base class for terminology assets"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Category" eSuperTypes="#//Terminology/TerminologyAsset">
+      <eAnnotations source="Comment">
+        <details key="text" value="Describes categories of ExpressionElements and used to group these elements within TerminologyPackages"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ExpressionElement" abstract="true"
+        eSuperTypes="#//Terminology/TerminologyAsset">
+      <eAnnotations source="Comment">
+        <details key="text" value="Base class for expressions in SACM"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="category" upperBound="-1"
+          eType="#//Terminology/Category">
+        <eAnnotations source="Comment">
+          <details key="text" value="Category(-ies) that the current element belongs to"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Expression" eSuperTypes="#//Terminology/ExpressionElement">
+      <eAnnotations source="Comment">
+        <details key="text" value="Used to model abstract/concrete phrases in SACM"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="Comment">
+          <details key="text" value="Used to record the value of the expression"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="element" upperBound="-1"
+          eType="#//Terminology/ExpressionElement" containment="true">
+        <eAnnotations source="Comment">
+          <details key="text" value="Optional reference to other ExpressionElements forming part of the StructuredExpression"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Term" eSuperTypes="#//Terminology/ExpressionElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="Comment">
+          <details key="text" value="An attribute recording the value of the term"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="externalReference" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="Comment">
+          <details key="text" value="An external reference"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TerminologyAssetCitation" eSuperTypes="#//Terminology/ExpressionElement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="citedElement" lowerBound="1"
+          eType="#//Terminology/TerminologyAsset"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Argumentation" nsURI="http://www.omg.org/spec/SACM/2.0/Argumentation"
+      nsPrefix="SACM_Argumentation">
+    <eClassifiers xsi:type="ecore:EClass" name="ArgumentationElement" abstract="true"
+        eSuperTypes="#//Commons/ModelElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ArgumentPackage" eSuperTypes="#//Argumentation/ArgumentationElement">
+      <eAnnotations source="Comment">
+        <details key="text" value="Container for a structured argument represented using SACM"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="argumentAsset" upperBound="-1"
+          eType="#//Argumentation/ArgumentAsset" containment="true">
+        <eAnnotations source="Comment">
+          <details key="text" value="An optional set of ArgumentAssets"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="argumentPackage" upperBound="-1"
+          eType="#//Argumentation/ArgumentPackage" containment="true">
+        <eAnnotations source="Comment">
+          <details key="text" value="An optional set of sub packages"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="interface" upperBound="-1"
+          eType="#//Argumentation/ArgumentPackageInterface" containment="true">
+        <eAnnotations source="Comment">
+          <details key="text" value="An optional set of interfaces"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="argumentPackageCitation"
+          upperBound="-1" eType="#//Argumentation/ArgumentPackageCitation" containment="true">
+        <eAnnotations source="Comment">
+          <details key="text" value="An optional set of citations"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ArgumentPackageCitation" eSuperTypes="#//Argumentation/ArgumentPackage">
+      <eAnnotations source="Comment">
+        <details key="text" value="Used to cite another ArgumentPackage"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="citedPackage" lowerBound="1"
+          eType="#//Argumentation/ArgumentPackage"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ArgumentPackageBinding" eSuperTypes="#//Argumentation/ArgumentPackage">
+      <eAnnotations source="Comment">
+        <details key="text" value="Record the mapping between two or more ArgumentPackages"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="participantPackage" lowerBound="2"
+          upperBound="-1" eType="#//Argumentation/ArgumentPackageInterface">
+        <eAnnotations source="Comment">
+          <details key="text" value="To be discussed"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ArgumentPackageInterface" eSuperTypes="#//Argumentation/ArgumentPackage">
+      <eAnnotations source="Comment">
+        <details key="text" value="Used to declare the ArgumentAssets contained in an ArgumentPackage"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ArgumentAsset" abstract="true" eSuperTypes="#//Argumentation/ArgumentationElement">
+      <eAnnotations source="Comment">
+        <details key="text" value="Base class for the elements of structured argument in SACM"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Assertion" abstract="true" eSuperTypes="#//Argumentation/ArgumentAsset">
+      <eAnnotations source="Comment">
+        <details key="text" value="Used to record the popositions of Argumentation"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="metaClaim" upperBound="-1"
+          eType="#//Argumentation/Claim" containment="true">
+        <eAnnotations source="Comment">
+          <details key="text" value="References to Claims concerining the Assertion, e.g. confidence in the Assertion"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ArtefactElementCitation" eSuperTypes="#//Argumentation/ArgumentAsset">
+      <eAnnotations source="Comment">
+        <details key="text" value="Enables the citation of an Artefact that relates to the structured argument"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="externalReference" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="Comment">
+          <details key="text" value="Record a URL to a external evidence"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="citedArtefact" eType="#//Artefact/ArtefactElement">
+        <eAnnotations source="Comment">
+          <details key="text" value="Cited artefact"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ArgumentAssetCitation" eSuperTypes="#//Argumentation/ArgumentAsset">
+      <eAnnotations source="Comment">
+        <details key="text" value="Used to cite ArgumentAsset"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="citedAsset" upperBound="-1"
+          eType="#//Argumentation/ArgumentAsset">
+        <eAnnotations source="Comment">
+          <details key="text" value="Refers to another ArgumentAsset"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Claim" eSuperTypes="#//Argumentation/Assertion">
+      <eAnnotations source="Comment">
+        <details key="text" value="Used to record the propositions of any structured argument"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="assumed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
+        <eAnnotations source="Comment">
+          <details key="text" value="Flag to indicate if the claim is assumed to be true"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="toBeSupported" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
+        <eAnnotations source="Comment">
+          <details key="text" value="Flag to indicate if the claim is to be further supported"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ArgumentReasoning" eSuperTypes="#//Argumentation/ArgumentAsset">
+      <eAnnotations source="Comment">
+        <details key="text" value="Used to provide additional description or explanation of the asserted inference or challange that connects one or more Claims"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="structure" eType="#//Argumentation/ArgumentPackage">
+        <eAnnotations source="Comment">
+          <details key="text" value="Optional reference to another ArgumentPackage that provides the detailed structure of the argument"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AssertedRelationship" abstract="true"
+        eSuperTypes="#//Argumentation/Assertion">
+      <eAnnotations source="Comment">
+        <details key="text" value="Abstract association class that enables the ArgumentAssets of any structured argument to be linked together"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="source" upperBound="-1"
+          eType="#//Argumentation/ArgumentAsset">
+        <eAnnotations source="Comment">
+          <details key="text" value="Source of the relationship"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" upperBound="-1"
+          eType="#//Argumentation/ArgumentAsset">
+        <eAnnotations source="Comment">
+          <details key="text" value="Target of the relationship"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reasoning" upperBound="-1"
+          eType="#//Argumentation/ArgumentReasoning">
+        <eAnnotations source="Comment">
+          <details key="text" value="Reasoning of the relationship"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AssertedInference" eSuperTypes="#//Argumentation/AssertedRelationship">
+      <eAnnotations source="Comment">
+        <details key="text" value="Records the inference that a user declares to exist between on or more Assertion and another Assertion"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AssertedEvidence" eSuperTypes="#//Argumentation/AssertedRelationship">
+      <eAnnotations source="Comment">
+        <details key="text" value="Records the declaration that one or more artefacts of Evidence provide information that helps establish the truth of a Claim"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AssertedChallenge" eSuperTypes="#//Argumentation/AssertedRelationship">
+      <eAnnotations source="Comment">
+        <details key="text" value="Records the challenge that a user declares to exist between one or more Claims and another Claim"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AssertedCounterEvidence" eSuperTypes="#//Argumentation/AssertedRelationship">
+      <eAnnotations source="Comment">
+        <details key="text" value="Used to associate evidence to a Claim, where this evidence is being asserted to infer that the Claim is false"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AssertedContext" eSuperTypes="#//Argumentation/AssertedRelationship">
+      <eAnnotations source="Comment">
+        <details key="text" value="Used to declare that the artefact cited by an ArtefactElementCitation provides the context for the interpretation and scoping of a Claim"/>
+      </eAnnotations>
+    </eClassifiers>
+  </eSubpackages>
   <eSubpackages name="Artefact" nsURI="http://www.omg.org/spec/SACM/2.0/Artefact"
       nsPrefix="SACM_Artefact">
-    <eClassifiers xsi:type="ecore:EClass" name="ArtefactElement" abstract="true" eSuperTypes="#//Commons/ModelElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ArtefactElement" abstract="true" eSuperTypes="#//Commons/ModelElement">
+      <eAnnotations source="Comment">
+        <details key="text" value="To specify all the identifiable units of data modeled and managed in a structured assurance case"/>
+      </eAnnotations>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ArtefactPackage" eSuperTypes="#//Artefact/ArtefactElement">
       <eStructuralFeatures xsi:type="ecore:EReference" name="artefactPackageCitation"
           upperBound="-1" eType="#//Artefact/ArtefactPackageCitation" containment="true">
@@ -162,6 +445,8 @@
           <details key="text" value="An optional set of contained ArtefactPackage elements"/>
         </eAnnotations>
       </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="interface" upperBound="-1"
+          eType="#//Artefact/ArtefactPackageInterface" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ArtefactPackageCitation" eSuperTypes="#//Artefact/ArtefactPackage">
       <eAnnotations source="Comment">
@@ -310,259 +595,6 @@
       <eAnnotations source="Comment">
         <details key="text" value="Enables an Artefact and a Resource to be linked together"/>
       </eAnnotations>
-    </eClassifiers>
-  </eSubpackages>
-  <eSubpackages name="Argumentation" nsURI="http://www.omg.org/spec/SACM/2.0/Argumentation"
-      nsPrefix="SACM_Argumentation">
-    <eClassifiers xsi:type="ecore:EClass" name="ArgumentationElement" abstract="true"
-        eSuperTypes="#//Commons/ModelElement"/>
-    <eClassifiers xsi:type="ecore:EClass" name="ArgumentPackage" eSuperTypes="#//Argumentation/ArgumentationElement">
-      <eAnnotations source="Comment">
-        <details key="text" value="Container for a structured argument represented using SACM"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="argumentAsset" upperBound="-1"
-          eType="#//Argumentation/ArgumentAsset" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="argumentPackage" upperBound="-1"
-          eType="#//Argumentation/ArgumentPackage" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="interface" upperBound="-1"
-          eType="#//Argumentation/ArgumentPackageInterface" containment="true"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ArgumentPackageCitation" eSuperTypes="#//Argumentation/ArgumentPackage">
-      <eAnnotations source="Comment">
-        <details key="text" value="Used to cite another ArgumentPackage"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="citedPackage" lowerBound="1"
-          eType="#//Argumentation/ArgumentPackage"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ArgumentPackageBinding" eSuperTypes="#//Argumentation/ArgumentPackage">
-      <eAnnotations source="Comment">
-        <details key="text" value="Record the mapping between two or more ArgumentPackages"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="participantPackage" lowerBound="2"
-          upperBound="-1" eType="#//Argumentation/ArgumentPackageInterface">
-        <eAnnotations source="Comment">
-          <details key="text" value="To be discussed"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ArgumentPackageInterface" eSuperTypes="#//Argumentation/ArgumentPackage">
-      <eAnnotations source="Comment">
-        <details key="text" value="Used to declare the ArgumentAssets contained in an ArgumentPackage"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ArgumentAsset" abstract="true" eSuperTypes="#//Argumentation/ArgumentationElement">
-      <eAnnotations source="Comment">
-        <details key="text" value="Base class for the elements of structured argument in SACM"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Assertion" abstract="true" eSuperTypes="#//Argumentation/ArgumentAsset">
-      <eAnnotations source="Comment">
-        <details key="text" value="Used to record the popositions of Argumentation"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="metaClaim" upperBound="-1"
-          eType="#//Argumentation/Claim" containment="true">
-        <eAnnotations source="Comment">
-          <details key="text" value="References to Claims concerining the Assertion, e.g. confidence in the Assertion"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ArtefactElementCitation" eSuperTypes="#//Argumentation/ArgumentAsset">
-      <eAnnotations source="Comment">
-        <details key="text" value="Enables the citation of an Artefact that relates to the structured argument"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="externalReference" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-        <eAnnotations source="Comment">
-          <details key="text" value="Record a URL to a external evidence"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="citedArtefact" eType="#//Artefact/ArtefactElement">
-        <eAnnotations source="Comment">
-          <details key="text" value="Cited artefact"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ArgumentAssetCitation" eSuperTypes="#//Argumentation/ArgumentAsset">
-      <eAnnotations source="Comment">
-        <details key="text" value="Used to cite ArgumentAsset"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="citedAsset" upperBound="-1"
-          eType="#//Argumentation/ArgumentAsset">
-        <eAnnotations source="Comment">
-          <details key="text" value="Refers to another ArgumentAsset"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Claim" eSuperTypes="#//Argumentation/Assertion">
-      <eAnnotations source="Comment">
-        <details key="text" value="Used to record the propositions of any structured argument"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="assumed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
-        <eAnnotations source="Comment">
-          <details key="text" value="Flag to indicate if the claim is assumed to be true"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="toBeSupported" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
-        <eAnnotations source="Comment">
-          <details key="text" value="Flag to indicate if the claim is to be further supported"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ArgumentReasoning" eSuperTypes="#//Argumentation/ArgumentAsset">
-      <eAnnotations source="Comment">
-        <details key="text" value="Used to provide additional description or explanation of the asserted inference or challange that connects one or more Claims"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="structure" eType="#//Argumentation/ArgumentPackage">
-        <eAnnotations source="Comment">
-          <details key="text" value="Optional reference to another ArgumentPackage that provides the detailed structure of the argument"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="AssertedRelationship" abstract="true"
-        eSuperTypes="#//Argumentation/Assertion">
-      <eAnnotations source="Comment">
-        <details key="text" value="Abstract association class that enables the ArgumentAssets of any structured argument to be linked together"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="source" upperBound="-1"
-          eType="#//Argumentation/ArgumentAsset">
-        <eAnnotations source="Comment">
-          <details key="text" value="Source of the relationship"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="target" upperBound="-1"
-          eType="#//Argumentation/ArgumentAsset">
-        <eAnnotations source="Comment">
-          <details key="text" value="Target of the relationship"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="reasoning" upperBound="-1"
-          eType="#//Argumentation/ArgumentReasoning">
-        <eAnnotations source="Comment">
-          <details key="text" value="Reasoning of the relationship"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="AssertedInference" eSuperTypes="#//Argumentation/AssertedRelationship">
-      <eAnnotations source="Comment">
-        <details key="text" value="Records the inference that a user declares to exist between on or more Assertion and another Assertion"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="AssertedEvidence" eSuperTypes="#//Argumentation/AssertedRelationship">
-      <eAnnotations source="Comment">
-        <details key="text" value="Records the declaration that one or more artefacts of Evidence provide information that helps establish the truth of a Claim"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="AssertedChallenge" eSuperTypes="#//Argumentation/AssertedRelationship">
-      <eAnnotations source="Comment">
-        <details key="text" value="Records the challenge that a user declares to exist between one or more Claims and another Claim"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="AssertedCounterEvidence" eSuperTypes="#//Argumentation/AssertedRelationship">
-      <eAnnotations source="Comment">
-        <details key="text" value="Used to associate evidence to a Claim, where this evidence is being asserted to infer that the Claim is false"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="AssertedContext" eSuperTypes="#//Argumentation/AssertedRelationship">
-      <eAnnotations source="Comment">
-        <details key="text" value="Used to declare that the artefact cited by an ArtefactElementCitation provides the context for the interpretation and scoping of a Claim"/>
-      </eAnnotations>
-    </eClassifiers>
-  </eSubpackages>
-  <eSubpackages name="Terminology" nsURI="http://www.omg.org/spec/SACM/2.0/Terminology"
-      nsPrefix="SACM_Terminology">
-    <eClassifiers xsi:type="ecore:EClass" name="TerminologyElement" abstract="true"
-        eSuperTypes="#//Commons/ModelElement">
-      <eAnnotations source="Comment">
-        <details key="text" value="Base class for specifying the terminology aspects of an assurance case"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TerminologyPackage" eSuperTypes="#//Terminology/TerminologyElement">
-      <eAnnotations source="Comment">
-        <details key="text" value="Container class for SACM terminology assets"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="terminologyAsset" upperBound="-1"
-          eType="#//Terminology/TerminologyAsset" containment="true">
-        <eAnnotations source="Comment">
-          <details key="text" value="Contained assets"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="terminologyPackage" upperBound="-1"
-          eType="#//Terminology/TerminologyPackage" containment="true">
-        <eAnnotations source="Comment">
-          <details key="text" value="Sub packages"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="terminologyPackageCitation"
-          upperBound="-1" eType="#//Terminology/TerminologyPackageCitation" containment="true">
-        <eAnnotations source="Comment">
-          <details key="text" value="Citations contained in the current TerminologyPackage"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TerminologyPackageCitation" eSuperTypes="#//Terminology/TerminologyElement">
-      <eAnnotations source="Comment">
-        <details key="text" value="Used to refer to another TerminologyPackage"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="citedPackage" eType="#//Terminology/TerminologyPackage">
-        <eAnnotations source="Comment">
-          <details key="text" value="Cited TerminologyPackage"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TerminologyAsset" abstract="true"
-        eSuperTypes="#//Terminology/TerminologyElement">
-      <eAnnotations source="Comment">
-        <details key="text" value="Base class for terminology assets"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Category" eSuperTypes="#//Terminology/TerminologyAsset">
-      <eAnnotations source="Comment">
-        <details key="text" value="Describes categories of ExpressionElements and used to group these elements within TerminologyPackages"/>
-      </eAnnotations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ExpressionElement" abstract="true"
-        eSuperTypes="#//Terminology/TerminologyAsset">
-      <eAnnotations source="Comment">
-        <details key="text" value="Base class for expressions in SACM"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="category" upperBound="-1"
-          eType="#//Terminology/Category">
-        <eAnnotations source="Comment">
-          <details key="text" value="Category(-ies) that the current element belongs to"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Expression" eSuperTypes="#//Terminology/ExpressionElement">
-      <eAnnotations source="Comment">
-        <details key="text" value="Used to model abstract/concrete phrases in SACM"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-        <eAnnotations source="Comment">
-          <details key="text" value="Used to record the value of the expression"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="element" upperBound="-1"
-          eType="#//Terminology/ExpressionElement" containment="true">
-        <eAnnotations source="Comment">
-          <details key="text" value="Optional reference to other ExpressionElements forming part of the StructuredExpression"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Term" eSuperTypes="#//Terminology/ExpressionElement">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-        <eAnnotations source="Comment">
-          <details key="text" value="An attribute recording the value of the term"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="externalReference" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-        <eAnnotations source="Comment">
-          <details key="text" value="An external reference"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TerminologyAssetCitation" eSuperTypes="#//Terminology/ExpressionElement">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="citedElement" lowerBound="1"
-          eType="#//Terminology/TerminologyAsset"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>
