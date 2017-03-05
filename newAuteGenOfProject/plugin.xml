@@ -8,9 +8,10 @@
             nameFilter="*.ecore"
             id="newautogenofproject.contribution1">
          <menu
+               icon="icons/epsilon_icon.gif"
+               id="newautogenofproject.menu1"
                label="Papyrus Profiles"
-               path="additions"
-               id="newautogenofproject.menu1">
+               path="additions">
             <separator
                   name="group1">
             </separator>
