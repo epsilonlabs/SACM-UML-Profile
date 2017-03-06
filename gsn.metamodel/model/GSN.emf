@@ -33,7 +33,7 @@ package Core {
     val UndevelopedEntity undevelopedEntity;
   }
   
-  abstract interface ModularStructuringElement extends SturcturingElement {
+  abstract interface ModularStructuringElement {
   }
   
   class Goal extends DescomposableStructuringElement, ModularStructuringElement {
@@ -83,7 +83,7 @@ package Core {
 
 @namespace(uri="http://www.goalstructuringnotation.info/gsn/argumentpatterns", prefix="GSN_ArgumentPatterns")
 package ArgumentPatterns {
-  abstract class OptionalSupportedBy extends Core.SupportedBy {
+  abstract interface OptionalSupportedBy {
     attr int required;
   }
 
@@ -103,7 +103,7 @@ package ArgumentPatterns {
 @namespace(uri="http://www.goalstructuringnotation.info/gsn/modularextensions", prefix="GSN_ModularExtensions")
 package ModularExtensions {
 
-	abstract interface AwayElement extends Core.GSNElement {
+	abstract interface AwayElement {
 		attr String moduleIdentifier;
 	}
 
