@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration:PapyrusConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configuration="http://www.eclipse.org/papyrus/infra/viewpoints/configuration" xmi:id="_7wLmkNxhEeOqHvRyiN87hA" defaultStakeholder="_7wLmkdxhEeOqHvRyiN87hA">
+  <stakeholders xmi:id="_7wLmkdxhEeOqHvRyiN87hA" name="Default Modeler" viewpoints="_7wLmktxhEeOqHvRyiN87hA"/>
+  <viewpoints xsi:type="configuration:PapyrusViewpoint" xmi:id="_7wLmktxhEeOqHvRyiN87hA" name="Default Papyrus Viewpoint"/>
+  <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+  <categories xmi:id="_7wNb4txhEeOqHvRyiN87hA" name="uml"/>
+  <categories xmi:id="_7wNb49xhEeOqHvRyiN87hA" name="sysml"/>
+  <categories xmi:id="_7wNb5NxhEeOqHvRyiN87hA" name="profile"/>
+  <categories xmi:id="_7wNb5dxhEeOqHvRyiN87hA" name="generic"/>
+</configuration:PapyrusConfiguration>
