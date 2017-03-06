@@ -1,0 +1,63 @@
+[%
+var ePackName = Source!EPackage.all().first().name;
+var allClassStereotypes = Source!EClass.all().select(c|c.getEAnnotation("Class").isDefined() or c.getEAnnotation("Association").isDefined());
+for (stereo in allClassStereotypes) {
+%]
+[appliedStereotypes~=[%=stereo.name%]][% if (hasMore){%], 
+[%}
+}%] { 
+	displayName:true;
+	displayIcon:true;
+	elementIcon:false;
+	isNameWrap: true;
+	bold:true;
+}
+
+/* Hide compartment for all elements - just show the name and related icon. */
+Compartment {
+    visible:false;
+}
+
+/* Show symbol compartment so that text is "pushed" to upper boundary of element. */
+Compartment[kind="symbol"]  {
+    visible:true;
+}
+
+/* Default settings for "Symbol" shapes. */
+*.Symbol {
+	transparency:100;
+	followSVGSymbol:true;
+	displayIcon:false;
+}
+
+/* Turn on "floating label" for "Symbol" shapes. */
+*.Symbol > Label {
+	visible:true;
+}
+
+/* Turn off "stereotype label" for "Symbol" shapes. */
+*.Symbol > Label[type=StereotypeLabel] {
+	visible:false;
+}
+
+[%
+for (stereo in allClassStereotypes) {
+stereo.getEAnnotation("Class").println();
+if (stereo.getEAnnotation("Class").details.get("shape").isDefined()) {
+%]
+[appliedStereotypes~=[%=stereo.name%]].Symbol {
+	svgFile: 'platform:/plugin/[%=ePackName%][%=stereo.eAnnotations.selectOne(ean|ean.source.equals("Class")).details.get("shape")%]';
+	floatingLabelOffsetWidth:+23;
+    floatingLabelOffsetHeight:+80;
+	displayName:false;
+}
+[%
+}
+}%]
+
+[appliedStereotypes~=Stakeholder].Symbol {
+    svgFile: 'platform:/plugin/com.adocus.papyrus.archimate.diagram/shapes/Stakeholder.svg';
+	floatingLabelOffsetWidth:+23;
+    floatingLabelOffsetHeight:+80;
+	displayName:false;
+}
