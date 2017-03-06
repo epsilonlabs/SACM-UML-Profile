@@ -1,7 +1,7 @@
 @namespace(uri="simpleFlowchart", prefix="simpleFlowchart")
 package simpleFlowchart;
 
-@Class(icon="bigIcons/epsilon_icon.gif", shape="icons/fpng.png")
+@Class(icon="bigIcons/epsilon_icon.gif", shape="shapes/circle.svg")
 class Flowchart {
 	attr String name;
 	@Association(icon="icons/f.gif")
@@ -10,7 +10,7 @@ class Flowchart {
 	val AnotherNode[*] moreNodes;
 }
 
-@Class
+@Class(shape="shapes/ring.svg")
 class Node {
 	attr int testInt;
 	attr Boolean testBool;

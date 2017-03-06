@@ -21,6 +21,23 @@ pre {
 	theMapping.a_target = "platform:/plugin/" + ePackName + "/";
 	theUriMappingExtension.appendChild(theMapping);
 	
+	var theViewpointsPolicyExtension = new Target!t_extension;
+	theViewpointsPolicyExtension.a_point = "org.eclipse.papyrus.infra.viewpoints.policy.custom";
+	thePlugin.appendChild(theViewpointsPolicyExtension);
+	var theViewpointContribution = new Target!t_contribution;
+	theViewpointsPolicyExtension.appendChild(theViewpointContribution);
+	theViewpointContribution.a_file = "resources/" + ePackName + "diagrams.configuration";
+	theViewpointContribution.a_original = "platform:/plugin/org.eclipse.papyrus.infra.viewpoints.policy/builtin/default.configuration";
+	
+	var theElementTypeSetConfigurationExtension = new Target!t_extension;
+	theElementTypeSetConfigurationExtension.a_point = "org.eclipse.papyrus.infra.types.core.elementTypeSetConfiguration";
+	thePlugin.appendChild(theElementTypeSetConfigurationExtension);
+	var theElementTypeSet = new Target!t_elementTypeSet;
+	theElementTypeSet.a_clientContextID = "org.eclipse.papyrus.infra.services.edit.TypeContext";
+	theElementTypeSet.a_path = "resources/diagramshapes.elementtypesconfigurations";
+	theElementTypeSetConfigurationExtension.appendChild(theElementTypeSet);
+	
+	/*
 	var thePaletteExtension = new Target!t_extension;
 	thePaletteExtension.a_point = "org.eclipse.papyrus.uml.diagram.common.paletteDefinition";
 	thePlugin.appendChild(thePaletteExtension);
@@ -33,4 +50,5 @@ pre {
 	thePriority.a_name = "Medium";
 	thePaletteDefinition.appendChild(thePriority);
 	thePaletteExtension.appendChild(thePaletteDefinition);
+	*/
 }

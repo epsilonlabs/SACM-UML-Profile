@@ -18,7 +18,8 @@ pre {
 
 rule class2stereotype 
 	transform c : Source!EClass 
-	to s : Profile!Stereotype {
+	to tc : Target!ToolConfiguration {
+	guard : c.getEAnnotation("Class").isDefined()
 		s.name = c.name;
 		//c.name.println();
 		// Add stereotype to the profile

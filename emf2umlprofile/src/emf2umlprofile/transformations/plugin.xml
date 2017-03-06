@@ -6,9 +6,10 @@
   <extension point="org.eclipse.emf.ecore.uri_mapping">
     <mapping source="pathmap://resources/simpleFlowchart/" target="platform:/plugin/simpleFlowchart/"/>
   </extension>
-  <extension point="org.eclipse.papyrus.uml.diagram.common.paletteDefinition">
-    <paletteDefinition ID="simpleFlowchart.palette" class="org.eclipse.papyrus.uml.diagram.common.service.PluginPaletteProvider" name="simpleFlowchart Diagram Elements" path="palette.xml">
-      <Priority name="Medium"/>
-    </paletteDefinition>
+  <extension point="org.eclipse.papyrus.infra.viewpoints.policy.custom">
+    <contribution file="resources/simpleFlowchartdiagrams.configuration" original="platform:/plugin/org.eclipse.papyrus.infra.viewpoints.policy/builtin/default.configuration"/>
+  </extension>
+  <extension point="org.eclipse.papyrus.infra.types.core.elementTypeSetConfiguration">
+    <elementTypeSet clientContextID="org.eclipse.papyrus.infra.services.edit.TypeContext" path="resources/diagramshapes.elementtypesconfigurations"/>
   </extension>
 </plugin>
