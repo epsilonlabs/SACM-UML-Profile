@@ -4,7 +4,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Flowchart">
     <eAnnotations source="Class">
       <details key="icon" value="bigIcons/epsilon_icon.gif"/>
-      <details key="shape" value="icons/fpng.png"/>
+      <details key="shape" value="shapes/circle.svg"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
@@ -19,7 +19,9 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Node">
-    <eAnnotations source="Class"/>
+    <eAnnotations source="Class">
+      <details key="shape" value="shapes/ring.svg"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="testInt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="testBool" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
   </eClassifiers>

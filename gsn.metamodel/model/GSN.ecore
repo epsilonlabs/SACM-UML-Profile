@@ -50,7 +50,6 @@
     <eClassifiers xsi:type="ecore:EClass" name="UndevelopedElement" abstract="true"
         eSuperTypes="#//Core/GSNElement"/>
     <eClassifiers xsi:type="ecore:EClass" name="UndevelopedEntity" eSuperTypes="#//Core/UndevelopedElement"/>
-    <eClassifiers xsi:type="ecore:EClass" name="UndevelopedGoal" eSuperTypes="#//Core/Goal #//Core/UndevelopedElement"/>
     <eClassifiers xsi:type="ecore:EClass" name="Relationship" abstract="true" eSuperTypes="#//Core/GSNElement"/>
     <eClassifiers xsi:type="ecore:EClass" name="SupportedBy" abstract="true" eSuperTypes="#//Core/Relationship">
       <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
@@ -85,8 +84,7 @@
   </eSubpackages>
   <eSubpackages name="ModularExtensions" nsURI="http://www.goalstructuringnotation.info/gsn/modularextensions"
       nsPrefix="GSN_ModularExtensions">
-    <eClassifiers xsi:type="ecore:EClass" name="AwayElement" abstract="true" interface="true"
-        eSuperTypes="#//Core/GSNElement">
+    <eClassifiers xsi:type="ecore:EClass" name="AwayElement" abstract="true" interface="true">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="moduleIdentifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AwayGoal" eSuperTypes="#//Core/ModularStructuringElement #//ModularExtensions/AwayElement #//Core/ContextualElement"/>

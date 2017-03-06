@@ -56,9 +56,6 @@ package Core {
   class UndevelopedEntity extends UndevelopedElement {
   }
 
-  class UndevelopedGoal extends Goal, UndevelopedElement {
-  }
-
   abstract class Relationship extends GSNElement {
   }
 
