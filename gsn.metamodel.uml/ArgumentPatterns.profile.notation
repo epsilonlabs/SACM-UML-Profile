@@ -53,7 +53,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kn6cLAJbEee25Pht1imj0w"/>
     </children>
     <element xmi:type="uml:Stereotype" href="Core.profile.uml#_bXPXcAJaEee25Pht1imj0w"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kn6cIQJbEee25Pht1imj0w" x="263" y="273"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kn6cIQJbEee25Pht1imj0w" x="210" y="271"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_mSiK4AJbEee25Pht1imj0w" type="Stereotype_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_mSiK4gJbEee25Pht1imj0w" type="Stereotype_NameLabel"/>
@@ -87,7 +87,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nzqmfAJbEee25Pht1imj0w"/>
     </children>
     <element xmi:type="uml:Stereotype" href="Core.profile.uml#_dZC3IAJaEee25Pht1imj0w"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nzqmcQJbEee25Pht1imj0w" x="749" y="257"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nzqmcQJbEee25Pht1imj0w" x="700" y="260"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_uIrAsAJbEee25Pht1imj0w" type="Stereotype_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_uIrAsgJbEee25Pht1imj0w" type="Stereotype_NameLabel"/>
@@ -168,7 +168,8 @@
   <element xmi:type="uml:Profile" href="ArgumentPatterns.profile.uml#_I0-gsAJbEee25Pht1imj0w"/>
   <edges xmi:type="notation:Connector" xmi:id="_lJMkQAJbEee25Pht1imj0w" type="Generalization_Edge" source="_h0stoAJbEee25Pht1imj0w" target="_kn6cIAJbEee25Pht1imj0w">
     <children xmi:type="notation:DecorationNode" xmi:id="_lJMkQwJbEee25Pht1imj0w" type="Generalization_StereotypeLabel">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_lJMkRAJbEee25Pht1imj0w" y="40"/>
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_WDiN4AJ1Eee25Pht1imj0w" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_lJMkRAJbEee25Pht1imj0w" y="39"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_lJMkQQJbEee25Pht1imj0w"/>
     <element xmi:type="uml:Generalization" href="ArgumentPatterns.profile.uml#_lJHrwAJbEee25Pht1imj0w"/>
@@ -188,7 +189,8 @@
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_oUSAMAJbEee25Pht1imj0w" type="Generalization_Edge" source="_mSiK4AJbEee25Pht1imj0w" target="_nzqmcAJbEee25Pht1imj0w">
     <children xmi:type="notation:DecorationNode" xmi:id="_oUSAMwJbEee25Pht1imj0w" type="Generalization_StereotypeLabel">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_oUSANAJbEee25Pht1imj0w" y="40"/>
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_W6GCcAJ1Eee25Pht1imj0w" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_oUSANAJbEee25Pht1imj0w" y="39"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_oUSAMQJbEee25Pht1imj0w"/>
     <element xmi:type="uml:Generalization" href="ArgumentPatterns.profile.uml#_oUL5kAJbEee25Pht1imj0w"/>
