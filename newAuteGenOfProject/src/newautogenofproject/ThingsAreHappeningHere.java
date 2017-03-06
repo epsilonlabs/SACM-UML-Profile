@@ -66,9 +66,9 @@ public class ThingsAreHappeningHere {
 		project.setDescription(desc, progressMonitor);
 	}
 		
-	public void createThePalette(String theSelectedFilePath) throws Exception {
+	public void createThePaletteConfiguration(String theSelectedFilePath) throws Exception {
 		
-		
+		/*
 		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = new EmfModel();
 		
@@ -95,6 +95,80 @@ public class ThingsAreHappeningHere {
 	    etlModule.parse(etlFile);
 	    etlModule.execute();
 	    etlModule.getContext().getModelRepository().dispose();
+	    */
+		
+		System.err.println("palette config");
+		
+		EtlModule etlModule = new EtlModule();
+		EmfModel sourceModel = new EmfModel();
+		
+	    StringProperties sourceProperties = new StringProperties();
+	    sourceProperties.put(EmfModel.PROPERTY_METAMODEL_URI,"http://www.eclipse.org/emf/2002/Ecore");
+	    sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, theSelectedFilePath);
+	    sourceProperties.put(EmfModel.PROPERTY_NAME, "Source");
+	    sourceProperties.put(EmfModel.PROPERTY_READONLOAD, "true");
+	    sourceProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "false");
+	    sourceModel.load(sourceProperties, (IRelativePathResolver) null);
+
+	    EmfModel targetModel = new EmfModel();
+		StringProperties targetProperties = new StringProperties();
+		targetProperties.put(EmfModel.PROPERTY_METAMODEL_URI,"http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.7");
+		targetProperties.put(EmfModel.PROPERTY_MODEL_FILE, project.getLocation().toOSString() + File.separator + "resources" + File.separator + name +".paletteconfiguration");
+		targetProperties.put(EmfModel.PROPERTY_NAME, "Target");
+		targetProperties.put(EmfModel.PROPERTY_READONLOAD, "false");
+		targetProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "true");
+	    targetModel.load(targetProperties, (IRelativePathResolver) null);
+	    
+	    etlModule.getContext().getModelRepository().addModel(sourceModel);
+	    etlModule.getContext().getModelRepository().addModel(targetModel);
+	    
+	    java.net.URI etlFile = Activator.getDefault().getBundle().getResource("files/paletteConfigurationGenerationM2M.etl").toURI();
+	    etlModule.parse(etlFile);
+	    etlModule.execute();
+	    etlModule.getContext().getModelRepository().dispose();
+	}
+	
+public void createTheDiagramConfiguration(String theSelectedFilePath) throws Exception {
+	
+		System.err.println("diag config");
+	
+		EtlModule etlModule = new EtlModule();
+		EmfModel sourceModel = new EmfModel();
+		
+	    StringProperties sourceProperties = new StringProperties();
+	    sourceProperties.put(EmfModel.PROPERTY_METAMODEL_URI,"http://www.eclipse.org/emf/2002/Ecore");
+	    sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, theSelectedFilePath);
+	    sourceProperties.put(EmfModel.PROPERTY_NAME, "Source");
+	    sourceProperties.put(EmfModel.PROPERTY_READONLOAD, "true");
+	    sourceProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "false");
+	    sourceModel.load(sourceProperties, (IRelativePathResolver) null);
+
+	    EmfModel targetModel = new EmfModel();
+		StringProperties targetProperties = new StringProperties();
+		targetProperties.put(EmfModel.PROPERTY_METAMODEL_URI,"http://www.eclipse.org/papyrus/infra/viewpoints/configuration");
+		targetProperties.put(EmfModel.PROPERTY_MODEL_FILE, (project.getLocation().toOSString() + File.separator + "resources" + File.separator + name +"diagrams.configuration"));
+		System.out.println((project.getLocation().toOSString() + "\\resources\\diagrams.configuration"));
+		targetProperties.put(EmfModel.PROPERTY_NAME, "Target");
+		targetProperties.put(EmfModel.PROPERTY_READONLOAD, "false");
+		targetProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "true");
+	    targetModel.load(targetProperties, (IRelativePathResolver) null);
+	    
+	    EmfMetaModel umlEcoreMetaModel = new EmfMetaModel();
+		StringProperties umlEcoreMetaModelProperties = new StringProperties();
+		umlEcoreMetaModelProperties.put(EmfMetaModel.PROPERTY_METAMODEL_URI, "http://www.eclipse.org/uml2/5.0.0/UML");
+		umlEcoreMetaModelProperties.put(EmfMetaModel.PROPERTY_NAME, "UMLEcore");
+		umlEcoreMetaModelProperties.put(EmfMetaModel.PROPERTY_READONLOAD, "true");
+		umlEcoreMetaModelProperties.put(EmfMetaModel.PROPERTY_STOREONDISPOSAL, "false");
+		umlEcoreMetaModel.load(umlEcoreMetaModelProperties, (IRelativePathResolver) null);
+	    
+	    etlModule.getContext().getModelRepository().addModel(sourceModel);
+	    etlModule.getContext().getModelRepository().addModel(targetModel);
+	    etlModule.getContext().getModelRepository().addModel(umlEcoreMetaModel);
+	    
+	    java.net.URI etlFile = Activator.getDefault().getBundle().getResource("files/diagramsConfigurationGenerationM2M.etl").toURI();
+	    etlModule.parse(etlFile);
+	    etlModule.execute();
+	    etlModule.getContext().getModelRepository().dispose();
 	}
 	
 	public void createThePluginXml(String theSelectedFilePath) throws Exception {
@@ -111,7 +185,7 @@ public class ThingsAreHappeningHere {
 
 		PlainXmlModel targetModel = new PlainXmlModel();
 		StringProperties targetProperties = new StringProperties();
-		targetProperties.put(PlainXmlModel.PROPERTY_FILE, project.getLocation() + File.separator + "plugin.xml");
+		targetProperties.put(PlainXmlModel.PROPERTY_FILE, project.getLocation().toOSString() + File.separator + "plugin.xml");
 		targetProperties.put(PlainXmlModel.PROPERTY_NAME, "Target");
 		targetProperties.put(PlainXmlModel.PROPERTY_READONLOAD, "false");
 		targetProperties.put(PlainXmlModel.PROPERTY_STOREONDISPOSAL, "true");
@@ -127,7 +201,7 @@ public class ThingsAreHappeningHere {
 	
 	public void createTheManifestFile(String theSelectedFilePath) throws IOException {
 		new File(project.getLocation() + File.separator + "META-INF").mkdir();
-		BufferedWriter output = new BufferedWriter(new FileWriter(project.getLocation() + File.separator + "META-INF" + File.separator + "MANIFEST.MF", false));
+		BufferedWriter output = new BufferedWriter(new FileWriter(project.getLocation().toOSString() + File.separator + "META-INF" + File.separator + "MANIFEST.MF", false));
 		try {
 			output.write("Manifest-Version: 1.0\n"
 					+ "Bundle-ManifestVersion: 2\n"
@@ -160,7 +234,7 @@ public class ThingsAreHappeningHere {
 		UmlModel targetModel = new UmlModel();
 		StringProperties targetProperties = new StringProperties();
 		targetProperties.put(UmlModel.PROPERTY_METAMODEL_URI,"http://www.eclipse.org/uml2/5.0.0/UML");
-		targetProperties.put(UmlModel.PROPERTY_MODEL_FILE, project.getLocation() + File.separator + "model.profile.uml");
+		targetProperties.put(UmlModel.PROPERTY_MODEL_FILE, project.getLocation().toOSString() + File.separator + "model.profile.uml");
 		targetProperties.put(UmlModel.PROPERTY_NAME, "Profile");
 		targetProperties.put(UmlModel.PROPERTY_READONLOAD, "false");
 		targetProperties.put(UmlModel.PROPERTY_STOREONDISPOSAL, "true");
@@ -220,7 +294,7 @@ public class ThingsAreHappeningHere {
 	}
 	
 	public void createTheModelProfileNotationFile() throws IOException {
-		BufferedWriter output = new BufferedWriter(new FileWriter(project.getLocation() + File.separator + "model.profile.notation", false));
+		BufferedWriter output = new BufferedWriter(new FileWriter(project.getLocation().toOSString() + File.separator + "model.profile.notation", false));
 		try {
 			output.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 					+ "<xmi:XMI xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\"/>\n");
@@ -231,7 +305,7 @@ public class ThingsAreHappeningHere {
 	}
 	
 	public void createTheModelProfileDiFile() throws IOException {
-		BufferedWriter output = new BufferedWriter(new FileWriter(project.getLocation() + File.separator + "model.profile.di", false));
+		BufferedWriter output = new BufferedWriter(new FileWriter(project.getLocation().toOSString() + File.separator + "model.profile.di", false));
 		try {
 			output.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 					+ "<xmi:XMI xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\"/>\n");
@@ -242,7 +316,7 @@ public class ThingsAreHappeningHere {
 	}
 	
 	public void createThebuildPropertiesFile() throws IOException {
-		BufferedWriter output = new BufferedWriter(new FileWriter(project.getLocation() + File.separator + "build.properties", false));
+		BufferedWriter output = new BufferedWriter(new FileWriter(project.getLocation().toOSString() + File.separator + "build.properties", false));
 		try {
 			output.write("bin.includes = META-INF/,\\\n"
 					+ "plugin.xml\n");
@@ -260,13 +334,13 @@ public class ThingsAreHappeningHere {
 			if (iconPath.substring(iconPath.lastIndexOf('.') + 1).equals("gif")){
 				// In order to be able to do the copy, I need firstly to create the target directory. I do that by striping the name of the file.
 				// The target directory is: the target project location + the content of the icon details set in EMF without the file name.
-				String theTargetDirectory = project.getLocation() + File.separator + iconPath.substring(0, iconPath.lastIndexOf("/"));
+				String theTargetDirectory = project.getLocation().toOSString() + File.separator + iconPath.substring(0, iconPath.lastIndexOf("/"));
 				File targetDir = new File(theTargetDirectory);
 				if (!targetDir.exists()) {
 					targetDir.mkdir();
 				}
 				String fromIconPath = theParentFolder + File.separator + iconPath;
-				String toIconPath = project.getLocation() + File.separator + iconPath;
+				String toIconPath = project.getLocation().toOSString() + File.separator + iconPath;
 				copyFiles(fromIconPath, toIconPath);
 			}
 		}
@@ -277,13 +351,13 @@ public class ThingsAreHappeningHere {
 		for (String shapePath : shapePaths) {
 			// In order to be able to do the copy, I need firstly to create the target directory. I do that by striping the name of the file.
 			// The target directory is: the target project location + the content of the shape details set in EMF without the file name.
-			String theTargetDirectory = project.getLocation() + File.separator + shapePath.substring(0, shapePath.lastIndexOf("/"));
+			String theTargetDirectory = project.getLocation().toOSString() + File.separator + shapePath.substring(0, shapePath.lastIndexOf("/"));
 			File targetDir = new File(theTargetDirectory);
 			if (!targetDir.exists()) {
 				targetDir.mkdir();
 			}
 			String fromShapePath = theParentFolder + File.separator + shapePath;
-			String toShapePath = project.getLocation() + File.separator + shapePath;
+			String toShapePath = project.getLocation().toOSString() + File.separator + shapePath;
 			copyFiles(fromShapePath, toShapePath);
 		}
 	}
