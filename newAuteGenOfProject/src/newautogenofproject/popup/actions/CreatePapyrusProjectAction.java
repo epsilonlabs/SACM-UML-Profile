@@ -57,10 +57,11 @@ public class CreatePapyrusProjectAction implements IObjectActionDelegate {
 				protected IStatus run(IProgressMonitor monitor) {
 					try {
 						tahh.createPluginProject(theSelectedFilePath);
-						tahh.createThePalette(theSelectedFilePath);
+						tahh.createThePaletteConfiguration(theSelectedFilePath);
 						tahh.createThePluginXml(theSelectedFilePath);
 						tahh.createTheProfileUmlFile(theSelectedFilePath);
 						tahh.createTheManifestFile(theSelectedFilePath);
+						tahh.createTheDiagramConfiguration(theSelectedFilePath);
 						tahh.createTheModelProfileNotationFile();
 						tahh.createTheModelProfileDiFile();
 						tahh.createThebuildPropertiesFile();
