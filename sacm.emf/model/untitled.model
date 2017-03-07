@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<SACM_Argumentation:ArgumentPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SACM_Argumentation="http://www.omg.org/spec/SACM/2.0/Argumentation" xmi:id="_N1UjUANGEeeH6OUiT87h2Q">
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" xmi:id="_OoDn0ANGEeeH6OUiT87h2Q" name="Goal"/>
+</SACM_Argumentation:ArgumentPackage>

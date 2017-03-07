@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="SACM" nsURI="http://www.omg.org/spec/SACM/2.0" nsPrefix="sacm">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
   <eSubpackages name="Commons" nsURI="http://www.omg.org/spec/SACM/2.0/Commons" nsPrefix="SACM_Commons">
     <eClassifiers xsi:type="ecore:EClass" name="SACMElement" abstract="true">
       <eAnnotations source="Comment">
@@ -55,6 +58,11 @@
       <eAnnotations source="Comment">
         <details key="text" value="UtilityElement supports the specification of additional information for a ModelElement"/>
       </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="sExpression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="Comment">
+          <details key="text" value="Simple expression"/>
+        </eAnnotations>
+      </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
           eType="#//Terminology/Expression" containment="true">
         <eAnnotations source="Comment">
@@ -81,6 +89,11 @@
       <eAnnotations source="Comment">
         <details key="text" value="To specify attributes and their corresponding values for a ModelElement"/>
       </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="sKey" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="Comment">
+          <details key="text" value="Simple key"/>
+        </eAnnotations>
+      </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="#//Terminology/Expression"
           containment="true">
         <eAnnotations source="Comment">
@@ -111,7 +124,7 @@
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="interface" upperBound="-1"
-          eType="#//Packages/AssuranceCasePackageInterface" containment="true">
+          eType="#//Packages/AssuranceCasePackageInterface">
         <eAnnotations source="Comment">
           <details key="text" value="A number of interfaces that the current package may implement"/>
         </eAnnotations>
@@ -179,7 +192,7 @@
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TerminologyPackageCitation" eSuperTypes="#//Terminology/TerminologyElement">
+    <eClassifiers xsi:type="ecore:EClass" name="TerminologyPackageCitation" eSuperTypes="#//Terminology/TerminologyPackage">
       <eAnnotations source="Comment">
         <details key="text" value="Used to refer to another TerminologyPackage"/>
       </eAnnotations>
@@ -222,7 +235,7 @@
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="element" upperBound="-1"
-          eType="#//Terminology/ExpressionElement" containment="true">
+          eType="#//Terminology/ExpressionElement">
         <eAnnotations source="Comment">
           <details key="text" value="Optional reference to other ExpressionElements forming part of the StructuredExpression"/>
         </eAnnotations>
@@ -247,8 +260,19 @@
   </eSubpackages>
   <eSubpackages name="Argumentation" nsURI="http://www.omg.org/spec/SACM/2.0/Argumentation"
       nsPrefix="SACM_Argumentation">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+      <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+      <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="ArgumentationElement" abstract="true"
-        eSuperTypes="#//Commons/ModelElement"/>
+        eSuperTypes="#//Commons/ModelElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="Comment">
+          <details key="text" value="Content"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ArgumentPackage" eSuperTypes="#//Argumentation/ArgumentationElement">
       <eAnnotations source="Comment">
         <details key="text" value="Container for a structured argument represented using SACM"/>
@@ -266,7 +290,7 @@
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="interface" upperBound="-1"
-          eType="#//Argumentation/ArgumentPackageInterface" containment="true">
+          eType="#//Argumentation/ArgumentPackageInterface">
         <eAnnotations source="Comment">
           <details key="text" value="An optional set of interfaces"/>
         </eAnnotations>
@@ -290,7 +314,7 @@
         <details key="text" value="Record the mapping between two or more ArgumentPackages"/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="participantPackage" lowerBound="2"
-          upperBound="-1" eType="#//Argumentation/ArgumentPackageInterface">
+          upperBound="-1" eType="#//Argumentation/ArgumentPackage">
         <eAnnotations source="Comment">
           <details key="text" value="To be discussed"/>
         </eAnnotations>
@@ -321,8 +345,7 @@
       <eAnnotations source="Comment">
         <details key="text" value="Enables the citation of an Artefact that relates to the structured argument"/>
       </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="externalReference" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="externalReference" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
         <eAnnotations source="Comment">
           <details key="text" value="Record a URL to a external evidence"/>
         </eAnnotations>
@@ -337,7 +360,7 @@
       <eAnnotations source="Comment">
         <details key="text" value="Used to cite ArgumentAsset"/>
       </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="citedAsset" upperBound="-1"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="citedAsset" lowerBound="1"
           eType="#//Argumentation/ArgumentAsset">
         <eAnnotations source="Comment">
           <details key="text" value="Refers to another ArgumentAsset"/>
@@ -347,6 +370,12 @@
     <eClassifiers xsi:type="ecore:EClass" name="Claim" eSuperTypes="#//Argumentation/Assertion">
       <eAnnotations source="Comment">
         <details key="text" value="Used to record the propositions of any structured argument"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="isGoal"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="isGoal" value="self.name = 'Goal'"/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="assumed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
         <eAnnotations source="Comment">
@@ -386,8 +415,7 @@
           <details key="text" value="Target of the relationship"/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="reasoning" upperBound="-1"
-          eType="#//Argumentation/ArgumentReasoning">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reasoning" eType="#//Argumentation/ArgumentReasoning">
         <eAnnotations source="Comment">
           <details key="text" value="Reasoning of the relationship"/>
         </eAnnotations>
@@ -446,7 +474,7 @@
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="interface" upperBound="-1"
-          eType="#//Artefact/ArtefactPackageInterface" containment="true"/>
+          eType="#//Artefact/ArtefactPackageInterface"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ArtefactPackageCitation" eSuperTypes="#//Artefact/ArtefactPackage">
       <eAnnotations source="Comment">
@@ -464,7 +492,7 @@
         <details key="text" value="Used to record ArtefactAssertRelationships between the ArtefactAssets of two or more ArtefactPackages"/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="participantpackage" lowerBound="2"
-          upperBound="-1" eType="#//Artefact/ArtefactPackageInterface">
+          upperBound="-1" eType="#//Artefact/ArtefactPackage">
         <eAnnotations source="Comment">
           <details key="text" value="The ArtefactPackages containing the ArtefactAssets being related together by the ArtefactPackageBinding"/>
         </eAnnotations>
