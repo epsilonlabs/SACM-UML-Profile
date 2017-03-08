@@ -1,6 +1,11 @@
 pre {
 	var ePackName = Source!EPackage.all().first().name;
 	var theConfiguration = new Target!PapyrusConfiguration;
+	theConfiguration.defaultStakeholder = Default.allContents.selectOne(s|s.isTypeOf(Target!Stakeholder) and s.name = "Default Modeler");
+	var umlEPackage = new Ecore!EPackage;
+	umlEPackage.name = "uml";
+	theConfiguration.metamodel = umlEPackage;
+	//Ecore!EPackage.all.selectOne(p|p.name = "uml").println();
 	var theDefaultPapyrusViewpoint = new Target!PapyrusViewpoint;
 	theDefaultPapyrusViewpoint.name = "Default Papyrus Viewpoint";
 	theConfiguration.viewpoints.add(theDefaultPapyrusViewpoint);

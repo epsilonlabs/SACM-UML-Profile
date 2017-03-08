@@ -30,10 +30,17 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.epsilon.common.util.StringProperties;
+import org.eclipse.epsilon.egl.EglFileGeneratingTemplate;
+import org.eclipse.epsilon.egl.EglFileGeneratingTemplateFactory;
+import org.eclipse.epsilon.egl.EglTemplate;
+import org.eclipse.epsilon.egl.EglTemplateFactoryModuleAdapter;
+import org.eclipse.epsilon.egl.internal.EglModule;
 import org.eclipse.epsilon.emc.emf.EmfMetaModel;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.emc.plainxml.PlainXmlModel;
 import org.eclipse.epsilon.emc.uml.UmlModel;
+import org.eclipse.epsilon.eol.IEolExecutableModule;
+import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.models.IRelativePathResolver;
 import org.eclipse.epsilon.etl.EtlModule;
 import org.eclipse.pde.internal.core.natures.PDE;
@@ -68,6 +75,7 @@ public class ThingsAreHappeningHere {
 		
 	public void createThePaletteConfiguration(String theSelectedFilePath) throws Exception {
 		
+		// This is to generate the deprecated palette.xml. Please don't delete.
 		/*
 		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = new EmfModel();
@@ -96,8 +104,6 @@ public class ThingsAreHappeningHere {
 	    etlModule.execute();
 	    etlModule.getContext().getModelRepository().dispose();
 	    */
-		
-		System.err.println("palette config");
 		
 		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = new EmfModel();
@@ -171,6 +177,63 @@ public void createTheDiagramConfiguration(String theSelectedFilePath) throws Exc
 	    etlModule.getContext().getModelRepository().dispose();
 	}
 	
+
+	public void createTheCSSFile(String theSelectedFilePath) throws Exception {
+		EmfModel sourceModel = new EmfModel();
+		
+	    StringProperties sourceProperties = new StringProperties();
+	    sourceProperties.put(EmfModel.PROPERTY_METAMODEL_URI,"http://www.eclipse.org/emf/2002/Ecore");
+	    sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, theSelectedFilePath);
+	    sourceProperties.put(EmfModel.PROPERTY_NAME, "Source");
+	    sourceProperties.put(EmfModel.PROPERTY_READONLOAD, "true");
+	    sourceProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "false");
+	    sourceModel.load(sourceProperties, (IRelativePathResolver) null);
+
+	    EglFileGeneratingTemplateFactory factory = new EglFileGeneratingTemplateFactory();
+	    IEolExecutableModule eglModule = new EglTemplateFactoryModuleAdapter(factory);
+	    		
+	    eglModule.getContext().getModelRepository().addModel(sourceModel);
+	    
+	    java.net.URI EglFile = Activator.getDefault().getBundle().getResource("files/cssFileGeneration.egl").toURI();
+	    //eglModule.parse(EglFile);
+
+	    EglFileGeneratingTemplate template = (EglFileGeneratingTemplate) factory.load(EglFile);
+		template.process();
+	    File target = new File(project.getLocation().toOSString() + File.separator + "resources" + File.separator + name +"diagram.css");
+	    target.createNewFile(); 
+		template.generate(target.toURI().toString());
+	}
+
+	public void createTheElementTypeConfigurations(String theSelectedFilePath) throws Exception {
+		EtlModule etlModule = new EtlModule();
+		EmfModel sourceModel = new EmfModel();
+		
+	    StringProperties sourceProperties = new StringProperties();
+	    sourceProperties.put(EmfModel.PROPERTY_METAMODEL_URI,"http://www.eclipse.org/emf/2002/Ecore");
+	    sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, theSelectedFilePath);
+	    sourceProperties.put(EmfModel.PROPERTY_NAME, "Source");
+	    sourceProperties.put(EmfModel.PROPERTY_READONLOAD, "true");
+	    sourceProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "false");
+	    sourceModel.load(sourceProperties, (IRelativePathResolver) null);
+
+	    EmfModel targetModel = new EmfModel();
+		StringProperties targetProperties = new StringProperties();
+		targetProperties.put(EmfModel.PROPERTY_METAMODEL_URI,"http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1");
+		targetProperties.put(EmfModel.PROPERTY_MODEL_FILE, project.getLocation().toOSString() + File.separator + "resources" + File.separator +"diagramshapes.elementtypesconfigurations");
+		targetProperties.put(EmfModel.PROPERTY_NAME, "Target");
+		targetProperties.put(EmfModel.PROPERTY_READONLOAD, "false");
+		targetProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "true");
+	    targetModel.load(targetProperties, (IRelativePathResolver) null);
+	    
+	    etlModule.getContext().getModelRepository().addModel(sourceModel);
+	    etlModule.getContext().getModelRepository().addModel(targetModel);
+	    
+	    java.net.URI etlFile = Activator.getDefault().getBundle().getResource("files/elementTypesConfigurationsM2M.etl").toURI();
+	    etlModule.parse(etlFile);
+	    etlModule.execute();
+	    etlModule.getContext().getModelRepository().dispose();
+	}
+
 	public void createThePluginXml(String theSelectedFilePath) throws Exception {
 		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = new EmfModel();

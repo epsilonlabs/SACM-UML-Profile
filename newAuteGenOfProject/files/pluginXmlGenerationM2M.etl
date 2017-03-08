@@ -37,6 +37,14 @@ pre {
 	theElementTypeSet.a_path = "resources/diagramshapes.elementtypesconfigurations";
 	theElementTypeSetConfigurationExtension.appendChild(theElementTypeSet);
 	
+	var theSecondElementTypeSetConfigurationExtension = new Target!t_extension;
+	theSecondElementTypeSetConfigurationExtension.a_point = "org.eclipse.papyrus.infra.types.core.elementTypeSetConfiguration";
+	thePlugin.appendChild(theSecondElementTypeSetConfigurationExtension);
+	var theSecondElementTypeSet = new Target!t_elementTypeSet;
+	theSecondElementTypeSet.a_clientContextID = "org.eclipse.papyrus.infra.services.edit.TypeContext";
+	theSecondElementTypeSet.a_path = "resources/modelelement.typesconfigurations";
+	theSecondElementTypeSetConfigurationExtension.appendChild(theSecondElementTypeSet);
+	
 	/*
 	var thePaletteExtension = new Target!t_extension;
 	thePaletteExtension.a_point = "org.eclipse.papyrus.uml.diagram.common.paletteDefinition";

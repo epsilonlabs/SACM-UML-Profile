@@ -62,6 +62,8 @@ public class CreatePapyrusProjectAction implements IObjectActionDelegate {
 						tahh.createTheProfileUmlFile(theSelectedFilePath);
 						tahh.createTheManifestFile(theSelectedFilePath);
 						tahh.createTheDiagramConfiguration(theSelectedFilePath);
+						tahh.createTheElementTypeConfigurations(theSelectedFilePath);
+						tahh.createTheCSSFile(theSelectedFilePath);
 						tahh.createTheModelProfileNotationFile();
 						tahh.createTheModelProfileDiFile();
 						tahh.createThebuildPropertiesFile();

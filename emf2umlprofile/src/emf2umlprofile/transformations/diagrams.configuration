@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="ASCII"?>
-<configuration:PapyrusConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configuration="http://www.eclipse.org/papyrus/infra/viewpoints/configuration" xsi:schemaLocation="http://www.eclipse.org/papyrus/infra/viewpoints/configuration configuration.ecore"/>
+<configuration:PapyrusConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configuration="http://www.eclipse.org/papyrus/infra/viewpoints/configuration" xmi:id="_m2OgMAM_EeeMMeKEkXQ66g">
+  <viewpoints xsi:type="configuration:PapyrusViewpoint" xmi:id="_m2OgMQM_EeeMMeKEkXQ66g" name="Default Papyrus Viewpoint">
+    <modelKinds xsi:type="configuration:PapyrusDiagram" xmi:id="_m2PHQAM_EeeMMeKEkXQ66g" name="Papyrus simpleFlowchart Diagram" implementationID="PapyrusUMLClassDiagram" categories="_m2RjgQM_EeeMMeKEkXQ66g" customPalette="platform:/plugin/simpleFlowchart/resources/simpleFlowchart.paletteconfiguration" customStyle="platform:/plugin/simpleFlowchart/resources/simpleFlowchartdiagram.css">
+      <modelRules xmi:id="_m2PHQQM_EeeMMeKEkXQ66g">
+        <element href="http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+      </modelRules>
+      <owningRules xmi:id="_m2Q8cAM_EeeMMeKEkXQ66g">
+        <element href="http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+      </owningRules>
+      <childRules xmi:id="_m2Q8cQM_EeeMMeKEkXQ66g"/>
+      <paletteRules xmi:id="_m2RjgAM_EeeMMeKEkXQ66g" permit="false" element="clazz.group.*"/>
+    </modelKinds>
+  </viewpoints>
+  <defaultStakeholder href="platform:/plugin/org.eclipse.papyrus.infra.viewpoints.policy/builtin/default.configuration#_7wLmkdxhEeOqHvRyiN87hA"/>
+  <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+  <categories xmi:id="_m2RjgQM_EeeMMeKEkXQ66g" name="simpleFlowchart"/>
+</configuration:PapyrusConfiguration>

@@ -1,0 +1,19 @@
+pre {
+	var ePackName = Source!EPackage.all().first().name;
+	var theConfiguration = new Target!ElementTypeSetConfiguration;
+	theConfiguration.name = ePackName + " shape element nodes and edges";
+	theConfiguration.metamodelNsUri = "http://www.eclipse.org/uml2/5.0.0/UML";
+	theConfiguration.identifier = ePackName + ".elementTypes";
+}
+
+rule class2Shape 
+transform c : Source!EClass 
+to stc : Target!SpecializationTypeConfiguration {
+guard : c.getEAnnotation("Class").isDefined()
+	stc.name = c.name + " shape";
+	stc.hint = "Class_Shape";
+	stc.identifier = ePackName + "." + c.name + "_Shape";
+	stc.specializedTypesId.add(ePackName + "." + c.name);
+	stc.specializedTypesId.add("org.eclipse.papyrus.umldi.Class_Shape");
+	theConfiguration.elementTypeConfigurations.add(stc);
+}
