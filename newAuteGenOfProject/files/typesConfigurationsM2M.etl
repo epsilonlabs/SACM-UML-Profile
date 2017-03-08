@@ -12,7 +12,7 @@ guard : c.getEAnnotation("Class").isDefined()
 	stc.name = c.name;
 	stc.hint = "UML::Class";
 	stc.identifier = ePackName + "." + c.name;
-	stc.specializedTypesId.add("org.eclipse.papyrus.umldi.Class");
+	stc.specializedTypesId.add("org.eclipse.papyrus.uml.Class");
 	var theIconEntry = new Target!IconEntry;
 	theIconEntry.iconPath = "/icons/full/obj16/Class.gif";
 	theIconEntry.bundleId = "org.eclipse.uml2.uml.edit";

@@ -335,6 +335,7 @@ public class ThingsAreHappeningHere {
 					+ " org.eclipse.papyrus.uml.diagram.activity,\n"
 					+ " org.eclipse.gmf.tooling.runtime,\n"
 					+ " org.eclipse.papyrus.infra.core,\n"
+					+ " org.eclipse.papyrus.infra.types.core,\n"
 					+ " org.eclipse.gmf.runtime.diagram.core\n");
 			output.close();
 		} catch (IOException ex) {
