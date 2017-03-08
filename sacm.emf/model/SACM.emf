@@ -36,6 +36,9 @@ package Commons {
   @Comment(text="UtilityElement supports the specification of additional information for a ModelElement")
   abstract class UtilityElement extends SACMElement {
   
+  	@Comment(text="Simple expression")
+  	attr String sExpression;
+  
  	@Comment(text="Expression that contains the value of the element")
   	val Terminology.Expression[1] expression; 
   }
@@ -54,10 +57,11 @@ package Commons {
 
   @Comment(text="To specify attributes and their corresponding values for a ModelElement")
   class TaggedValue extends UtilityElement {
+  	@Comment(text="Simple key")
+  	attr String sKey;
   	@Comment(text="the key of the tagged value")
   	val Terminology.Expression key;
   }
-
 }
 
 @Comment(text="")
@@ -74,7 +78,7 @@ package Packages {
 		val AssuranceCasePackage[*] assuranceCasePackage;
 		
 		@Comment(text="A number of interfaces that the current package may implement")
-		val AssuranceCasePackageInterface[*] ~interface;
+		ref AssuranceCasePackageInterface[*] ~interface;
 		
 		@Comment(text="A number of argument packages")
 		val Argumentation.ArgumentPackage[*] argumentPackage;
@@ -117,7 +121,7 @@ package Terminology {
 	}
 
 	@Comment(text="Used to refer to another TerminologyPackage")
-	class TerminologyPackageCitation extends TerminologyElement {
+	class TerminologyPackageCitation extends TerminologyPackage {
 		@Comment(text="Cited TerminologyPackage")
 		ref TerminologyPackage citedPackage;
 	}
@@ -143,7 +147,7 @@ package Terminology {
 		attr String value;
 		
 		@Comment(text="Optional reference to other ExpressionElements forming part of the StructuredExpression")
-		val ExpressionElement[*] element;
+		ref ExpressionElement[*] element;
 	}
 	
 	class Term extends ExpressionElement {
@@ -163,6 +167,9 @@ package Terminology {
 package Argumentation {
 
 	abstract class ArgumentationElement extends Commons.ModelElement {
+		
+		@Comment(text="Content")
+		attr String content;
 	}
 
 	@Comment(text="Container for a structured argument represented using SACM")
@@ -175,7 +182,7 @@ package Argumentation {
 		val ArgumentPackage[*] argumentPackage;
 		
 		@Comment(text="An optional set of interfaces")
-		val ArgumentPackageInterface[*] ~interface;
+		ref ArgumentPackageInterface[*] ~interface;
 		
 		@Comment(text="An optional set of citations")
 		val ArgumentPackageCitation[*] argumentPackageCitation;
@@ -190,7 +197,7 @@ package Argumentation {
 	class ArgumentPackageBinding extends ArgumentPackage {
 	
 		@Comment(text="To be discussed")
-		ref ArgumentPackageInterface[2..*] participantPackage;
+		ref ArgumentPackage[2..*] participantPackage;
 	}
 	
 	@Comment(text="Used to declare the ArgumentAssets contained in an ArgumentPackage")
@@ -212,7 +219,7 @@ package Argumentation {
 	@Comment(text="Enables the citation of an Artefact that relates to the structured argument")
 	class ArtefactElementCitation extends ArgumentAsset {
 		@Comment(text="Record a URL to a external evidence")
-		attr String[1] externalReference;
+		attr String externalReference;
 		
 		@Comment(text="Cited artefact")
 		ref Artefact.ArtefactElement citedArtefact;
@@ -221,7 +228,7 @@ package Argumentation {
 	@Comment(text="Used to cite ArgumentAsset")
 	class ArgumentAssetCitation extends ArgumentAsset {
 		@Comment(text="Refers to another ArgumentAsset")
-		ref ArgumentAsset[*] citedAsset;
+		ref ArgumentAsset[1] citedAsset;
 	}
 	
 	@Comment(text="Used to record the propositions of any structured argument")
@@ -247,7 +254,7 @@ package Argumentation {
 		ref ArgumentAsset[*] target;
 		
 		@Comment(text="Reasoning of the relationship")
-		ref ArgumentReasoning[*] reasoning;
+		ref ArgumentReasoning reasoning;
 	}
 	
 	@Comment(text="Records the inference that a user declares to exist between on or more Assertion and another Assertion")
@@ -282,7 +289,6 @@ package Artefact {
 
 	@Comment(text="To specify all the identifiable units of data modeled and managed in a structured assurance case")
 	abstract class ArtefactElement extends Commons.ModelElement {
-		
 	}
 	
 	class ArtefactPackage extends ArtefactElement {
@@ -295,7 +301,7 @@ package Artefact {
 		@Comment(text="An optional set of contained ArtefactPackage elements")
 		val ArtefactPackage[*] artefactPackage;
 		
-		val ArtefactPackageInterface[*] ~interface;
+		ref ArtefactPackageInterface[*] ~interface;
 	}
 	
 	@Comment(text="Used to cite another ArtefactPackage")
@@ -307,7 +313,7 @@ package Artefact {
 	@Comment(text="Used to record ArtefactAssertRelationships between the ArtefactAssets of two or more ArtefactPackages")
 	class ArtefactPackageBinding extends ArtefactPackage {
 		@Comment(text="The ArtefactPackages containing the ArtefactAssets being related together by the ArtefactPackageBinding")
-		ref ArtefactPackageInterface[2..*] participantpackage;
+		ref ArtefactPackage[2..*] participantpackage;
 	}
 	
 	@Comment(text="Defines an interface that may be exchanged between users")
