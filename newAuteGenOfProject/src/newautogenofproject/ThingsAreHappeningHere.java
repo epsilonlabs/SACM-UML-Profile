@@ -315,9 +315,27 @@ public class ThingsAreHappeningHere {
 		try {
 			output.write("Manifest-Version: 1.0\n" + "Bundle-ManifestVersion: 2\n" + "Bundle-Name: " + name + "\n"
 					+ "Bundle-SymbolicName: " + name + ";singleton:=true\n" + "Bundle-Version: 1.0.0.qualifier\n"
-					+ "Require-Bundle: org.eclipse.papyrus.uml.diagram.common,"
-					+ "org.eclipse.papyrus.uml.extensionpoints,"
-					+ "org.eclipse.papyrus.uml.diagram.clazz;bundle-version=\"2.0.0\"\n");
+					+ "Require-Bundle: org.eclipse.papyrus.uml.diagram.common,\n"
+					+ " org.eclipse.papyrus.uml.extensionpoints,\n"
+					+ " org.eclipse.papyrus.uml.diagram.clazz;bundle-version=\"2.0.0\",\n"
+					+ " org.eclipse.ui,\n"
+					+ " org.eclipse.core.runtime,\n"
+					+ " org.eclipse.papyrus.infra.viewpoints.policy,\n"
+					+ " org.eclipse.papyrus.uml.tools.utils,\n"
+					+ " org.eclipse.papyrus.uml.diagram.common,\n"
+					+ " org.eclipse.uml2.uml,\n"
+					+ " org.eclipse.core.resources,\n"
+					+ " org.eclipse.papyrus.infra.viewpoints.policy,\n"
+					+ " org.eclipse.papyrus.infra.gmfdiag.common,\n"
+					+ " org.eclipse.papyrus.uml.diagram.composite,\n"
+					+ " org.eclipse.papyrus.infra.core.log,\n"
+					+ " org.eclipse.papyrus.uml.tools,\n"
+					+ " org.eclipse.papyrus.uml.diagram.communication,\n"
+					+ " org.eclipse.papyrus.uml.diagram.clazz,\n"
+					+ " org.eclipse.papyrus.uml.diagram.activity,\n"
+					+ " org.eclipse.gmf.tooling.runtime,\n"
+					+ " org.eclipse.papyrus.infra.core,\n"
+					+ " org.eclipse.gmf.runtime.diagram.core\n");
 			output.close();
 		} catch (IOException ex) {
 			System.out.println("Error writing to file...");
