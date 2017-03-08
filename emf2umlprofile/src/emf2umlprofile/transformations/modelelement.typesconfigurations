@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ASCII"?>
+<elementtypesconfigurations:ElementTypeSetConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:applystereotypeadvice="http://www.eclipse.org/papyrus/uml/types/applystereotypeadvice/1.1" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1" xmlns:stereotypematcher="http://www.eclipse.org/papyrus/uml/types/stereotypematcher/1.1" identifier="simpleFlowchart.elementTypes" metamodelNsURI="http://www.eclipse.org/uml2/5.0.0/UML">
+  <elementTypeConfigurations xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" identifier="simpleFlowchart.Flowchart" name="Flowchart" hint="UML::Class">
+    <iconEntry iconPath="/icons/full/obj16/Class.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <specializedTypesID>org.eclipse.papyrus.umldi.Class</specializedTypesID>
+    <matcherConfiguration xsi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration">
+      <stereotypesQualifiedNames>simpleFlowchart::Flowchart</stereotypesQualifiedNames>
+    </matcherConfiguration>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" identifier="simpleFlowchart.Node" name="Node" hint="UML::Class">
+    <iconEntry iconPath="/icons/full/obj16/Class.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <specializedTypesID>org.eclipse.papyrus.umldi.Class</specializedTypesID>
+    <matcherConfiguration xsi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration">
+      <stereotypesQualifiedNames>simpleFlowchart::Node</stereotypesQualifiedNames>
+    </matcherConfiguration>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" identifier="simpleFlowchart.AnotherNode" name="AnotherNode" hint="UML::Class">
+    <iconEntry iconPath="/icons/full/obj16/Class.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <specializedTypesID>org.eclipse.papyrus.umldi.Class</specializedTypesID>
+    <matcherConfiguration xsi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration">
+      <stereotypesQualifiedNames>simpleFlowchart::AnotherNode</stereotypesQualifiedNames>
+    </matcherConfiguration>
+  </elementTypeConfigurations>
+  <adviceBindingsConfigurations xsi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" identifier="simpleFlowchart.flowchart" target="//@elementTypeConfigurations.0">
+    <stereotypesToApply stereotypeQualifiedName="simpleFlowchart::Flowchart" updateName="true">
+      <requiredProfiles>simpleFlowchart</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xsi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" identifier="simpleFlowchart.node" target="//@elementTypeConfigurations.1">
+    <stereotypesToApply stereotypeQualifiedName="simpleFlowchart::Node" updateName="true">
+      <requiredProfiles>simpleFlowchart</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xsi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" identifier="simpleFlowchart.anothernode" target="//@elementTypeConfigurations.2">
+    <stereotypesToApply stereotypeQualifiedName="simpleFlowchart::AnotherNode" updateName="true">
+      <requiredProfiles>simpleFlowchart</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+</elementtypesconfigurations:ElementTypeSetConfiguration>

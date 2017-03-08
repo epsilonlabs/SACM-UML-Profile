@@ -136,8 +136,7 @@ public class ThingsAreHappeningHere {
 	
 public void createTheDiagramConfiguration(String theSelectedFilePath) throws Exception {
 	
-		System.err.println("diag config");
-	
+
 		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = new EmfModel();
 		
@@ -202,6 +201,36 @@ public void createTheDiagramConfiguration(String theSelectedFilePath) throws Exc
 	    File target = new File(project.getLocation().toOSString() + File.separator + "resources" + File.separator + name +"diagram.css");
 	    target.createNewFile(); 
 		template.generate(target.toURI().toString());
+	}
+	
+	public void createTheTypesConfigurations(String theSelectedFilePath) throws Exception {
+		EtlModule etlModule = new EtlModule();
+		EmfModel sourceModel = new EmfModel();
+		
+	    StringProperties sourceProperties = new StringProperties();
+	    sourceProperties.put(EmfModel.PROPERTY_METAMODEL_URI,"http://www.eclipse.org/emf/2002/Ecore");
+	    sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, theSelectedFilePath);
+	    sourceProperties.put(EmfModel.PROPERTY_NAME, "Source");
+	    sourceProperties.put(EmfModel.PROPERTY_READONLOAD, "true");
+	    sourceProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "false");
+	    sourceModel.load(sourceProperties, (IRelativePathResolver) null);
+
+	    EmfModel targetModel = new EmfModel();
+		StringProperties targetProperties = new StringProperties();
+		targetProperties.put(EmfModel.PROPERTY_METAMODEL_URI, "http://www.eclipse.org/papyrus/uml/types/applystereotypeadvice/1.1, http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1, http://www.eclipse.org/papyrus/uml/types/stereotypematcher/1.1");
+		targetProperties.put(EmfModel.PROPERTY_MODEL_FILE, project.getLocation().toOSString() + File.separator + "resources" + File.separator +"modelelement.typesconfigurations");
+		targetProperties.put(EmfModel.PROPERTY_NAME, "Target");
+		targetProperties.put(EmfModel.PROPERTY_READONLOAD, "false");
+		targetProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "true");
+	    targetModel.load(targetProperties, (IRelativePathResolver) null);
+	    
+	    etlModule.getContext().getModelRepository().addModel(sourceModel);
+	    etlModule.getContext().getModelRepository().addModel(targetModel);
+	    
+	    java.net.URI etlFile = Activator.getDefault().getBundle().getResource("files/typesConfigurationsM2M.etl").toURI();
+	    etlModule.parse(etlFile);
+	    etlModule.execute();
+	    etlModule.getContext().getModelRepository().dispose();
 	}
 
 	public void createTheElementTypeConfigurations(String theSelectedFilePath) throws Exception {

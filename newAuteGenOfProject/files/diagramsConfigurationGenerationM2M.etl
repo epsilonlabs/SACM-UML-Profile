@@ -26,7 +26,6 @@ pre {
 	theCategory.name = ePackName;
 	theDiagram.categories.add(theCategory);
 	theConfiguration.categories.add(theCategory);
-	"hello".println();
 	//var theDefaultStakeholder = DefaultConfig!Stakeholder.all.selectOne(s | s.name = "Default Modeler");
 	//var theDefaultStakeholder = new Target!Stakeholder;
 	//theDefaultStakeholder.println();

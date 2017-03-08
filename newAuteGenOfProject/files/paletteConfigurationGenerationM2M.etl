@@ -20,7 +20,6 @@ rule node2Tool
 	transform c : Source!EClass 
 	to tc : Target!ToolConfiguration {
 	guard : c.getEAnnotation("Class").isDefined()
-		"boom".println();
 		tc.description = c.name + " node";
 		tc.label = c.name;
 		tc.id = c.name + "_node";

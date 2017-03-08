@@ -12,7 +12,6 @@ pre {
 	profile.elementImport.add(associationImport);
 	var ePackage = new Profile!EPackage;
 	createUMLAnnotationsForVersions(profile);
-	
 	profile.name = ePackName;
 }
 
