@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -41,6 +42,7 @@ import org.eclipse.epsilon.emc.plainxml.PlainXmlModel;
 import org.eclipse.epsilon.emc.uml.UmlModel;
 import org.eclipse.epsilon.eol.IEolExecutableModule;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
+import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.eol.models.IRelativePathResolver;
 import org.eclipse.epsilon.etl.EtlModule;
 import org.eclipse.pde.internal.core.natures.PDE;
@@ -109,91 +111,35 @@ public class ThingsAreHappeningHere {
 		 */
 
 		EtlModule etlModule = new EtlModule();
-		EmfModel sourceModel = new EmfModel();
-
-		StringProperties sourceProperties = new StringProperties();
-		sourceProperties.put(EmfModel.PROPERTY_METAMODEL_URI, "http://www.eclipse.org/emf/2002/Ecore");
-		sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, theSelectedFilePath);
-		sourceProperties.put(EmfModel.PROPERTY_NAME, "Source");
-		sourceProperties.put(EmfModel.PROPERTY_READONLOAD, "true");
-		sourceProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "false");
-		sourceModel.load(sourceProperties, (IRelativePathResolver) null);
-
-		EmfModel targetModel = new EmfModel();
-		StringProperties targetProperties = new StringProperties();
-		targetProperties.put(EmfModel.PROPERTY_METAMODEL_URI,
-				"http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.7");
-		targetProperties.put(EmfModel.PROPERTY_MODEL_FILE, project.getLocation().toOSString() + File.separator
-				+ "resources" + File.separator + name + ".paletteconfiguration");
-		targetProperties.put(EmfModel.PROPERTY_NAME, "Target");
-		targetProperties.put(EmfModel.PROPERTY_READONLOAD, "false");
-		targetProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "true");
-		targetModel.load(targetProperties, (IRelativePathResolver) null);
-
-		etlModule.getContext().getModelRepository().addModel(sourceModel);
-		etlModule.getContext().getModelRepository().addModel(targetModel);
-
-		java.net.URI etlFile = Activator.getDefault().getBundle()
-				.getResource("files/paletteConfigurationGenerationM2M.etl").toURI();
-		etlModule.parse(etlFile);
-		etlModule.execute();
-		etlModule.getContext().getModelRepository().dispose();
+		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
+		
+		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.7", project.getLocation().toOSString() + File.separator
+				+ "resources" + File.separator + name + ".paletteconfiguration", "Target", "false", "true");
+				
+		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
+		allTheModels.addAll(Arrays.asList(sourceModel, targetModel));
+		doTheETLTransformation(etlModule, allTheModels, "files/paletteConfigurationGenerationM2M.etl");
 	}
 
 	public void createTheDiagramConfiguration(String theSelectedFilePath) throws Exception {
 
 		EtlModule etlModule = new EtlModule();
-		EmfModel sourceModel = new EmfModel();
+		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
-		StringProperties sourceProperties = new StringProperties();
-		sourceProperties.put(EmfModel.PROPERTY_METAMODEL_URI, "http://www.eclipse.org/emf/2002/Ecore");
-		sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, theSelectedFilePath);
-		sourceProperties.put(EmfModel.PROPERTY_NAME, "Source");
-		sourceProperties.put(EmfModel.PROPERTY_READONLOAD, "true");
-		sourceProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "false");
-		sourceModel.load(sourceProperties, (IRelativePathResolver) null);
+		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/infra/viewpoints/configuration", project.getLocation().toOSString() + File.separator
+				+ "resources" + File.separator + name + "diagrams.configuration", "Target", "false", "true");
 
-		EmfModel targetModel = new EmfModel();
-		StringProperties targetProperties = new StringProperties();
-		targetProperties.put(EmfModel.PROPERTY_METAMODEL_URI,
-				"http://www.eclipse.org/papyrus/infra/viewpoints/configuration");
-		targetProperties.put(EmfModel.PROPERTY_MODEL_FILE, (project.getLocation().toOSString() + File.separator
-				+ "resources" + File.separator + name + "diagrams.configuration"));
-		System.out.println((project.getLocation().toOSString() + "\\resources\\diagrams.configuration"));
-		targetProperties.put(EmfModel.PROPERTY_NAME, "Target");
-		targetProperties.put(EmfModel.PROPERTY_READONLOAD, "false");
-		targetProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "true");
-		targetModel.load(targetProperties, (IRelativePathResolver) null);
+		EmfMetaModel umlEcoreMetaModel = createAndLoadAnEmfMetaModel("http://www.eclipse.org/uml2/5.0.0/UML", "UMLEcore", "true", "false");
 
-		EmfMetaModel umlEcoreMetaModel = new EmfMetaModel();
-		StringProperties umlEcoreMetaModelProperties = new StringProperties();
-		umlEcoreMetaModelProperties.put(EmfMetaModel.PROPERTY_METAMODEL_URI, "http://www.eclipse.org/uml2/5.0.0/UML");
-		umlEcoreMetaModelProperties.put(EmfMetaModel.PROPERTY_NAME, "UMLEcore");
-		umlEcoreMetaModelProperties.put(EmfMetaModel.PROPERTY_READONLOAD, "true");
-		umlEcoreMetaModelProperties.put(EmfMetaModel.PROPERTY_STOREONDISPOSAL, "false");
-		umlEcoreMetaModel.load(umlEcoreMetaModelProperties, (IRelativePathResolver) null);
+		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
+		allTheModels.addAll(Arrays.asList(sourceModel, targetModel, umlEcoreMetaModel));
 
-		etlModule.getContext().getModelRepository().addModel(sourceModel);
-		etlModule.getContext().getModelRepository().addModel(targetModel);
-		etlModule.getContext().getModelRepository().addModel(umlEcoreMetaModel);
+		doTheETLTransformation(etlModule, allTheModels, "files/diagramsConfigurationGenerationM2M.etl");
 
-		java.net.URI etlFile = Activator.getDefault().getBundle()
-				.getResource("files/diagramsConfigurationGenerationM2M.etl").toURI();
-		etlModule.parse(etlFile);
-		etlModule.execute();
-		etlModule.getContext().getModelRepository().dispose();
 	}
 
 	public void createTheCSSFile(String theSelectedFilePath) throws Exception {
-		EmfModel sourceModel = new EmfModel();
-
-		StringProperties sourceProperties = new StringProperties();
-		sourceProperties.put(EmfModel.PROPERTY_METAMODEL_URI, "http://www.eclipse.org/emf/2002/Ecore");
-		sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, theSelectedFilePath);
-		sourceProperties.put(EmfModel.PROPERTY_NAME, "Source");
-		sourceProperties.put(EmfModel.PROPERTY_READONLOAD, "true");
-		sourceProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "false");
-		sourceModel.load(sourceProperties, (IRelativePathResolver) null);
+		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
 		EglFileGeneratingTemplateFactory factory = new EglFileGeneratingTemplateFactory();
 		IEolExecutableModule eglModule = new EglTemplateFactoryModuleAdapter(factory);
@@ -213,81 +159,33 @@ public class ThingsAreHappeningHere {
 
 	public void createTheTypesConfigurations(String theSelectedFilePath) throws Exception {
 		EtlModule etlModule = new EtlModule();
-		EmfModel sourceModel = new EmfModel();
+		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
-		StringProperties sourceProperties = new StringProperties();
-		sourceProperties.put(EmfModel.PROPERTY_METAMODEL_URI, "http://www.eclipse.org/emf/2002/Ecore");
-		sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, theSelectedFilePath);
-		sourceProperties.put(EmfModel.PROPERTY_NAME, "Source");
-		sourceProperties.put(EmfModel.PROPERTY_READONLOAD, "true");
-		sourceProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "false");
-		sourceModel.load(sourceProperties, (IRelativePathResolver) null);
+		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/uml/types/applystereotypeadvice/1.1, http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1, http://www.eclipse.org/papyrus/uml/types/stereotypematcher/1.1", project.getLocation().toOSString() + File.separator
+				+ "resources" + File.separator + "modelelement.typesconfigurations", "Target", "false", "true");
 
-		EmfModel targetModel = new EmfModel();
-		StringProperties targetProperties = new StringProperties();
-		targetProperties.put(EmfModel.PROPERTY_METAMODEL_URI,
-				"http://www.eclipse.org/papyrus/uml/types/applystereotypeadvice/1.1, http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1, http://www.eclipse.org/papyrus/uml/types/stereotypematcher/1.1");
-		targetProperties.put(EmfModel.PROPERTY_MODEL_FILE, project.getLocation().toOSString() + File.separator
-				+ "resources" + File.separator + "modelelement.typesconfigurations");
-		targetProperties.put(EmfModel.PROPERTY_NAME, "Target");
-		targetProperties.put(EmfModel.PROPERTY_READONLOAD, "false");
-		targetProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "true");
-		targetModel.load(targetProperties, (IRelativePathResolver) null);
+		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
+		allTheModels.addAll(Arrays.asList(sourceModel, targetModel));
 
-		etlModule.getContext().getModelRepository().addModel(sourceModel);
-		etlModule.getContext().getModelRepository().addModel(targetModel);
-
-		java.net.URI etlFile = Activator.getDefault().getBundle().getResource("files/typesConfigurationsM2M.etl")
-				.toURI();
-		etlModule.parse(etlFile);
-		etlModule.execute();
-		etlModule.getContext().getModelRepository().dispose();
+		doTheETLTransformation(etlModule, allTheModels, "files/typesConfigurationsM2M.etl");
 	}
 
 	public void createTheElementTypeConfigurations(String theSelectedFilePath) throws Exception {
 		EtlModule etlModule = new EtlModule();
-		EmfModel sourceModel = new EmfModel();
+		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
-		StringProperties sourceProperties = new StringProperties();
-		sourceProperties.put(EmfModel.PROPERTY_METAMODEL_URI, "http://www.eclipse.org/emf/2002/Ecore");
-		sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, theSelectedFilePath);
-		sourceProperties.put(EmfModel.PROPERTY_NAME, "Source");
-		sourceProperties.put(EmfModel.PROPERTY_READONLOAD, "true");
-		sourceProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "false");
-		sourceModel.load(sourceProperties, (IRelativePathResolver) null);
+		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1", project.getLocation().toOSString() + File.separator
+				+ "resources" + File.separator + "diagramshapes.elementtypesconfigurations", "Target", "false", "true");
 
-		EmfModel targetModel = new EmfModel();
-		StringProperties targetProperties = new StringProperties();
-		targetProperties.put(EmfModel.PROPERTY_METAMODEL_URI,
-				"http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1");
-		targetProperties.put(EmfModel.PROPERTY_MODEL_FILE, project.getLocation().toOSString() + File.separator
-				+ "resources" + File.separator + "diagramshapes.elementtypesconfigurations");
-		targetProperties.put(EmfModel.PROPERTY_NAME, "Target");
-		targetProperties.put(EmfModel.PROPERTY_READONLOAD, "false");
-		targetProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "true");
-		targetModel.load(targetProperties, (IRelativePathResolver) null);
+		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
+		allTheModels.addAll(Arrays.asList(sourceModel, targetModel));
 
-		etlModule.getContext().getModelRepository().addModel(sourceModel);
-		etlModule.getContext().getModelRepository().addModel(targetModel);
-
-		java.net.URI etlFile = Activator.getDefault().getBundle().getResource("files/elementTypesConfigurationsM2M.etl")
-				.toURI();
-		etlModule.parse(etlFile);
-		etlModule.execute();
-		etlModule.getContext().getModelRepository().dispose();
+		doTheETLTransformation(etlModule, allTheModels, "files/elementTypesConfigurationsM2M.etl");
 	}
 
 	public void createThePluginXml(String theSelectedFilePath) throws Exception {
 		EtlModule etlModule = new EtlModule();
-		EmfModel sourceModel = new EmfModel();
-
-		StringProperties sourceProperties = new StringProperties();
-		sourceProperties.put(EmfModel.PROPERTY_METAMODEL_URI, "http://www.eclipse.org/emf/2002/Ecore");
-		sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, theSelectedFilePath);
-		sourceProperties.put(EmfModel.PROPERTY_NAME, "Source");
-		sourceProperties.put(EmfModel.PROPERTY_READONLOAD, "true");
-		sourceProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "false");
-		sourceModel.load(sourceProperties, (IRelativePathResolver) null);
+		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
 		PlainXmlModel targetModel = new PlainXmlModel();
 		StringProperties targetProperties = new StringProperties();
@@ -298,13 +196,9 @@ public class ThingsAreHappeningHere {
 		targetProperties.put(PlainXmlModel.PROPERTY_STOREONDISPOSAL, "true");
 		targetModel.load(targetProperties);
 
-		etlModule.getContext().getModelRepository().addModel(sourceModel);
-		etlModule.getContext().getModelRepository().addModel(targetModel);
-		java.net.URI etlFile = Activator.getDefault().getBundle().getResource("files/pluginXmlGenerationM2M.etl")
-				.toURI();
-		etlModule.parse(etlFile);
-		etlModule.execute();
-		etlModule.getContext().getModelRepository().dispose();
+		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
+		allTheModels.addAll(Arrays.asList(sourceModel, targetModel));
+		doTheETLTransformation(etlModule, allTheModels, "files/pluginXmlGenerationM2M.etl");
 	}
 
 	public void createTheManifestFile(String theSelectedFilePath) throws IOException {
@@ -347,55 +241,19 @@ public class ThingsAreHappeningHere {
 		EtlModule etlModule = new EtlModule();
 
 		// The emfatic (ecore) source
-		EmfModel sourceModel = new EmfModel();
-		StringProperties sourceProperties = new StringProperties();
-		sourceProperties.put(EmfModel.PROPERTY_METAMODEL_URI, "http://www.eclipse.org/emf/2002/Ecore");
-		sourceProperties.put(EmfModel.PROPERTY_MODEL_FILE, theSelectedFilePath);
-		sourceProperties.put(EmfModel.PROPERTY_NAME, "Source");
-		sourceProperties.put(EmfModel.PROPERTY_READONLOAD, "true");
-		sourceProperties.put(EmfModel.PROPERTY_STOREONDISPOSAL, "false");
-		sourceModel.load(sourceProperties, (IRelativePathResolver) null);
-
+		EmfModel sourceModel = 	createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
+		
 		// The ultimate goal: the UML profile
-		UmlModel targetModel = new UmlModel();
-		StringProperties targetProperties = new StringProperties();
-		targetProperties.put(UmlModel.PROPERTY_METAMODEL_URI, "http://www.eclipse.org/uml2/5.0.0/UML");
-		targetProperties.put(UmlModel.PROPERTY_MODEL_FILE,
-				project.getLocation().toOSString() + File.separator + "model.profile.uml");
-		targetProperties.put(UmlModel.PROPERTY_NAME, "Profile");
-		targetProperties.put(UmlModel.PROPERTY_READONLOAD, "false");
-		targetProperties.put(UmlModel.PROPERTY_STOREONDISPOSAL, "true");
-		targetModel.load(targetProperties, (IRelativePathResolver) null);
+		UmlModel targetModel = createAndLoadAUmlModel("http://www.eclipse.org/uml2/5.0.0/UML", project.getLocation().toOSString() + File.separator + "model.profile.uml", "Profile", "false", "true");
 
 		// The UML Metamodel
-		UmlModel umlMetaModel = new UmlModel();
-		StringProperties umlMetaModelProperties = new StringProperties();
-		umlMetaModelProperties.put(UmlModel.PROPERTY_METAMODEL_URI, "http://www.eclipse.org/emf/2002/Ecore");
-		// umlMetaModelProperties.put(UmlModel.PROPERTY_REUSE_UNMODIFIED_FILE_BASED_METAMODELS,
-		// true);
-		umlMetaModelProperties.put(UmlModel.PROPERTY_MODEL_FILE, "pathmap://UML_METAMODELS/UML.metamodel.uml");
-		umlMetaModelProperties.put(UmlModel.PROPERTY_NAME, "UMLM2");
-		umlMetaModelProperties.put(UmlModel.PROPERTY_READONLOAD, "true");
-		umlMetaModelProperties.put(UmlModel.PROPERTY_STOREONDISPOSAL, "false");
-		umlMetaModel.load(umlMetaModelProperties, (IRelativePathResolver) null);
+		UmlModel umlMetaModel = createAndLoadAUmlModel("http://www.eclipse.org/emf/2002/Ecore", "pathmap://UML_METAMODELS/UML.metamodel.uml", "UMLM2", "true", "false");
 
 		// The UML Ecore Metamodel
-		EmfMetaModel umlEcoreMetaModel = new EmfMetaModel();
-		StringProperties umlEcoreMetaModelProperties = new StringProperties();
-		umlEcoreMetaModelProperties.put(EmfMetaModel.PROPERTY_METAMODEL_URI, "http://www.eclipse.org/uml2/5.0.0/UML");
-		umlEcoreMetaModelProperties.put(EmfMetaModel.PROPERTY_NAME, "UMLEcore");
-		umlEcoreMetaModelProperties.put(EmfMetaModel.PROPERTY_READONLOAD, "true");
-		umlEcoreMetaModelProperties.put(EmfMetaModel.PROPERTY_STOREONDISPOSAL, "false");
-		umlEcoreMetaModel.load(umlEcoreMetaModelProperties, (IRelativePathResolver) null);
+		EmfMetaModel umlEcoreMetaModel = createAndLoadAnEmfMetaModel("http://www.eclipse.org/uml2/5.0.0/UML", "UMLEcore", "true", "false");
 
 		// The ECore Metamodel
-		EmfMetaModel ECoreMetaModel = new EmfMetaModel();
-		StringProperties ECoreMetaModelProperties = new StringProperties();
-		ECoreMetaModelProperties.put(EmfMetaModel.PROPERTY_METAMODEL_URI, "http://www.eclipse.org/emf/2002/Ecore");
-		ECoreMetaModelProperties.put(EmfMetaModel.PROPERTY_NAME, "EcoreM2");
-		ECoreMetaModelProperties.put(EmfMetaModel.PROPERTY_READONLOAD, "true");
-		ECoreMetaModelProperties.put(EmfMetaModel.PROPERTY_STOREONDISPOSAL, "false");
-		ECoreMetaModel.load(ECoreMetaModelProperties, (IRelativePathResolver) null);
+		EmfMetaModel ECoreMetaModel = createAndLoadAnEmfMetaModel("http://www.eclipse.org/emf/2002/Ecore", "EcoreM2", "true", "false");
 
 		// The Ecore Primitive Types
 		UmlModel ecorePrimitiveTypesModel = new UmlModel();
@@ -407,18 +265,12 @@ public class ThingsAreHappeningHere {
 		ecorePrimitiveTypesModelProperties.put(UmlModel.PROPERTY_STOREONDISPOSAL, "false");
 		ecorePrimitiveTypesModel.load(ecorePrimitiveTypesModelProperties, (IRelativePathResolver) null);
 
-		etlModule.getContext().getModelRepository().addModel(sourceModel);
-		etlModule.getContext().getModelRepository().addModel(targetModel);
-		etlModule.getContext().getModelRepository().addModel(umlMetaModel);
-		etlModule.getContext().getModelRepository().addModel(umlEcoreMetaModel);
-		etlModule.getContext().getModelRepository().addModel(ECoreMetaModel);
-		etlModule.getContext().getModelRepository().addModel(ecorePrimitiveTypesModel);
-
-		java.net.URI etlFile = Activator.getDefault().getBundle().getResource("files/emf2umlprofile2Annotations.etl")
-				.toURI();
-		etlModule.parse(etlFile);
-		etlModule.execute();
-		etlModule.getContext().getModelRepository().getModelByName("Profile").dispose();
+		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
+		allTheModels.addAll(Arrays.asList(sourceModel, targetModel, umlMetaModel, umlMetaModel, umlEcoreMetaModel, ECoreMetaModel, ecorePrimitiveTypesModel));
+		
+		doTheETLTransformation(etlModule, allTheModels, "files/emf2umlprofile2Annotations.etl");
+		
+		//etlModule.getContext().getModelRepository().getModelByName("Profile").dispose();
 	}
 
 	public void createTheModelProfileNotationFile() throws IOException {
@@ -563,6 +415,52 @@ public class ThingsAreHappeningHere {
 		EPackage wdwPackage = (EPackage) resource1.getContents().get(0);
 
 		return wdwPackage.getName();
+	}
+	
+	private EmfModel createAndLoadAnEmfModel(String metamodelURI, String modelFile, String modelName, String readOnLoad, String storeOnDisposal) throws EolModelLoadingException {
+		EmfModel theModel = new EmfModel();
+		StringProperties properties = new StringProperties();
+		properties.put(EmfModel.PROPERTY_METAMODEL_URI, metamodelURI);
+		properties.put(EmfModel.PROPERTY_MODEL_FILE, modelFile);
+		properties.put(EmfModel.PROPERTY_NAME, modelName);
+		properties.put(EmfModel.PROPERTY_READONLOAD, readOnLoad);
+		properties.put(EmfModel.PROPERTY_STOREONDISPOSAL, storeOnDisposal);
+		theModel.load(properties, (IRelativePathResolver) null);
+		return theModel;
+	}
+	
+	private EmfMetaModel createAndLoadAnEmfMetaModel(String metamodelUri, String modelName, String readOnLoad, String storeOnDisposal) throws EolModelLoadingException {
+		EmfMetaModel metamodel = new EmfMetaModel();
+		StringProperties properties = new StringProperties();
+		properties.put(EmfMetaModel.PROPERTY_METAMODEL_URI, metamodelUri);
+		properties.put(EmfMetaModel.PROPERTY_NAME, modelName);
+		properties.put(EmfMetaModel.PROPERTY_READONLOAD, readOnLoad);
+		properties.put(EmfMetaModel.PROPERTY_STOREONDISPOSAL, storeOnDisposal);
+		metamodel.load(properties, (IRelativePathResolver) null);
+		return metamodel;
+	}
+	
+	private UmlModel createAndLoadAUmlModel(String metamodelUri, String modelFile, String modelName, String readOnLoad, String storeOnDisposal) throws EolModelLoadingException {
+		UmlModel umlModel = new UmlModel();
+		StringProperties properties = new StringProperties();
+		properties.put(UmlModel.PROPERTY_METAMODEL_URI, metamodelUri);
+		properties.put(UmlModel.PROPERTY_MODEL_FILE, modelFile);
+		properties.put(UmlModel.PROPERTY_NAME, modelName);
+		properties.put(UmlModel.PROPERTY_READONLOAD, readOnLoad);
+		properties.put(UmlModel.PROPERTY_STOREONDISPOSAL, storeOnDisposal);
+		umlModel.load(properties, (IRelativePathResolver) null);
+		return umlModel;
+	}
+	
+	private void doTheETLTransformation(EtlModule etlModule, ArrayList<IModel> allTheModels, String theFile) throws Exception {
+		for (IModel theModel : allTheModels) {
+			etlModule.getContext().getModelRepository().addModel(theModel);
+		}
+		java.net.URI etlFile = Activator.getDefault().getBundle()
+				.getResource(theFile).toURI();
+		etlModule.parse(etlFile);
+		etlModule.execute();
+		etlModule.getContext().getModelRepository().dispose();
 	}
 
 	public void refresh() throws CoreException {
