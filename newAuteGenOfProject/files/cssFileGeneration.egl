@@ -2,7 +2,8 @@
 var ePackName = Source!EPackage.all().first().name;
 var allNodeStereotypes = Source!EClass.all().select(c|c.getEAnnotation("Class").isDefined() or c.getEAnnotation("Association").isDefined());
 var allClassStereotypes = Source!EClass.all().select(c|c.getEAnnotation("Class").isDefined());
-for (stereo in allNodeStereotypes) {
+var allAssociationStereotypes = Source!EClass.all().select(a|a.getEAnnotation("Association").isDefined());
+for (stereo in allClassStereotypes) {
 %]
 [appliedStereotypes~=[%=stereo.name%]][% if (hasMore){%], 
 [%}
@@ -53,4 +54,12 @@ if (stereo.eAnnotations.selectOne(ean|ean.source.equals("Class")).details.get("s
 }
 [%
 }
-}%]
+}
+
+for (assoc in allAssociationStereotypes) { %]
+[appliedStereotypes~=[%=assoc.name%]][% if (hasMore){%], 
+[%}
+}%] { 
+	routing:Rectilinear;
+	roundedBendpointsRadius:10;
+}

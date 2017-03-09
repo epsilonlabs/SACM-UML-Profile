@@ -12,9 +12,37 @@ guard : c.getEAnnotation("Class").isDefined()
 	stc.name = c.name;
 	stc.hint = "UML::Class";
 	stc.identifier = ePackName + "." + c.name;
-	stc.specializedTypesId.add("org.eclipse.papyrus.umldi.Class");
+	stc.specializedTypesId.add("org.eclipse.papyrus.uml.Class");
 	var theIconEntry = new Target!IconEntry;
 	theIconEntry.iconPath = "/icons/full/obj16/Class.gif";
+	theIconEntry.bundleId = "org.eclipse.uml2.uml.edit";
+	stc.iconEntry = theIconEntry;
+	theConfiguration.elementTypeConfigurations.add(stc);
+	var theSamc = new Target!StereotypeApplicationMatcherConfiguration;
+	stc.matcherConfiguration = theSamc;
+	
+	var theSac = new Target!ApplyStereotypeAdviceConfiguration;
+	theSac.identifier = ePackName + "." + c.name.toLowerCase();
+	theSac.target = stc;
+	var theStereotypeToApply = new Target!StereotypeToApply;
+	theStereotypeToApply.requiredProfiles.add(ePackName);
+	theStereotypeToApply.updateName = true;
+	theStereotypeToApply.stereotypeQualifiedName = ePackName + "::" + c.name;
+	theSac.stereotypesToApply.add(theStereotypeToApply);
+	theSamc.stereotypesQualifiedNames.add(theStereotypeToApply.stereotypeQualifiedName); 
+	theConfiguration.adviceBindingsConfigurations.add(theSac);
+}
+
+rule associationClass2Shape 
+transform c : Source!EClass 
+to stc : Target!SpecializationTypeConfiguration {
+guard : c.getEAnnotation("Association").isDefined()
+	stc.name = c.name;
+	stc.hint = "UML::Association";
+	stc.identifier = ePackName + "." + c.name;
+	stc.specializedTypesId.add("org.eclipse.papyrus.uml.Association");
+	var theIconEntry = new Target!IconEntry;
+	theIconEntry.iconPath = "/icons/full/obj16/Association.gif";
 	theIconEntry.bundleId = "org.eclipse.uml2.uml.edit";
 	stc.iconEntry = theIconEntry;
 	theConfiguration.elementTypeConfigurations.add(stc);
