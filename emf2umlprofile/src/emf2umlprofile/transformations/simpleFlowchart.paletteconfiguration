@@ -8,11 +8,14 @@
     <ownedConfigurations xsi:type="paletteconfiguration:ToolConfiguration" id="Node_node" label="Node" description="Node node">
       <elementDescriptors elementTypeId="simpleFlowchart.Node_Shape"/>
     </ownedConfigurations>
-    <ownedConfigurations xsi:type="paletteconfiguration:ToolConfiguration" id="AnotherNode_node" label="AnotherNode" description="AnotherNode node"/>
+    <ownedConfigurations xsi:type="paletteconfiguration:ToolConfiguration" id="AnotherNode_node" label="AnotherNode" description="AnotherNode node">
+      <elementDescriptors elementTypeId="simpleFlowchart.AnotherNode_Shape"/>
+    </ownedConfigurations>
   </drawerConfigurations>
   <drawerConfigurations id="simpleFlowchart.edges" label="simpleFlowchart edges" description="simpleFlowchart edges">
-    <ownedConfigurations xsi:type="paletteconfiguration:ToolConfiguration" id="nodeClass2Association_edge" label="nodeClass2Association" description="nodeClass2Association edge">
+    <ownedConfigurations xsi:type="paletteconfiguration:ToolConfiguration" id="nodeClass2Association_edge" label="nodeClass2Association" description="nodeClass2Association edge" kind="ConnectionTool">
       <icon pluginID="simpleFlowchart" iconPath="icons/f.gif"/>
+      <elementDescriptors elementTypeId="simpleFlowchart.nodeClass2Association_Edge"/>
     </ownedConfigurations>
     <ownedConfigurations xsi:type="paletteconfiguration:ToolConfiguration" id="nodes_edge" label="nodes" description="nodes edge">
       <icon pluginID="simpleFlowchart" iconPath="icons/f.gif"/>

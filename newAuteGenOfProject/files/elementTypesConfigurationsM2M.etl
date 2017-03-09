@@ -22,10 +22,10 @@ rule associationClass2Shape
 transform c : Source!EClass 
 to stc : Target!SpecializationTypeConfiguration {
 guard : c.getEAnnotation("Association").isDefined()
-	stc.name = c.name + " shape";
-	stc.hint = "Association_Shape";
-	stc.identifier = ePackName + "." + c.name + "_Shape";
+	stc.name = c.name + " edge";
+	stc.hint = "Association_Edge";
+	stc.identifier = ePackName + "." + c.name + "_Edge";
 	stc.specializedTypesId.add(ePackName + "." + c.name);
-	stc.specializedTypesId.add("org.eclipse.papyrus.umldi.Association_Shape");
+	stc.specializedTypesId.add("org.eclipse.papyrus.umldi.Association_Edge");
 	theConfiguration.elementTypeConfigurations.add(stc);
 }

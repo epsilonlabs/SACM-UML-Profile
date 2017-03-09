@@ -115,9 +115,11 @@ public class ThingsAreHappeningHere {
 		
 		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.7", project.getLocation().toOSString() + File.separator
 				+ "resources" + File.separator + name + ".paletteconfiguration", "Target", "false", "true");
-				
+		
+		EmfMetaModel paletteConfigurationM2 = createAndLoadAnEmfMetaModel("http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.7", "PaletteConfigurationM2", "true", "false");
+		
 		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
-		allTheModels.addAll(Arrays.asList(sourceModel, targetModel));
+		allTheModels.addAll(Arrays.asList(sourceModel, targetModel, paletteConfigurationM2));
 		doTheETLTransformation(etlModule, allTheModels, "files/paletteConfigurationGenerationM2M.etl");
 	}
 

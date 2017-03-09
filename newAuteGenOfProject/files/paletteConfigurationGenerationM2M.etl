@@ -44,6 +44,7 @@ rule edge2Tool
 		tc.description = c.name + " edge";
 		tc.label = c.name;
 		tc.id = c.name + "_edge";
+		tc.kind = PaletteConfigurationM2!ToolKind#ConnectionTool;
 		theEdgesDrawerConfiguration.ownedConfigurations.add(tc);
 		if (c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("icon").isDefined()) {
 			var theIconDescriptor = new Target!IconDescriptor;
@@ -52,7 +53,7 @@ rule edge2Tool
 			tc.icon = theIconDescriptor;
 		}
 		var theElementDescriptor = new Target!ElementDescriptor;
-		theElementDescriptor.elementTypeId = ePackName + "." + c.name + "_Shape";
+		theElementDescriptor.elementTypeId = ePackName + "." + c.name + "_Edge";
 		tc.elementDescriptors.add(theElementDescriptor);
 	}
 	
