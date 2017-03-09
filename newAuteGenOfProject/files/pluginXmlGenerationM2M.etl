@@ -1,5 +1,9 @@
 pre {
 	var ePackName = Source!EPackage.all().first().name;
+	if (Source!EPackage.all().first().getEAnnotation("diagram").isDefined()) {
+		var theDiagramName = Source!EPackage.all().first().getEAnnotation("diagram").details.get("label");
+	} 
+	
 	var thePlugin = new Target!t_plugin;
 	Target.root = thePlugin;
 	

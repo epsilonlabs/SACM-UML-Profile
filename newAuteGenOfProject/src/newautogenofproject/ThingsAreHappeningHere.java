@@ -144,7 +144,7 @@ public class ThingsAreHappeningHere {
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
 		EglFileGeneratingTemplateFactory factory = new EglFileGeneratingTemplateFactory();
-		IEolExecutableModule eglModule = new EglTemplateFactoryModuleAdapter(factory);
+		EglTemplateFactoryModuleAdapter eglModule = new EglTemplateFactoryModuleAdapter(factory);
 
 		eglModule.getContext().getModelRepository().addModel(sourceModel);
 

@@ -1,5 +1,6 @@
 pre {
 	var ePackName = Source!EPackage.all().first().name;
+	var theDiagramName = ePackName; 
 	var theConfiguration = new Target!PapyrusConfiguration;
 	var theDefaultPapyrusViewpoint = new Target!PapyrusViewpoint;
 	theDefaultPapyrusViewpoint.name = "Default Papyrus Viewpoint";
@@ -8,7 +9,15 @@ pre {
 	theDiagram.implementationId = "PapyrusUMLClassDiagram";
 	theDiagram.customPalette = "platform:/plugin/" + ePackName + "/resources/" + ePackName + ".paletteconfiguration";
 	theDiagram.customStyle = "platform:/plugin/" + ePackName + "/resources/" + ePackName + "diagram.css";
-	theDiagram.name = "Papyrus " + ePackName + " Diagram";
+	if (Source!EPackage.all().first().getEAnnotation("Diagram").isDefined()) {
+		if (Source!EPackage.all().first().getEAnnotation("Diagram").details.get("label").isDefined()) {
+			theDiagramName = Source!EPackage.all().first().getEAnnotation("Diagram").details.get("label");
+		}
+		if (Source!EPackage.all().first().getEAnnotation("Diagram").details.get("icon").isDefined()) {
+			theDiagram.icon = "platform:/plugin/" + ePackName + "/" + Source!EPackage.all().first().getEAnnotation("Diagram").details.get("icon");
+		}
+	}
+	theDiagram.name = "Papyrus " + theDiagramName + " Diagram";
 	theDefaultPapyrusViewpoint.modelKinds.add(theDiagram);
 	var theModelRule = new Target!ModelRule;
 	theModelRule.element = UMLEcore!EClass.all.selectOne(c|c.name = "Package");

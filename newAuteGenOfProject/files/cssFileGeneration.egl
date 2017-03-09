@@ -13,6 +13,9 @@ for (stereo in allClassStereotypes) {
 	elementIcon:false;
 	isNameWrap: true;
 	bold:true;
+	transparency:100;
+	followSVGSymbol:true;
+	displayIcon:false;
 }
 
 /* Hide compartment for all elements - just show the name and related icon. */
@@ -48,9 +51,9 @@ if (stereo.eAnnotations.selectOne(ean|ean.source.equals("Class")).details.get("s
 %]
 [appliedStereotypes~=[%=stereo.name%]].Symbol {
 	svgFile: 'platform:/plugin/[%=ePackName%]/[%=stereo.eAnnotations.selectOne(ean|ean.source.equals("Class")).details.get("shape")%]';
-	floatingLabelOffsetWidth:+23;
-    floatingLabelOffsetHeight:+80;
-	displayName:false;
+	//floatingLabelOffsetWidth:+23;
+    //floatingLabelOffsetHeight:+80;
+	//displayName:false;
 }
 [%
 }
@@ -59,7 +62,13 @@ if (stereo.eAnnotations.selectOne(ean|ean.source.equals("Class")).details.get("s
 for (assoc in allAssociationStereotypes) { %]
 [appliedStereotypes~=[%=assoc.name%]][% if (hasMore){%], 
 [%}
-}%] { 
+}
+if (allAssociationStereotypes.notEmpty()) {
+%]
+ { 
 	routing:Rectilinear;
 	roundedBendpointsRadius:10;
 }
+[%
+}
+%]
