@@ -64,6 +64,7 @@ rule refEdge2Tool
 		tc.description = ref.name + " edge";
 		tc.label = ref.name;
 		tc.id = ref.name + "_edge";
+		tc.kind = PaletteConfigurationM2!ToolKind#ConnectionTool;
 		theEdgesDrawerConfiguration.ownedConfigurations.add(tc);
 		if (ref.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("icon").isDefined()) {
 			var theIconDescriptor = new Target!IconDescriptor;
@@ -71,4 +72,7 @@ rule refEdge2Tool
 			theIconDescriptor.pluginId = ePackName;
 			tc.icon = theIconDescriptor;
 		}
+		var theElementDescriptor = new Target!ElementDescriptor;
+		theElementDescriptor.elementTypeId = ePackName + "." + ref.name + "_Edge";
+		tc.elementDescriptors.add(theElementDescriptor);
 	}
