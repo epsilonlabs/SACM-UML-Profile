@@ -29,3 +29,15 @@ guard : c.getEAnnotation("Association").isDefined()
 	stc.specializedTypesId.add("org.eclipse.papyrus.umldi.Association_Edge");
 	theConfiguration.elementTypeConfigurations.add(stc);
 }
+
+rule refEdge2Tool
+transform ref : Source!EReference 
+to stc : Target!SpecializationTypeConfiguration {
+guard : ref.getEAnnotation("Association").isDefined()
+	stc.name = ref.name + " edge";
+	stc.hint = "Association_Edge";
+	stc.identifier = ePackName + "." + ref.name + "_Edge";
+	stc.specializedTypesId.add(ePackName + "." + ref.name);
+	stc.specializedTypesId.add("org.eclipse.papyrus.umldi.Association_Edge");
+	theConfiguration.elementTypeConfigurations.add(stc);
+}
