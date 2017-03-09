@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
-<SACM_Argumentation:ArgumentPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SACM_Argumentation="http://www.omg.org/spec/SACM/2.0/Argumentation" xmi:id="_N1UjUANGEeeH6OUiT87h2Q">
-  <argumentAsset xsi:type="SACM_Argumentation:Claim" xmi:id="_OoDn0ANGEeeH6OUiT87h2Q" name="Goal"/>
+<SACM_Argumentation:ArgumentPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SACM_Argumentation="http://www.omg.org/spec/SACM/2.0/Argumentation" xmi:id="_KK-doAP4EeeNssncY22Lrw" name="Module" isAbstract="false">
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" xmi:id="_bKX-AAP4EeeNssncY22Lrw" gid="g1" name="Goal"/>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedInference" xmi:id="_H19msAP7EeeexYzdkasyXA" source="_bKX-AAP4EeeNssncY22Lrw" target="_odwdoAQOEeeG8OjwsXHoWg"/>
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" xmi:id="_odwdoAQOEeeG8OjwsXHoWg" gid="g2" name="Goal"/>
+  <argumentAsset xsi:type="SACM_Argumentation:ArgumentReasoning" xmi:id="_B6U-oAQPEeeG8OjwsXHoWg" name="Strategy"/>
 </SACM_Argumentation:ArgumentPackage>
