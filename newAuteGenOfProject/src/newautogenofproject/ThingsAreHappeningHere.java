@@ -74,7 +74,7 @@ public class ThingsAreHappeningHere {
 		project.setDescription(desc, progressMonitor);
 	}
 
-	public void createThePaletteConfiguration(String theSelectedFilePath) throws Exception {
+	public void createThePaletteConfiguration(String theSelectedFilePath, String theProjectFolder) throws Exception {
 
 		// This is to generate the deprecated palette.xml. Please don't delete.
 		/*
@@ -113,7 +113,7 @@ public class ThingsAreHappeningHere {
 		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 		
-		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.7", project.getLocation().toOSString() + File.separator
+		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.7", theProjectFolder + File.separator
 				+ "resources" + File.separator + name + ".paletteconfiguration", "Target", "false", "true");
 		
 		EmfMetaModel paletteConfigurationM2 = createAndLoadAnEmfMetaModel("http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.7", "PaletteConfigurationM2", "true", "false");
@@ -123,12 +123,12 @@ public class ThingsAreHappeningHere {
 		doTheETLTransformation(etlModule, allTheModels, "files/paletteConfigurationGenerationM2M.etl");
 	}
 
-	public void createTheDiagramConfiguration(String theSelectedFilePath) throws Exception {
+	public void createTheDiagramConfiguration(String theSelectedFilePath, String theProjectFolder) throws Exception {
 
 		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
-		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/infra/viewpoints/configuration", project.getLocation().toOSString() + File.separator
+		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/infra/viewpoints/configuration", theProjectFolder + File.separator
 				+ "resources" + File.separator + name + "diagrams.configuration", "Target", "false", "true");
 
 		EmfMetaModel umlEcoreMetaModel = createAndLoadAnEmfMetaModel("http://www.eclipse.org/uml2/5.0.0/UML", "UMLEcore", "true", "false");
@@ -140,7 +140,7 @@ public class ThingsAreHappeningHere {
 
 	}
 
-	public void createTheCSSFile(String theSelectedFilePath) throws Exception {
+	public void createTheCSSFile(String theSelectedFilePath, String theProjectFolder) throws Exception {
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
 		EglFileGeneratingTemplateFactory factory = new EglFileGeneratingTemplateFactory();
@@ -153,17 +153,17 @@ public class ThingsAreHappeningHere {
 
 		EglFileGeneratingTemplate template = (EglFileGeneratingTemplate) factory.load(EglFile);
 		template.process();
-		File target = new File(project.getLocation().toOSString() + File.separator + "resources" + File.separator + name
+		File target = new File(theProjectFolder + File.separator + "resources" + File.separator + name
 				+ "diagram.css");
 		target.createNewFile();
 		template.generate(target.toURI().toString());
 	}
 
-	public void createTheTypesConfigurations(String theSelectedFilePath) throws Exception {
+	public void createTheTypesConfigurations(String theSelectedFilePath, String theProjectFolder) throws Exception {
 		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
-		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/uml/types/applystereotypeadvice/1.1, http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1, http://www.eclipse.org/papyrus/uml/types/stereotypematcher/1.1", project.getLocation().toOSString() + File.separator
+		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/uml/types/applystereotypeadvice/1.1, http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1, http://www.eclipse.org/papyrus/uml/types/stereotypematcher/1.1", theProjectFolder + File.separator
 				+ "resources" + File.separator + "modelelement.typesconfigurations", "Target", "false", "true");
 
 		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
@@ -172,11 +172,11 @@ public class ThingsAreHappeningHere {
 		doTheETLTransformation(etlModule, allTheModels, "files/typesConfigurationsM2M.etl");
 	}
 
-	public void createTheElementTypeConfigurations(String theSelectedFilePath) throws Exception {
+	public void createTheElementTypeConfigurations(String theSelectedFilePath, String theProjectFolder) throws Exception {
 		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
-		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1", project.getLocation().toOSString() + File.separator
+		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1", theProjectFolder + File.separator
 				+ "resources" + File.separator + "diagramshapes.elementtypesconfigurations", "Target", "false", "true");
 
 		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
@@ -185,14 +185,14 @@ public class ThingsAreHappeningHere {
 		doTheETLTransformation(etlModule, allTheModels, "files/elementTypesConfigurationsM2M.etl");
 	}
 
-	public void createThePluginXml(String theSelectedFilePath) throws Exception {
+	public void createThePluginXml(String theSelectedFilePath, String theProjectFolder) throws Exception {
 		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
 		PlainXmlModel targetModel = new PlainXmlModel();
 		StringProperties targetProperties = new StringProperties();
 		targetProperties.put(PlainXmlModel.PROPERTY_FILE,
-				project.getLocation().toOSString() + File.separator + "plugin.xml");
+				theProjectFolder + File.separator + "plugin.xml");
 		targetProperties.put(PlainXmlModel.PROPERTY_NAME, "Target");
 		targetProperties.put(PlainXmlModel.PROPERTY_READONLOAD, "false");
 		targetProperties.put(PlainXmlModel.PROPERTY_STOREONDISPOSAL, "true");
@@ -203,10 +203,10 @@ public class ThingsAreHappeningHere {
 		doTheETLTransformation(etlModule, allTheModels, "files/pluginXmlGenerationM2M.etl");
 	}
 
-	public void createTheManifestFile(String theSelectedFilePath) throws IOException {
-		new File(project.getLocation() + File.separator + "META-INF").mkdir();
+	public void createTheManifestFile(String theSelectedFilePath, String theProjectFolder) throws IOException {
+		new File(theProjectFolder + File.separator + "META-INF").mkdir();
 		BufferedWriter output = new BufferedWriter(new FileWriter(
-				project.getLocation().toOSString() + File.separator + "META-INF" + File.separator + "MANIFEST.MF",
+				theProjectFolder + File.separator + "META-INF" + File.separator + "MANIFEST.MF",
 				false));
 		try {
 			output.write("Manifest-Version: 1.0\n" + "Bundle-ManifestVersion: 2\n" + "Bundle-Name: " + name + "\n"
@@ -239,14 +239,14 @@ public class ThingsAreHappeningHere {
 		}
 	}
 
-	public void createTheProfileUmlFile(String theSelectedFilePath) throws Exception {
+	public void createTheProfileUmlFile(String theSelectedFilePath, String theProjectFolder) throws Exception {
 		EtlModule etlModule = new EtlModule();
 
 		// The emfatic (ecore) source
 		EmfModel sourceModel = 	createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 		
 		// The ultimate goal: the UML profile
-		UmlModel targetModel = createAndLoadAUmlModel("http://www.eclipse.org/uml2/5.0.0/UML", project.getLocation().toOSString() + File.separator + "model.profile.uml", "Profile", "false", "true");
+		UmlModel targetModel = createAndLoadAUmlModel("http://www.eclipse.org/uml2/5.0.0/UML", theProjectFolder + File.separator + "model.profile.uml", "Profile", "false", "true");
 
 		// The UML Metamodel
 		UmlModel umlMetaModel = createAndLoadAUmlModel("http://www.eclipse.org/emf/2002/Ecore", "pathmap://UML_METAMODELS/UML.metamodel.uml", "UMLM2", "true", "false");
@@ -275,9 +275,9 @@ public class ThingsAreHappeningHere {
 		//etlModule.getContext().getModelRepository().getModelByName("Profile").dispose();
 	}
 
-	public void createTheModelProfileNotationFile() throws IOException {
+	public void createTheModelProfileNotationFile(String theProjectFolder) throws IOException {
 		BufferedWriter output = new BufferedWriter(
-				new FileWriter(project.getLocation().toOSString() + File.separator + "model.profile.notation", false));
+				new FileWriter(theProjectFolder + File.separator + "model.profile.notation", false));
 		try {
 			output.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 					+ "<xmi:XMI xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\"/>\n");
@@ -287,9 +287,9 @@ public class ThingsAreHappeningHere {
 		}
 	}
 
-	public void createTheModelProfileDiFile() throws IOException {
+	public void createTheModelProfileDiFile(String theProjectFolder) throws IOException {
 		BufferedWriter output = new BufferedWriter(
-				new FileWriter(project.getLocation().toOSString() + File.separator + "model.profile.di", false));
+				new FileWriter(theProjectFolder + File.separator + "model.profile.di", false));
 		try {
 			output.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 					+ "<xmi:XMI xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\"/>\n");
@@ -299,9 +299,9 @@ public class ThingsAreHappeningHere {
 		}
 	}
 
-	public void createThebuildPropertiesFile() throws IOException {
+	public void createThebuildPropertiesFile(String theProjectFolder) throws IOException {
 		BufferedWriter output = new BufferedWriter(
-				new FileWriter(project.getLocation().toOSString() + File.separator + "build.properties", false));
+				new FileWriter(theProjectFolder + File.separator + "build.properties", false));
 		try {
 			output.write("bin.includes = META-INF/,\\\n" + "plugin.xml\n");
 			output.close();
@@ -465,8 +465,8 @@ public class ThingsAreHappeningHere {
 		etlModule.getContext().getModelRepository().dispose();
 	}
 
-	public void refresh() throws CoreException {
-		project.refreshLocal(1, null);
+	public void refresh(IProject parentProject) throws CoreException {
+		parentProject.refreshLocal(1, null);
 	}
 
 }

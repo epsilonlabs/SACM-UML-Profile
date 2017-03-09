@@ -1,6 +1,7 @@
 package newautogenofproject.popup.actions;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -24,7 +25,8 @@ public class CreatePapyrusProjectAction implements IObjectActionDelegate {
 
 	private Shell shell;
 	private String theSelectedFilePath;
-	private String theParentFolder;
+	private String theParentFolder, theProjectFolder;
+	private IProject theParentProject;
 	
 	/**
 	 * Constructor for Action1.
@@ -42,7 +44,9 @@ public class CreatePapyrusProjectAction implements IObjectActionDelegate {
         Object firstElement = theSelectedFile.getFirstElement();
         IFile file = (IFile) Platform.getAdapterManager().getAdapter(firstElement,IFile.class);
         theParentFolder = file.getParent().getLocation().toOSString();
+        theProjectFolder = file.getProject().getLocation().toOSString();
         theSelectedFilePath = file.getLocation().toOSString();
+        theParentProject = file.getProject();
 	}
 
 	/**
@@ -56,21 +60,21 @@ public class CreatePapyrusProjectAction implements IObjectActionDelegate {
 			Job job1 = new Job("Generating Plugin Project.") {
 				protected IStatus run(IProgressMonitor monitor) {
 					try {
-						tahh.createPluginProject(theSelectedFilePath);
-						tahh.createThePaletteConfiguration(theSelectedFilePath);
-						tahh.createThePluginXml(theSelectedFilePath);
-						tahh.createTheProfileUmlFile(theSelectedFilePath);
-						tahh.createTheManifestFile(theSelectedFilePath);
-						tahh.createTheDiagramConfiguration(theSelectedFilePath);
-						tahh.createTheElementTypeConfigurations(theSelectedFilePath);
-						tahh.createTheCSSFile(theSelectedFilePath);
-						tahh.createTheTypesConfigurations(theSelectedFilePath);
-						tahh.createTheModelProfileNotationFile();
-						tahh.createTheModelProfileDiFile();
-						tahh.createThebuildPropertiesFile();
-						tahh.copyTheIcons(theSelectedFilePath, theParentFolder);
-						tahh.copyTheShapes(theSelectedFilePath, theParentFolder);
-						tahh.refresh();	
+						//tahh.createPluginProject(theSelectedFilePath);
+						tahh.createThePaletteConfiguration(theSelectedFilePath, theProjectFolder);
+						tahh.createThePluginXml(theSelectedFilePath, theProjectFolder);
+						tahh.createTheProfileUmlFile(theSelectedFilePath, theProjectFolder);
+						tahh.createTheManifestFile(theSelectedFilePath, theProjectFolder);
+						tahh.createTheDiagramConfiguration(theSelectedFilePath, theProjectFolder);
+						tahh.createTheElementTypeConfigurations(theSelectedFilePath, theProjectFolder);
+						tahh.createTheCSSFile(theSelectedFilePath, theProjectFolder);
+						tahh.createTheTypesConfigurations(theSelectedFilePath, theProjectFolder);
+						tahh.createTheModelProfileNotationFile(theProjectFolder);
+						tahh.createTheModelProfileDiFile(theProjectFolder);
+						tahh.createThebuildPropertiesFile(theProjectFolder);
+						//tahh.copyTheIcons(theSelectedFilePath, theParentFolder);
+						//tahh.copyTheShapes(theSelectedFilePath, theParentFolder);
+						tahh.refresh(theParentProject);	
 					} catch (Exception ex) {
 						LogUtil.log(ex);
 						PlatformUI.getWorkbench().getDisplay()
