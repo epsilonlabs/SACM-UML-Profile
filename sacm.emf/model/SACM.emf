@@ -1,46 +1,46 @@
+@"http://www.eclipse.org/OCL/Import"(ecore="http://www.eclipse.org/emf/2002/Ecore")
 @namespace(uri="http://www.omg.org/spec/SACM/2.0", prefix="sacm")
 package SACM;
 
 @namespace(uri="http://www.omg.org/spec/SACM/2.0/Commons", prefix="SACM_Commons")
 package Commons {
-
   @Comment(text="Base class for SACM")
   abstract class SACMElement {
   }
 
   @Comment(text="Base element for the majority of modeling elements")
   abstract class ModelElement extends SACMElement {
-  
-  	@Comment(text="To uniquely identifies the element within the scope of the model")
+
+    @Comment(text="To uniquely identifies the element within the scope of the model")
     attr String gid;
-    
+
     @Comment(text="The name of the element")
     attr String name;
-    
+
     @Comment(text="Flag to indicate if the element is abstract")
     attr Boolean isAbstract;
-    
+
     @Comment(text="The description of the element")
     val Description description;
-    
+
     @Comment(text="Allows constraints to be added to the element")
     val ImplementationConstraint[*] inplementationConstraint;
-    
+
     @Comment(text="Annotations on the element")
     val Note[*] note;
-    
+
     @Comment(text="Tagged value")
     val TaggedValue[*] taggedValue;
   }
 
   @Comment(text="UtilityElement supports the specification of additional information for a ModelElement")
   abstract class UtilityElement extends SACMElement {
-  
-  	@Comment(text="Simple expression")
-  	attr String sExpression;
-  
- 	@Comment(text="Expression that contains the value of the element")
-  	val Terminology.Expression[1] expression; 
+
+    @Comment(text="Simple expression")
+    attr String sExpression;
+
+    @Comment(text="Expression that contains the value of the element")
+    val Terminology.Expression[1] expression;
   }
 
   @Comment(text="To indicate the conditions to fulfill in order to allow an abstract ModeElement to become non-abstract")
@@ -50,369 +50,397 @@ package Commons {
   @Comment(text="To provide details about a Modelelement in relation to aspects such as their content of purpose")
   class Description extends UtilityElement {
   }
-  
+
   @Comment(text="To specify additional generic, unstructured, untyped information about a ModelElement")
   class Note extends UtilityElement {
   }
 
   @Comment(text="To specify attributes and their corresponding values for a ModelElement")
   class TaggedValue extends UtilityElement {
-  	@Comment(text="Simple key")
-  	attr String sKey;
-  	@Comment(text="the key of the tagged value")
-  	val Terminology.Expression key;
+
+    @Comment(text="Simple key")
+    attr String sKey;
+
+    @Comment(text="the key of the tagged value")
+    val Terminology.Expression key;
   }
+
 }
 
 @Comment(text="")
 @namespace(uri="http://www.omg.org/spec/SACM/2.0/Packages", prefix="SACM_Packages")
 package Packages {
+  @Comment(text="Root class for creating structured assurance cases")
+  class AssuranceCasePackage extends Artefact.ArtefactElement {
 
-	@Comment(text="Root class for creating structured assurance cases")
-	class AssuranceCasePackage extends Artefact.ArtefactElement {
-	
-		@Comment(text="A collection of optional citations to other AssuranceCasePackages")
-		val AssuranceCasePackageCitation[*] assuranceCasePackageCitation;
-		
-		@Comment(text="Optional sub-packages")
-		val AssuranceCasePackage[*] assuranceCasePackage;
-		
-		@Comment(text="A number of interfaces that the current package may implement")
-		ref AssuranceCasePackageInterface[*] ~interface;
-		
-		@Comment(text="A number of argument packages")
-		val Argumentation.ArgumentPackage[*] argumentPackage;
-		
-		@Comment(text="A number of artfact sub-packages")
-		val Artefact.ArtefactPackage[*] artefactPackage;
-		
-		@Comment(text="A number of optional terminology sub-packages")
-		val Terminology.TerminologyPackage[*] terminologyPackage;
-	}
-	
-	@Comment(text="Enables the declaration of the elements of an AssuranceCasePackage that might be refered to in another AssuranceCasePackage")
-	class AssuranceCasePackageInterface extends AssuranceCasePackage {
-		
-	}
-	
-	@Comment(text="Used to cite another AssuranceCasePackage, used when there is a need to refer to another AssuanceCasePackage")
-	class AssuranceCasePackageCitation extends AssuranceCasePackage {
-		ref AssuranceCasePackage[1] citedPackage; 
-	}
+    @Comment(text="A collection of optional citations to other AssuranceCasePackages")
+    val AssuranceCasePackageCitation[*] assuranceCasePackageCitation;
+
+    @Comment(text="Optional sub-packages")
+    val AssuranceCasePackage[*] assuranceCasePackage;
+
+    @Comment(text="A number of interfaces that the current package may implement")
+    ref AssuranceCasePackageInterface[*] ~interface;
+
+    @Comment(text="A number of argument packages")
+    val Argumentation.ArgumentPackage[*] argumentPackage;
+
+    @Comment(text="A number of artfact sub-packages")
+    val Artefact.ArtefactPackage[*] artefactPackage;
+
+    @Comment(text="A number of optional terminology sub-packages")
+    val Terminology.TerminologyPackage[*] terminologyPackage;
+  }
+
+  @Comment(text="Enables the declaration of the elements of an AssuranceCasePackage that might be refered to in another AssuranceCasePackage")
+  class AssuranceCasePackageInterface extends AssuranceCasePackage {
+  }
+
+  @Comment(text="Used to cite another AssuranceCasePackage, used when there is a need to refer to another AssuanceCasePackage")
+  class AssuranceCasePackageCitation extends AssuranceCasePackage {
+    ref AssuranceCasePackage[1] citedPackage;
+  }
+
 }
 
 @namespace(uri="http://www.omg.org/spec/SACM/2.0/Terminology", prefix="SACM_Terminology")
 package Terminology {
+  @Comment(text="Base class for specifying the terminology aspects of an assurance case")
+  abstract class TerminologyElement extends Commons.ModelElement {
+  }
 
-	@Comment(text="Base class for specifying the terminology aspects of an assurance case")
-	abstract class TerminologyElement extends Commons.ModelElement {
-	}
-	
-	@Comment(text="Container class for SACM terminology assets")
-	class TerminologyPackage extends TerminologyElement {
-		@Comment(text="Contained assets")
-		val TerminologyAsset[*] terminologyAsset;
-		
-		@Comment(text="Sub packages")
-		val TerminologyPackage[*] terminologyPackage;
-		
-		@Comment(text="Citations contained in the current TerminologyPackage")
-		val TerminologyPackageCitation[*] terminologyPackageCitation;
-	}
+  @Comment(text="Container class for SACM terminology assets")
+  class TerminologyPackage extends TerminologyElement {
 
-	@Comment(text="Used to refer to another TerminologyPackage")
-	class TerminologyPackageCitation extends TerminologyPackage {
-		@Comment(text="Cited TerminologyPackage")
-		ref TerminologyPackage citedPackage;
-	}
-	
-	@Comment(text="Base class for terminology assets")	
-	abstract class TerminologyAsset extends TerminologyElement {
-	}
-	
-	@Comment(text="Describes categories of ExpressionElements and used to group these elements within TerminologyPackages")	
-	class Category extends TerminologyAsset {
-		
-	}
-	
-	@Comment(text="Base class for expressions in SACM")
-	abstract class ExpressionElement extends TerminologyAsset {
-		@Comment(text="Category(-ies) that the current element belongs to")
-		ref Category[*] category;
-	}
-	
-	@Comment(text="Used to model abstract/concrete phrases in SACM")
-	class Expression extends ExpressionElement {
-		@Comment(text="Used to record the value of the expression")
-		attr String value;
-		
-		@Comment(text="Optional reference to other ExpressionElements forming part of the StructuredExpression")
-		ref ExpressionElement[*] element;
-	}
-	
-	class Term extends ExpressionElement {
-		@Comment(text="An attribute recording the value of the term")
-		attr String value;
-		
-		@Comment(text="An external reference")
-		attr String externalReference;
-	}
+    @Comment(text="Contained assets")
+    val TerminologyAsset[*] terminologyAsset;
 
-	class TerminologyAssetCitation extends ExpressionElement {
-		ref TerminologyAsset[1] citedElement;
-	}
+    @Comment(text="Sub packages")
+    val TerminologyPackage[*] terminologyPackage;
+
+    @Comment(text="Citations contained in the current TerminologyPackage")
+    val TerminologyPackageCitation[*] terminologyPackageCitation;
+  }
+
+  @Comment(text="Used to refer to another TerminologyPackage")
+  class TerminologyPackageCitation extends TerminologyPackage {
+
+    @Comment(text="Cited TerminologyPackage")
+    ref TerminologyPackage citedPackage;
+  }
+
+  @Comment(text="Base class for terminology assets")
+  abstract class TerminologyAsset extends TerminologyElement {
+  }
+
+  @Comment(text="Describes categories of ExpressionElements and used to group these elements within TerminologyPackages")
+  class Category extends TerminologyAsset {
+  }
+
+  @Comment(text="Base class for expressions in SACM")
+  abstract class ExpressionElement extends TerminologyAsset {
+
+    @Comment(text="Category(-ies) that the current element belongs to")
+    ref Category[*] category;
+  }
+
+  @Comment(text="Used to model abstract/concrete phrases in SACM")
+  class Expression extends ExpressionElement {
+
+    @Comment(text="Used to record the value of the expression")
+    attr String value;
+
+    @Comment(text="Optional reference to other ExpressionElements forming part of the StructuredExpression")
+    ref ExpressionElement[*] element;
+  }
+
+  class Term extends ExpressionElement {
+
+    @Comment(text="An attribute recording the value of the term")
+    attr String value;
+
+    @Comment(text="An external reference")
+    attr String externalReference;
+  }
+
+  class TerminologyAssetCitation extends ExpressionElement {
+    ref TerminologyAsset[1] citedElement;
+  }
+
 }
 
+@Ecore(invocationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", settingDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", validationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot")
 @namespace(uri="http://www.omg.org/spec/SACM/2.0/Argumentation", prefix="SACM_Argumentation")
 package Argumentation {
+  abstract class ArgumentationElement extends Commons.ModelElement {
 
-	abstract class ArgumentationElement extends Commons.ModelElement {
-		
-		@Comment(text="Content")
-		attr String content;
-	}
+    @Comment(text="Content")
+    attr String content;
+  }
 
-	@Comment(text="Container for a structured argument represented using SACM")
-	class ArgumentPackage extends ArgumentationElement {
-		
-		@Comment(text="An optional set of ArgumentAssets")
-		val ArgumentAsset[*] argumentAsset;
-		
-		@Comment(text="An optional set of sub packages")
-		val ArgumentPackage[*] argumentPackage;
-		
-		@Comment(text="An optional set of interfaces")
-		ref ArgumentPackageInterface[*] ~interface;
-		
-		@Comment(text="An optional set of citations")
-		val ArgumentPackageCitation[*] argumentPackageCitation;
-	}
-	
-	@Comment(text="Used to cite another ArgumentPackage")
-	class ArgumentPackageCitation extends ArgumentPackage {
-		ref ArgumentPackage[1] citedPackage;
-	}
-	
-	@Comment(text="Record the mapping between two or more ArgumentPackages")
-	class ArgumentPackageBinding extends ArgumentPackage {
-	
-		@Comment(text="To be discussed")
-		ref ArgumentPackage[2..*] participantPackage;
-	}
-	
-	@Comment(text="Used to declare the ArgumentAssets contained in an ArgumentPackage")
-	class ArgumentPackageInterface extends ArgumentPackage {
-		
-	}
-	
-	@Comment(text="Base class for the elements of structured argument in SACM")
-	abstract class ArgumentAsset extends ArgumentationElement {
-		
-	}
+  @Comment(text="Container for a structured argument represented using SACM")
+  @Ecore(constraints="isValidModule")
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidModule="self.name = 'Module'")
+  class ArgumentPackage extends ArgumentationElement {
 
-	@Comment(text="Used to record the popositions of Argumentation")
-	abstract class Assertion extends ArgumentAsset {
-		@Comment(text="References to Claims concerining the Assertion, e.g. confidence in the Assertion")
-		val Claim[*] metaClaim;
-	}
-	
-	@Comment(text="Enables the citation of an Artefact that relates to the structured argument")
-	class ArtefactElementCitation extends ArgumentAsset {
-		@Comment(text="Record a URL to a external evidence")
-		attr String externalReference;
-		
-		@Comment(text="Cited artefact")
-		ref Artefact.ArtefactElement citedArtefact;
-	}
-	
-	@Comment(text="Used to cite ArgumentAsset")
-	class ArgumentAssetCitation extends ArgumentAsset {
-		@Comment(text="Refers to another ArgumentAsset")
-		ref ArgumentAsset[1] citedAsset;
-	}
-	
-	@Comment(text="Used to record the propositions of any structured argument")
-	class Claim extends Assertion {
-		@Comment(text="Flag to indicate if the claim is assumed to be true")
-		attr Boolean assumed;
-		@Comment(text="Flag to indicate if the claim is to be further supported")
-		attr Boolean toBeSupported;
-	}
-	
-	@Comment(text="Used to provide additional description or explanation of the asserted inference or challange that connects one or more Claims")
-	class ArgumentReasoning extends ArgumentAsset {
-		@Comment(text="Optional reference to another ArgumentPackage that provides the detailed structure of the argument")
-		ref ArgumentPackage structure;
-	}
-	
-	@Comment(text="Abstract association class that enables the ArgumentAssets of any structured argument to be linked together")
-	abstract class AssertedRelationship extends Assertion {
-		@Comment(text="Source of the relationship")
-		ref ArgumentAsset[*] source;
-		
-		@Comment(text="Target of the relationship")
-		ref ArgumentAsset[*] target;
-		
-		@Comment(text="Reasoning of the relationship")
-		ref ArgumentReasoning reasoning;
-	}
-	
-	@Comment(text="Records the inference that a user declares to exist between on or more Assertion and another Assertion")
-	class AssertedInference extends AssertedRelationship {
-		
-	}
-	
-	@Comment(text="Records the declaration that one or more artefacts of Evidence provide information that helps establish the truth of a Claim")
-	class AssertedEvidence extends AssertedRelationship {
-		
-	}
-	
-	@Comment(text="Records the challenge that a user declares to exist between one or more Claims and another Claim")
-	class AssertedChallenge extends AssertedRelationship {
-		
-	}
-	
-	@Comment(text="Used to associate evidence to a Claim, where this evidence is being asserted to infer that the Claim is false")
-	class AssertedCounterEvidence extends AssertedRelationship {
-		
-	}
-	
-	@Comment(text="Used to declare that the artefact cited by an ArtefactElementCitation provides the context for the interpretation and scoping of a Claim")
-	class AssertedContext extends AssertedRelationship {
-		
-	}
+    @Comment(text="An optional set of ArgumentAssets")
+    val ArgumentAsset[*] argumentAsset;
+
+    @Comment(text="An optional set of sub packages")
+    val ArgumentPackage[*] argumentPackage;
+
+    @Comment(text="An optional set of interfaces")
+    ref ArgumentPackageInterface[*] ~interface;
+
+    @Comment(text="An optional set of citations")
+    val ArgumentPackageCitation[*] argumentPackageCitation;
+  }
+
+  @Comment(text="Used to cite another ArgumentPackage")
+  class ArgumentPackageCitation extends ArgumentPackage {
+    ref ArgumentPackage[1] citedPackage;
+  }
+
+  @Comment(text="Record the mapping between two or more ArgumentPackages")
+  @Ecore(constraints="isValidContractModule")
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidContractModule="self.name = 'ContractModule'")
+  class ArgumentPackageBinding extends ArgumentPackage {
+
+    @Comment(text="To be discussed")
+    ref ArgumentPackage[2..*] participantPackage;
+  }
+
+  @Comment(text="Used to declare the ArgumentAssets contained in an ArgumentPackage")
+  class ArgumentPackageInterface extends ArgumentPackage {
+  }
+
+  @Comment(text="Base class for the elements of structured argument in SACM")
+  abstract class ArgumentAsset extends ArgumentationElement {
+  }
+
+  @Comment(text="Used to record the popositions of Argumentation")
+  abstract class Assertion extends ArgumentAsset {
+
+    @Comment(text="References to Claims concerining the Assertion, e.g. confidence in the Assertion")
+    val Claim[*] metaClaim;
+  }
+
+  @Comment(text="Enables the citation of an Artefact that relates to the structured argument")
+  @Ecore(constraints="isValidGSNNotation")
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidGSNNotation="self.name = 'Solution' or 
+			 self.name = 'Context'")
+  class ArtefactElementCitation extends ArgumentAsset {
+
+    @Comment(text="Record a URL to a external evidence")
+    attr String externalReference;
+
+    @Comment(text="Cited artefact")
+    ref Artefact.ArtefactElement citedArtefact;
+  }
+
+  @Comment(text="Used to cite ArgumentAsset")
+  @Ecore(constraints="isValidAwayGoal")
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidAwayGoal="self.name = 'AwayGoal'")
+  class ArgumentAssetCitation extends ArgumentAsset {
+
+    @Comment(text="Refers to another ArgumentAsset")
+    ref ArgumentAsset[1] citedAsset;
+  }
+
+  @Comment(text="Used to record the propositions of any structured argument")
+  @Ecore(constraints="isValidGSNNotation")
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidGSNNotation="(self.name = 'Goal' and self.assumed = false and self.isAbstract = false) or 
+			(self.name ='Assumption' and self.assumed = true) or 
+			(self.name = 'Justification' and self.assumed = false) or
+			(self.name = 'UndevelopedGoal' and self.isAbstract = true)")
+  class Claim extends Assertion {
+
+    @Comment(text="Flag to indicate if the claim is assumed to be true")
+    attr Boolean assumed;
+
+    @Comment(text="Flag to indicate if the claim is to be further supported")
+    attr Boolean toBeSupported;
+  }
+
+  @Comment(text="Used to provide additional description or explanation of the asserted inference or challange that connects one or more Claims")
+  @Ecore(constraints="isValidStrategy")
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidStrategy="
+			(AssertedInference.allInstances()->exists(r|r.reasoning = self)->size() = 1 and 
+			self.name = 'Strategy' and self.isAbstract = false) or 
+			(self.name = 'UndevelopedStrategy' and self.isAbstract = true)")
+  class ArgumentReasoning extends ArgumentAsset {
+
+    @Comment(text="Optional reference to another ArgumentPackage that provides the detailed structure of the argument")
+    ref ArgumentPackage structure;
+  }
+
+  @Comment(text="Abstract association class that enables the ArgumentAssets of any structured argument to be linked together")
+  abstract class AssertedRelationship extends Assertion {
+
+    @Comment(text="Source of the relationship")
+    ref ArgumentAsset[*] source;
+
+    @Comment(text="Target of the relationship")
+    ref ArgumentAsset[*] target;
+
+    @Comment(text="Reasoning of the relationship")
+    ref ArgumentReasoning reasoning;
+  }
+
+  @Comment(text="Records the inference that a user declares to exist between on or more Assertion and another Assertion")
+  @Ecore(constraints="validSupportedBy")
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(validSupportedBy="
+			self.name = 'SupportedBy' and
+			self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal') and 
+			self.target->forAll(t|t.oclIsTypeOf(Claim) and t.name = 'Goal')")
+  class AssertedInference extends AssertedRelationship {
+  }
+
+  @Comment(text="Records the declaration that one or more artefacts of Evidence provide information that helps establish the truth of a Claim")
+  @Ecore(constraints="isValidSupportedBy")
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidSupportedBy="
+			self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal') and
+			self.target->forAll(t|t.oclIsTypeOf(ArtefactElementCitation) and t.name = 'Solution')")
+  class AssertedEvidence extends AssertedRelationship {
+  }
+
+  @Comment(text="Records the challenge that a user declares to exist between one or more Claims and another Claim")
+  class AssertedChallenge extends AssertedRelationship {
+  }
+
+  @Comment(text="Used to associate evidence to a Claim, where this evidence is being asserted to infer that the Claim is false")
+  class AssertedCounterEvidence extends AssertedRelationship {
+  }
+
+  @Comment(text="Used to declare that the artefact cited by an ArtefactElementCitation provides the context for the interpretation and scoping of a Claim")
+  class AssertedContext extends AssertedRelationship {
+  }
+
 }
-
 
 @namespace(uri="http://www.omg.org/spec/SACM/2.0/Artefact", prefix="SACM_Artefact")
 package Artefact {
+  @Comment(text="To specify all the identifiable units of data modeled and managed in a structured assurance case")
+  abstract class ArtefactElement extends Commons.ModelElement {
+  }
 
-	@Comment(text="To specify all the identifiable units of data modeled and managed in a structured assurance case")
-	abstract class ArtefactElement extends Commons.ModelElement {
-	}
-	
-	class ArtefactPackage extends ArtefactElement {
-		@Comment(text="An optional set of citation to other ArtefactPackages")
-		val ArtefactPackageCitation[*] artefactPackageCitation;
-		
-		@Comment(text="An optional set of ArtefactAsset elements")
-		val ArtefactAsset[*] artefactAsset;
-		
-		@Comment(text="An optional set of contained ArtefactPackage elements")
-		val ArtefactPackage[*] artefactPackage;
-		
-		ref ArtefactPackageInterface[*] ~interface;
-	}
-	
-	@Comment(text="Used to cite another ArtefactPackage")
-	class ArtefactPackageCitation extends ArtefactPackage {
-		@Comment(text="Cited ArtefactPackage")
-		ref ArtefactPackage[1] citedPackage;
-	}
-	
-	@Comment(text="Used to record ArtefactAssertRelationships between the ArtefactAssets of two or more ArtefactPackages")
-	class ArtefactPackageBinding extends ArtefactPackage {
-		@Comment(text="The ArtefactPackages containing the ArtefactAssets being related together by the ArtefactPackageBinding")
-		ref ArtefactPackage[2..*] participantpackage;
-	}
-	
-	@Comment(text="Defines an interface that may be exchanged between users")
-	class ArtefactPackageInterface extends ArtefactPackage {
-		
-	}
-	
-	@Comment(text="Represents the artefact-specific pieces of information of an assurance case")
-	abstract class ArtefactAsset extends ArtefactElement {
-		
-	}
-	
-	@Comment(text="Allows an ArtefactPackage to refer to the components of another ArtefactPackage")
-	class ArtefactAssetCitation extends ArtefactAsset {
-		ref ArtefactAsset[1] citedAsset;
-	}
-	
-	@Comment(text="Represents the distinguishable units of data used in an assurance case")
-	class Artefact extends ArtefactAsset {
-		@Comment(text="Version of the artefact")
-		attr String version;
-		
-		@Comment(text="Date of creation")
-		attr Date date;
-		
-		@Comment(text="Properties this Artefact possesses")
-		val ArtefactProperty[*] artefactProperty;
-		
-		@Comment(text="Set of ArtefactEvents that represent the lifecycle of the Arteface")
-		val ArtefactEvent[*] artefactEvent;
-	}
+  class ArtefactPackage extends ArtefactElement {
 
-	@Comment(text="Enables the specification of the characteristics of an Artefact")
-	class ArtefactProperty extends ArtefactAsset {
-		
-	}
-	
-	@Comment(text="Enables the specification of the events in the lifecycle of an Artefact")
-	class ArtefactEvent extends ArtefactAsset {
-		@Comment(text="date when the event occurred")
-		attr Date date;
-	}
-	
-	@Comment(text="Corresponds ot the tangible objects representing an Artefact")
-	class Resource extends ArtefactAsset {
-		@Comment(text="The path or URL specifying the location of the Resource")
-		attr String location;
-	}
-	
-	@Comment(text="Represents units of work related to the management of ArtefactAssets")
-	class Activity extends ArtefactAsset {
-		attr Date startTime;
-		attr Date endTime;
-	}
-	
-	@Comment(text="Represents techniques associated with Artefacts")
-	class Technique extends ArtefactAsset {
-		
-	}
-	
-	@Comment(text="Enables the specification of the parties involved in the management of ArtefactAssets")
-	class Participant extends ArtefactAsset {
-		
-	}
-	
-	@Comment(text="Enables the ArtefactAssets of an assurance case to be linked together")
-	abstract class ArtefactAssetRelationship extends ArtefactAsset {
-		ref ArtefactAsset[*] source;
-		ref ArtefactAsset[*] target;
-	}
-	
-	@Comment(text="Enables two Artefacts to be linked together")
-	class ArtefactRelationship extends ArtefactAssetRelationship {
-		
-	}
-	
-	@Comment(text="Enables two Activities to be related together")
-	class ActivityRelationship extends ArtefactAssetRelationship {
-		
-	}
-	
-	@Comment(text="Enables Artefact and an Activity to be Linked together")
-	class ArtefactActivityRelationship extends ArtefactAssetRelationship {
-		
-	}
-	
-	@Comment(text="Enables an Artefact and a Technique to be linked together")
-	class ArtefactTechniqueRelationship extends ArtefactAssetRelationship {
-		
-	}
-	
-	@Comment(text="Enables a Participant to be linked to other ArtefactAssets")
-	class ParticipantRoleRelationship extends ArtefactAssetRelationship {
-		
-	}
-	
-	@Comment(text="Enables an Artefact and a Resource to be linked together")
-	class ArtefactResourceRelationship extends ArtefactAssetRelationship {
-		
-	}
-	
+    @Comment(text="An optional set of citation to other ArtefactPackages")
+    val ArtefactPackageCitation[*] artefactPackageCitation;
+
+    @Comment(text="An optional set of ArtefactAsset elements")
+    val ArtefactAsset[*] artefactAsset;
+
+    @Comment(text="An optional set of contained ArtefactPackage elements")
+    val ArtefactPackage[*] artefactPackage;
+    ref ArtefactPackageInterface[*] ~interface;
+  }
+
+  @Comment(text="Used to cite another ArtefactPackage")
+  class ArtefactPackageCitation extends ArtefactPackage {
+
+    @Comment(text="Cited ArtefactPackage")
+    ref ArtefactPackage[1] citedPackage;
+  }
+
+  @Comment(text="Used to record ArtefactAssertRelationships between the ArtefactAssets of two or more ArtefactPackages")
+  class ArtefactPackageBinding extends ArtefactPackage {
+
+    @Comment(text="The ArtefactPackages containing the ArtefactAssets being related together by the ArtefactPackageBinding")
+    ref ArtefactPackage[2..*] participantpackage;
+  }
+
+  @Comment(text="Defines an interface that may be exchanged between users")
+  class ArtefactPackageInterface extends ArtefactPackage {
+  }
+
+  @Comment(text="Represents the artefact-specific pieces of information of an assurance case")
+  abstract class ArtefactAsset extends ArtefactElement {
+  }
+
+  @Comment(text="Allows an ArtefactPackage to refer to the components of another ArtefactPackage")
+  class ArtefactAssetCitation extends ArtefactAsset {
+    ref ArtefactAsset[1] citedAsset;
+  }
+
+  @Comment(text="Represents the distinguishable units of data used in an assurance case")
+  class Artefact extends ArtefactAsset {
+
+    @Comment(text="Version of the artefact")
+    attr String version;
+
+    @Comment(text="Date of creation")
+    attr EDate date;
+
+    @Comment(text="Properties this Artefact possesses")
+    val ArtefactProperty[*] artefactProperty;
+
+    @Comment(text="Set of ArtefactEvents that represent the lifecycle of the Arteface")
+    val ArtefactEvent[*] artefactEvent;
+  }
+
+  @Comment(text="Enables the specification of the characteristics of an Artefact")
+  class ArtefactProperty extends ArtefactAsset {
+  }
+
+  @Comment(text="Enables the specification of the events in the lifecycle of an Artefact")
+  class ArtefactEvent extends ArtefactAsset {
+
+    @Comment(text="date when the event occurred")
+    attr EDate date;
+  }
+
+  @Comment(text="Corresponds ot the tangible objects representing an Artefact")
+  class Resource extends ArtefactAsset {
+
+    @Comment(text="The path or URL specifying the location of the Resource")
+    attr String location;
+  }
+
+  @Comment(text="Represents units of work related to the management of ArtefactAssets")
+  class Activity extends ArtefactAsset {
+    attr EDate startTime;
+    attr EDate endTime;
+  }
+
+  @Comment(text="Represents techniques associated with Artefacts")
+  class Technique extends ArtefactAsset {
+  }
+
+  @Comment(text="Enables the specification of the parties involved in the management of ArtefactAssets")
+  class Participant extends ArtefactAsset {
+  }
+
+  @Comment(text="Enables the ArtefactAssets of an assurance case to be linked together")
+  abstract class ArtefactAssetRelationship extends ArtefactAsset {
+    ref ArtefactAsset[*] source;
+    ref ArtefactAsset[*] target;
+  }
+
+  @Comment(text="Enables two Artefacts to be linked together")
+  class ArtefactRelationship extends ArtefactAssetRelationship {
+  }
+
+  @Comment(text="Enables two Activities to be related together")
+  class ActivityRelationship extends ArtefactAssetRelationship {
+  }
+
+  @Comment(text="Enables Artefact and an Activity to be Linked together")
+  class ArtefactActivityRelationship extends ArtefactAssetRelationship {
+  }
+
+  @Comment(text="Enables an Artefact and a Technique to be linked together")
+  class ArtefactTechniqueRelationship extends ArtefactAssetRelationship {
+  }
+
+  @Comment(text="Enables a Participant to be linked to other ArtefactAssets")
+  class ParticipantRoleRelationship extends ArtefactAssetRelationship {
+  }
+
+  @Comment(text="Enables an Artefact and a Resource to be linked together")
+  class ArtefactResourceRelationship extends ArtefactAssetRelationship {
+  }
+
 }
+
