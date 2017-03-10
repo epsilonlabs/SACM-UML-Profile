@@ -51,9 +51,11 @@ if (stereo.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("sh
 %]
 [appliedStereotypes~=[%=stereo.name%]].Symbol {
 	svgFile: 'platform:/plugin/[%=ePackName%]/[%=stereo.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("shape")%]';
-	//floatingLabelOffsetWidth:+23;
-    //floatingLabelOffsetHeight:+80;
-	//displayName:false;
+	/*
+	floatingLabelOffsetWidth:+23;
+    floatingLabelOffsetHeight:+80;
+	displayName:false;
+	*/
 }
 [%
 }
@@ -70,5 +72,14 @@ if (allAssociationStereotypes.notEmpty()) {
 	roundedBendpointsRadius:10;
 }
 [%
+}
+
+for (assoc in allAssociationStereotypes) {
+	if (assoc.getEAnnotation("Edge").details.get("lineStyle").isDefined()) { %]
+		[appliedStereotypes~=[%=assoc.name%]] {
+			lineStyle: [%=assoc.getEAnnotation("Edge").details.get("lineStyle")%];
+		}
+	[%
+	}
 }
 %]
