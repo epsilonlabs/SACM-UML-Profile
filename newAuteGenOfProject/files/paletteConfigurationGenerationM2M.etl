@@ -19,18 +19,18 @@ pre {
 rule node2Tool
 	transform c : Source!EClass 
 	to tc : Target!ToolConfiguration {
-	guard : c.getEAnnotation("Class").isDefined()
+	guard : c.getEAnnotation("Node").isDefined()
 		tc.description = c.name + " node";
 		tc.label = c.name;
 		tc.id = c.name + "_node";
 		theNodesDrawerConfiguration.ownedConfigurations.add(tc);
-		if (c.eAnnotations.selectOne(ean|ean.source.equals("Class")).details.get("icon").isDefined()) {
+		if (c.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("icon").isDefined()) {
 			var theIconDescriptor = new Target!IconDescriptor;
-			theIconDescriptor.iconPath = c.eAnnotations.selectOne(ean|ean.source.equals("Class")).details.get("icon");
+			theIconDescriptor.iconPath = c.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("icon");
 			theIconDescriptor.pluginId = ePackName;
 			tc.icon = theIconDescriptor;
 		}
-		//if (c.eAnnotations.selectOne(ean|ean.source.equals("Class")).details.get("shape").isDefined()) {
+		//if (c.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("shape").isDefined()) {
 			var theElementDescriptor = new Target!ElementDescriptor;
 			theElementDescriptor.elementTypeId = ePackName + "." + c.name + "_Shape";
 			tc.elementDescriptors.add(theElementDescriptor);
@@ -40,15 +40,15 @@ rule node2Tool
 rule edge2Tool
 	transform c : Source!EClass 
 	to tc : Target!ToolConfiguration {
-	guard : c.getEAnnotation("Association").isDefined()
+	guard : c.getEAnnotation("Edge").isDefined()
 		tc.description = c.name + " edge";
 		tc.label = c.name;
 		tc.id = c.name + "_edge";
 		tc.kind = PaletteConfigurationM2!ToolKind#ConnectionTool;
 		theEdgesDrawerConfiguration.ownedConfigurations.add(tc);
-		if (c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("icon").isDefined()) {
+		if (c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("icon").isDefined()) {
 			var theIconDescriptor = new Target!IconDescriptor;
-			theIconDescriptor.iconPath = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("icon");
+			theIconDescriptor.iconPath = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("icon");
 			theIconDescriptor.pluginId = ePackName;
 			tc.icon = theIconDescriptor;
 		}
@@ -60,15 +60,15 @@ rule edge2Tool
 rule refEdge2Tool
 	transform ref : Source!EReference 
 	to tc : Target!ToolConfiguration {
-	guard : ref.getEAnnotation("Association").isDefined()
+	guard : ref.getEAnnotation("Edge").isDefined()
 		tc.description = ref.name + " edge";
 		tc.label = ref.name;
 		tc.id = ref.name + "_edge";
 		tc.kind = PaletteConfigurationM2!ToolKind#ConnectionTool;
 		theEdgesDrawerConfiguration.ownedConfigurations.add(tc);
-		if (ref.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("icon").isDefined()) {
+		if (ref.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("icon").isDefined()) {
 			var theIconDescriptor = new Target!IconDescriptor;
-			theIconDescriptor.iconPath = ref.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("icon");
+			theIconDescriptor.iconPath = ref.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("icon");
 			theIconDescriptor.pluginId = ePackName;
 			tc.icon = theIconDescriptor;
 		}

@@ -9,35 +9,38 @@ pre {
 rule class2Shape 
 transform c : Source!EClass 
 to stc : Target!SpecializationTypeConfiguration {
-guard : c.getEAnnotation("Class").isDefined()
+guard : c.getEAnnotation("Node").isDefined()
+	var base = c.getEAnnotation("Node").details.get("base").firstToUpperCase();
 	stc.name = c.name + " shape";
-	stc.hint = "Class_Shape";
+	stc.hint = base + "_Shape";
 	stc.identifier = ePackName + "." + c.name + "_Shape";
 	stc.specializedTypesId.add(ePackName + "." + c.name);
-	stc.specializedTypesId.add("org.eclipse.papyrus.umldi.Class_Shape");
+	stc.specializedTypesId.add("org.eclipse.papyrus.umldi." + base + "_Shape");
 	theConfiguration.elementTypeConfigurations.add(stc);
 }
 
 rule associationClass2Shape 
 transform c : Source!EClass 
 to stc : Target!SpecializationTypeConfiguration {
-guard : c.getEAnnotation("Association").isDefined()
+guard : c.getEAnnotation("Edge").isDefined()
+	var base = c.getEAnnotation("Edge").details.get("base").firstToUpperCase();
 	stc.name = c.name + " edge";
-	stc.hint = "Association_Edge";
+	stc.hint = base + "_Edge";
 	stc.identifier = ePackName + "." + c.name + "_Edge";
 	stc.specializedTypesId.add(ePackName + "." + c.name);
-	stc.specializedTypesId.add("org.eclipse.papyrus.umldi.Association_Edge");
+	stc.specializedTypesId.add("org.eclipse.papyrus.umldi." + base + "_Edge");
 	theConfiguration.elementTypeConfigurations.add(stc);
 }
 
 rule refEdge2Tool
 transform ref : Source!EReference 
 to stc : Target!SpecializationTypeConfiguration {
-guard : ref.getEAnnotation("Association").isDefined()
+guard : ref.getEAnnotation("Edge").isDefined()
+	var base = ref.getEAnnotation("Edge").details.get("base").firstToUpperCase();
 	stc.name = ref.name + " edge";
-	stc.hint = "Association_Edge";
+	stc.hint = base + "_Edge";
 	stc.identifier = ePackName + "." + ref.name + "_Edge";
 	stc.specializedTypesId.add(ePackName + "." + ref.name);
-	stc.specializedTypesId.add("org.eclipse.papyrus.umldi.Association_Edge");
+	stc.specializedTypesId.add("org.eclipse.papyrus.umldi." + base + "_Edge");
 	theConfiguration.elementTypeConfigurations.add(stc);
 }
