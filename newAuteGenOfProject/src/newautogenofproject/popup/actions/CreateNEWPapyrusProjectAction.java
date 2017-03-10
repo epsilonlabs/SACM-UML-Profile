@@ -21,17 +21,17 @@ import org.eclipse.ui.PlatformUI;
 
 import newautogenofproject.ThingsAreHappeningHere;
 
-public class CreatePapyrusProjectAction implements IObjectActionDelegate {
+public class CreateNEWPapyrusProjectAction implements IObjectActionDelegate {
 
 	private Shell shell;
 	private String theSelectedFilePath;
-	private String theSelectedFileParentFolder, theDestinationProjectFolder;
-	private IProject theSelectedFileParentIProject;
+	private String theSelectedFileParentFolder, theDestinationIProjectFolder;
+	private IProject theSelectedFileParentIProject, theDestinationIProject;
 	
 	/**
 	 * Constructor for Action1.
 	 */
-	public CreatePapyrusProjectAction() {
+	public CreateNEWPapyrusProjectAction() {
 		super();
 	}
 
@@ -44,7 +44,7 @@ public class CreatePapyrusProjectAction implements IObjectActionDelegate {
         Object firstElement = theSelectedFile.getFirstElement();
         IFile file = (IFile) Platform.getAdapterManager().getAdapter(firstElement,IFile.class);
         theSelectedFileParentFolder = file.getParent().getLocation().toOSString();
-        theDestinationProjectFolder = file.getProject().getLocation().toOSString();
+        //theProjectFolder = file.getProject().getLocation().toOSString();
         theSelectedFilePath = file.getLocation().toOSString();
         theSelectedFileParentIProject = file.getProject();
 	}
@@ -60,21 +60,22 @@ public class CreatePapyrusProjectAction implements IObjectActionDelegate {
 			Job job1 = new Job("Generating Plugin Project.") {
 				protected IStatus run(IProgressMonitor monitor) {
 					try {
-						//tahh.createPluginProject(theSelectedFilePath);
-						tahh.createThePaletteConfiguration(theSelectedFilePath, theDestinationProjectFolder);
-						tahh.createThePluginXml(theSelectedFilePath, theDestinationProjectFolder);
-						tahh.createTheProfileUmlFile(theSelectedFilePath, theDestinationProjectFolder);
-						tahh.createTheManifestFile(theSelectedFilePath, theDestinationProjectFolder);
-						tahh.createTheDiagramConfiguration(theSelectedFilePath, theDestinationProjectFolder);
-						tahh.createTheElementTypeConfigurations(theSelectedFilePath, theDestinationProjectFolder);
-						tahh.createTheCSSFile(theSelectedFilePath, theDestinationProjectFolder);
-						tahh.createTheTypesConfigurations(theSelectedFilePath, theDestinationProjectFolder);
-						tahh.createTheModelProfileNotationFile(theDestinationProjectFolder);
-						tahh.createTheModelProfileDiFile(theDestinationProjectFolder);
-						tahh.createThebuildPropertiesFile(theDestinationProjectFolder);
-						//tahh.copyTheIcons(theSelectedFilePath, theParentFolder);
-						//tahh.copyTheShapes(theSelectedFilePath, theParentFolder);
-						tahh.refresh(theSelectedFileParentIProject);	
+						theDestinationIProject = tahh.createPluginProject(theSelectedFilePath);
+						theDestinationIProjectFolder = theDestinationIProject.getLocation().toOSString();
+						tahh.createThePaletteConfiguration(theSelectedFilePath, theDestinationIProjectFolder);
+						tahh.createThePluginXml(theSelectedFilePath, theDestinationIProjectFolder);
+						tahh.createTheProfileUmlFile(theSelectedFilePath, theDestinationIProjectFolder);
+						tahh.createTheManifestFile(theSelectedFilePath, theDestinationIProjectFolder);
+						tahh.createTheDiagramConfiguration(theSelectedFilePath, theDestinationIProjectFolder);
+						tahh.createTheElementTypeConfigurations(theSelectedFilePath, theDestinationIProjectFolder);
+						tahh.createTheCSSFile(theSelectedFilePath, theDestinationIProjectFolder);
+						tahh.createTheTypesConfigurations(theSelectedFilePath, theDestinationIProjectFolder);
+						tahh.createTheModelProfileNotationFile(theDestinationIProjectFolder);
+						tahh.createTheModelProfileDiFile(theDestinationIProjectFolder);
+						tahh.createThebuildPropertiesFile(theDestinationIProjectFolder);
+						tahh.copyTheIcons(theSelectedFilePath, theSelectedFileParentIProject.getLocation().toOSString(), theDestinationIProjectFolder);
+						tahh.copyTheShapes(theSelectedFilePath, theSelectedFileParentIProject.getLocation().toOSString(), theDestinationIProjectFolder);
+						tahh.refresh(theDestinationIProject);	
 					} catch (Exception ex) {
 						LogUtil.log(ex);
 						PlatformUI.getWorkbench().getDisplay()

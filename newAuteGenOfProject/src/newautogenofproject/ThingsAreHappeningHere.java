@@ -64,7 +64,7 @@ public class ThingsAreHappeningHere {
 		File test = new File("");
 	}
 
-	public void createPluginProject(String theSelectedFile) throws CoreException {
+	public IProject createPluginProject(String theSelectedFile) throws CoreException {
 		if (!project.exists()) {
 			project.create(progressMonitor);
 		}
@@ -72,6 +72,7 @@ public class ThingsAreHappeningHere {
 		IProjectDescription desc = project.getDescription();
 		desc.setNatureIds(new String[] { PDE.PLUGIN_NATURE });
 		project.setDescription(desc, progressMonitor);
+		return project;
 	}
 
 	public void createThePaletteConfiguration(String theSelectedFilePath, String theProjectFolder) throws Exception {
@@ -123,12 +124,12 @@ public class ThingsAreHappeningHere {
 		doTheETLTransformation(etlModule, allTheModels, "files/paletteConfigurationGenerationM2M.etl");
 	}
 
-	public void createTheDiagramConfiguration(String theSelectedFilePath, String theProjectFolder) throws Exception {
+	public void createTheDiagramConfiguration(String theSelectedFilePath, String theDestinationIProjectFolder) throws Exception {
 
 		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
-		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/infra/viewpoints/configuration", theProjectFolder + File.separator
+		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/infra/viewpoints/configuration", theDestinationIProjectFolder + File.separator
 				+ "resources" + File.separator + name + "diagrams.configuration", "Target", "false", "true");
 
 		EmfMetaModel umlEcoreMetaModel = createAndLoadAnEmfMetaModel("http://www.eclipse.org/uml2/5.0.0/UML", "UMLEcore", "true", "false");
@@ -140,7 +141,7 @@ public class ThingsAreHappeningHere {
 
 	}
 
-	public void createTheCSSFile(String theSelectedFilePath, String theProjectFolder) throws Exception {
+	public void createTheCSSFile(String theSelectedFilePath, String theDestinationIProjectFolder) throws Exception {
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
 		EglFileGeneratingTemplateFactory factory = new EglFileGeneratingTemplateFactory();
@@ -153,17 +154,17 @@ public class ThingsAreHappeningHere {
 
 		EglFileGeneratingTemplate template = (EglFileGeneratingTemplate) factory.load(EglFile);
 		template.process();
-		File target = new File(theProjectFolder + File.separator + "resources" + File.separator + name
+		File target = new File(theDestinationIProjectFolder + File.separator + "resources" + File.separator + name
 				+ "diagram.css");
 		target.createNewFile();
 		template.generate(target.toURI().toString());
 	}
 
-	public void createTheTypesConfigurations(String theSelectedFilePath, String theProjectFolder) throws Exception {
+	public void createTheTypesConfigurations(String theSelectedFilePath, String theDestinationIProjectFolder) throws Exception {
 		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
-		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/uml/types/applystereotypeadvice/1.1, http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1, http://www.eclipse.org/papyrus/uml/types/stereotypematcher/1.1", theProjectFolder + File.separator
+		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/uml/types/applystereotypeadvice/1.1, http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1, http://www.eclipse.org/papyrus/uml/types/stereotypematcher/1.1", theDestinationIProjectFolder + File.separator
 				+ "resources" + File.separator + "modelelement.typesconfigurations", "Target", "false", "true");
 
 		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
@@ -172,11 +173,11 @@ public class ThingsAreHappeningHere {
 		doTheETLTransformation(etlModule, allTheModels, "files/typesConfigurationsM2M.etl");
 	}
 
-	public void createTheElementTypeConfigurations(String theSelectedFilePath, String theProjectFolder) throws Exception {
+	public void createTheElementTypeConfigurations(String theSelectedFilePath, String theDestinationIProjectFolder) throws Exception {
 		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
-		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1", theProjectFolder + File.separator
+		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1", theDestinationIProjectFolder + File.separator
 				+ "resources" + File.separator + "diagramshapes.elementtypesconfigurations", "Target", "false", "true");
 
 		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
@@ -185,14 +186,14 @@ public class ThingsAreHappeningHere {
 		doTheETLTransformation(etlModule, allTheModels, "files/elementTypesConfigurationsM2M.etl");
 	}
 
-	public void createThePluginXml(String theSelectedFilePath, String theProjectFolder) throws Exception {
+	public void createThePluginXml(String theSelectedFilePath, String theDestinationIProjectFolder) throws Exception {
 		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
 		PlainXmlModel targetModel = new PlainXmlModel();
 		StringProperties targetProperties = new StringProperties();
 		targetProperties.put(PlainXmlModel.PROPERTY_FILE,
-				theProjectFolder + File.separator + "plugin.xml");
+				theDestinationIProjectFolder + File.separator + "plugin.xml");
 		targetProperties.put(PlainXmlModel.PROPERTY_NAME, "Target");
 		targetProperties.put(PlainXmlModel.PROPERTY_READONLOAD, "false");
 		targetProperties.put(PlainXmlModel.PROPERTY_STOREONDISPOSAL, "true");
@@ -203,10 +204,10 @@ public class ThingsAreHappeningHere {
 		doTheETLTransformation(etlModule, allTheModels, "files/pluginXmlGenerationM2M.etl");
 	}
 
-	public void createTheManifestFile(String theSelectedFilePath, String theProjectFolder) throws IOException {
-		new File(theProjectFolder + File.separator + "META-INF").mkdir();
+	public void createTheManifestFile(String theSelectedFilePath, String theDestinationIProjectFolder) throws IOException {
+		new File(theDestinationIProjectFolder + File.separator + "META-INF").mkdir();
 		BufferedWriter output = new BufferedWriter(new FileWriter(
-				theProjectFolder + File.separator + "META-INF" + File.separator + "MANIFEST.MF",
+				theDestinationIProjectFolder + File.separator + "META-INF" + File.separator + "MANIFEST.MF",
 				false));
 		try {
 			output.write("Manifest-Version: 1.0\n" + "Bundle-ManifestVersion: 2\n" + "Bundle-Name: " + name + "\n"
@@ -239,14 +240,14 @@ public class ThingsAreHappeningHere {
 		}
 	}
 
-	public void createTheProfileUmlFile(String theSelectedFilePath, String theProjectFolder) throws Exception {
+	public void createTheProfileUmlFile(String theSelectedFilePath, String theDestinationIProjectFolder) throws Exception {
 		EtlModule etlModule = new EtlModule();
 
 		// The emfatic (ecore) source
 		EmfModel sourceModel = 	createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 		
 		// The ultimate goal: the UML profile
-		UmlModel targetModel = createAndLoadAUmlModel("http://www.eclipse.org/uml2/5.0.0/UML", theProjectFolder + File.separator + "model.profile.uml", "Profile", "false", "true");
+		UmlModel targetModel = createAndLoadAUmlModel("http://www.eclipse.org/uml2/5.0.0/UML", theDestinationIProjectFolder + File.separator + "model.profile.uml", "Profile", "false", "true");
 
 		// The UML Metamodel
 		UmlModel umlMetaModel = createAndLoadAUmlModel("http://www.eclipse.org/emf/2002/Ecore", "pathmap://UML_METAMODELS/UML.metamodel.uml", "UMLM2", "true", "false");
@@ -275,9 +276,9 @@ public class ThingsAreHappeningHere {
 		//etlModule.getContext().getModelRepository().getModelByName("Profile").dispose();
 	}
 
-	public void createTheModelProfileNotationFile(String theProjectFolder) throws IOException {
+	public void createTheModelProfileNotationFile(String theDestinationIProjectFolder) throws IOException {
 		BufferedWriter output = new BufferedWriter(
-				new FileWriter(theProjectFolder + File.separator + "model.profile.notation", false));
+				new FileWriter(theDestinationIProjectFolder + File.separator + "model.profile.notation", false));
 		try {
 			output.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 					+ "<xmi:XMI xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\"/>\n");
@@ -287,9 +288,9 @@ public class ThingsAreHappeningHere {
 		}
 	}
 
-	public void createTheModelProfileDiFile(String theProjectFolder) throws IOException {
+	public void createTheModelProfileDiFile(String theDestinationIProjectFolder) throws IOException {
 		BufferedWriter output = new BufferedWriter(
-				new FileWriter(theProjectFolder + File.separator + "model.profile.di", false));
+				new FileWriter(theDestinationIProjectFolder + File.separator + "model.profile.di", false));
 		try {
 			output.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 					+ "<xmi:XMI xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\"/>\n");
@@ -299,9 +300,9 @@ public class ThingsAreHappeningHere {
 		}
 	}
 
-	public void createThebuildPropertiesFile(String theProjectFolder) throws IOException {
+	public void createThebuildPropertiesFile(String theDestinationIProjectFolder) throws IOException {
 		BufferedWriter output = new BufferedWriter(
-				new FileWriter(theProjectFolder + File.separator + "build.properties", false));
+				new FileWriter(theDestinationIProjectFolder + File.separator + "build.properties", false));
 		try {
 			output.write("bin.includes = META-INF/,\\\n" + "plugin.xml\n");
 			output.close();
@@ -310,7 +311,7 @@ public class ThingsAreHappeningHere {
 		}
 	}
 
-	public void copyTheIcons(String theSelectedFilePath, String theParentFolder) throws IOException {
+	public void copyTheIcons(String theSelectedFilePath, String theSelectedFileParentFolder, String theDestinationIProjectFolder) throws IOException {
 
 		ArrayList<String> iconPaths = getTheListOfIconPathsInModel(theSelectedFilePath);
 		for (String iconPath : iconPaths) {
@@ -319,40 +320,42 @@ public class ThingsAreHappeningHere {
 			// target directory. I do that by striping the name of the file.
 			// The target directory is: the target project location + the
 			// content of the icon details set in EMF without the file name.
-			String theTargetDirectory = project.getLocation().toOSString() + File.separator
+			String theTargetDirectory = theDestinationIProjectFolder + File.separator
 					+ iconPath.substring(0, iconPath.lastIndexOf("/"));
+			System.err.println(theTargetDirectory);
+
 			File targetDir = new File(theTargetDirectory);
 			if (!targetDir.exists()) {
 				targetDir.mkdir();
 			}
-			String fromIconPath = theParentFolder + File.separator + iconPath;
-			String toIconPath = project.getLocation().toOSString() + File.separator + iconPath;
+			String fromIconPath = theSelectedFileParentFolder + File.separator + iconPath;
+			String toIconPath = theDestinationIProjectFolder + File.separator + iconPath;
 			copyFiles(fromIconPath, toIconPath);
 
 		}
 	}
 
-	public void copyTheShapes(String theSelectedFilePath, String theParentFolder) throws IOException {
+	public void copyTheShapes(String theSelectedFilePath, String theSelectedFileParentFolder, String theDestinationIProjectFolder) throws IOException {
 		ArrayList<String> shapePaths = getTheListOfShapePathsInModel(theSelectedFilePath);
 		for (String shapePath : shapePaths) {
 			// In order to be able to do the copy, I need firstly to create the
 			// target directory. I do that by striping the name of the file.
 			// The target directory is: the target project location + the
 			// content of the shape details set in EMF without the file name.
-			String theTargetDirectory = project.getLocation().toOSString() + File.separator
+			String theTargetDirectory = theDestinationIProjectFolder + File.separator
 					+ shapePath.substring(0, shapePath.lastIndexOf("/"));
+			System.err.println(theTargetDirectory);
 			File targetDir = new File(theTargetDirectory);
 			if (!targetDir.exists()) {
 				targetDir.mkdir();
 			}
-			String fromShapePath = theParentFolder + File.separator + shapePath;
-			String toShapePath = project.getLocation().toOSString() + File.separator + shapePath;
+			String fromShapePath = theSelectedFileParentFolder + File.separator + shapePath;
+			String toShapePath = theDestinationIProjectFolder + File.separator + shapePath;
 			copyFiles(fromShapePath, toShapePath);
 		}
 	}
 
 	private void copyFiles(String from, String to) throws IOException {
-
 		Path fromPath = Paths.get(from);
 		Path toPath = Paths.get(to);
 		CopyOption[] options = new CopyOption[] { StandardCopyOption.REPLACE_EXISTING,
