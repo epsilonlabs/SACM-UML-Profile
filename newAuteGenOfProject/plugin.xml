@@ -17,14 +17,16 @@
             </separator>
          </menu>
          <action
-               label="Generate Papyrus Project (Same Folder)"
                class="newautogenofproject.popup.actions.CreatePapyrusProjectAction"
-               menubarPath="newautogenofproject.menu1/group1"
                enablesFor="1"
-               id="newautogenofproject.createPapyrusProjectAction">
+               icon="icons/sameFolderIcon.png"
+               id="newautogenofproject.createPapyrusProjectAction"
+               label="Generate Papyrus Project (Same Folder)"
+               menubarPath="newautogenofproject.menu1/group1">
          </action>
          <action
                class="newautogenofproject.popup.actions.CreateNEWPapyrusProjectAction"
+               icon="icons/newFolderIcon.png"
                id="newautogenofproject.createNEWPapyrusProjectAction"
                label="Generate Papyrus Project (New Folder)"
                menubarPath="newautogenofproject.menu1/group1">
