@@ -322,8 +322,6 @@ public class ThingsAreHappeningHere {
 			// content of the icon details set in EMF without the file name.
 			String theTargetDirectory = theDestinationIProjectFolder + File.separator
 					+ iconPath.substring(0, iconPath.lastIndexOf("/"));
-			System.err.println(theTargetDirectory);
-
 			File targetDir = new File(theTargetDirectory);
 			if (!targetDir.exists()) {
 				targetDir.mkdir();
@@ -344,7 +342,6 @@ public class ThingsAreHappeningHere {
 			// content of the shape details set in EMF without the file name.
 			String theTargetDirectory = theDestinationIProjectFolder + File.separator
 					+ shapePath.substring(0, shapePath.lastIndexOf("/"));
-			System.err.println(theTargetDirectory);
 			File targetDir = new File(theTargetDirectory);
 			if (!targetDir.exists()) {
 				targetDir.mkdir();

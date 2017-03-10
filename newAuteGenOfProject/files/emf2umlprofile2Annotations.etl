@@ -1,15 +1,7 @@
 pre {
 	var ePackName = Source!EPackage.all().first().name;
 	var profile = new Profile!Profile;
-	var classImport = new Profile!ElementImport;
-	classImport.`alias` = "Class";
-	classImport.importedElement = UMLM2!Class.all.selectOne(c|c.name = "Class");
-	profile.metaclassReference.add(classImport);
-	profile.elementImport.add(classImport);
-	var associationImport = new Profile!ElementImport;
-	associationImport.`alias` = "Association";
-	associationImport.importedElement = UMLM2!Class.all.selectOne(c|c.name = "Association");
-	profile.elementImport.add(associationImport);
+	var alreadyCreatedImports = new Set();
 	var ePackage = new Profile!EPackage;
 	createUMLAnnotationsForVersions(profile);
 	profile.name = ePackName;
@@ -31,9 +23,9 @@ rule class2stereotype
 		theEAnnotationOfThisStereotype.source = "http://www.eclipse.org/uml2/2.0.0/UML";
 		theEAnnotationOfThisStereotype.references.add(s);
 		newClass.eAnnotations.add(theEAnnotationOfThisStereotype);
-		if (c.eAnnotations.select(an | an.source.equals("Class")).notEmpty()) {
+		if (c.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
 			createTheClassStereotypeDetails(newClass,s,c);
-		} else if (c.eAnnotations.select(an | an.source.equals("Association")).notEmpty()) {
+		} else if (c.eAnnotations.select(an | an.source.equals("Edge")).notEmpty()) {
 			createTheAssociationStereotypeDetails(newClass,s,c);
 			createOCLConstraintsForAssociation(newClass,s,c);		
 		} 
@@ -44,7 +36,7 @@ rule class2stereotype
 rule reference2stereotype 
 	transform ref : Source!EReference 
 	to s : Profile!Stereotype { 
-	guard : ref.eAnnotations.select(an | an.source.equals("Association")).notEmpty() 
+	guard : ref.eAnnotations.select(an | an.source.equals("Edge")).notEmpty() 
 	s.name = ref.name;
 	// Add stereotype to the profile
 	profile.ownedStereotype.add(s);
@@ -155,16 +147,18 @@ operation createTheAssociationNavigabilityOCLConstraint(newClass,s,c) {
 
 operation createTheClassStereotypeDetails(newClass,s,c) {
 	var baseClassProperty = new Profile!Property;
-	baseClassProperty.name = "base_Class";
-	baseClassProperty.type = UMLM2!Class.all.selectOne(c|c.name = "Class"); // This way we get the Class metaclass as declared in the UML metamodel
+	var base = c.getEAnnotation("Node").details.get("base").firstToUpperCase();
+	checkIfTheBaseImportExistsAndCreateIt(base);
+	baseClassProperty.name = "base_" +  base;
+	baseClassProperty.type = UMLM2!Class.all.selectOne(c|c.name = base); // This way we get the Class metaclass as declared in the UML metamodel
 	s.ownedAttribute.add(baseClassProperty);
 	var theEReferenceBaseClass = new Profile!EReference;
-	theEReferenceBaseClass.name = "base_Class";
+	theEReferenceBaseClass.name = "base_" + base;
 	theEReferenceBaseClass.lowerBound = 1;
 	theEReferenceBaseClass.ordered = false;
 	newClass.eStructuralFeatures.add(theEReferenceBaseClass);
 	var extension = new Profile!Extension;			
-	extension.name = "E_" + c.name + "_Class1";
+	extension.name = "E_" + c.name + "_" + base + "1";
 	var extensionEnd = new Profile!ExtensionEnd;
 	extensionEnd.name = "extension_" + c.name;
 	extensionEnd.isComposite = true;
@@ -172,13 +166,13 @@ operation createTheClassStereotypeDetails(newClass,s,c) {
 	profile.packagedElements.add(extension);
 	extension.ownedEnd.add(extensionEnd);
 	extension.memberEnd.add(baseClassProperty);
-	extension.endType.add(UMLM2!Class.all.selectOne(c|c.name = "Class"));
+	extension.endType.add(UMLM2!Class.all.selectOne(c|c.name = base));
 	var theEGenericType = new Profile!EGenericType;
 	theEReferenceBaseClass.eGenericType = theEGenericType;
-	theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = "Class");
-	if (c.eAnnotations.selectOne(ean|ean.source.equals("Class")).details.get("shape").isDefined()) {
+	theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = base);
+	if (c.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("shape").isDefined()) {
 		var theImage = new Profile!Image;
-		theImage.location = "platform:/plugin/" + ePackName + "/" + c.eAnnotations.selectOne(ean|ean.source.equals("Class")).details.get("shape");
+		theImage.location = "platform:/plugin/" + ePackName + "/" + c.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("shape");
 		s.icon.add(theImage);
 		var theImageEAnnotation = new Profile!EAnnotation;
 		theImageEAnnotation.source = "image_papyrus";
@@ -192,16 +186,18 @@ operation createTheClassStereotypeDetails(newClass,s,c) {
 
 operation createTheAssociationStereotypeDetails(newClass,s,c) {
 	var baseAssociationProperty = new Profile!Property;
-	baseAssociationProperty.name = "base_Association";
-	baseAssociationProperty.type = UMLM2!Class.all.selectOne(c|c.name = "Association"); // This way we get the Association metaclass as declared in the UML metamodel
+	var base = c.getEAnnotation("Edge").details.get("base").firstToUpperCase();
+	checkIfTheBaseImportExistsAndCreateIt(base);
+	baseAssociationProperty.name = "base_" + base;
+	baseAssociationProperty.type = UMLM2!Class.all.selectOne(c|c.name = base); // This way we get the Association metaclass as declared in the UML metamodel
 	s.ownedAttribute.add(baseAssociationProperty);
 	var theEReferenceBaseAssociation = new Profile!EReference;
-	theEReferenceBaseAssociation.name = "base_Association";
+	theEReferenceBaseAssociation.name = "base_" + base;
 	theEReferenceBaseAssociation.lowerBound = 1;
 	theEReferenceBaseAssociation.ordered = false;
 	newClass.eStructuralFeatures.add(theEReferenceBaseAssociation);
 	var extension = new Profile!Extension;			
-	extension.name = "E_" + c.name + "_Association1";
+	extension.name = "E_" + c.name + "_" + base + "1";
 	var extensionEnd = new Profile!ExtensionEnd;
 	extensionEnd.name = "extension_" + c.name;
 	extensionEnd.isComposite = true;
@@ -209,25 +205,26 @@ operation createTheAssociationStereotypeDetails(newClass,s,c) {
 	profile.packagedElements.add(extension);
 	extension.ownedEnd.add(extensionEnd);
 	extension.memberEnd.add(baseAssociationProperty);
-	extension.endType.add(UMLM2!Class.all.selectOne(c|c.name = "Association"));
+	extension.endType.add(UMLM2!Class.all.selectOne(c|c.name = base));
 	var theEGenericType = new Profile!EGenericType;
 	theEReferenceBaseAssociation.eGenericType = theEGenericType;
-	theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = "Association");
+	theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = base);
 }
 	
 operation populateWithStereotypesForEachReference(newClass,s,c) {
 	for (ref in c.eReferences) {
 		var baseAssociationProperty = new Profile!Property;
-		baseAssociationProperty.name = "base_Association";
-		baseAssociationProperty.type = UMLM2!Class.all.selectOne(c|c.name = "Association"); // This way we get the Association metaclass as declared in the UML metamodel
+		var base = c.getEAnnotation("Edge").details.get("base").firstToUpperCase();
+		baseAssociationProperty.name = "base_" + base;
+		baseAssociationProperty.type = UMLM2!Class.all.selectOne(c|c.name = base); // This way we get the Association metaclass as declared in the UML metamodel
 		s.ownedAttribute.add(baseAssociationProperty);
 		var theEReferenceBaseAssociation = new Profile!EReference;
-		theEReferenceBaseAssociation.name = "base_Association";
+		theEReferenceBaseAssociation.name = "base_" + base;
 		theEReferenceBaseAssociation.lowerBound = 1;
 		theEReferenceBaseAssociation.ordered = false;
 		newClass.eStructuralFeatures.add(theEReferenceBaseAssociation);
 		var extension = new Profile!Extension;			
-		extension.name = "E_" + ref.name + "_Association1";
+		extension.name = "E_" + ref.name + "_"+ base + "1";
 		var extensionEnd = new Profile!ExtensionEnd;
 		extensionEnd.name = "extension_" + ref.name;
 		extensionEnd.isComposite = true;
@@ -235,10 +232,10 @@ operation populateWithStereotypesForEachReference(newClass,s,c) {
 		profile.packagedElements.add(extension);
 		extension.ownedEnd.add(extensionEnd);
 		extension.memberEnd.add(baseAssociationProperty);
-		extension.endType.add(UMLM2!Class.all.selectOne(c|c.name = "Association"));
+		extension.endType.add(UMLM2!Class.all.selectOne(c|c.name = base));
 		var theEGenericType = new Profile!EGenericType;
 		theEReferenceBaseAssociation.eGenericType = theEGenericType;
-		theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = "Association");		
+		theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = base);		
 	}
 }	
 	
@@ -250,8 +247,8 @@ operation calculateTheBodyOfTheCheckEndTypesConstraint(s,c) {
 	var sourceAnnot;
 	var targetAnnot;
 	if (c.isTypeOf(EcoreM2!EClass)) {
-		sourceAnnot = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("source");
-		targetAnnot = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("target");
+		sourceAnnot = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("source");
+		targetAnnot = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("target");
 		source = c.eReferences.selectOne(r|r.name.equals(sourceAnnot)).eType.name;
 		target = c.eReferences.selectOne(r|r.name.equals(targetAnnot)).eType.name;
 	} else if (c.isTypeOf(EcoreM2!EReference)) {
@@ -265,11 +262,11 @@ operation calculateTheBodyOfTheCheckNavigabilityConstraint(s,c) {
 	var source;
 	var target;
 	if (c.isTypeOf(EcoreM2!EClass)) {
-		source = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("source").println();
-		target = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("target").println();
+		source = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("source");
+		target = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("target");
 	} else if (c.isTypeOf(EcoreM2!EReference)) {
-		source = c.eContainingClass.name.println();
-		target = c.etype.name.println();
+		source = c.eContainingClass.name;
+		target = c.etype.name;
 	}
 	return "let memberEnds = self.base_Association.memberEnd in let " + target +"End = " +
 	"memberEnds->select(type.oclIsKindOf(UML::Class) and type.oclAsType(UML::Class).extension_" + source +"->notEmpty()), " + source + "End = " +
@@ -282,8 +279,8 @@ operation calculateTheBodyOfTheCheckAggregationConstraint(s,c) {
 	var source;
 	var target;
 	if (c.isTypeOf(EcoreM2!EClass)) {
-		source = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("source");
-		target = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("target");
+		source = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("source");
+		target = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("target");
 	} else if (c.isTypeOf(EcoreM2!EReference)) {
 		source = c.eContainingClass.name;
 		target = c.etype.name;
@@ -295,8 +292,8 @@ operation calculateTheBodyOfTheCheckMultiplicityConstraint(s,c) {
 	var source;
 	var target;
 	if (c.isTypeOf(EcoreM2!EClass)) {
-		source = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("source");
-		target = c.eAnnotations.selectOne(ean|ean.source.equals("Association")).details.get("target");
+		source = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("source");
+		target = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("target");
 	} else if (c.isTypeOf(EcoreM2!EReference)) {
 		source = c.eContainingClass.name;
 		target = c.etype.name;
@@ -402,4 +399,15 @@ operation populateWithGeneralisationElements(newClass,s,c) {
 		s.generalization.add(generalisation);
 		newClass.eSupertypes.add(ePackage.eClassifiers.selectOne(ec | ec.name.equals(st.name)));
 	}	
+}
+
+operation checkIfTheBaseImportExistsAndCreateIt(base) {
+	if(not alreadyCreatedImports.contains(base)) {
+		alreadyCreatedImports.add(base);
+		var theElementImport = new Profile!ElementImport;
+		theElementImport.`alias` = base;
+		theElementImport.importedElement = UMLM2!Class.all.selectOne(c|c.name = base);
+		profile.metaclassReference.add(theElementImport);
+		profile.elementImport.add(theElementImport);
+	}
 }

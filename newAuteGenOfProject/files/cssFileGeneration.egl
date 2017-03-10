@@ -1,8 +1,8 @@
 [%
 var ePackName = Source!EPackage.all().first().name;
-var allNodeStereotypes = Source!EClass.all().select(c|c.getEAnnotation("Class").isDefined() or c.getEAnnotation("Association").isDefined());
-var allClassStereotypes = Source!EClass.all().select(c|c.getEAnnotation("Class").isDefined());
-var allAssociationStereotypes = Source!EClass.all().select(a|a.getEAnnotation("Association").isDefined());
+var allNodeStereotypes = Source!EClass.all().select(c|c.getEAnnotation("Node").isDefined() or c.getEAnnotation("Edge").isDefined());
+var allClassStereotypes = Source!EClass.all().select(c|c.getEAnnotation("Node").isDefined());
+var allAssociationStereotypes = Source!EClass.all().select(a|a.getEAnnotation("Edge").isDefined());
 for (stereo in allClassStereotypes) {
 %]
 [appliedStereotypes~=[%=stereo.name%]][% if (hasMore){%], 
@@ -47,10 +47,10 @@ Compartment[kind="symbol"]  {
 
 [%
 for (stereo in allClassStereotypes) {
-if (stereo.eAnnotations.selectOne(ean|ean.source.equals("Class")).details.get("shape").isDefined()) {
+if (stereo.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("shape").isDefined()) {
 %]
 [appliedStereotypes~=[%=stereo.name%]].Symbol {
-	svgFile: 'platform:/plugin/[%=ePackName%]/[%=stereo.eAnnotations.selectOne(ean|ean.source.equals("Class")).details.get("shape")%]';
+	svgFile: 'platform:/plugin/[%=ePackName%]/[%=stereo.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("shape")%]';
 	//floatingLabelOffsetWidth:+23;
     //floatingLabelOffsetHeight:+80;
 	//displayName:false;

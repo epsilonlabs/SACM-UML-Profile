@@ -8,13 +8,14 @@ pre {
 rule class2Shape 
 transform c : Source!EClass 
 to stc : Target!SpecializationTypeConfiguration {
-guard : c.getEAnnotation("Class").isDefined()
+guard : c.getEAnnotation("Node").isDefined()
+	var base = c.getEAnnotation("Node").details.get("base").firstToUpperCase();
 	stc.name = c.name;
-	stc.hint = "UML::Class";
+	stc.hint = "UML::" + base;
 	stc.identifier = ePackName + "." + c.name;
-	stc.specializedTypesId.add("org.eclipse.papyrus.uml.Class");
+	stc.specializedTypesId.add("org.eclipse.papyrus.uml." + base);
 	var theIconEntry = new Target!IconEntry;
-	theIconEntry.iconPath = "/icons/full/obj16/Class.gif";
+	theIconEntry.iconPath = "/icons/full/obj16/" + base + ".gif";
 	theIconEntry.bundleId = "org.eclipse.uml2.uml.edit";
 	stc.iconEntry = theIconEntry;
 	theConfiguration.elementTypeConfigurations.add(stc);
@@ -36,13 +37,14 @@ guard : c.getEAnnotation("Class").isDefined()
 rule associationClass2Shape 
 transform c : Source!EClass 
 to stc : Target!SpecializationTypeConfiguration {
-guard : c.getEAnnotation("Association").isDefined()
+guard : c.getEAnnotation("Edge").isDefined()
+	var base = c.getEAnnotation("Edge").details.get("base").firstToUpperCase();
 	stc.name = c.name;
-	stc.hint = "UML::Association";
+	stc.hint = "UML::" + base;
 	stc.identifier = ePackName + "." + c.name;
-	stc.specializedTypesId.add("org.eclipse.papyrus.uml.Association");
+	stc.specializedTypesId.add("org.eclipse.papyrus.uml." + base);
 	var theIconEntry = new Target!IconEntry;
-	theIconEntry.iconPath = "/icons/full/obj16/Association.gif";
+	theIconEntry.iconPath = "/icons/full/obj16/" + base + ".gif";
 	theIconEntry.bundleId = "org.eclipse.uml2.uml.edit";
 	stc.iconEntry = theIconEntry;
 	theConfiguration.elementTypeConfigurations.add(stc);
@@ -64,13 +66,14 @@ guard : c.getEAnnotation("Association").isDefined()
 rule refEdge2Tool
 	transform ref : Source!EReference 
 	to stc : Target!SpecializationTypeConfiguration {
-	guard : ref.getEAnnotation("Association").isDefined()
+	guard : ref.getEAnnotation("Edge").isDefined()
+	var base = ref.getEAnnotation("Edge").details.get("base").firstToUpperCase();
 	stc.name = ref.name;
-	stc.hint = "UML::Association";
+	stc.hint = "UML::" + base;
 	stc.identifier = ePackName + "." + ref.name;
-	stc.specializedTypesId.add("org.eclipse.papyrus.uml.Association");
+	stc.specializedTypesId.add("org.eclipse.papyrus.uml." + base);
 	var theIconEntry = new Target!IconEntry;
-	theIconEntry.iconPath = "/icons/full/obj16/Association.gif";
+	theIconEntry.iconPath = "/icons/full/obj16/" + base + ".gif";
 	theIconEntry.bundleId = "org.eclipse.uml2.uml.edit";
 	stc.iconEntry = theIconEntry;
 	theConfiguration.elementTypeConfigurations.add(stc);
