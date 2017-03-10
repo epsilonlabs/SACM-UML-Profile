@@ -246,16 +246,23 @@ operation calculateTheBodyOfTheCheckEndTypesConstraint(s,c) {
 	var target;
 	var sourceAnnot;
 	var targetAnnot;
+	var base = c.getEAnnotation("Edge").details.get("base").firstToUpperCase();
+	var sourceBase = "";
+	var targetBase = "";
 	if (c.isTypeOf(EcoreM2!EClass)) {
 		sourceAnnot = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("source");
 		targetAnnot = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("target");
+		sourceBase = c.eReferences.selectOne(r|r.name.equals(sourceAnnot)).eType.getEAnnotation("Node").details.get("base").println();
+		targetBase = c.eReferences.selectOne(r|r.name.equals(targetAnnot)).eType.getEAnnotation("Node").details.get("base").println();
 		source = c.eReferences.selectOne(r|r.name.equals(sourceAnnot)).eType.name;
 		target = c.eReferences.selectOne(r|r.name.equals(targetAnnot)).eType.name;
 	} else if (c.isTypeOf(EcoreM2!EReference)) {
+		sourceBase = c.eContainingClass.getEAnnotation("Node").details.get("base").println();
+		targetBase = c.eType.getEAnnotation("Node").details.get("base").println();
 		source = c.eContainingClass.name;
 		target = c.etype.name;
 	}
-	return "let classes = self.base_Association.endType->selectByKind(UML::Class), memberEnds = self.base_Association.memberEnd in classes->exists(c|c.extension_" + source + "->notEmpty()) and classes->exists(c|c.extension_" + target + " -> notEmpty())";
+	return "let source = self.base_" + base + ".endType->selectByKind(UML::" + sourceBase + "), target = self.base_" + base + ".endType->selectByKind(UML::" + targetBase + ") in source->exists(c|c.extension_" + source + "->notEmpty()) and target->exists(c|c.extension_" + target + " -> notEmpty())";
 }
 
 operation calculateTheBodyOfTheCheckNavigabilityConstraint(s,c) {
