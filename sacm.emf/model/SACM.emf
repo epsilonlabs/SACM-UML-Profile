@@ -250,9 +250,9 @@ package Argumentation {
   @Comment(text="Used to record the propositions of any structured argument")
   @Ecore(constraints="isValidGSNNotation")
   @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidGSNNotation="(self.name = 'Goal' and self.assumed = false and self.isAbstract = false) or 
-			(self.name ='Assumption' and self.assumed = true) or 
-			(self.name = 'Justification' and self.assumed = false) or
-			(self.name = 'UndevelopedGoal' and self.isAbstract = true)")
+			(self.name ='Assumption' and self.assumed = true and self.isAbstract = false) or 
+			(self.name = 'Justification' and self.assumed = false and self.isAbstract = false) or
+			(self.name = 'UndevelopedGoal' and self.assumed = false and self.isAbstract = true)")
   class Claim extends Assertion {
 
     @Comment(text="Flag to indicate if the claim is assumed to be true")
@@ -313,6 +313,9 @@ package Argumentation {
   }
 
   @Comment(text="Used to declare that the artefact cited by an ArtefactElementCitation provides the context for the interpretation and scoping of a Claim")
+  @Ecore(constraints="isValidInContextOf")
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidInContextOf="
+			self.name = 'InContextOf'")
   class AssertedContext extends AssertedRelationship {
   }
 

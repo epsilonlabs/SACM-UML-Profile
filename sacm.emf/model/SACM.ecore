@@ -323,7 +323,7 @@
         <details key="constraints" value="isValidContractModule"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-        <details key="isValidContractModule" value="self.name = 'ContractModule'"/>
+        <details key="isValidContractModule" value="&#xA;&#x9;&#x9;&#x9;self.name = 'ContractModule' and&#xA;&#x9;&#x9;&#x9;self.participantPackage->size() = self.participantPackage->asSet()->size()"/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="participantPackage" lowerBound="2"
           upperBound="-1" eType="#//Argumentation/ArgumentPackage">
@@ -361,7 +361,7 @@
         <details key="constraints" value="isValidGSNNotation"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-        <details key="isValidGSNNotation" value="self.name = 'Solution' or &#xA;&#x9;&#x9;&#x9; self.name = 'Context'"/>
+        <details key="isValidGSNNotation" value="&#xA;&#x9;&#x9;&#x9;(self.name = 'Solution' and self.isAbstract = false) or&#xA;&#x9;&#x9;&#x9;(self.name = 'Solution' and self.isAbstract = false and self.taggedValue->exists(t|t.sKey='public')) or&#xA;&#x9;&#x9;&#x9; &#xA;&#x9;&#x9;&#x9;(self.name = 'Context' and self.isAbstract = false) or&#xA;&#x9;&#x9;&#x9;(self.name = 'Context' and self.isAbstract = false and self.taggedValue->exists(t|t.sKey='public')) or&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;(self.name = 'Solution' and self.isAbstract = true and self.taggedValue->exists(t|t.sKey = 'uninstantiated')) or &#xA;&#x9;&#x9;    (self.name = 'Context' and self.isAbstract = true and self.taggedValue->exists(t|t.sKey = 'uninstantiated'))"/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="externalReference" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
         <eAnnotations source="Comment">
@@ -379,10 +379,10 @@
         <details key="text" value="Used to cite ArgumentAsset"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-        <details key="constraints" value="isValidAwayGoal"/>
+        <details key="constraints" value="isValidGSNNotation"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-        <details key="isValidAwayGoal" value="self.name = 'AwayGoal'"/>
+        <details key="isValidGSNNotation" value="&#xA;&#x9;&#x9;&#x9;(self.name = 'AwayGoal') or&#xA;&#x9;&#x9;&#x9;(self.name = 'AwaySolution') or&#xA;&#x9;&#x9;&#x9;(self.name = 'AwayContext')"/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="citedAsset" lowerBound="1"
           eType="#//Argumentation/ArgumentAsset">
@@ -399,7 +399,7 @@
         <details key="constraints" value="isValidGSNNotation"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-        <details key="isValidGSNNotation" value="(self.name = 'Goal' and self.assumed = false and self.isAbstract = false) or &#xA;&#x9;&#x9;&#x9;(self.name ='Assumption' and self.assumed = true and self.isAbstract = false) or &#xA;&#x9;&#x9;&#x9;(self.name = 'Justification' and self.assumed = false and self.isAbstract = false) or&#xA;&#x9;&#x9;&#x9;(self.name = 'UndevelopedGoal' and self.assumed = false and self.isAbstract = true)"/>
+        <details key="isValidGSNNotation" value="(self.name = 'Goal' and self.assumed = false and self.isAbstract = false) or&#xA;&#x9;&#x9;&#x9;(self.name = 'Goal' and self.assumed = false and self.isAbstract = false and self.taggedValue->exists(t|t.sKey='public')) or&#xA;&#x9;&#x9;&#x9;(self.name = 'Goal' and self.assumed = false and self.isAbstract = false and self.taggedValue->exists(t|t.sKey='TBSC') and not self.taggedValue->exists(t|t.sKey='undeveloped')) or &#xA;&#x9;&#x9;&#x9;(self.name ='Assumption' and self.assumed = true and self.isAbstract = false) or&#xA;&#x9;&#x9;&#x9;(self.name ='Assumption' and self.assumed = true and self.isAbstract = false and self.taggedValue->exists(t|t.sKey = 'uninstantiated')) or &#xA;&#x9;&#x9;&#x9;(self.name = 'Justification' and self.assumed = false and self.isAbstract = false) or&#xA;&#x9;&#x9;&#x9;(self.name = 'Justification' and self.assumed = false and self.isAbstract = false and self.taggedValue->exists(t|t.sKey = 'uninstantiated'))  or&#xA;&#x9;&#x9;&#x9;(self.name = 'Goal' and self.assumed = false and self.isAbstract = true and self.taggedValue->exists(t|t.sKey = 'undeveloped') and not self.taggedValue->exists(t|t.sKey='TBSC')) or&#xA;&#x9;&#x9;&#x9;(self.name = 'Context' and self.assumed = true and self.isAbstract = false) or&#xA;&#x9;&#x9;&#x9;(self.name = 'Goal' and self.assumed = false and self.isAbstract = true and self.taggedValue->exists(t|t.sKey = 'uninstantiated'))"/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="assumed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
         <eAnnotations source="Comment">
@@ -420,7 +420,7 @@
         <details key="constraints" value="isValidStrategy"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-        <details key="isValidStrategy" value="&#xA;&#x9;&#x9;&#x9;(AssertedInference.allInstances()->exists(r|r.reasoning = self)->size() = 1 and &#xA;&#x9;&#x9;&#x9;self.name = 'Strategy' and self.isAbstract = false) or &#xA;&#x9;&#x9;&#x9;(self.name = 'UndevelopedStrategy' and self.isAbstract = true)"/>
+        <details key="isValidStrategy" value="&#xA;&#x9;&#x9;&#x9;(AssertedInference.allInstances()->exists(r|r.reasoning = self)->size() = 1 and &#xA;&#x9;&#x9;&#x9;self.name = 'Strategy' and self.isAbstract = false) or &#xA;&#x9;&#x9;&#x9;(self.name = 'Strategy' and self.isAbstract = true and self.taggedValue->exists(t|t.sKey = 'undeveloped')) or&#xA;&#x9;&#x9;&#x9;(self.name = 'Strategy' and self.isAbstract = true and self.taggedValue->exists(t|t.sKey = 'uninstantiated'))"/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="structure" eType="#//Argumentation/ArgumentPackage">
         <eAnnotations source="Comment">
@@ -459,7 +459,7 @@
         <details key="constraints" value="validSupportedBy"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-        <details key="validSupportedBy" value="&#xA;&#x9;&#x9;&#x9;self.name = 'SupportedBy' and&#xA;&#x9;&#x9;&#x9;self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal') and &#xA;&#x9;&#x9;&#x9;self.target->forAll(t|t.oclIsTypeOf(Claim) and t.name = 'Goal')"/>
+        <details key="validSupportedBy" value="&#xA;&#x9;&#x9;&#x9;(self.name = 'SupportedBy' and&#xA;&#x9;&#x9;&#x9;self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal') and &#xA;&#x9;&#x9;&#x9;self.target->forAll(t|t.oclIsTypeOf(Claim) and t.name = 'Goal')) or&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;(self.name = 'SupportedBy' and&#xA;&#x9;&#x9;&#x9;self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal') and &#xA;&#x9;&#x9;&#x9;self.target->forAll(t|t.oclIsTypeOf(Claim) and t.name = 'Goal') and &#xA;&#x9;&#x9;&#x9;self.reasoning->notEmpty()) or&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;(self.name = 'SupportedBy' and&#xA;&#x9;&#x9;&#x9;self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal') and &#xA;&#x9;&#x9;&#x9;self.target->forAll(t|t.oclIsTypeOf(Claim) and t.name = 'Goal') and &#xA;&#x9;&#x9;&#x9;self.taggedValue->exists(t|t.sKey = 'uninstantiated')) or&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;(self.name = 'SupportedBy' and&#xA;&#x9;&#x9;&#x9;self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal') and &#xA;&#x9;&#x9;&#x9;self.target->forAll(t|t.oclIsTypeOf(Claim) and t.name = 'Goal') and &#xA;&#x9;&#x9;&#x9;self.taggedValue->one(t|t.sKey = 'required') and&#xA;&#x9;&#x9;&#x9;self.taggedValue->select(t|t.sKey='required')->first().sExpression->oclAsType(Integer) > 0) or&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;(self.name = 'SupportedBy' and&#xA;&#x9;&#x9;&#x9;self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal') and &#xA;&#x9;&#x9;&#x9;self.target->forAll(t|t.oclIsTypeOf(Claim) and t.name = 'Goal') and &#xA;&#x9;&#x9;&#x9;self.reasoning->notEmpty() and &#xA;&#x9;&#x9;&#x9;self.taggedValue->one(t|t.sKey = 'required') and&#xA;&#x9;&#x9;&#x9;self.taggedValue->select(t|t.sKey='required')->first().sExpression->oclAsType(Integer) > 0)"/>
       </eAnnotations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AssertedEvidence" eSuperTypes="#//Argumentation/AssertedRelationship">
@@ -470,7 +470,7 @@
         <details key="constraints" value="isValidSupportedBy"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-        <details key="isValidSupportedBy" value="&#xA;&#x9;&#x9;&#x9;self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal') and&#xA;&#x9;&#x9;&#x9;self.target->forAll(t|t.oclIsTypeOf(ArtefactElementCitation) and t.name = 'Solution')"/>
+        <details key="isValidSupportedBy" value="&#xA;&#x9;&#x9;&#x9;(self.name = 'SupportedBy' and&#xA;&#x9;&#x9;&#x9;self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal') and&#xA;&#x9;&#x9;&#x9;self.target->forAll(t|t.oclIsTypeOf(ArtefactElementCitation) and t.name = 'Solution')) or&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;(self.name = 'SupportedBy' and&#xA;&#x9;&#x9;&#x9;self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal') and&#xA;&#x9;&#x9;&#x9;self.target->forAll(t|t.oclIsTypeOf(ArtefactElementCitation) and t.name = 'Solution') and &#xA;&#x9;&#x9;&#x9;self.taggedValue->exists(t|t.sKey = 'uninstantiated')) or&#xA;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;(self.name = 'SupportedBy' and&#xA;&#x9;&#x9;&#x9;self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal') and&#xA;&#x9;&#x9;&#x9;self.target->forAll(t|t.oclIsTypeOf(ArtefactElementCitation) and t.name = 'Solution') and&#xA;&#x9;&#x9;&#x9;self.taggedValue->one(t|t.sKey = 'required') and&#xA;&#x9;&#x9;&#x9;self.taggedValue->select(t|t.sKey='required')->first().sExpression->oclAsType(Integer) > 0)"/>
       </eAnnotations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AssertedChallenge" eSuperTypes="#//Argumentation/AssertedRelationship">
@@ -486,6 +486,12 @@
     <eClassifiers xsi:type="ecore:EClass" name="AssertedContext" eSuperTypes="#//Argumentation/AssertedRelationship">
       <eAnnotations source="Comment">
         <details key="text" value="Used to declare that the artefact cited by an ArtefactElementCitation provides the context for the interpretation and scoping of a Claim"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="isValidInContextOf"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="isValidInContextOf" value="&#xA;&#x9;&#x9;&#x9;(self.name = 'InContextOf' and self.isAbstract = false) or&#xA;&#x9;&#x9;&#x9;(self.name = 'InContextOf' and self.isAbstract = true and self.taggedValue->exists(t|t.sKey = 'uninstantiated'))"/>
       </eAnnotations>
     </eClassifiers>
   </eSubpackages>
