@@ -6,11 +6,14 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.epsilon.common.dt.util.LogUtil;
 import org.eclipse.epsilon.emc.emf.CachedResourceSet;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Shell;
@@ -57,21 +60,45 @@ public class CreatePapyrusProjectAction implements IObjectActionDelegate {
 		ThingsAreHappeningHere tahh = new ThingsAreHappeningHere(theSelectedFilePath);
 		
 		try {
-			Job job1 = new Job("Generating Plugin Project.") {
-				protected IStatus run(IProgressMonitor monitor) {
+			IRunnableWithProgress op = new IRunnableWithProgress() {
+				public void run(IProgressMonitor monitor) {
+					SubMonitor subMonitor = SubMonitor.convert(monitor, 130);
 					try {
 						//tahh.createPluginProject(theSelectedFilePath);
+						subMonitor.setTaskName("Generating the Palette Configuration.");
 						tahh.createThePaletteConfiguration(theSelectedFilePath, theDestinationProjectFolder);
+						subMonitor.split(10);
+						subMonitor.setTaskName("Generating the Plugin XML.");
 						tahh.createThePluginXml(theSelectedFilePath, theDestinationProjectFolder);
+						subMonitor.split(10);
+						subMonitor.setTaskName("Generating the UML Profile.");
 						tahh.createTheProfileUmlFile(theSelectedFilePath, theDestinationProjectFolder);
+						subMonitor.split(30);
+						subMonitor.setTaskName("Generating the Project Manifest.");
 						tahh.createTheManifestFile(theSelectedFilePath, theDestinationProjectFolder);
+						subMonitor.split(10);
+						subMonitor.setTaskName("Generating the Diagram Configuration.");
 						tahh.createTheDiagramConfiguration(theSelectedFilePath, theDestinationProjectFolder);
+						subMonitor.split(10);
+						subMonitor.setTaskName("Generating the Element Type Configuration.");
 						tahh.createTheElementTypeConfigurations(theSelectedFilePath, theDestinationProjectFolder);
+						subMonitor.split(10);
+						subMonitor.setTaskName("Generating the CSS.");
 						tahh.createTheCSSFile(theSelectedFilePath, theDestinationProjectFolder);
+						subMonitor.split(10);
+						subMonitor.setTaskName("Generating the Types Configuration.");
 						tahh.createTheTypesConfigurations(theSelectedFilePath, theDestinationProjectFolder);
+						subMonitor.split(10);
+						subMonitor.setTaskName("Generating Profile related files.");
 						tahh.createTheModelProfileNotationFile(theDestinationProjectFolder);
+						subMonitor.split(10);
+						subMonitor.setTaskName("Generating Profile related files.");
 						tahh.createTheModelProfileDiFile(theDestinationProjectFolder);
+						subMonitor.split(10);
+						subMonitor.setTaskName("Generating Build Properties.");
 						tahh.createThebuildPropertiesFile(theDestinationProjectFolder);
+						subMonitor.setWorkRemaining(10);
+						subMonitor.split(10);
 						//tahh.copyTheIcons(theSelectedFilePath, theParentFolder);
 						//tahh.copyTheShapes(theSelectedFilePath, theParentFolder);
 						tahh.refresh(theSelectedFileParentIProject);	
@@ -89,11 +116,12 @@ public class CreatePapyrusProjectAction implements IObjectActionDelegate {
 					} finally {
 						CachedResourceSet.getCache().clear();
 					}
-					return Status.OK_STATUS;
+					//return Status.OK_STATUS;
 				}
 			};
-			job1.setPriority(Job.SHORT);
-			job1.schedule();
+			new ProgressMonitorDialog(shell).run(true, true, op);
+			//job1.setPriority(Job.SHORT);
+			//job1.schedule();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
