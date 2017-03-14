@@ -203,7 +203,9 @@ package Argumentation {
 
   @Comment(text="Record the mapping between two or more ArgumentPackages")
   @Ecore(constraints="isValidContractModule")
-  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidContractModule="self.name = 'ContractModule'")
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidContractModule="
+			self.name = 'ContractModule' and
+			self.participantPackage->size() = self.participantPackage->asSet()->size()")
   class ArgumentPackageBinding extends ArgumentPackage {
 
     @Comment(text="To be discussed")
@@ -227,8 +229,15 @@ package Argumentation {
 
   @Comment(text="Enables the citation of an Artefact that relates to the structured argument")
   @Ecore(constraints="isValidGSNNotation")
-  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidGSNNotation="self.name = 'Solution' or 
-			 self.name = 'Context'")
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidGSNNotation="
+			(self.name = 'Solution' and self.isAbstract = false) or
+			(self.name = 'Solution' and self.isAbstract = false and self.taggedValue->exists(t|t.sKey='public')) or
+			 
+			(self.name = 'Context' and self.isAbstract = false) or
+			(self.name = 'Context' and self.isAbstract = false and self.taggedValue->exists(t|t.sKey='public')) or
+			
+			(self.name = 'Solution' and self.isAbstract = true and self.taggedValue->exists(t|t.sKey = 'uninstantiated')) or 
+		    (self.name = 'Context' and self.isAbstract = true and self.taggedValue->exists(t|t.sKey = 'uninstantiated'))")
   class ArtefactElementCitation extends ArgumentAsset {
 
     @Comment(text="Record a URL to a external evidence")
@@ -239,8 +248,11 @@ package Argumentation {
   }
 
   @Comment(text="Used to cite ArgumentAsset")
-  @Ecore(constraints="isValidAwayGoal")
-  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidAwayGoal="self.name = 'AwayGoal'")
+  @Ecore(constraints="isValidGSNNotation")
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidGSNNotation="
+			(self.name = 'AwayGoal') or
+			(self.name = 'AwaySolution') or
+			(self.name = 'AwayContext')")
   class ArgumentAssetCitation extends ArgumentAsset {
 
     @Comment(text="Refers to another ArgumentAsset")
@@ -249,10 +261,16 @@ package Argumentation {
 
   @Comment(text="Used to record the propositions of any structured argument")
   @Ecore(constraints="isValidGSNNotation")
-  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidGSNNotation="(self.name = 'Goal' and self.assumed = false and self.isAbstract = false) or 
-			(self.name ='Assumption' and self.assumed = true and self.isAbstract = false) or 
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidGSNNotation="(self.name = 'Goal' and self.assumed = false and self.isAbstract = false) or
+			(self.name = 'Goal' and self.assumed = false and self.isAbstract = false and self.taggedValue->exists(t|t.sKey='public')) or
+			(self.name = 'Goal' and self.assumed = false and self.isAbstract = false and self.taggedValue->exists(t|t.sKey='TBSC') and not self.taggedValue->exists(t|t.sKey='undeveloped')) or 
+			(self.name ='Assumption' and self.assumed = true and self.isAbstract = false) or
+			(self.name ='Assumption' and self.assumed = true and self.isAbstract = false and self.taggedValue->exists(t|t.sKey = 'uninstantiated')) or 
 			(self.name = 'Justification' and self.assumed = false and self.isAbstract = false) or
-			(self.name = 'UndevelopedGoal' and self.assumed = false and self.isAbstract = true)")
+			(self.name = 'Justification' and self.assumed = false and self.isAbstract = false and self.taggedValue->exists(t|t.sKey = 'uninstantiated'))  or
+			(self.name = 'Goal' and self.assumed = false and self.isAbstract = true and self.taggedValue->exists(t|t.sKey = 'undeveloped') and not self.taggedValue->exists(t|t.sKey='TBSC')) or
+			(self.name = 'Context' and self.assumed = true and self.isAbstract = false) or
+			(self.name = 'Goal' and self.assumed = false and self.isAbstract = true and self.taggedValue->exists(t|t.sKey = 'uninstantiated'))")
   class Claim extends Assertion {
 
     @Comment(text="Flag to indicate if the claim is assumed to be true")
@@ -267,7 +285,8 @@ package Argumentation {
   @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidStrategy="
 			(AssertedInference.allInstances()->exists(r|r.reasoning = self)->size() = 1 and 
 			self.name = 'Strategy' and self.isAbstract = false) or 
-			(self.name = 'UndevelopedStrategy' and self.isAbstract = true)")
+			(self.name = 'Strategy' and self.isAbstract = true and self.taggedValue->exists(t|t.sKey = 'undeveloped')) or
+			(self.name = 'Strategy' and self.isAbstract = true and self.taggedValue->exists(t|t.sKey = 'uninstantiated'))")
   class ArgumentReasoning extends ArgumentAsset {
 
     @Comment(text="Optional reference to another ArgumentPackage that provides the detailed structure of the argument")
@@ -290,17 +309,72 @@ package Argumentation {
   @Comment(text="Records the inference that a user declares to exist between on or more Assertion and another Assertion")
   @Ecore(constraints="validSupportedBy")
   @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(validSupportedBy="
-			self.name = 'SupportedBy' and
-			self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal') and 
-			self.target->forAll(t|t.oclIsTypeOf(Claim) and t.name = 'Goal')")
+			(self.name = 'SupportedBy' and
+			self.source->forAll(s|(s.oclIsTypeOf(Claim) and s.name = 'Goal') or 
+				(s.oclIsTypeOf(ArgumentAssetCitation) and s.name = 'AwayGoal') or
+				(s.oclIsTypeOf(ArgumentPackage) and s.name = 'Module') or
+				(s.oclIsTypeOf(ArgumentPackageBinding) and s.name = 'Contract')
+			) and 
+			self.target->forAll(t|t.oclIsTypeOf(Claim) and t.name = 'Goal')) 
+			or
+			(self.name = 'SupportedBy' and
+			self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal' or 
+				(s.oclIsTypeOf(ArgumentAssetCitation) and s.name = 'AwayGoal') or
+				(s.oclIsTypeOf(ArgumentPackage) and s.name = 'Module') or
+				(s.oclIsTypeOf(ArgumentPackageBinding) and s.name = 'Contract')) and 
+			self.target->forAll(t|t.oclIsTypeOf(Claim) and t.name = 'Goal') and 
+			self.reasoning->notEmpty()) 
+			or
+			(self.name = 'SupportedBy' and
+			self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal' ) and 
+			self.target->forAll(t|t.oclIsTypeOf(Claim) and t.name = 'Goal') and 
+			self.taggedValue->exists(t|t.sKey = 'uninstantiated')) 
+			or
+			(self.name = 'SupportedBy' and
+			self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal' or 
+				(s.oclIsTypeOf(ArgumentAssetCitation) and s.name = 'AwayGoal') or
+				(s.oclIsTypeOf(ArgumentPackage) and s.name = 'Module') or
+				(s.oclIsTypeOf(ArgumentPackageBinding) and s.name = 'Contract')) and 
+			self.target->forAll(t|t.oclIsTypeOf(Claim) and t.name = 'Goal') and 
+			self.taggedValue->one(t|t.sKey = 'required') and
+			self.taggedValue->select(t|t.sKey='required')->first().sExpression->oclAsType(Integer) > 0) 
+			or
+			(self.name = 'SupportedBy' and
+			self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal' or 
+				(s.oclIsTypeOf(ArgumentAssetCitation) and s.name = 'AwayGoal') or
+				(s.oclIsTypeOf(ArgumentPackage) and s.name = 'Module') or
+				(s.oclIsTypeOf(ArgumentPackageBinding) and s.name = 'Contract')) and 
+			self.target->forAll(t|t.oclIsTypeOf(Claim) and t.name = 'Goal') and 
+			self.reasoning->notEmpty() and 
+			self.taggedValue->one(t|t.sKey = 'required') and
+			self.taggedValue->select(t|t.sKey='required')->first().sExpression->oclAsType(Integer) > 0)
+			")
   class AssertedInference extends AssertedRelationship {
   }
 
   @Comment(text="Records the declaration that one or more artefacts of Evidence provide information that helps establish the truth of a Claim")
   @Ecore(constraints="isValidSupportedBy")
   @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidSupportedBy="
-			self.source->forAll(s|s.oclIsTypeOf(Claim) and s.name = 'Goal') and
-			self.target->forAll(t|t.oclIsTypeOf(ArtefactElementCitation) and t.name = 'Solution')")
+			(self.name = 'SupportedBy' and
+			self.source->forAll(s|(s.oclIsTypeOf(ArtefactElementCitation) and s.name = 'Solution') or
+				(s.oclIsTypeOf(ArgumentAssetCitation) and s.name = 'AwayGoal')
+			) and
+			self.target->forAll(t|t.oclIsTypeOf(Claim) and t.name = 'Goal'))
+			or
+			(self.name = 'SupportedBy' and
+			self.source->forAll(s|(s.oclIsTypeOf(ArtefactElementCitation) and s.name = 'Solution') or
+				(s.oclIsTypeOf(ArgumentAssetCitation) and s.name = 'AwayGoal')
+			) and
+			self.target->forAll(t|t.oclIsTypeOf(Claim) and t.name = 'Goal') and 
+			self.taggedValue->exists(t|t.sKey = 'uninstantiated')) 
+			or
+			(self.name = 'SupportedBy' and
+			self.source->forAll(s|(s.oclIsTypeOf(ArtefactElementCitation) and s.name = 'Solution') or
+				(s.oclIsTypeOf(ArgumentAssetCitation) and s.name = 'AwayGoal')
+			) and
+			self.target->forAll(t|t.oclIsTypeOf(Claim) and t.name = 'Goal') and
+			self.taggedValue->one(t|t.sKey = 'required') and
+			self.taggedValue->select(t|t.sKey='required')->first().sExpression->oclAsType(Integer) > 0)")
   class AssertedEvidence extends AssertedRelationship {
   }
 
@@ -315,7 +389,18 @@ package Argumentation {
   @Comment(text="Used to declare that the artefact cited by an ArtefactElementCitation provides the context for the interpretation and scoping of a Claim")
   @Ecore(constraints="isValidInContextOf")
   @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidInContextOf="
-			self.name = 'InContextOf'")
+			(self.name = 'InContextOf' and self.isAbstract = false and 
+				self.source->forAll(s|(s.oclIsTypeOf(ArtefactElementCitation) and s.name = 'Context') or
+					(s.oclIsTypeOf(Claim) and s.name = 'Context') or
+					(s.oclIsTypeOf(Claim) and s.name = 'Justification') or
+					(s.oclIsTypeOf(Claim) and s.name = 'Assumption') or 
+					(s.oclIsTypeOf(ArgumentAssetCitation) and s.name = 'AwayGoal') or
+					(s.oclIsTypeOf(ArgumentAssetCitation) and s.name = 'AwayContext') or
+					(s.oclIsTypeOf(ArgumentPackage) and s.name = 'Module')
+				) and
+				self.target->forAll(t|t.oclIsTypeOf(Claim) and t.name = 'Goal')
+			) or
+			(self.name = 'InContextOf' and self.isAbstract = true and self.taggedValue->exists(t|t.sKey = 'uninstantiated'))")
   class AssertedContext extends AssertedRelationship {
   }
 
