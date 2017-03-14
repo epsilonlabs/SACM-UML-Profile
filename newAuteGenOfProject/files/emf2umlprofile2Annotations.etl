@@ -23,13 +23,15 @@ rule class2stereotype
 		theEAnnotationOfThisStereotype.source = "http://www.eclipse.org/uml2/2.0.0/UML";
 		theEAnnotationOfThisStereotype.references.add(s);
 		newClass.eAnnotations.add(theEAnnotationOfThisStereotype);
+		populateWithGeneralisationElements(newClass,s,c);
 		if (c.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
 			createTheClassStereotypeDetails(newClass,s,c);
 		} else if (c.eAnnotations.select(an | an.source.equals("Edge")).notEmpty()) {
 			createTheAssociationStereotypeDetails(newClass,s,c);
 			createOCLConstraintsForAssociation(newClass,s,c);		
-		} 
-		populateWithGeneralisationElements(newClass,s,c);
+		} else {
+			createTheClassStereotypeDetails(newClass,s,c);
+		}
 		populateWithAttributes(newClass,s,c);
 	}
 	
@@ -147,16 +149,25 @@ operation createTheAssociationNavigabilityOCLConstraint(newClass,s,c) {
 
 operation createTheClassStereotypeDetails(newClass,s,c) {
 	var baseClassProperty = new Profile!Property;
-	var base = c.getEAnnotation("Node").details.get("base").firstToUpperCase();
+	var base = "Class";
+	if (c.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
+		base = c.getEAnnotation("Node").details.get("base").firstToUpperCase();
+	}
 	checkIfTheBaseImportExistsAndCreateIt(base);
 	baseClassProperty.name = "base_" +  base;
 	baseClassProperty.type = UMLM2!Class.all.selectOne(c|c.name = base); // This way we get the Class metaclass as declared in the UML metamodel
 	s.ownedAttribute.add(baseClassProperty);
-	var theEReferenceBaseClass = new Profile!EReference;
-	theEReferenceBaseClass.name = "base_" + base;
-	theEReferenceBaseClass.lowerBound = 1;
-	theEReferenceBaseClass.ordered = false;
-	newClass.eStructuralFeatures.add(theEReferenceBaseClass);
+	// Create the base_ only if this is not already created in one of my supertypes
+	if (newClass.getEAllReferences().select(nc|nc.name = "base_" + base).isEmpty()) {
+		var theEReferenceBaseClass = new Profile!EReference;
+		theEReferenceBaseClass.name = "base_" + base;
+		theEReferenceBaseClass.lowerBound = 1;
+		theEReferenceBaseClass.ordered = false;
+		newClass.eStructuralFeatures.add(theEReferenceBaseClass);
+		var theEGenericType = new Profile!EGenericType;
+		theEReferenceBaseClass.eGenericType = theEGenericType;
+		theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = base);
+	}
 	var extension = new Profile!Extension;			
 	extension.name = "E_" + c.name + "_" + base + "1";
 	var extensionEnd = new Profile!ExtensionEnd;
@@ -167,10 +178,7 @@ operation createTheClassStereotypeDetails(newClass,s,c) {
 	extension.ownedEnd.add(extensionEnd);
 	extension.memberEnd.add(baseClassProperty);
 	extension.endType.add(UMLM2!Class.all.selectOne(c|c.name = base));
-	var theEGenericType = new Profile!EGenericType;
-	theEReferenceBaseClass.eGenericType = theEGenericType;
-	theEGenericType.EClassifier = UMLEcore!EClass.all().selectOne(c|c.name = base);
-	if (c.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("shape").isDefined()) {
+	if (c.eAnnotations.select(an | an.source.equals("Node")).notEmpty() and c.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("shape").isDefined()) {
 		var theImage = new Profile!Image;
 		theImage.location = "platform:/plugin/" + ePackName + "/" + c.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("shape");
 		s.icon.add(theImage);
@@ -247,18 +255,26 @@ operation calculateTheBodyOfTheCheckEndTypesConstraint(s,c) {
 	var sourceAnnot;
 	var targetAnnot;
 	var base = c.getEAnnotation("Edge").details.get("base").firstToUpperCase();
-	var sourceBase = "";
-	var targetBase = "";
+	var sourceBase = "Class";
+	var targetBase = "Class";
 	if (c.isTypeOf(EcoreM2!EClass)) {
 		sourceAnnot = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("source");
 		targetAnnot = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("target");
-		sourceBase = c.eReferences.selectOne(r|r.name.equals(sourceAnnot)).eType.getEAnnotation("Node").details.get("base").println();
-		targetBase = c.eReferences.selectOne(r|r.name.equals(targetAnnot)).eType.getEAnnotation("Node").details.get("base").println();
+		if (c.eReferences.selectOne(r|r.name.equals(sourceAnnot)).eType.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
+			sourceBase = c.eReferences.selectOne(r|r.name.equals(sourceAnnot)).eType.getEAnnotation("Node").details.get("base").println();
+		}
+		if (c.eReferences.selectOne(r|r.name.equals(targetAnnot)).eType.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
+			targetBase = c.eReferences.selectOne(r|r.name.equals(targetAnnot)).eType.getEAnnotation("Node").details.get("base").println();
+		}
 		source = c.eReferences.selectOne(r|r.name.equals(sourceAnnot)).eType.name;
 		target = c.eReferences.selectOne(r|r.name.equals(targetAnnot)).eType.name;
 	} else if (c.isTypeOf(EcoreM2!EReference)) {
-		sourceBase = c.eContainingClass.getEAnnotation("Node").details.get("base").println();
-		targetBase = c.eType.getEAnnotation("Node").details.get("base").println();
+		if (c.eContainingClass.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
+			sourceBase = c.eContainingClass.getEAnnotation("Node").details.get("base").println();
+		}
+		if (c.eType.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
+			targetBase = c.eType.getEAnnotation("Node").details.get("base").println();
+		}
 		source = c.eContainingClass.name;
 		target = c.etype.name;
 	}
