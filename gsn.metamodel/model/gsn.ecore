@@ -59,7 +59,7 @@
         <details key="text" value="To specify additional generic, unstructured, untyped information about a ModelElement"/>
       </eAnnotations>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TaggedValue" eSuperTypes="#//Commons/UtilityElement">
+    <eClassifiers xsi:type="ecore:EClass" name="TaggedValue" abstract="true" eSuperTypes="#//Commons/UtilityElement">
       <eAnnotations source="Comment">
         <details key="text" value="To specify attributes and their corresponding values for a ModelElement"/>
       </eAnnotations>
@@ -308,12 +308,6 @@
       <eAnnotations source="Comment">
         <details key="text" value="Used to record the popositions of Argumentation"/>
       </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="metaClaim" upperBound="-1"
-          eType="#//Argumentation/Claim" containment="true">
-        <eAnnotations source="Comment">
-          <details key="text" value="References to Claims concerining the Assertion, e.g. confidence in the Assertion"/>
-        </eAnnotations>
-      </eStructuralFeatures>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ArtefactElementCitation" abstract="true"
         eSuperTypes="#//Argumentation/ArgumentAsset">
