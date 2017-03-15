@@ -8,4 +8,6 @@
   <argumentAsset xsi:type="GSN_Argumentation:Assumption" xmi:id="_yR8acAlyEeeUBfXmBqWpIw" gid="A1" content="Automated landing is not attempted in crosswind conditions"/>
   <argumentAsset xsi:type="GSN_Argumentation:InContextOf" xmi:id="_1sfOsAlyEeeUBfXmBqWpIw" source="_uw07kAlbEeeH6OUiT87h2Q" target="_yR8acAlyEeeUBfXmBqWpIw"/>
   <argumentAsset xsi:type="GSN_Argumentation:Strategy" xmi:id="_CF-ecAl0Eeev6bx5dkqcYg" gid="S1" content="Argument by satisfaction of safety requirements" undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" xmi:id="_xebEEAl4EeettLDMQtDfxA" gid="C3" content="Safety Requirement for Swift UAS" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" xmi:id="_SJucoAl5EeeZF4k1wwd_rQ" source="_CF-ecAl0Eeev6bx5dkqcYg" target="_xebEEAl4EeettLDMQtDfxA"/>
 </GSN_Argumentation:Module>
