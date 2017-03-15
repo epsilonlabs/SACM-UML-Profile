@@ -2,6 +2,7 @@ pre {
 	var ePackName = Source!EPackage.all().first().name;
 	var profile = new Profile!Profile;
 	var alreadyCreatedImports = new Set();
+	var allTheNewClasses = new Set();
 	var ePackage = new Profile!EPackage;
 	createUMLAnnotationsForVersions(profile);
 	profile.name = ePackName;
@@ -23,7 +24,9 @@ rule class2stereotype
 		theEAnnotationOfThisStereotype.source = "http://www.eclipse.org/uml2/2.0.0/UML";
 		theEAnnotationOfThisStereotype.references.add(s);
 		newClass.eAnnotations.add(theEAnnotationOfThisStereotype);
-		populateWithGeneralisationElements(newClass,s,c);
+		allTheNewClasses.add(newClass);
+		//populateWithGeneralisationElements(newClass,s,c);
+		/*
 		if (c.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
 			createTheClassStereotypeDetails(newClass,s,c);
 		} else if (c.eAnnotations.select(an | an.source.equals("Edge")).notEmpty()) {
@@ -32,6 +35,7 @@ rule class2stereotype
 		} else {
 			createTheClassStereotypeDetails(newClass,s,c);
 		}
+*/
 		populateWithAttributes(newClass,s,c);
 	}
 	
@@ -415,6 +419,7 @@ operation populateWithAttributes(newClass,s,c) {
 }
 
 operation populateWithGeneralisationElements(newClass,s,c) {
+	c.name.println();
 	for (st in c.eSupertypes) {
 		var generalisation = new Profile!Generalization;
 		var myParent = Profile!Stereotype.all().selectOne(stype | stype.name.equals(st.name)); 
@@ -432,5 +437,26 @@ operation checkIfTheBaseImportExistsAndCreateIt(base) {
 		theElementImport.importedElement = UMLM2!Class.all.selectOne(c|c.name = base);
 		profile.metaclassReference.add(theElementImport);
 		profile.elementImport.add(theElementImport);
+	}
+}
+
+post {
+	for (c in Source!EClass.all()) {	
+		var theStereotype = Profile!Stereotype.all().selectOne(s|s.name.equals(c.name));
+		var theNewClass = allTheNewClasses.selectOne(nc|nc.name.equals(c.name));
+		populateWithGeneralisationElements(theNewClass,theStereotype,c);
+		
+	}
+	for (c in Source!EClass.all()) {	
+		var theStereotype = Profile!Stereotype.all().selectOne(s|s.name.equals(c.name));
+		var theNewClass = allTheNewClasses.selectOne(nc|nc.name.equals(c.name));
+		if (c.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
+			createTheClassStereotypeDetails(theNewClass,theStereotype,c);
+		} else if (c.eAnnotations.select(an | an.source.equals("Edge")).notEmpty()) {
+			createTheAssociationStereotypeDetails(theNewClass,theStereotype,c);
+			createOCLConstraintsForAssociation(theNewClass,theStereotype,c);		
+		} else {
+			createTheClassStereotypeDetails(theNewClass,theStereotype,c);
+		}
 	}
 }
