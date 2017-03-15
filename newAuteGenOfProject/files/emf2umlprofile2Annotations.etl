@@ -25,6 +25,9 @@ rule class2stereotype
 		theEAnnotationOfThisStereotype.references.add(s);
 		newClass.eAnnotations.add(theEAnnotationOfThisStereotype);
 		allTheNewClasses.add(newClass);
+		//In some scenarios, the superclass is declared in the Emfatic file after the declaration of the subclass. 
+		//For cases like this, the generalisation links (and thus the bases) cannot be created when the stereotype of the subclass is created. 
+		//We now firstly create all the stereotypes and then in the post we create the generalisation relationships and the bases.
 		//populateWithGeneralisationElements(newClass,s,c);
 		/*
 		if (c.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
@@ -264,14 +267,14 @@ operation calculateTheBodyOfTheCheckEndTypesConstraint(s,c) {
 	if (c.isTypeOf(EcoreM2!EClass)) {
 		sourceAnnot = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("source");
 		targetAnnot = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("target");
-		if (c.eReferences.selectOne(r|r.name.equals(sourceAnnot)).eType.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
+		if (c.eAllReferences.selectOne(r|r.name.equals(sourceAnnot)).eType.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
 			sourceBase = c.eReferences.selectOne(r|r.name.equals(sourceAnnot)).eType.getEAnnotation("Node").details.get("base").println();
 		}
-		if (c.eReferences.selectOne(r|r.name.equals(targetAnnot)).eType.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
+		if (c.eAllReferences.selectOne(r|r.name.equals(targetAnnot)).eType.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
 			targetBase = c.eReferences.selectOne(r|r.name.equals(targetAnnot)).eType.getEAnnotation("Node").details.get("base").println();
 		}
-		source = c.eReferences.selectOne(r|r.name.equals(sourceAnnot)).eType.name;
-		target = c.eReferences.selectOne(r|r.name.equals(targetAnnot)).eType.name;
+		source = c.eAllReferences.selectOne(r|r.name.equals(sourceAnnot)).eType.name;
+		target = c.eAllReferences.selectOne(r|r.name.equals(targetAnnot)).eType.name;
 	} else if (c.isTypeOf(EcoreM2!EReference)) {
 		if (c.eContainingClass.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
 			sourceBase = c.eContainingClass.getEAnnotation("Node").details.get("base").println();
@@ -419,7 +422,6 @@ operation populateWithAttributes(newClass,s,c) {
 }
 
 operation populateWithGeneralisationElements(newClass,s,c) {
-	c.name.println();
 	for (st in c.eSupertypes) {
 		var generalisation = new Profile!Generalization;
 		var myParent = Profile!Stereotype.all().selectOne(stype | stype.name.equals(st.name)); 
@@ -441,6 +443,11 @@ operation checkIfTheBaseImportExistsAndCreateIt(base) {
 }
 
 post {
+	// In some scenarios, the superclass is declared in the Emfatic file after the declaration of the subclass. 
+	// For cases like this, the generalisation links (and thus the bases) cannot be created when the stereotype of the subclass is created. 
+	// We now firstly create all the stereotypes and then in the post we create the generalisation relationships and the bases.
+	// We don't create the bases together with the generalisations but we loop through them again because we first need to create the whole hierarchy
+	// (e.g., subclass->superclass->superclass->...->superclass) as the base might be included in a super-superclass that the generalisation link hasn't yet been created
 	for (c in Source!EClass.all()) {	
 		var theStereotype = Profile!Stereotype.all().selectOne(s|s.name.equals(c.name));
 		var theNewClass = allTheNewClasses.selectOne(nc|nc.name.equals(c.name));
