@@ -3,6 +3,7 @@ package newautogenofproject;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.CopyOption;
@@ -75,7 +76,7 @@ public class ThingsAreHappeningHere {
 		return project;
 	}
 
-	public void createThePaletteConfiguration(String theSelectedFilePath, String theProjectFolder) throws Exception {
+	public void createThePaletteConfiguration(String theSelectedFilePath, String theProjectFolder, IProject theSelectedFileParentIProject) throws Exception {
 
 		// This is to generate the deprecated palette.xml. Please don't delete.
 		/*
@@ -111,7 +112,7 @@ public class ThingsAreHappeningHere {
 		 * etlModule.getContext().getModelRepository().dispose();
 		 */
 
-		EtlModule etlModule = new EtlModule();
+		// Our transformation
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 		
 		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.7", theProjectFolder + File.separator
@@ -121,24 +122,36 @@ public class ThingsAreHappeningHere {
 		
 		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
 		allTheModels.addAll(Arrays.asList(sourceModel, targetModel, paletteConfigurationM2));
-		doTheETLTransformation(etlModule, allTheModels, "files/paletteConfigurationGenerationM2M.etl");
+		doTheETLTransformation(allTheModels, "files/paletteConfigurationGenerationM2M.etl");
+		
+		// User's transformation, if any
+		sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
+		paletteConfigurationM2 = createAndLoadAnEmfMetaModel("http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.7", "PaletteConfigurationM2", "true", "false");
+		targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.7", theProjectFolder + File.separator
+				+ "resources" + File.separator + name + ".paletteconfiguration", "Target", "true", "true");
+		allTheModels.clear();
+		allTheModels.addAll(Arrays.asList(sourceModel, targetModel, paletteConfigurationM2));
+		doTheUsersETLTransformation(allTheModels, "paletteConfigurationGenerationM2M.etl", theSelectedFileParentIProject);
 	}
 
-	public void createTheDiagramConfiguration(String theSelectedFilePath, String theDestinationIProjectFolder) throws Exception {
-
-		EtlModule etlModule = new EtlModule();
+	public void createTheDiagramConfiguration(String theSelectedFilePath, String theDestinationIProjectFolder, IProject theSelectedFileParentIProject) throws Exception {
+		// Our transformation
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
-
 		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/infra/viewpoints/configuration", theDestinationIProjectFolder + File.separator
 				+ "resources" + File.separator + name + "diagrams.configuration", "Target", "false", "true");
-
 		EmfMetaModel umlEcoreMetaModel = createAndLoadAnEmfMetaModel("http://www.eclipse.org/uml2/5.0.0/UML", "UMLEcore", "true", "false");
-
 		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
 		allTheModels.addAll(Arrays.asList(sourceModel, targetModel, umlEcoreMetaModel));
+		doTheETLTransformation(allTheModels, "files/diagramsConfigurationGenerationM2M.etl");
 
-		doTheETLTransformation(etlModule, allTheModels, "files/diagramsConfigurationGenerationM2M.etl");
-
+		// User's transformation, if any
+		sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
+		targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/infra/viewpoints/configuration", theDestinationIProjectFolder + File.separator
+				+ "resources" + File.separator + name + "diagrams.configuration", "Target", "true", "true");
+		umlEcoreMetaModel = createAndLoadAnEmfMetaModel("http://www.eclipse.org/uml2/5.0.0/UML", "UMLEcore", "true", "false");
+		allTheModels.clear();
+		allTheModels.addAll(Arrays.asList(sourceModel, targetModel, umlEcoreMetaModel));
+		doTheUsersETLTransformation(allTheModels, "diagramsConfigurationGenerationM2M.etl", theSelectedFileParentIProject);
 	}
 
 	public void createTheCSSFile(String theSelectedFilePath, String theDestinationIProjectFolder) throws Exception {
@@ -160,30 +173,40 @@ public class ThingsAreHappeningHere {
 		template.generate(target.toURI().toString());
 	}
 
-	public void createTheTypesConfigurations(String theSelectedFilePath, String theDestinationIProjectFolder) throws Exception {
-		EtlModule etlModule = new EtlModule();
+	public void createTheTypesConfigurations(String theSelectedFilePath, String theDestinationIProjectFolder, IProject theSelectedFileParentIProject) throws Exception {
+		// Our transformation
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
-
 		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/uml/types/applystereotypeadvice/1.1, http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1, http://www.eclipse.org/papyrus/uml/types/stereotypematcher/1.1", theDestinationIProjectFolder + File.separator
 				+ "resources" + File.separator + "modelelement.typesconfigurations", "Target", "false", "true");
-
 		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
 		allTheModels.addAll(Arrays.asList(sourceModel, targetModel));
-
-		doTheETLTransformation(etlModule, allTheModels, "files/typesConfigurationsM2M.etl");
+		doTheETLTransformation(allTheModels, "files/typesConfigurationsM2M.etl");
+		
+		// User's transformation, if any
+		sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
+		targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/uml/types/applystereotypeadvice/1.1, http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1, http://www.eclipse.org/papyrus/uml/types/stereotypematcher/1.1", theDestinationIProjectFolder + File.separator
+				+ "resources" + File.separator + "modelelement.typesconfigurations", "Target", "true", "true");
+		allTheModels.clear();
+		allTheModels.addAll(Arrays.asList(sourceModel, targetModel));
+		doTheUsersETLTransformation(allTheModels, "typesConfigurationsM2M.etl", theSelectedFileParentIProject);
 	}
 
-	public void createTheElementTypeConfigurations(String theSelectedFilePath, String theDestinationIProjectFolder) throws Exception {
-		EtlModule etlModule = new EtlModule();
+	public void createTheElementTypeConfigurations(String theSelectedFilePath, String theDestinationIProjectFolder, IProject theSelectedFileParentIProject) throws Exception {
+		// Our transformation
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
-
 		EmfModel targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1", theDestinationIProjectFolder + File.separator
 				+ "resources" + File.separator + "diagramshapes.elementtypesconfigurations", "Target", "false", "true");
-
 		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
 		allTheModels.addAll(Arrays.asList(sourceModel, targetModel));
+		doTheETLTransformation(allTheModels, "files/elementTypesConfigurationsM2M.etl");
 
-		doTheETLTransformation(etlModule, allTheModels, "files/elementTypesConfigurationsM2M.etl");
+		// User's transformation, if any
+		sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
+		targetModel = createAndLoadAnEmfModel("http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1", theDestinationIProjectFolder + File.separator
+				+ "resources" + File.separator + "diagramshapes.elementtypesconfigurations", "Target", "true", "true");
+		allTheModels.clear();
+		allTheModels.addAll(Arrays.asList(sourceModel, targetModel));
+		doTheUsersETLTransformation(allTheModels, "elementTypesConfigurationsM2M.etl", theSelectedFileParentIProject);
 	}
 
 	public void createThePluginXml(String theSelectedFilePath, String theDestinationIProjectFolder) throws Exception {
@@ -201,7 +224,7 @@ public class ThingsAreHappeningHere {
 
 		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
 		allTheModels.addAll(Arrays.asList(sourceModel, targetModel));
-		doTheETLTransformation(etlModule, allTheModels, "files/pluginXmlGenerationM2M.etl");
+		doTheETLTransformation(allTheModels, "files/pluginXmlGenerationM2M.etl");
 	}
 
 	public void createTheManifestFile(String theSelectedFilePath, String theDestinationIProjectFolder) throws IOException {
@@ -240,24 +263,18 @@ public class ThingsAreHappeningHere {
 		}
 	}
 
-	public void createTheProfileUmlFile(String theSelectedFilePath, String theDestinationIProjectFolder) throws Exception {
-		EtlModule etlModule = new EtlModule();
+	public void createTheProfileUmlFile(String theSelectedFilePath, String theDestinationIProjectFolder, IProject theSelectedFileParentIProject) throws Exception {
 
 		// The emfatic (ecore) source
 		EmfModel sourceModel = 	createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
-		
 		// The ultimate goal: the UML profile
 		UmlModel targetModel = createAndLoadAUmlModel("http://www.eclipse.org/uml2/5.0.0/UML", theDestinationIProjectFolder + File.separator + "model.profile.uml", "Profile", "false", "true");
-
 		// The UML Metamodel
 		UmlModel umlMetaModel = createAndLoadAUmlModel("http://www.eclipse.org/emf/2002/Ecore", "pathmap://UML_METAMODELS/UML.metamodel.uml", "UMLM2", "true", "false");
-
 		// The UML Ecore Metamodel
 		EmfMetaModel umlEcoreMetaModel = createAndLoadAnEmfMetaModel("http://www.eclipse.org/uml2/5.0.0/UML", "UMLEcore", "true", "false");
-
 		// The ECore Metamodel
 		EmfMetaModel ECoreMetaModel = createAndLoadAnEmfMetaModel("http://www.eclipse.org/emf/2002/Ecore", "EcoreM2", "true", "false");
-
 		// The Ecore Primitive Types
 		UmlModel ecorePrimitiveTypesModel = new UmlModel();
 		StringProperties ecorePrimitiveTypesModelProperties = new StringProperties();
@@ -267,13 +284,31 @@ public class ThingsAreHappeningHere {
 		ecorePrimitiveTypesModelProperties.put(UmlModel.PROPERTY_READONLOAD, "true");
 		ecorePrimitiveTypesModelProperties.put(UmlModel.PROPERTY_STOREONDISPOSAL, "false");
 		ecorePrimitiveTypesModel.load(ecorePrimitiveTypesModelProperties, (IRelativePathResolver) null);
-
 		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
 		allTheModels.addAll(Arrays.asList(sourceModel, targetModel, umlMetaModel, umlMetaModel, umlEcoreMetaModel, ECoreMetaModel, ecorePrimitiveTypesModel));
+		doTheETLTransformation(allTheModels, "files/emf2umlprofile2Annotations.etl");
 		
-		doTheETLTransformation(etlModule, allTheModels, "files/emf2umlprofile2Annotations.etl");
-		
-		//etlModule.getContext().getModelRepository().getModelByName("Profile").dispose();
+		// The emfatic (ecore) source
+		sourceModel = 	createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
+		// The UML Metamodel
+		umlMetaModel = createAndLoadAUmlModel("http://www.eclipse.org/emf/2002/Ecore", "pathmap://UML_METAMODELS/UML.metamodel.uml", "UMLM2", "true", "false");
+		// The UML Ecore Metamodel
+		umlEcoreMetaModel = createAndLoadAnEmfMetaModel("http://www.eclipse.org/uml2/5.0.0/UML", "UMLEcore", "true", "false");
+		// The ECore Metamodel
+		ECoreMetaModel = createAndLoadAnEmfMetaModel("http://www.eclipse.org/emf/2002/Ecore", "EcoreM2", "true", "false");
+		// The Ecore Primitive Types
+		ecorePrimitiveTypesModel = new UmlModel();
+		ecorePrimitiveTypesModelProperties = new StringProperties();
+		ecorePrimitiveTypesModelProperties.put(UmlModel.PROPERTY_MODEL_FILE,
+						"pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml");
+		ecorePrimitiveTypesModelProperties.put(UmlModel.PROPERTY_NAME, "ECorePrimitiveTypes");
+		ecorePrimitiveTypesModelProperties.put(UmlModel.PROPERTY_READONLOAD, "true");
+		ecorePrimitiveTypesModelProperties.put(UmlModel.PROPERTY_STOREONDISPOSAL, "false");
+		ecorePrimitiveTypesModel.load(ecorePrimitiveTypesModelProperties, (IRelativePathResolver) null);
+		allTheModels.clear();
+		targetModel = createAndLoadAUmlModel("http://www.eclipse.org/uml2/5.0.0/UML", theDestinationIProjectFolder + File.separator + "model.profile.uml", "Profile", "true", "true");
+		allTheModels.addAll(Arrays.asList(sourceModel, targetModel, umlMetaModel, umlMetaModel, umlEcoreMetaModel, ECoreMetaModel, ecorePrimitiveTypesModel));
+		doTheUsersETLTransformation(allTheModels, "emf2umlprofile2Annotations.etl", theSelectedFileParentIProject);
 	}
 
 	public void createTheModelProfileNotationFile(String theDestinationIProjectFolder) throws IOException {
@@ -454,7 +489,8 @@ public class ThingsAreHappeningHere {
 		return umlModel;
 	}
 	
-	private void doTheETLTransformation(EtlModule etlModule, ArrayList<IModel> allTheModels, String theFile) throws Exception {
+	private void doTheETLTransformation(ArrayList<IModel> allTheModels, String theFile) throws Exception {
+		EtlModule etlModule = new EtlModule();
 		for (IModel theModel : allTheModels) {
 			etlModule.getContext().getModelRepository().addModel(theModel);
 		}
@@ -463,6 +499,29 @@ public class ThingsAreHappeningHere {
 		etlModule.parse(etlFile);
 		etlModule.execute();
 		etlModule.getContext().getModelRepository().dispose();
+	}
+	
+	private void doTheUsersETLTransformation(ArrayList<IModel> allTheModels, String theFile, IProject theSelectedFileParentIProject) throws Exception {
+		File dir = new File(theSelectedFileParentIProject.getLocation().toOSString() + File.separator + "transformations");
+		FilenameFilter filter = new FilenameFilter() {
+	         public boolean accept (File dir, String name) { 
+	        	 return name.equals(theFile);
+	         } 
+	    }; 
+	    String[] children = dir.list(filter);
+	    if (children == null) {
+	    	System.out.println("Either dir does not exist or is not a directory"); 
+	    } else if (children.length > 0) {
+	    	EtlModule etlModule = new EtlModule();
+	    	for (IModel theModel : allTheModels) {
+	    		etlModule.getContext().getModelRepository().addModel(theModel);
+	  		}
+	  		File etlFile = new File(theSelectedFileParentIProject.getLocation().toOSString() + File.separator + "transformations" + File.separator + children[0]);
+	  		System.out.println(etlModule.getContext().getModelRepository());
+	  		etlModule.parse(etlFile);
+	  		etlModule.execute();
+	  		etlModule.getContext().getModelRepository().dispose();
+	  	}
 	}
 
 	public void refresh(IProject parentProject) throws CoreException {
