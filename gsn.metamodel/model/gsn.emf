@@ -155,6 +155,7 @@ package Terminology {
 
 }
 
+@Ecore(invocationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", settingDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", validationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot")
 @namespace(uri="http://www.goalstructuringnotation.info/1.0/argumentation", prefix="GSN_Argumentation")
 package Argumentation {
   abstract class ArgumentationElement extends Commons.ModelElement {
@@ -176,6 +177,11 @@ package Argumentation {
     val ArgumentPackageCitation[*] argumentPackageCitation;
   }
 
+  @Ecore(constraints="isValidModule")
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidModule="
+			(self.gid <> null and self.gid.size() > 0) and
+			(self.content <> null and self.content.size() > 0)
+			")
   class Module extends ArgumentPackage {
   }
 
@@ -236,13 +242,28 @@ package Argumentation {
   @Comment(text="Used to record the propositions of any structured argument")
   abstract class Claim extends Assertion {
 
-    @Comment(text="Flag to indicate if the claim is to be further supported")
-    attr Boolean toBeSupported;
+    //@Comment(text="Flag to indicate if the claim is to be further supported")
+    //attr Boolean toBeSupported;
   }
 
+  @Ecore(constraints="isValidGoal")
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidGoal="
+			(self.gid <> null and self.gid.size() > 0) 
+			and
+			if self.toBeSupported <> null
+			then
+				if self.undeveloped <> null
+				then self.toBeSupported xor self.undeveloped
+				else true
+				endif
+			else
+				true
+			endif
+			")
   class Goal extends Claim {
     attr Boolean public;
     attr Boolean undeveloped;
+    attr Boolean toBeSupported;
   }
 
   class Justification extends Claim {
@@ -278,6 +299,20 @@ package Argumentation {
   abstract class AssertedInference extends AssertedRelationship {
   }
 
+  @Ecore(constraints="isValidSupportedBy")
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidSupportedBy="
+			self.source->forAll(s|(s.oclIsTypeOf(Goal)) or (s.oclIsTypeOf(Strategy))) and
+			self.target->forAll(t|(t.oclIsTypeOf(Goal)) or
+				(t.oclIsTypeOf(Strategy)) or
+				(t.oclIsTypeOf(Solution)) or
+				(t.oclIsTypeOf(AwayGoal)) or
+				(t.oclIsTypeOf(AwaySolution)) or
+				(t.oclIsTypeOf(Module)) or
+				(t.oclIsTypeOf(Contract))
+			)
+			and
+			self.source->size() = 1
+			")
   class SupportedBy extends AssertedRelationship {
     attr Integer requires = "-1";
   }
@@ -298,6 +333,20 @@ package Argumentation {
   abstract class AssertedContext extends AssertedRelationship {
   }
 
+  @Ecore(constraints="isValidInContextOf")
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidInContextOf="
+			self.source->forAll(s|s.oclIsTypeOf(Goal) or s.oclIsTypeOf(Strategy)) and
+			self.target->forAll(t|(t.oclIsTypeOf(Context)) or 
+				(t.oclIsTypeOf(Assumption)) or 
+				(t.oclIsTypeOf(Justification)) or
+				(t.oclIsTypeOf(AwayGoal)) or
+				(t.oclIsTypeOf(AwayContext)) or
+				(t.oclIsTypeOf(Module))
+			)
+			and
+			self.source->size() <= 1 
+			and
+			self.target->size() <= 1")
   class InContextOf extends AssertedContext {
   }
 

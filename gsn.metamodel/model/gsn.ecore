@@ -355,11 +355,6 @@
       <eAnnotations source="Comment">
         <details key="text" value="Used to record the propositions of any structured argument"/>
       </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="toBeSupported" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject">
-        <eAnnotations source="Comment">
-          <details key="text" value="Flag to indicate if the claim is to be further supported"/>
-        </eAnnotations>
-      </eStructuralFeatures>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Goal" eSuperTypes="#//Argumentation/Claim">
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -370,6 +365,7 @@
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="public" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="undeveloped" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="toBeSupported" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Justification" eSuperTypes="#//Argumentation/Claim"/>
     <eClassifiers xsi:type="ecore:EClass" name="Assumption" eSuperTypes="#//Argumentation/Claim"/>
