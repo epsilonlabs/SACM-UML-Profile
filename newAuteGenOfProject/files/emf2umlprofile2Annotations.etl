@@ -410,15 +410,17 @@ operation createTheOCLConstraintDetails(theConstraintOperation, body) {
 
 operation populateWithAttributes(newClass,s,c) {
 	for (feat in c.eAttributes) {
-		// Creation of attribute at the Profile (M1 Level)) 
+		// Creation of attribute at the Profile 
 		var attrProperty = new Profile!Property;
 		attrProperty.name = feat.name;
 		attrProperty.type = ECorePrimitiveTypes!PrimitiveType.all().selectOne(c|c.name.equals(feat.etype.name));
+		attrProperty.`default` = feat.defaultValueLiteral;
 		s.ownedAttribute.add(attrProperty);
-		// Creation of attribute at the UML EAnnotation (M2 Level)
+		// Creation of attribute at the UML EAnnotation
 		var attr = new Profile!EAttribute;
 		attr.name = feat.name;
 		attr.eType = feat.eType;
+		attr.defaultValueLiteral = feat.defaultValueLiteral;
 		newClass.eStructuralFeatures.add(attr);
 	}
 }
