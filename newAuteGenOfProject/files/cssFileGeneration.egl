@@ -9,7 +9,6 @@ for (stereo in allClassStereotypes) {
 [%}
 }%] { 
 	displayName:true;
-	displayIcon:true;
 	elementIcon:false;
 	isNameWrap: true;
 	bold:true;
@@ -49,7 +48,7 @@ Compartment[kind="symbol"]  {
 for (stereo in allClassStereotypes) {
 if (stereo.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("shape").isDefined()) {
 %]
-[appliedStereotypes~=[%=stereo.name%]].Symbol {
+[appliedStereotypes~=[%=stereo.name%]] {
 	svgFile: 'platform:/plugin/[%=ePackName%]/[%=stereo.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("shape")%]';
 	/*
 	floatingLabelOffsetWidth:+23;

@@ -5,9 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.CopyOption;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -34,14 +32,11 @@ import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.epsilon.common.util.StringProperties;
 import org.eclipse.epsilon.egl.EglFileGeneratingTemplate;
 import org.eclipse.epsilon.egl.EglFileGeneratingTemplateFactory;
-import org.eclipse.epsilon.egl.EglTemplate;
 import org.eclipse.epsilon.egl.EglTemplateFactoryModuleAdapter;
-import org.eclipse.epsilon.egl.internal.EglModule;
 import org.eclipse.epsilon.emc.emf.EmfMetaModel;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.emc.plainxml.PlainXmlModel;
 import org.eclipse.epsilon.emc.uml.UmlModel;
-import org.eclipse.epsilon.eol.IEolExecutableModule;
 import org.eclipse.epsilon.eol.exceptions.models.EolModelLoadingException;
 import org.eclipse.epsilon.eol.models.IModel;
 import org.eclipse.epsilon.eol.models.IRelativePathResolver;
@@ -62,7 +57,6 @@ public class ThingsAreHappeningHere {
 	public ThingsAreHappeningHere(String theSelectedFilePath) {
 		this.name = getNameOfEPackage(theSelectedFilePath);
 		project = root.getProject(name);
-		File test = new File("");
 	}
 
 	public IProject createPluginProject(String theSelectedFile) throws CoreException {
@@ -210,7 +204,6 @@ public class ThingsAreHappeningHere {
 	}
 
 	public void createThePluginXml(String theSelectedFilePath, String theDestinationIProjectFolder) throws Exception {
-		EtlModule etlModule = new EtlModule();
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
 		PlainXmlModel targetModel = new PlainXmlModel();
@@ -517,7 +510,6 @@ public class ThingsAreHappeningHere {
 	    		etlModule.getContext().getModelRepository().addModel(theModel);
 	  		}
 	  		File etlFile = new File(theSelectedFileParentIProject.getLocation().toOSString() + File.separator + "transformations" + File.separator + children[0]);
-	  		System.out.println(etlModule.getContext().getModelRepository());
 	  		etlModule.parse(etlFile);
 	  		etlModule.execute();
 	  		etlModule.getContext().getModelRepository().dispose();

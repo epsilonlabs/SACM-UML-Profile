@@ -185,6 +185,7 @@ operation createTheClassStereotypeDetails(newClass,s,c) {
 	extension.ownedEnd.add(extensionEnd);
 	extension.memberEnd.add(baseClassProperty);
 	extension.endType.add(UMLM2!Class.all.selectOne(c|c.name = base));
+	/*
 	if (c.eAnnotations.select(an | an.source.equals("Node")).notEmpty() and c.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("shape").isDefined()) {
 		var theImage = new Profile!Image;
 		theImage.location = "platform:/plugin/" + ePackName + "/" + c.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("shape");
@@ -197,6 +198,7 @@ operation createTheClassStereotypeDetails(newClass,s,c) {
 		theImageAnnotationEStringToStringMapEntry.value = "shape";
 		theImageEAnnotation.details.add(theImageAnnotationEStringToStringMapEntry);
 	}
+	*/
 }
 
 operation createTheAssociationStereotypeDetails(newClass,s,c) {
