@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated gsn -->
+      <package
+            uri="http://www.goalstructuringnotation.info/1.0/commons"
+            class="GSN.Commons.CommonsPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated gsn -->
+      <package
+            uri="http://www.goalstructuringnotation.info/1.0/packages"
+            class="GSN.Packages.PackagesPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated gsn -->
+      <package
+            uri="http://www.goalstructuringnotation.info/1.0/terminology"
+            class="GSN.Terminology.TerminologyPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated gsn -->
+      <package
+            uri="http://www.goalstructuringnotation.info/1.0/argumentation"
+            class="GSN.Argumentation.ArgumentationPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated gsn -->
+      <package
+            uri="http://www.goalstructuringnotation.info/1.0/artefact"
+            class="GSN.Artefact.ArtefactPackage"/>
+   </extension>
+
+</plugin>

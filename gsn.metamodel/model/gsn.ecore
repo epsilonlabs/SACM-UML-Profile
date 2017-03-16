@@ -4,6 +4,7 @@
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
     <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
   </eAnnotations>
+  <eAnnotations source="gmf"/>
   <eSubpackages name="Commons" nsURI="http://www.goalstructuringnotation.info/1.0/commons"
       nsPrefix="GSN_Commons">
     <eClassifiers xsi:type="ecore:EClass" name="SACMElement" abstract="true">
@@ -257,32 +258,19 @@
       <eAnnotations source="Comment">
         <details key="text" value="Container for a structured argument represented using SACM"/>
       </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="argumentAsset" upperBound="-1"
-          eType="#//Argumentation/ArgumentAsset" containment="true">
-        <eAnnotations source="Comment">
-          <details key="text" value="An optional set of ArgumentAssets"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="argumentPackage" upperBound="-1"
-          eType="#//Argumentation/ArgumentPackage" containment="true">
-        <eAnnotations source="Comment">
-          <details key="text" value="An optional set of sub packages"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="argumentPackageCitation"
-          upperBound="-1" eType="#//Argumentation/ArgumentPackageCitation" containment="true">
-        <eAnnotations source="Comment">
-          <details key="text" value="An optional set of citations"/>
-        </eAnnotations>
-      </eStructuralFeatures>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//Argumentation/ArgumentPackage">
+      <eAnnotations source="gmf.diagram"/>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
         <details key="constraints" value="isValidModule"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
         <details key="isValidModule" value="&#xA;&#x9;&#x9;&#x9;(self.gid &lt;> null and self.gid.size() > 0) and&#xA;&#x9;&#x9;&#x9;(self.content &lt;> null and self.content.size() > 0)&#xA;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="argumentAsset" upperBound="-1"
+          eType="#//Argumentation/ArgumentAsset" containment="true">
+        <eAnnotations source="gmf.compartment"/>
+      </eStructuralFeatures>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ArgumentPackageCitation" abstract="true"
         eSuperTypes="#//Argumentation/ArgumentPackage">
@@ -357,6 +345,9 @@
       </eAnnotations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Goal" eSuperTypes="#//Argumentation/Claim">
+      <eAnnotations source="gmf.node">
+        <details key="label" value="gid"/>
+      </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
         <details key="constraints" value="isValidGoal"/>
       </eAnnotations>
@@ -367,8 +358,16 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="undeveloped" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="toBeSupported" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Justification" eSuperTypes="#//Argumentation/Claim"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Assumption" eSuperTypes="#//Argumentation/Claim"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Justification" eSuperTypes="#//Argumentation/Claim">
+      <eAnnotations source="gmf.node">
+        <details key="label" value="gid"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Assumption" eSuperTypes="#//Argumentation/Claim">
+      <eAnnotations source="gmf.node">
+        <details key="label" value="gid"/>
+      </eAnnotations>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ArgumentReasoning" abstract="true"
         eSuperTypes="#//Argumentation/ArgumentAsset">
       <eAnnotations source="Comment">
@@ -376,9 +375,15 @@
       </eAnnotations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Strategy" eSuperTypes="#//Argumentation/ArgumentReasoning">
+      <eAnnotations source="gmf.node">
+        <details key="label" value="gid"/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="undeveloped" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Context" eSuperTypes="#//Argumentation/ArgumentAsset">
+      <eAnnotations source="gmf.node">
+        <details key="label" value="gid"/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="isPublic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="refersToExternalMaterial"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
@@ -414,6 +419,11 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
         <details key="isValidSupportedBy" value="&#xA;&#x9;&#x9;&#x9;self.source->forAll(s|(s.oclIsTypeOf(Goal)) or (s.oclIsTypeOf(Strategy))) and&#xA;&#x9;&#x9;&#x9;self.target->forAll(t|(t.oclIsTypeOf(Goal)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(Strategy)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(Solution)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(AwayGoal)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(AwaySolution)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(Module)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(Contract))&#xA;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;and&#xA;&#x9;&#x9;&#x9;self.source->size() = 1&#xA;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
+      <eAnnotations source="gmf.link">
+        <details key="source" value="source"/>
+        <details key="target" value="target"/>
+        <details key="width" value="2"/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="requires" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
           defaultValueLiteral="-1"/>
     </eClassifiers>
@@ -446,6 +456,11 @@
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
         <details key="isValidInContextOf" value="&#xA;&#x9;&#x9;&#x9;self.source->forAll(s|s.oclIsTypeOf(Goal) or s.oclIsTypeOf(Strategy)) and&#xA;&#x9;&#x9;&#x9;self.target->forAll(t|(t.oclIsTypeOf(Context)) or &#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(Assumption)) or &#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(Justification)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(AwayGoal)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(AwayContext)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(Module))&#xA;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;and&#xA;&#x9;&#x9;&#x9;self.source->size() &lt;= 1 &#xA;&#x9;&#x9;&#x9;and&#xA;&#x9;&#x9;&#x9;self.target->size() &lt;= 1"/>
+      </eAnnotations>
+      <eAnnotations source="gmf.link">
+        <details key="source" value="source"/>
+        <details key="target" value="target"/>
+        <details key="width" value="2"/>
       </eAnnotations>
     </eClassifiers>
   </eSubpackages>
