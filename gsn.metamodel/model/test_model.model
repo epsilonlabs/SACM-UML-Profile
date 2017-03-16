@@ -4,7 +4,7 @@
   <argumentAsset xsi:type="GSN_Argumentation:Context" xmi:id="_lSYpMAlxEeeoS4pFvn3z-g" gid="C1" content="Hazard analysis for the Swift UAS"/>
   <argumentAsset xsi:type="GSN_Argumentation:InContextOf" xmi:id="_wsc4wAlxEeeoS4pFvn3z-g" source="_uw07kAlbEeeH6OUiT87h2Q" target="_lSYpMAlxEeeoS4pFvn3z-g"/>
   <argumentAsset xsi:type="GSN_Argumentation:Context" xmi:id="_tA0UgAlxEeeoS4pFvn3z-g" gid="C2" content="Descent phase operations using autopilot"/>
-  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" xmi:id="_5DMhQAlxEeeoS4pFvn3z-g" name="" source="_uw07kAlbEeeH6OUiT87h2Q" target="_tA0UgAlxEeeoS4pFvn3z-g"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" xmi:id="_5DMhQAlxEeeoS4pFvn3z-g" name="" source="_CF-ecAl0Eeev6bx5dkqcYg" target="_tA0UgAlxEeeoS4pFvn3z-g"/>
   <argumentAsset xsi:type="GSN_Argumentation:Assumption" xmi:id="_yR8acAlyEeeUBfXmBqWpIw" gid="A1" content="Automated landing is not attempted in crosswind conditions"/>
   <argumentAsset xsi:type="GSN_Argumentation:InContextOf" xmi:id="_1sfOsAlyEeeUBfXmBqWpIw" source="_uw07kAlbEeeH6OUiT87h2Q" target="_yR8acAlyEeeUBfXmBqWpIw"/>
   <argumentAsset xsi:type="GSN_Argumentation:Strategy" xmi:id="_CF-ecAl0Eeev6bx5dkqcYg" gid="S1" content="Argument by satisfaction of safety requirements" undeveloped="true"/>

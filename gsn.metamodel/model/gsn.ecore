@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="GSN" nsURI="http://www.goalstructuringnotation.info/1.0" nsPrefix="gsn">
+  <eAnnotations source="gmf"/>
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
     <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
   </eAnnotations>
-  <eAnnotations source="gmf"/>
   <eSubpackages name="Commons" nsURI="http://www.goalstructuringnotation.info/1.0/commons"
       nsPrefix="GSN_Commons">
     <eClassifiers xsi:type="ecore:EClass" name="SACMElement" abstract="true">
@@ -413,16 +413,16 @@
       </eAnnotations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="SupportedBy" eSuperTypes="#//Argumentation/AssertedRelationship">
+      <eAnnotations source="gmf.link">
+        <details key="source" value="source"/>
+        <details key="target" value="target"/>
+        <details key="width" value="2"/>
+      </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
         <details key="constraints" value="isValidSupportedBy"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
         <details key="isValidSupportedBy" value="&#xA;&#x9;&#x9;&#x9;self.source->forAll(s|(s.oclIsTypeOf(Goal)) or (s.oclIsTypeOf(Strategy))) and&#xA;&#x9;&#x9;&#x9;self.target->forAll(t|(t.oclIsTypeOf(Goal)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(Strategy)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(Solution)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(AwayGoal)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(AwaySolution)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(Module)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(Contract))&#xA;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;and&#xA;&#x9;&#x9;&#x9;self.source->size() = 1&#xA;&#x9;&#x9;&#x9;"/>
-      </eAnnotations>
-      <eAnnotations source="gmf.link">
-        <details key="source" value="source"/>
-        <details key="target" value="target"/>
-        <details key="width" value="2"/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="requires" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
           defaultValueLiteral="-1"/>
@@ -451,16 +451,16 @@
       </eAnnotations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="InContextOf" eSuperTypes="#//Argumentation/AssertedContext">
+      <eAnnotations source="gmf.link">
+        <details key="source" value="source"/>
+        <details key="target" value="target"/>
+        <details key="width" value="2"/>
+      </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
         <details key="constraints" value="isValidInContextOf"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
         <details key="isValidInContextOf" value="&#xA;&#x9;&#x9;&#x9;self.source->forAll(s|s.oclIsTypeOf(Goal) or s.oclIsTypeOf(Strategy)) and&#xA;&#x9;&#x9;&#x9;self.target->forAll(t|(t.oclIsTypeOf(Context)) or &#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(Assumption)) or &#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(Justification)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(AwayGoal)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(AwayContext)) or&#xA;&#x9;&#x9;&#x9;&#x9;(t.oclIsTypeOf(Module))&#xA;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;and&#xA;&#x9;&#x9;&#x9;self.source->size() &lt;= 1 &#xA;&#x9;&#x9;&#x9;and&#xA;&#x9;&#x9;&#x9;self.target->size() &lt;= 1"/>
-      </eAnnotations>
-      <eAnnotations source="gmf.link">
-        <details key="source" value="source"/>
-        <details key="target" value="target"/>
-        <details key="width" value="2"/>
       </eAnnotations>
     </eClassifiers>
   </eSubpackages>
