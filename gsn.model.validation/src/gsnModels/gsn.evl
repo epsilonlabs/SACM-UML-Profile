@@ -1,0 +1,18 @@
+context GSN!ModelElement {
+  
+  // Every Model Element must define a name
+  constraint HasName {
+    
+    check : self.name <> ""
+
+    message : "Element " + self + " must define a name"    
+  }
+  
+  // Every Model Element must define an ID
+  constraint HasID {
+    
+    check : self.gid <> ""
+
+    message : "Element " + self + " must define an ID"    
+  }
+} 

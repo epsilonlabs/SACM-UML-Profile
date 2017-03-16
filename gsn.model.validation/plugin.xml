@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="gsn.model.validation.contribution1">
+         <menu
+               label="Validation"
+               path="additions"
+               id="gsn.model.validation.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="New Action"
+               class="gsn.model.validation.popup.actions.ValidationAction"
+               menubarPath="gsn.model.validation.menu1/group1"
+               enablesFor="1"
+               id="gsn.model.validation.newAction">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
