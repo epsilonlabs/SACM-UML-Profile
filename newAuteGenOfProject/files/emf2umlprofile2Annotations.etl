@@ -12,7 +12,6 @@ rule class2stereotype
 	transform c : Source!EClass 
 	to s : Profile!Stereotype {
 		s.name = c.name;
-		//c.name.println();
 		// Add stereotype to the profile
 		profile.ownedStereotype.add(s);
 		// The stereotype needs to refer to the EClass object via its eClassifiers association. 
@@ -256,8 +255,6 @@ operation populateWithStereotypesForEachReference(newClass,s,c) {
 	}
 }	
 	
-
-
 operation calculateTheBodyOfTheCheckEndTypesConstraint(s,c) {
 	var source;
 	var target;
@@ -270,19 +267,19 @@ operation calculateTheBodyOfTheCheckEndTypesConstraint(s,c) {
 		sourceAnnot = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("source");
 		targetAnnot = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("target");
 		if (c.eAllReferences.selectOne(r|r.name.equals(sourceAnnot)).eType.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
-			sourceBase = c.eReferences.selectOne(r|r.name.equals(sourceAnnot)).eType.getEAnnotation("Node").details.get("base").println();
+			sourceBase = c.eReferences.selectOne(r|r.name.equals(sourceAnnot)).eType.getEAnnotation("Node").details.get("base");
 		}
 		if (c.eAllReferences.selectOne(r|r.name.equals(targetAnnot)).eType.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
-			targetBase = c.eReferences.selectOne(r|r.name.equals(targetAnnot)).eType.getEAnnotation("Node").details.get("base").println();
+			targetBase = c.eReferences.selectOne(r|r.name.equals(targetAnnot)).eType.getEAnnotation("Node").details.get("base");
 		}
 		source = c.eAllReferences.selectOne(r|r.name.equals(sourceAnnot)).eType.name;
 		target = c.eAllReferences.selectOne(r|r.name.equals(targetAnnot)).eType.name;
 	} else if (c.isTypeOf(EcoreM2!EReference)) {
 		if (c.eContainingClass.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
-			sourceBase = c.eContainingClass.getEAnnotation("Node").details.get("base").println();
+			sourceBase = c.eContainingClass.getEAnnotation("Node").details.get("base");
 		}
 		if (c.eType.eAnnotations.select(an | an.source.equals("Node")).notEmpty()) {
-			targetBase = c.eType.getEAnnotation("Node").details.get("base").println();
+			targetBase = c.eType.getEAnnotation("Node").details.get("base");
 		}
 		source = c.eContainingClass.name;
 		target = c.etype.name;
@@ -425,6 +422,44 @@ operation populateWithAttributes(newClass,s,c) {
 	}
 }
 
+operation populateWithReferences(newClass,s,c) {
+	for (feat in c.eReferences) {
+		// Creation of the reference at the Profile 
+		var theRefProperty = new Profile!Property;
+		theRefProperty.name = feat.eType.name + "End";
+		if (feat.containment) {
+			theRefProperty.aggregation = UMLM2!AggregationKind#composite;
+		} 
+		s.ownedAttribute.add(theRefProperty);
+		var theAssociation = new Profile!Association;
+		profile.packagedElement.add(theAssociation);
+		var theAssociationProperty = new Profile!Property;
+		theAssociationProperty.name = c.name + "End";
+		theAssociation.ownedEnd.add(theAssociationProperty);
+		var theAssociationEAnnotation = new Profile!EAnnotation;
+		theAssociationEAnnotation.source = "org.eclipse.papyrus";
+		var theAssociationEStringToStringMapEntry = new Profile!EStringToStringMapEntry;
+		theAssociationEStringToStringMapEntry.key = "nature";
+		theAssociationEStringToStringMapEntry.value = "UML_Nature";
+		theAssociationEAnnotation.details.add(theAssociationEStringToStringMapEntry);
+		theAssociation.eAnnotations.add(theAssociationEAnnotation);
+		theAssociationProperty.type =  Profile!Stereotype.all.selectOne(ster|ster.name = feat.eContainingClass.name);
+		var theRefType = Profile!Stereotype.all.selectOne(ster|ster.name = feat.eType.name);
+		theRefProperty.type = theRefType;
+		theRefProperty.association = theAssociation;
+		// Creation of attribute at the UML EAnnotation
+		var ref = new Profile!EReference;
+		//var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
+		//var ecoreUtil = emfTool.ecoreUtil;
+		//ref = ecoreUtil.copy(feat);
+		ref.eType = feat.eType;
+		ref.lowerBound = feat.lowerBound;
+		ref.upperBound = feat.upperBound;
+		ref.name = feat.name;
+		newClass.eStructuralFeatures.add(ref);
+	}
+}
+
 operation populateWithGeneralisationElements(newClass,s,c) {
 	for (st in c.eSupertypes) {
 		var generalisation = new Profile!Generalization;
@@ -456,7 +491,8 @@ post {
 		var theStereotype = Profile!Stereotype.all().selectOne(s|s.name.equals(c.name));
 		var theNewClass = allTheNewClasses.selectOne(nc|nc.name.equals(c.name));
 		populateWithGeneralisationElements(theNewClass,theStereotype,c);
-		
+		populateWithReferences(theNewClass,theStereotype,c);
+			
 	}
 	for (c in Source!EClass.all()) {	
 		var theStereotype = Profile!Stereotype.all().selectOne(s|s.name.equals(c.name));
