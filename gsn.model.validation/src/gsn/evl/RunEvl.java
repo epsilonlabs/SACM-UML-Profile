@@ -137,13 +137,14 @@ public class RunEvl {
 		properties.put(EmfModel.PROPERTY_NAME, modelName);
 		properties.put(EmfModel.PROPERTY_READONLOAD, readOnLoad);
 		properties.put(EmfModel.PROPERTY_STOREONDISPOSAL, storeOnDisposal);
-		theModel.load(properties); //(properties, (IRelativePathResolver) null);
+//		theModel.load(properties); //
+		theModel.load(properties, (IRelativePathResolver) null);
 		return theModel;
 	}	
 	
 	
 	/**
-	 * Print problem occurred from parsing and EVL script
+	 * Print problems occurred from parsing an EVL script
 	 */
 	private void checkParsing(){
 		List<ParseProblem> problems = evlModule.getParseProblems();
@@ -166,7 +167,7 @@ public class RunEvl {
 		List<UnsatisfiedConstraint> unsatConstraints = evlModule.getContext().getUnsatisfiedConstraints();
 		
 		if (unsatConstraints.size()==0){
-			System.out.println("Model" + emfModel.getName() +" validated correctly.\n");
+			System.out.println("Model " + emfModel.getName() +" validated correctly.\n");
 		}
 		else {
 			System.out.println("Model " + emfModel.getName() +" contains validation errors.");

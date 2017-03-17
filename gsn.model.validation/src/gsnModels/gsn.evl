@@ -8,11 +8,93 @@ context GSN!ModelElement {
     message : "Element " + self + " must define a name"    
   }
   
-  // Every Model Element must define an ID
+  // Every Model Element must define a unique ID 
   constraint HasID {
     
-    check : self.gid <> ""
+    check : self.gid <> "" 
 
-    message : "Element " + self + " must define an ID"    
+    message : "Element " + self + " must define an ID"
   }
+  
+  // Every Model Element's ID must be unique 
+  constraint UniqueID {
+
+    check : not ModelElement.allInstances.exists (m | (m.gid = self.gid) and m <> self)
+
+    message : "Element " + self + " must have a unique ID"
+  }
+  
 } 
+
+
+context GSN!ArgumentationElement{
+	//Every argumentation element should have some text
+	//(e.g., Goal, Strategy, Solution, Context, Justification, Assumption, Module, Contract 
+	//-- including their away variants)
+	constraint HasContent{
+		//asserted relationships (i.e., supported by & in context of) don't need content (at least for now)
+		guard : not self.isKindOf(AssertedRelationship)
+		
+		check : self.content <> ""
+		
+    	message : "Element " + self + " must define its content"
+	}
+}
+
+
+context GSN!AssertedRelationship{
+
+	//An asserted relationship must have different sources and targets
+	constraint AssertedRelationshipEnds{
+		
+		check : self.source.forAll (s | not self.target.exists (t | s = t))
+	
+		message : "Relationship " + self + " cannot have the same node both as source and target"
+	}
+}
+
+
+context GSN!InContextOf{
+	//A context can have the following connections:
+	//Goal/Strategy  --> Context/Assumption/Justification
+	
+	constraint ContextSourceConnections{
+
+		guard : self.satisfies("AssertedRelationshipEnds")
+
+		check: self.source.forAll (s | s.isKindOf(Strategy) or s.isKindOf(Goal))
+				
+    	message : "Relationship " + self + " source must be goal or strategy"		
+	}
+
+	constraint ContextTargerConnections{
+		guard : self.satisfies("AssertedRelationshipEnds")
+
+		check: self.target.forAll (s | s.isKindOf(Context) or s.isKindOf(Justification) or s.isKindOf(Assumption))
+				
+    	message : "Relationship " + self + " target must be context, assumption or justification"		
+	}
+}
+
+
+context GSN!SupportedBy{
+
+	//A supportedBy can have the following connections:
+	//Goal --> Strategy, Goal --> Goal, Goal --> Solution, Strategy --> Goal	
+	constraint SupportedByConnections{
+	
+		guard : self.satisfies("AssertedRelationshipEnds")
+	
+		check : self.source.forAll (s | (s.isKindOf(Goal) and 
+									   self.target.forAll(t | t.isKindOf(Goal) or t.isKindOf(Strategy) or 
+									   						  t.isKindOf(Solution)))
+									   or 
+									   (s.isKindOf(Strategy) and
+									   self.target.forAll(t | t.isKindOf(Solution)))
+								  )
+								  
+		message :  "Element " + self + " has invalid connections"
+	}
+
+}
+

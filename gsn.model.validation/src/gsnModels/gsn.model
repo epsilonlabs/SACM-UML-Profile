@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="ASCII"?>
 <GSN_Argumentation:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GSN_Argumentation="http://www.goalstructuringnotation.info/1.0/argumentation" xmi:id="_tFpMIAlbEeeH6OUiT87h2Q" gid="m1" content="My Module">
-  <argumentAsset xsi:type="GSN_Argumentation:Goal" xmi:id="_uw07kAlbEeeH6OUiT87h2Q" gid="" name="" content="Unanticipated UA nose pitch down during descent and landing hazard is mitigated"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" xmi:id="_uw07kAlbEeeH6OUiT87h2Q" gid="G1" name="Goal" content="Unanticipated UA nose pitch down during descent and landing hazard is mitigated"/>
   <argumentAsset xsi:type="GSN_Argumentation:Context" xmi:id="_lSYpMAlxEeeoS4pFvn3z-g" gid="C1" content="Hazard analysis for the Swift UAS"/>
-  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" xmi:id="_wsc4wAlxEeeoS4pFvn3z-g" source="_uw07kAlbEeeH6OUiT87h2Q" target="_lSYpMAlxEeeoS4pFvn3z-g"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" xmi:id="_wsc4wAlxEeeoS4pFvn3z-g" gid="ICO1" name="ICO1" content="" source="_uw07kAlbEeeH6OUiT87h2Q" target="_lSYpMAlxEeeoS4pFvn3z-g"/>
   <argumentAsset xsi:type="GSN_Argumentation:Context" xmi:id="_tA0UgAlxEeeoS4pFvn3z-g" gid="C2" content="Descent phase operations using autopilot"/>
-  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" xmi:id="_5DMhQAlxEeeoS4pFvn3z-g" name="" source="_uw07kAlbEeeH6OUiT87h2Q" target="_tA0UgAlxEeeoS4pFvn3z-g"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" xmi:id="_5DMhQAlxEeeoS4pFvn3z-g" gid="ICO2" name="ICO2" content="" source="_uw07kAlbEeeH6OUiT87h2Q" target="_tA0UgAlxEeeoS4pFvn3z-g"/>
   <argumentAsset xsi:type="GSN_Argumentation:Assumption" xmi:id="_yR8acAlyEeeUBfXmBqWpIw" gid="A1" content="Automated landing is not attempted in crosswind conditions"/>
-  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" xmi:id="_1sfOsAlyEeeUBfXmBqWpIw" source="_uw07kAlbEeeH6OUiT87h2Q" target="_yR8acAlyEeeUBfXmBqWpIw"/>
-  <argumentAsset xsi:type="GSN_Argumentation:Strategy" xmi:id="_CF-ecAl0Eeev6bx5dkqcYg" gid="S1" content="Argument by satisfaction of safety requirements" undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" xmi:id="_1sfOsAlyEeeUBfXmBqWpIw" gid="ICO3" name="ICO3" content="" source="_CF-ecAl0Eeev6bx5dkqcYg" target="_yR8acAlyEeeUBfXmBqWpIw"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" xmi:id="_CF-ecAl0Eeev6bx5dkqcYg" gid="S1" name="Strategy" content="Argument by satisfaction of safety requirements" undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" xmi:id="__3uVIAqaEeeznoxvh-rxOQ" gid="SB1" name="SupportedBy" content="" source="_uw07kAlbEeeH6OUiT87h2Q" target="_CF-ecAl0Eeev6bx5dkqcYg"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" xmi:id="_BSOc4AqeEeeznoxvh-rxOQ" source="_uw07kAlbEeeH6OUiT87h2Q _lSYpMAlxEeeoS4pFvn3z-g" target="_uw07kAlbEeeH6OUiT87h2Q"/>
 </GSN_Argumentation:Module>
