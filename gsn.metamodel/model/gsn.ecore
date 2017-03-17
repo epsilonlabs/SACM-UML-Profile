@@ -311,9 +311,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ArtefactElementCitation" abstract="true"
         eSuperTypes="#//Argumentation/ArgumentAsset">
-      <eAnnotations source="Comment">
-        <details key="text" value="Enables the citation of an Artefact that relates to the structured argument"/>
-      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="externalReference" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Solution" eSuperTypes="#//Argumentation/ArtefactElementCitation">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="isPublic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
@@ -352,11 +350,13 @@
         <details key="constraints" value="isValidGoal"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-        <details key="isValidGoal" value="&#xA;&#x9;&#x9;&#x9;(self.gid &lt;> null and self.gid.size() > 0) &#xA;&#x9;&#x9;&#x9;and&#xA;&#x9;&#x9;&#x9;if self.toBeSupported &lt;> null&#xA;&#x9;&#x9;&#x9;then&#xA;&#x9;&#x9;&#x9;&#x9;if self.undeveloped &lt;> null&#xA;&#x9;&#x9;&#x9;&#x9;then self.toBeSupported xor self.undeveloped&#xA;&#x9;&#x9;&#x9;&#x9;else true&#xA;&#x9;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;&#x9;true&#xA;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;&#x9;"/>
+        <details key="isValidGoal" value="&#xA;&#x9;&#x9;&#x9;(self.gid &lt;> null and self.gid.size() > 0) &#xA;&#x9;&#x9;&#x9;and&#xA;&#x9;&#x9;&#x9;if self.toBeSupportedByContract &lt;> null&#xA;&#x9;&#x9;&#x9;then&#xA;&#x9;&#x9;&#x9;&#x9;if self.undeveloped &lt;> null&#xA;&#x9;&#x9;&#x9;&#x9;then self.toBeSupportedByContract xor self.undeveloped&#xA;&#x9;&#x9;&#x9;&#x9;else true&#xA;&#x9;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;&#x9;true&#xA;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;&#x9;"/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="public" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="undeveloped" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="toBeSupported" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="toBeSupportedByContract"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="abstractGoal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Justification" eSuperTypes="#//Argumentation/Claim">
       <eAnnotations source="gmf.node">
