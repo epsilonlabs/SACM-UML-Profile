@@ -427,14 +427,20 @@ operation populateWithReferences(newClass,s,c) {
 		// Creation of the reference at the Profile 
 		var theRefProperty = new Profile!Property;
 		theRefProperty.name = feat.eType.name + "End";
+		var fixedUpperBound = feat.upperBound;
 		if (feat.containment) {
 			theRefProperty.aggregation = UMLM2!AggregationKind#composite;
+			fixedUpperBound = 1;
 		} 
+		theRefProperty.lower = feat.lowerBound;
+		theRefProperty.upper = feat.upperBound;
 		s.ownedAttribute.add(theRefProperty);
 		var theAssociation = new Profile!Association;
 		profile.packagedElement.add(theAssociation);
 		var theAssociationProperty = new Profile!Property;
 		theAssociationProperty.name = c.name + "End";
+		theAssociationProperty.lower = feat.lowerBound;
+		theAssociationProperty.upper = fixedUpperBound;
 		theAssociation.ownedEnd.add(theAssociationProperty);
 		var theAssociationEAnnotation = new Profile!EAnnotation;
 		theAssociationEAnnotation.source = "org.eclipse.papyrus";
@@ -452,10 +458,10 @@ operation populateWithReferences(newClass,s,c) {
 		//var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
 		//var ecoreUtil = emfTool.ecoreUtil;
 		//ref = ecoreUtil.copy(feat);
-		ref.eType = feat.eType;
+		ref.eType = Profile!EClass.all.selectOne(ec|ec.name = feat.eType.name);
 		ref.lowerBound = feat.lowerBound;
 		ref.upperBound = feat.upperBound;
-		ref.name = feat.name;
+		ref.name = feat.eType.name + "End";
 		newClass.eStructuralFeatures.add(ref);
 	}
 }
