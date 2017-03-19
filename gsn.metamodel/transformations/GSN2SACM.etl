@@ -37,7 +37,6 @@ rule Goal2Claim
 	}
 }
 
-
 rule Solution2ArtefactElementCitation
 	transform s: GSN!Solution
 	to aec: SACM!ArtefactElementCitation {
@@ -53,10 +52,30 @@ rule Solution2ArtefactElementCitation
 	}
 }
 
-rule Strategy2ArgumentReasoning 
+rule Strategy2ArgumentReasoningConnectingGoal 
 	transform s: GSN!Strategy
-	to ar: SACM!ArgumentReasoning {
+	to ai: SACM!AssertedInference, ae: SACM!AssertedEvidence, ar: SACM!ArgumentReasoning {
+	
+	var upperLevel = getSupportedByForStrategyAsTarget(s);
+	var lowerLevel = getSupportedByForStrategyAsSource(s);
 
+	ar.gid = s.gid;
+	ar.content = s.content;
+	
+	var supportedByConnectingSolutions: Collection = lowerLevel.select(sb|sb.target.exist(t|t.isTypeOf(GSN!Solution)));
+	if(supportedByConnectingSolutions.isEmpty())
+	{
+		delete ae;
+	}
+	else
+	{
+		ae.source.addAll(supportedByConnectingSolutions.target.flatten().asSet());
+		ae.target.addAll(upperLevel.source.flatten().asSet());
+		ae.reasoning = ar;
+	}
+	ai.source.addAll(lowerLevel.target.flatten().asSet());
+	ai.target.addAll(upperLevel.source.flatten().asSet());
+	ai.reasoning = ar;
 }
 
 rule Context2ArgumentElementCitation
@@ -105,10 +124,45 @@ rule Assumption2Claim
 	c.content = j.content;
 }
 
-rule SupportedBy2AssertedInference 
+rule SupportedBy2AssertedEvidence
+	transform sb: GSN!SupportedBy
+	to ae: SACM!AssertedEvidence {
+	guard : sb.source.forAll(s|s.isTypeOf(GSN!Goal)) and sb.target.forAll(t|t.isTypeOf(GSN!Solution))
+	ae.source.addAll(sb.target.equivalent());
+	ae.target.addAll(sb.source.equivalent());
+}
+
+rule SupportedBy2AssertedInference
 	transform sb: GSN!SupportedBy
 	to ai: SACM!AssertedInference {
-	guard: true
+	guard : sb.source.forAll(s|s.isTypeOf(Goal)) and sb.target.forAll(t|t.isTypeOf(Goal))
+	ai.source.addAll(sb.target.equivalent());
+	ai.target.addAll(sb.source.equivalent());	
+}
+
+rule InContextOf2AssertedContext
+	transform ico: GSN!InContextOf
+	to ac: SACM!AssertedContext {
+	ac.source.addAll(ico.target);
+	ac.target.addAll(ico.source);
+}
+
+operation getSupportedByForStrategyAsSource(strategy: GSN!Strategy)
+{
+	var allSupportedBy = getAllSupportedBy();
+	return allSupportedBy.select(sb|sb.source = strategy);
+}
+
+operation getSupportedByForStrategyAsTarget(strategy: GSN!Strategy)
+{
+	var allSupportedBy = getAllSupportedBy();
+	return allSupportedBy.select(sb|sb.target = strategy);
+}
+
+@cached
+operation getAllSupportedBy()
+{
+	return GSN!SupportedBy.allInstances();
 }
 
 operation TaggedValue createTaggedValueWithSimpleKey(key: String)
