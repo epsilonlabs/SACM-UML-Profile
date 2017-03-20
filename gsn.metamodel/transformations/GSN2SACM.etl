@@ -69,11 +69,12 @@ rule Solution2ArtefactElementCitation
 	}
 	else
 	{
+		//to be discussed
 		aec.isAbstract = false;
 	}
 }
 
-rule Strategy2ArgumentReasoningConnectingGoal 
+rule Strategy2ArgumentReasoning 
 	transform s: GSN!Strategy
 	to ai: SACM!AssertedInference, ae: SACM!AssertedEvidence, ar: SACM!ArgumentReasoning {
 	
@@ -99,7 +100,7 @@ rule Strategy2ArgumentReasoningConnectingGoal
 	ai.reasoning = ar;
 }
 
-rule Context2ArgumentElementCitation
+rule Context2ArtefactElementCitation
 	transform c: GSN!Context
 	to aec: SACM!ArtefactElementCitation {
 	guard: c.refersToExternalMaterial = true
@@ -126,6 +127,7 @@ rule Context2Claim
 	var taggedValue = new SACM!TaggedValue;
 	taggedValue.sKey = "isBasic";
 	claim.taggedValue.add(taggedValue);
+	//discuss
 }
 
 rule Justification2Claim
@@ -135,6 +137,7 @@ rule Justification2Claim
 	c.assumed = false;
 	c.gid = j.gid;
 	c.content = j.content;
+	//justification should be a basic claim?
 }
 
 rule Assumption2Claim

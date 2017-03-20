@@ -330,12 +330,15 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AwayGoal" eSuperTypes="#//Argumentation/ArgumentAssetCitation">
       <eStructuralFeatures xsi:type="ecore:EReference" name="awayGoal" eType="#//Argumentation/Goal"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="moduleIdentifier" eType="#//Argumentation/Module"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AwaySolution" eSuperTypes="#//Argumentation/ArgumentAssetCitation">
       <eStructuralFeatures xsi:type="ecore:EReference" name="awaySolution" eType="#//Argumentation/Solution"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="moduleIdentifier" eType="#//Argumentation/Module"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AwayContext" eSuperTypes="#//Argumentation/ArgumentAssetCitation">
       <eStructuralFeatures xsi:type="ecore:EReference" name="awayContext" eType="#//Argumentation/Context"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="moduleIdentifier" eType="#//Argumentation/Module"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Claim" abstract="true" eSuperTypes="#//Argumentation/Assertion">
       <eAnnotations source="Comment">
