@@ -1,0 +1,225 @@
+"Begin Generation...".println();
+var m = new GSN!Module;
+
+var g1 = new GSN!Goal;
+g1.gid = "g1";
+g1.content = "Control System is acceptably safe to operate";
+m.argumentAsset.add(g1);
+
+var c1 = new GSN!Context;
+c1.gid = "c1";
+c1.content = "Operating Role and Context";
+m.argumentAsset.add(c1);
+
+var ico1 = new GSN!InContextOf;
+ico1.source.add(g1);
+ico1.target.add(c1);
+m.argumentAsset.add(ico1);
+
+var c2 = new GSN!Context;
+c2.gid = "c2";
+c2.content = "Control System Definition";
+m.argumentAsset.add(c2);
+
+var ico2 = new GSN!InContextOf;
+ico2.source.add(g1);
+ico2.target.add(c2);
+m.argumentAsset.add(ico2);
+
+var g2 = new GSN!Goal;
+g2.gid = "g2";
+g2.content = "All identified hazards have been eliminated or sufficiently mitigated";
+m.argumentAsset.add(g2);
+
+var sb1 = new GSN!SupportedBy;
+sb1.source.add(g1);
+sb1.target.add(g2);
+m.argumentAsset.add(sb1);
+
+var g3 = new GSN!Goal;
+g3.gid = "g3";
+g3.content = "Software in the Control System has been developed to SIL appropriate to hazards involved";
+m.argumentAsset.add(g3);
+
+var sb2 = new GSN!SupportedBy;
+sb2.source.add(g1);
+sb2.target.add(g3);
+m.argumentAsset.add(sb2);
+
+var c3 = new GSN!Context;
+c3.gid = "c3";
+c3.content = "Tolerability targets (Ref Z)";
+c3.refersToExternalMaterial = true;
+m.argumentAsset.add(c3);
+
+var ico3 = new GSN!InContextOf;
+ico3.source.add(g2);
+ico3.target.add(c3);
+m.argumentAsset.add(ico3);
+
+var c4 = new GSN!Context;
+c4.gid = "c4";
+c4.content = "Hazards identified from FHA (Ref Y)";
+c4.refersToExternalMaterial = true;
+m.argumentAsset.add(c4);
+
+var ico4 = new GSN!InContextOf;
+ico4.source.add(g2);
+ico4.target.add(c4);
+m.argumentAsset.add(ico4);
+
+var c5 = new GSN!Context;
+c5.gid = "c5";
+c5.content = "SIL Guidelines and Processes";
+m.argumentAsset.add(c5);
+
+var ico5 = new GSN!InContextOf;
+ico5.source.add(g3);
+ico5.target.add(c5);
+m.argumentAsset.add(ico5);
+
+var s1 = new GSN!Strategy;
+s1.gid = "s1";
+s1.content = "Argument over each identified hazard";
+m.argumentAsset.add(s1);
+
+var sb3 = new GSN!SupportedBy;
+sb3.source.add(g2);
+sb3.target.add(s1);
+m.argumentAsset.add(sb3);
+
+var a1 = new GSN!Assumption;
+a1.gid = "a1";
+a1.content = "All hazards have been identified";
+m.argumentAsset.add(a1);
+
+var ico6 = new GSN!InContextOf;
+ico6.source.add(s1);
+ico6.target.add(a1);
+m.argumentAsset.add(ico6);
+
+var s2 = new GSN!Strategy;
+s2.gid = "s2";
+s2.content = "Argument over allocated SIL for Primary and Secondary elements";
+m.argumentAsset.add(s2);
+
+var sb4 = new GSN!SupportedBy;
+sb4.source.add(g3);
+sb4.target.add(s2);
+m.argumentAsset.add(sb4);
+
+var j1 = new GSN!Justification;
+j1.gid = "j1";
+j1.content = "SIL approtionment is correct and complete";
+m.argumentAsset.add(j1);
+
+var ico7 = new GSN!InContextOf;
+ico7.source.add(s2);
+ico7.target.add(j1);
+m.argumentAsset.add(ico7);
+
+var c6 = new GSN!Context;
+c6.gid = "c6";
+c6.content = "Identified software hazards";
+m.argumentAsset.add(c6);
+
+var ico8 = new GSN!InContextOf;
+ico8.source.add(s2);
+ico8.target.add(c6);
+m.argumentAsset.add(ico8);
+
+var g4 = new GSN!Goal;
+g4.gid = "g4";
+g4.content = "Hazard H1 has been eliminated";
+m.argumentAsset.add(g4);
+
+var sb5 = new GSN!SupportedBy;
+sb5.source.add(s1);
+sb5.target.add(g4);
+m.argumentAsset.add(sb5);
+
+var sn1 = new GSN!Solution;
+sn1.gid = "sn1";
+sn1.content = "Formal Verification";
+m.argumentAsset.add(sn1);
+
+var sb6 = new GSN!SupportedBy;
+sb6.source.add(g4);
+sb6.target.add(sn1);
+m.argumentAsset.add(sb6);
+
+var g5 = new GSN!Goal;
+g5.gid = "g5";
+g5.content = "Probability of Hazard H2 ocurring < 1x10-6 per year";
+m.argumentAsset.add(g5);
+
+var sb7 = new GSN!SupportedBy;
+sb7.source.add(s1);
+sb7.target.add(g5);
+m.argumentAsset.add(sb7);
+
+var sn2 = new GSN!Solution;
+sn2.gid = "sn2";
+sn2.content = "Fault Tree Analysis";
+m.argumentAsset.add(sn2);
+
+var sb8 = new GSN!SupportedBy;
+sb8.source.add(g5);
+sb8.target.add(sn2);
+m.argumentAsset.add(sb8);
+
+var g6 = new GSN!Goal;
+g6.gid = "g6";
+g5.content = "Probability of Hazard H3 ocurring < 1x10-3 per year";
+m.argumentAsset.add(g6);
+
+var sb9 = new GSN!SupportedBy;
+sb9.source.add(s1);
+sb9.target.add(g6);
+m.argumentAsset.add(sb9);
+
+var sb10 = new GSN!SupportedBy;
+sb10.source.add(g6);
+sb10.target.add(sn2);
+m.argumentAsset.add(sb10);
+
+var g7 = new GSN!Goal;
+g7.gid = "g7";
+g7.content = "Primary Portection System Developed to SIL 4";
+m.argumentAsset.add(g7);
+
+var sb11 = new GSN!SupportedBy;
+sb11.source.add(s2);
+sb11.target.add(g7);
+m.argumentAsset.add(sb11);
+
+var sn3 = new GSN!Solution;
+sn3.gid = "sn3";
+sn3.content = "Process Evidence for SIL 4";
+m.argumentAsset.add(sn3);
+
+var sb12 = new GSN!SupportedBy;
+sb12.source.add(g7);
+sb12.target.add(sn3);
+m.argumentAsset.add(sb12);
+
+var g8 = new GSN!Goal;
+g8.gid = "g8";
+g8.content = "Secondary Protection System Developement to SIL 2";
+m.argumentAsset.add(g8);
+
+var sb13 = new GSN!SupportedBy;
+sb12.source.add(s2);
+sb12.target.add(g8);
+m.argumentAsset.add(sb13);
+
+var sn4 = new GSN!Solution;
+sn4.gid = "sn4";
+sn4.content = "Process Evidence for SIl 2";
+m.argumentAsset.add(sn4);
+
+var sb14 = new GSN!SupportedBy;
+sb14.source.add(g8);
+sb14.target.add(sn4);
+m.argumentAsset.add(sb14);
+"Generation Finished.".println();

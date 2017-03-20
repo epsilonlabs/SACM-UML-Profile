@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ASCII"?>
+<GSN_Argumentation:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GSN_Argumentation="http://www.goalstructuringnotation.info/1.0/argumentation">
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" gid="g1" content="Control System is acceptably safe to operate"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" gid="c1" content="Operating Role and Context"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.0" target="//@argumentAsset.1"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" gid="c2" content="Control System Definition"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.0" target="//@argumentAsset.3"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" gid="g2" content="All identified hazards have been eliminated or sufficiently mitigated"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.0" target="//@argumentAsset.5"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" gid="g3" content="Software in the Control System has been developed to SIL appropriate to hazards involved"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.0" target="//@argumentAsset.7"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" gid="c3" content="Tolerability targets (Ref Z)" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.5" target="//@argumentAsset.9"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" gid="c4" content="Hazards identified from FHA (Ref Y)" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.5" target="//@argumentAsset.11"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" gid="c5" content="SIL Guidelines and Processes"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.7" target="//@argumentAsset.13"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" gid="s1" content="Argument over each identified hazard"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.5" target="//@argumentAsset.15"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Assumption" gid="a1" content="All hazards have been identified"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.15" target="//@argumentAsset.17"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" gid="s2" content="Argument over allocated SIL for Primary and Secondary elements"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.7" target="//@argumentAsset.19"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Justification" gid="j1" content="SIL approtionment is correct and complete"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.19" target="//@argumentAsset.21"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" gid="c6" content="Identified software hazards"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.19" target="//@argumentAsset.23"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" gid="g4" content="Hazard H1 has been eliminated"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.15" target="//@argumentAsset.25"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Solution" gid="sn1" content="Formal Verification"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.25" target="//@argumentAsset.27"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" gid="g5" content="Probability of Hazard H3 ocurring &lt; 1x10-3 per year"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.15" target="//@argumentAsset.29"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Solution" gid="sn2" content="Fault Tree Analysis"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.29" target="//@argumentAsset.31"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" gid="g6"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.15" target="//@argumentAsset.33"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.33" target="//@argumentAsset.31"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" gid="g7" content="Primary Portection System Developed to SIL 4"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.19" target="//@argumentAsset.36"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Solution" gid="sn3" content="Process Evidence for SIL 4"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.36 //@argumentAsset.19" target="//@argumentAsset.38 //@argumentAsset.40"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" gid="g8" content="Secondary Protection System Developement to SIL 2"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Solution" gid="sn4" content="Process Evidence for SIl 2"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.40" target="//@argumentAsset.42"/>
+</GSN_Argumentation:Module>
