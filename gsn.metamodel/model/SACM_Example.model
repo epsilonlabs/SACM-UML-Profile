@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ASCII"?>
+<SACM_Argumentation:ArgumentPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SACM_Argumentation="http://www.omg.org/spec/SACM/2.0/Argumentation" gid="m1">
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" gid="g1" content="Control System is acceptably safe to operate"/>
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" gid="c1" isAbstract="false" content="Operating Role and Context" assumed="false">
+    <taggedValue sKey="isBasic"/>
+  </argumentAsset>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedContext" source="//@argumentAsset.1" target="//@argumentAsset.0"/>
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" gid="c2" isAbstract="false" content="Control System Definition" assumed="false">
+    <taggedValue sKey="isBasic"/>
+  </argumentAsset>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedContext" source="//@argumentAsset.3" target="//@argumentAsset.0"/>
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" gid="g2" content="All identified hazards have been eliminated or sufficiently mitigated"/>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedInference" source="//@argumentAsset.5" target="//@argumentAsset.0"/>
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" gid="g3" content="Software in the Control System has been developed to SIL appropriate to hazards involved"/>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedInference" source="//@argumentAsset.7" target="//@argumentAsset.0"/>
+  <argumentAsset xsi:type="SACM_Argumentation:ArtefactElementCitation" gid="c3" isAbstract="false" content="Tolerability targets (Ref Z)"/>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedContext" source="//@argumentAsset.9" target="//@argumentAsset.5"/>
+  <argumentAsset xsi:type="SACM_Argumentation:ArtefactElementCitation" gid="c4" isAbstract="false" content="Hazards identified from FHA (Ref Y)"/>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedContext" source="//@argumentAsset.11" target="//@argumentAsset.5"/>
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" gid="c5" isAbstract="false" content="SIL Guidelines and Processes" assumed="false">
+    <taggedValue sKey="isBasic"/>
+  </argumentAsset>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedContext" source="//@argumentAsset.13" target="//@argumentAsset.7"/>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedInference" source="//@argumentAsset.28 //@argumentAsset.31 //@argumentAsset.25" target="//@argumentAsset.5" reasoning="//@argumentAsset.16"/>
+  <argumentAsset xsi:type="SACM_Argumentation:ArgumentReasoning" gid="s1" content="Argument over each identified hazard"/>
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" gid="a1" isAbstract="false" content="All hazards have been identified" assumed="true"/>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedContext" source="//@argumentAsset.17" target="//@argumentAsset.15 //@argumentAsset.16"/>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedInference" source="//@argumentAsset.36 //@argumentAsset.33" target="//@argumentAsset.7" reasoning="//@argumentAsset.20"/>
+  <argumentAsset xsi:type="SACM_Argumentation:ArgumentReasoning" gid="s2" content="Argument over allocated SIL for Primary and Secondary elements"/>
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" gid="j1" isAbstract="false" content="SIL approtionment is correct and complete" assumed="false"/>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedContext" source="//@argumentAsset.21" target="//@argumentAsset.19 //@argumentAsset.20"/>
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" gid="c6" isAbstract="false" content="Identified software hazards" assumed="false">
+    <taggedValue sKey="isBasic"/>
+  </argumentAsset>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedContext" source="//@argumentAsset.23" target="//@argumentAsset.19 //@argumentAsset.20"/>
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" gid="g4" content="Hazard H1 has been eliminated"/>
+  <argumentAsset xsi:type="SACM_Argumentation:ArtefactElementCitation" gid="sn1" isAbstract="false" content="Formal Verification"/>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedEvidence" source="//@argumentAsset.26" target="//@argumentAsset.25"/>
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" gid="g5" content="Probability of Hazard H3 ocurring &lt; 1x10-3 per year"/>
+  <argumentAsset xsi:type="SACM_Argumentation:ArtefactElementCitation" gid="sn2" isAbstract="false" content="Fault Tree Analysis"/>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedEvidence" source="//@argumentAsset.29" target="//@argumentAsset.28"/>
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" gid="g6"/>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedEvidence" source="//@argumentAsset.29" target="//@argumentAsset.31"/>
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" gid="g7" content="Primary Portection System Developed to SIL 4"/>
+  <argumentAsset xsi:type="SACM_Argumentation:ArtefactElementCitation" gid="sn3" isAbstract="false" content="Process Evidence for SIL 4"/>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedEvidence" source="//@argumentAsset.34" target="//@argumentAsset.33"/>
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" gid="g8" content="Secondary Protection System Developement to SIL 2"/>
+  <argumentAsset xsi:type="SACM_Argumentation:ArtefactElementCitation" gid="sn4" isAbstract="false" content="Process Evidence for SIl 2"/>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedEvidence" source="//@argumentAsset.37" target="//@argumentAsset.36"/>
+</SACM_Argumentation:ArgumentPackage>

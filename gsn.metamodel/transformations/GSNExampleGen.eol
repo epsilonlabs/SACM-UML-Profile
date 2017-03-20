@@ -1,5 +1,6 @@
 "Begin Generation...".println();
 var m = new GSN!Module;
+m.gid = "m1";
 
 var g1 = new GSN!Goal;
 g1.gid = "g1";
@@ -209,8 +210,8 @@ g8.content = "Secondary Protection System Developement to SIL 2";
 m.argumentAsset.add(g8);
 
 var sb13 = new GSN!SupportedBy;
-sb12.source.add(s2);
-sb12.target.add(g8);
+sb13.source.add(s2);
+sb13.target.add(g8);
 m.argumentAsset.add(sb13);
 
 var sn4 = new GSN!Solution;

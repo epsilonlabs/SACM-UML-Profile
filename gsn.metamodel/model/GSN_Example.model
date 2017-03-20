@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<GSN_Argumentation:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GSN_Argumentation="http://www.goalstructuringnotation.info/1.0/argumentation">
+<GSN_Argumentation:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GSN_Argumentation="http://www.goalstructuringnotation.info/1.0/argumentation" gid="m1">
   <argumentAsset xsi:type="GSN_Argumentation:Goal" gid="g1" content="Control System is acceptably safe to operate"/>
   <argumentAsset xsi:type="GSN_Argumentation:Context" gid="c1" content="Operating Role and Context"/>
   <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.0" target="//@argumentAsset.1"/>
@@ -39,9 +39,9 @@
   <argumentAsset xsi:type="GSN_Argumentation:Goal" gid="g7" content="Primary Portection System Developed to SIL 4"/>
   <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.19" target="//@argumentAsset.36"/>
   <argumentAsset xsi:type="GSN_Argumentation:Solution" gid="sn3" content="Process Evidence for SIL 4"/>
-  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.36 //@argumentAsset.19" target="//@argumentAsset.38 //@argumentAsset.40"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.36" target="//@argumentAsset.38"/>
   <argumentAsset xsi:type="GSN_Argumentation:Goal" gid="g8" content="Secondary Protection System Developement to SIL 2"/>
-  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.19" target="//@argumentAsset.40"/>
   <argumentAsset xsi:type="GSN_Argumentation:Solution" gid="sn4" content="Process Evidence for SIl 2"/>
   <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.40" target="//@argumentAsset.42"/>
 </GSN_Argumentation:Module>
