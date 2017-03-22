@@ -359,7 +359,6 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="undeveloped" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="toBeSupportedByContract"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="abstractGoal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Justification" eSuperTypes="#//Argumentation/Claim">
       <eAnnotations source="gmf.node">

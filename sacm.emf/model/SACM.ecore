@@ -252,6 +252,7 @@
           <details key="text" value="An external reference"/>
         </eAnnotations>
       </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="origin" eType="#//Commons/ModelElement"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TerminologyAssetCitation" eSuperTypes="#//Terminology/ExpressionElement">
       <eStructuralFeatures xsi:type="ecore:EReference" name="citedElement" lowerBound="1"

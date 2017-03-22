@@ -161,6 +161,8 @@ package Terminology {
 
     @Comment(text="An external reference")
     attr String externalReference;
+    
+    ref Commons.ModelElement origin;
   }
 
   class TerminologyAssetCitation extends ExpressionElement {
@@ -281,9 +283,9 @@ package Argumentation {
   }
 
   @Comment(text="Used to provide additional description or explanation of the asserted inference or challange that connects one or more Claims")
-  @Ecore(constraints="isValidStrategy")
-  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidStrategy="
-			(AssertedInference.allInstances()->exists(r|r.reasoning = self)->size() = 1 and 
+  @Ecore(constraints="isValidReasoning")
+  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidReasoning="
+			(AssertedInference.allInstances()->select(as|as.reasoning = self)->size() = 1 and 
 			self.name = 'Strategy' and self.isAbstract = false) or 
 			(self.name = 'Strategy' and self.isAbstract = true and self.taggedValue->exists(t|t.sKey = 'undeveloped')) or
 			(self.name = 'Strategy' and self.isAbstract = true and self.taggedValue->exists(t|t.sKey = 'uninstantiated'))")

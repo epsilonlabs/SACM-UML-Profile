@@ -21,11 +21,11 @@
     <taggedValue sKey="isBasic"/>
   </argumentAsset>
   <argumentAsset xsi:type="SACM_Argumentation:AssertedContext" source="//@argumentAsset.13" target="//@argumentAsset.7"/>
-  <argumentAsset xsi:type="SACM_Argumentation:AssertedInference" source="//@argumentAsset.28 //@argumentAsset.31 //@argumentAsset.25" target="//@argumentAsset.5" reasoning="//@argumentAsset.16"/>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedInference" source="//@argumentAsset.28 //@argumentAsset.25 //@argumentAsset.31" target="//@argumentAsset.5" reasoning="//@argumentAsset.16"/>
   <argumentAsset xsi:type="SACM_Argumentation:ArgumentReasoning" gid="s1" content="Argument over each identified hazard"/>
   <argumentAsset xsi:type="SACM_Argumentation:Claim" gid="a1" isAbstract="false" content="All hazards have been identified" assumed="true"/>
   <argumentAsset xsi:type="SACM_Argumentation:AssertedContext" source="//@argumentAsset.17" target="//@argumentAsset.15 //@argumentAsset.16"/>
-  <argumentAsset xsi:type="SACM_Argumentation:AssertedInference" source="//@argumentAsset.36 //@argumentAsset.33" target="//@argumentAsset.7" reasoning="//@argumentAsset.20"/>
+  <argumentAsset xsi:type="SACM_Argumentation:AssertedInference" source="//@argumentAsset.33 //@argumentAsset.36" target="//@argumentAsset.7" reasoning="//@argumentAsset.20"/>
   <argumentAsset xsi:type="SACM_Argumentation:ArgumentReasoning" gid="s2" content="Argument over allocated SIL for Primary and Secondary elements"/>
   <argumentAsset xsi:type="SACM_Argumentation:Claim" gid="j1" isAbstract="false" content="SIL approtionment is correct and complete" assumed="false"/>
   <argumentAsset xsi:type="SACM_Argumentation:AssertedContext" source="//@argumentAsset.21" target="//@argumentAsset.19 //@argumentAsset.20"/>

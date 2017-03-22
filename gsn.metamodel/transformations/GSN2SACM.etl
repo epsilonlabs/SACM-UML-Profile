@@ -15,6 +15,10 @@ post {
 rule Module2ArgumentPackage
 	transform m:GSN!Module
 	to ap: SACM!ArgumentPackage {
+	if(m.uninstantiated = true)
+	{
+		ap.taggedValue.add(createTaggedValueWithSimpleKey("uninstantiated"));
+	}
 	ap.gid = m.gid;
 	ap.argumentAsset = m.argumentAsset.equivalent();
 }
@@ -65,12 +69,7 @@ rule Solution2ArtefactElementCitation
 	aec.content = s.content;
 	if(s.uninstantiated = true)
 	{
-		aec.isAbstract = true;
-	}
-	else
-	{
-		//to be discussed
-		aec.isAbstract = false;
+		aec.taggedValue.add(createTaggedValueWithSimpleKey("uninstantiated"));
 	}
 }
 
@@ -81,6 +80,10 @@ rule Strategy2ArgumentReasoning
 	var upperLevel = getSupportedByForStrategyAsTarget(s);
 	var lowerLevel = getSupportedByForStrategyAsSource(s);
 
+	if(s.uninstantiated = true)
+	{
+		ar.taggedValue.add(createTaggedValueWithSimpleKey("uninstantiated"));
+	}
 	ar.gid = s.gid;
 	ar.content = s.content;
 	
@@ -108,11 +111,7 @@ rule Context2ArtefactElementCitation
 	aec.content = c.content;
 	if(c.uninstantiated = true)
 	{
-		aec.isAbstract = true;
-	}
-	else 
-	{
-		aec.isAbstract = false;
+		aec.taggedValue.add(createTaggedValueWithSimpleKey("uninstantiated"));
 	}
 }
 
@@ -120,6 +119,10 @@ rule Context2Claim
 	transform context: GSN!Context
 	to claim: SACM!Claim {
 	guard: context.refersToExternalMaterial = false or context.refersToExternalMaterial.isUndefined()
+	if(c.uninstantiated = true)
+	{
+		claim.taggedValue.add(createTaggedValueWithSimpleKey("uninstantiated"));
+	}
 	claim.isAbstract = false;
 	claim.assumed = false;
 	claim.gid = context.gid;
@@ -133,6 +136,10 @@ rule Context2Claim
 rule Justification2Claim
 	transform j: GSN!Justification
 	to c: SACM!Claim {
+	if(j.uninstantiated = true)
+	{
+		c.taggedValue.add(createTaggedValueWithSimpleKey("uninstantiated"));
+	}
 	c.isAbstract = false;
 	c.assumed = false;
 	c.gid = j.gid;
@@ -141,18 +148,26 @@ rule Justification2Claim
 }
 
 rule Assumption2Claim
-	transform j: GSN!Assumption
+	transform a: GSN!Assumption
 	to c: SACM!Claim {
+	if(a.uninstantiated = true)
+	{
+		c.taggedValue.add(createTaggedValueWithSimpleKey("uninstantiated"));
+	}
 	c.isAbstract = false;
 	c.assumed = true;
-	c.gid = j.gid;
-	c.content = j.content;
+	c.gid = a.gid;
+	c.content = a.content;
 }
 
 rule SupportedBy2AssertedEvidence
 	transform sb: GSN!SupportedBy
 	to ae: SACM!AssertedEvidence {
 	guard : sb.source.forAll(s|s.isTypeOf(GSN!Goal)) and sb.target.forAll(t|t.isTypeOf(GSN!Solution))
+	if(sb.uninstantiated = true)
+	{
+		ae.taggedValue.add(createTaggedValueWithSimpleKey("uninstantiated"));
+	}
 	ae.source.addAll(sb.target.equivalent());
 	ae.target.addAll(sb.source.equivalent());
 }
@@ -161,6 +176,10 @@ rule SupportedBy2AssertedInference
 	transform sb: GSN!SupportedBy
 	to ai: SACM!AssertedInference {
 	guard : sb.source.forAll(s|s.isTypeOf(Goal)) and sb.target.forAll(t|t.isTypeOf(Goal))
+	if(sb.uninstantiated = true)
+	{
+		ai.taggedValue.add(createTaggedValueWithSimpleKey("uninstantiated"));
+	}
 	ai.source.addAll(sb.target.equivalent());
 	ai.target.addAll(sb.source.equivalent());	
 }
@@ -168,6 +187,10 @@ rule SupportedBy2AssertedInference
 rule InContextOf2AssertedContext
 	transform ico: GSN!InContextOf
 	to ac: SACM!AssertedContext {
+	if(ico.uninstantiated = true)
+	{
+		ac.taggedValue.add(createTaggedValueWithSimpleKey("uninstantiated"));
+	}
 	ac.source.addAll(ico.target.equivalent());
 	ac.target.addAll(ico.source.equivalent());
 }
