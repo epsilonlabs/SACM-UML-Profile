@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:RootElement="http:///schemas/RootElement/_FflTYP2TEeaasLE8G2v7rw/18" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/RootElement/_FflTYP2TEeaasLE8G2v7rw/18 ../flowchart/model.profile.uml#_FflTYf2TEeaasLE8G2v7rw">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:RootElement="http:///schemas/RootElement/_gCQOQA8BEeeLmMCWw2dT5g/32" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/RootElement/_gCQOQA8BEeeLmMCWw2dT5g/32 ../flowchart/model.profile.uml#_gCQOQQ8BEeeLmMCWw2dT5g">
   <uml:Model xmi:id="_KdGooPqmEeazhOWlNq91Jg" name="RootElement">
     <packagedElement xmi:type="uml:Class" xmi:id="_K890cPqmEeazhOWlNq91Jg" name="Class1" visibility="public">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_J5Lw4v2TEeaasLE8G2v7rw" name="nodes" type="_LMAWAPqmEeazhOWlNq91Jg" aggregation="composite" association="_J5LJ0P2TEeaasLE8G2v7rw">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_J5Lw4v2TEeaasLE8G2v7rw" name="nodes" type="_LMAWAPqmEeazhOWlNq91Jg" association="_J5LJ0P2TEeaasLE8G2v7rw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Xx6IcP6JEeaasLE8G2v7rw"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XyFHkP6JEeaasLE8G2v7rw" value="*"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_LMAWAPqmEeazhOWlNq91Jg" name="Class2"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_J5LJ0P2TEeaasLE8G2v7rw" memberEnd="_J5Lw4v2TEeaasLE8G2v7rw _J5Lw4_2TEeaasLE8G2v7rw">
+    <packagedElement xmi:type="uml:Association" xmi:id="_J5LJ0P2TEeaasLE8G2v7rw" name="wtf" memberEnd="_J5Lw4v2TEeaasLE8G2v7rw _J5Lw4_2TEeaasLE8G2v7rw">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_J5Lw4P2TEeaasLE8G2v7rw" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_J5Lw4f2TEeaasLE8G2v7rw" key="nature" value="UML_Nature"/>
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_J5Lw4_2TEeaasLE8G2v7rw" name="class1" type="_K890cPqmEeazhOWlNq91Jg" association="_J5LJ0P2TEeaasLE8G2v7rw"/>
     </packagedElement>
-    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_eXMaYP6JEeaasLE8G2v7rw">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_eXNogP6JEeaasLE8G2v7rw" source="PapyrusVersion">
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_eXNogf6JEeaasLE8G2v7rw" key="Version" value="0.0.19"/>
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_eXNogv6JEeaasLE8G2v7rw" key="Comment" value=""/>
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_eXNog_6JEeaasLE8G2v7rw" key="Copyright" value=""/>
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_eXNohP6JEeaasLE8G2v7rw" key="Date" value="2017-02-28"/>
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_eXNohf6JEeaasLE8G2v7rw" key="Author" value=""/>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_vOlrAA8AEeeLmMCWw2dT5g">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GmmL4A8EEeeXZrLa2WIhPA" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GmmL4Q8EEeeXZrLa2WIhPA" key="Version" value="0.0.33"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GmmL4g8EEeeXZrLa2WIhPA" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GmmL4w8EEeeXZrLa2WIhPA" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GmmL5A8EEeeXZrLa2WIhPA" key="Date" value="2017-03-22"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GmmL5Q8EEeeXZrLa2WIhPA" key="Author" value=""/>
       </eAnnotations>
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_eXNBcP6JEeaasLE8G2v7rw" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="../flowchart/model.profile.uml#_FflTYf2TEeaasLE8G2v7rw"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vOngMA8AEeeLmMCWw2dT5g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="../flowchart/model.profile.uml#_gCQOQQ8BEeeLmMCWw2dT5g"/>
       </eAnnotations>
       <appliedProfile xmi:type="uml:Profile" href="../flowchart/model.profile.uml#__6gj8PKfEeavesbv6PLofw"/>
     </profileApplication>
   </uml:Model>
-  <RootElement:Node xmi:id="_fDQ2MP6JEeaasLE8G2v7rw" base_Class="_LMAWAPqmEeazhOWlNq91Jg"/>
-  <RootElement:Flowchart xmi:id="_fkfT8P6JEeaasLE8G2v7rw" base_Class="_K890cPqmEeazhOWlNq91Jg"/>
-  <RootElement:nodes xmi:id="_gHmBAP6JEeaasLE8G2v7rw" base_Association="_J5LJ0P2TEeaasLE8G2v7rw"/>
+  <RootElement:AnotherNode xmi:id="_wGLaUA8AEeeLmMCWw2dT5g" base_Class="_LMAWAPqmEeazhOWlNq91Jg"/>
+  <RootElement:Flowchart xmi:id="_wznIEA8AEeeLmMCWw2dT5g" base_Class="_K890cPqmEeazhOWlNq91Jg"/>
+  <RootElement:nodes xmi:id="_xkX2oA8AEeeLmMCWw2dT5g" base_Association="_J5LJ0P2TEeaasLE8G2v7rw"/>
 </xmi:XMI>

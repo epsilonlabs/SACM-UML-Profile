@@ -1,6 +1,6 @@
+@gmf
 @"http://www.eclipse.org/OCL/Import"(ecore="http://www.eclipse.org/emf/2002/Ecore")
 @namespace(uri="http://www.goalstructuringnotation.info/1.0", prefix="gsn")
-@gmf
 package GSN;
 
 @namespace(uri="http://www.goalstructuringnotation.info/1.0/commons", prefix="GSN_Commons")
@@ -18,6 +18,7 @@ package Commons {
     @Comment(text="The name of the element")
     attr String name;
     attr Boolean uninstantiated;
+    val Terminology.PlaceHolder[*] roles;
   }
 
   @Comment(text="UtilityElement supports the specification of additional information for a ModelElement")
@@ -149,6 +150,10 @@ package Terminology {
     @Comment(text="An external reference")
     attr String externalReference;
   }
+  
+  class PlaceHolder extends Term {
+  	
+  }
 
   abstract class TerminologyAssetCitation extends ExpressionElement {
     ref TerminologyAsset[1] citedElement;
@@ -159,7 +164,6 @@ package Terminology {
 @Ecore(invocationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", settingDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", validationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot")
 @namespace(uri="http://www.goalstructuringnotation.info/1.0/argumentation", prefix="GSN_Argumentation")
 package Argumentation {
-
   abstract class ArgumentationElement extends Commons.ModelElement {
 
     @Comment(text="Content")
@@ -168,18 +172,11 @@ package Argumentation {
 
   @Comment(text="Container for a structured argument represented using SACM")
   abstract class ArgumentPackage extends ArgumentationElement {
-
-    //xt="An optional set of citations")
-    //val ArgumentPackageCitation[*] argumentPackageCitation;
   }
 
   @gmf.diagram
-  @Ecore(constraints="isValidModule")
-  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidModule="
-			(self.gid <> null and self.gid.size() > 0) and
-			(self.content <> null and self.content.size() > 0)
-			")
   class Module extends ArgumentPackage {
+
     @gmf.compartment
     val ArgumentAsset[*] argumentAsset;
   }
@@ -211,8 +208,8 @@ package Argumentation {
   abstract class Assertion extends ArgumentAsset {
   }
 
-  @Comment(text="Enables the citation of an Artefact that relates to the structured argument")
   abstract class ArtefactElementCitation extends ArgumentAsset {
+    attr String externalReference;
   }
 
   class Solution extends ArtefactElementCitation {
@@ -228,32 +225,32 @@ package Argumentation {
 
   class AwayGoal extends ArgumentAssetCitation {
     ref Goal awayGoal;
+    ref Module moduleIdentifier;
   }
 
   class AwaySolution extends ArgumentAssetCitation {
     ref Solution awaySolution;
+    ref Module moduleIdentifier;
   }
 
   class AwayContext extends ArgumentAssetCitation {
     ref Context awayContext;
+    ref Module moduleIdentifier;
   }
 
   @Comment(text="Used to record the propositions of any structured argument")
   abstract class Claim extends Assertion {
-
-    //@Comment(text="Flag to indicate if the claim is to be further supported")
-    //attr Boolean toBeSupported;
   }
 
-  @gmf.node(label = "gid")
+  @gmf.node(label="gid")
   @Ecore(constraints="isValidGoal")
   @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidGoal="
 			(self.gid <> null and self.gid.size() > 0) 
 			and
-			if self.toBeSupported <> null
+			if self.toBeSupportedByContract <> null
 			then
 				if self.undeveloped <> null
-				then self.toBeSupported xor self.undeveloped
+				then self.toBeSupportedByContract xor self.undeveloped
 				else true
 				endif
 			else
@@ -263,14 +260,14 @@ package Argumentation {
   class Goal extends Claim {
     attr Boolean public;
     attr Boolean undeveloped;
-    attr Boolean toBeSupported;
+    attr Boolean toBeSupportedByContract;
   }
 
-  @gmf.node(label = "gid")
+  @gmf.node(label="gid")
   class Justification extends Claim {
   }
 
-  @gmf.node(label = "gid")
+  @gmf.node(label="gid")
   class Assumption extends Claim {
   }
 
@@ -278,12 +275,12 @@ package Argumentation {
   abstract class ArgumentReasoning extends ArgumentAsset {
   }
 
-  @gmf.node(label = "gid")
+  @gmf.node(label="gid")
   class Strategy extends ArgumentReasoning {
     attr Boolean undeveloped;
   }
 
-  @gmf.node(label = "gid")
+  @gmf.node(label="gid")
   class Context extends ArgumentAsset {
     attr Boolean isPublic;
     attr Boolean refersToExternalMaterial;
@@ -297,12 +294,18 @@ package Argumentation {
 
     @Comment(text="Target of the relationship")
     ref ArgumentAsset[*] target;
+    attr Integer requires = "-1";
+    attr Boolean many = "false";
+    attr String manyCondition;
+    attr Boolean optional = "false";
+    attr String selectionCondition;
   }
 
   @Comment(text="Records the inference that a user declares to exist between on or more Assertion and another Assertion")
   abstract class AssertedInference extends AssertedRelationship {
   }
 
+  @gmf.link(source="source", target="target", width="2")
   @Ecore(constraints="isValidSupportedBy")
   @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidSupportedBy="
 			self.source->forAll(s|(s.oclIsTypeOf(Goal)) or (s.oclIsTypeOf(Strategy))) and
@@ -317,10 +320,7 @@ package Argumentation {
 			and
 			self.source->size() = 1
 			")
-			
-  @gmf.link(source="source", target="target", width="2")
   class SupportedBy extends AssertedRelationship {
-    attr Integer requires = "-1";
   }
 
   @Comment(text="Records the declaration that one or more artefacts of Evidence provide information that helps establish the truth of a Claim")
@@ -339,6 +339,7 @@ package Argumentation {
   abstract class AssertedContext extends AssertedRelationship {
   }
 
+  @gmf.link(source="source", target="target", width="2")
   @Ecore(constraints="isValidInContextOf")
   @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidInContextOf="
 			self.source->forAll(s|s.oclIsTypeOf(Goal) or s.oclIsTypeOf(Strategy)) and
@@ -353,8 +354,6 @@ package Argumentation {
 			self.source->size() <= 1 
 			and
 			self.target->size() <= 1")
-			
-  @gmf.link(source="source", target="target", width="2")
   class InContextOf extends AssertedContext {
   }
 
