@@ -60,7 +60,7 @@ public class RunEvl {
 			String metaModelURI = "http://www.goalstructuringnotation.info/1.0";
 //			String metaModelURI = "http://www.myOOModel.org";
 			
-			String model		= "src/gsnModels/gsn.model";
+			String model		= "src/gsnModels/GSN_Example.model";
 //			String model		= "/Users/sgerasimou/Documents/Programming/workspaceEpsilonNeon/gsn.model.validation/src/ooExample/myUntitled.model";
 //			String model		= "src/ooExample/OOInstance.model";
 			

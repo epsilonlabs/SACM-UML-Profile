@@ -2,6 +2,8 @@ context GSN!ModelElement {
   
   // Every Model Element must define a name
   constraint HasName {
+	//asserted relationships (i.e., supported by & in context of) don't need a name (at least for now)
+	guard : not self.isKindOf(AssertedRelationship)
     
     check : self.name <> ""
 
@@ -11,6 +13,9 @@ context GSN!ModelElement {
   // Every Model Element must define a unique ID 
   constraint HasID {
     
+	//asserted relationships (i.e., supported by & in context of) don't need id (at least for now)
+	guard : not self.isKindOf(AssertedRelationship)
+    
     check : self.gid <> "" 
 
     message : "Element " + self + " must define an ID"
@@ -18,6 +23,8 @@ context GSN!ModelElement {
   
   // Every Model Element's ID must be unique 
   constraint UniqueID {
+
+    guard : self.satisfies("HasID")
 
     check : not ModelElement.allInstances.exists (m | (m.gid = self.gid) and m <> self)
 
@@ -40,6 +47,45 @@ context GSN!ArgumentationElement{
     	message : "Element " + self + " must define its content"
 	}
 }
+
+
+context GSN!Goal{
+	//Every undeveloped Goal should not be linked to any Goal/Strategy/Solution etc elements 
+	//(i.e., no supported by)
+	constraint UndevelopedNoSupportedBy{
+		//it must have its undeveloped flag set to true
+		guard : self.undeveloped = true
+		
+		check : self.checkUndeveloped(self) 
+
+    	message : "Element " + self + " is undeveloped and should not be linked to other GSN elements using SupportedBy"
+	}
+}
+
+
+context GSN!Strategy{
+	//Every undeveloped Strategy should not be linked to any Goal/Strategy/Solution etc elements 
+	//(i.e., no supported by)
+	constraint UndevelopedNoSupportedBy{
+		//it must have its undeveloped flag set to true
+		guard : self.undeveloped = true
+		
+		check : self.checkUndeveloped(self) 
+
+    	message : "Element " + self + " is undeveloped and should not be linked to other GSN elements using SupportedBy"
+	}
+}
+
+
+context GSN!Solution{
+	//Solutions are the leaves of an assurance case --> no supported by are allowed
+	constraint NoSupportedBy{
+		check : self.checkUndeveloped(self) 
+
+    	message : self + " is a leaf in an assurance case and should not be linked to other GSN elements using SupportedBy"	
+	}
+}
+
 
 
 context GSN!AssertedRelationship{
@@ -87,10 +133,10 @@ context GSN!SupportedBy{
 	
 		check : self.source.forAll (s | (s.isKindOf(Goal) and 
 									   self.target.forAll(t | t.isKindOf(Goal) or t.isKindOf(Strategy) or 
-									   						  t.isKindOf(Solution)))
+									   					  t.isKindOf(Solution)))
 									   or 
 									   (s.isKindOf(Strategy) and
-									   self.target.forAll(t | t.isKindOf(Solution)))
+									   self.target.forAll(t | t.isKindOf(Goal)))
 								  )
 								  
 		message :  "Element " + self + " has invalid connections"
@@ -98,3 +144,30 @@ context GSN!SupportedBy{
 
 }
 
+
+////////////////////////////////////
+//Operations
+////////////////////////////////////
+operation ArgumentationElement checkUndeveloped(ae : GSN!ArgumentationElement) : Boolean
+{
+	return not SupportedBy.allInstances.exists (sb | sb.source.includes(ae));
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+//Q1: Define vars inside a constraint? (@cached)
+//
+//Q2: Is it more efficient to write a constraint for the superclass and use
+//    a guard to restrict its applicability or to write different constraints? 
+//
+//Q3: Is this a valid SupportedBy relationship: Goal G1 --> Goal G2, Strategy S1? 
+//
+//Q4: Some model element attributes would be generated dynammically (e.g., gid).
+//	  Do we need to check these? 
+///////////////////////////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////////////////////////////////////////////
+//TODO1: Undeveloped elements should have '{...}'
+//
+//TODO2: 
