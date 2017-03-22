@@ -426,7 +426,7 @@ operation populateWithReferences(newClass,s,c) {
 	for (feat in c.eReferences) {
 		// Creation of the reference at the Profile 
 		var theRefProperty = new Profile!Property;
-		theRefProperty.name = feat.eType.name + "End";
+		theRefProperty.name = feat.name; //feat.eType.name + "End";
 		var fixedUpperBound = feat.upperBound;
 		if (feat.containment) {
 			theRefProperty.aggregation = UMLM2!AggregationKind#composite;
@@ -461,7 +461,7 @@ operation populateWithReferences(newClass,s,c) {
 		ref.eType = Profile!EClass.all.selectOne(ec|ec.name = feat.eType.name);
 		ref.lowerBound = feat.lowerBound;
 		ref.upperBound = feat.upperBound;
-		ref.name = feat.eType.name + "End";
+		ref.name = feat.name; //feat.eType.name + "End";
 		newClass.eStructuralFeatures.add(ref);
 	}
 }
