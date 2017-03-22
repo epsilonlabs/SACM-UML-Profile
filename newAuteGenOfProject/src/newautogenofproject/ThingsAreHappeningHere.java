@@ -148,7 +148,7 @@ public class ThingsAreHappeningHere {
 		doTheUsersETLTransformation(allTheModels, "diagramsConfigurationGenerationM2M.etl", theSelectedFileParentIProject);
 	}
 
-	public void createTheCSSFile(String theSelectedFilePath, String theDestinationIProjectFolder) throws Exception {
+	public void createTheCSSFile(String theSelectedFilePath, String theDestinationIProjectFolder, IProject theSelectedFileParentIProject) throws Exception {
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
 
 		EglFileGeneratingTemplateFactory factory = new EglFileGeneratingTemplateFactory();
@@ -157,7 +157,6 @@ public class ThingsAreHappeningHere {
 		eglModule.getContext().getModelRepository().addModel(sourceModel);
 
 		java.net.URI EglFile = Activator.getDefault().getBundle().getResource("files/cssFileGeneration.egl").toURI();
-		// eglModule.parse(EglFile);
 
 		EglFileGeneratingTemplate template = (EglFileGeneratingTemplate) factory.load(EglFile);
 		template.process();
@@ -165,6 +164,30 @@ public class ThingsAreHappeningHere {
 				+ "diagram.css");
 		target.createNewFile();
 		template.generate(target.toURI().toString());
+		
+		//User's CSS generation. 
+		File dir = new File(theSelectedFileParentIProject.getLocation().toOSString() + File.separator + "transformations");
+		FilenameFilter filter = new FilenameFilter() {
+	         public boolean accept (File dir, String name) { 
+	        	 return name.equals("cssFileGeneration.egl");
+	         } 
+	    }; 
+	    String[] children = dir.list(filter);
+	    if (children == null) {
+	    	System.out.println("Either dir does not exist or is not a directory"); 
+	    } else if (children.length > 0) {
+	    	sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
+			factory = new EglFileGeneratingTemplateFactory();
+			eglModule = new EglTemplateFactoryModuleAdapter(factory);
+			eglModule.getContext().getModelRepository().addModel(sourceModel);
+			EglFile = new File(theSelectedFileParentIProject.getLocation().toOSString() + File.separator + "transformations" + File.separator + children[0]).toURI();
+			template = (EglFileGeneratingTemplate) factory.load(EglFile);
+			template.process();
+			target = new File(theDestinationIProjectFolder + File.separator + "resources" + File.separator + name
+					+ "diagram.css");		
+			// Append to file, not generate a new one.
+			template.append(target.toURI().toString());
+	    }
 	}
 
 	public void createTheTypesConfigurations(String theSelectedFilePath, String theDestinationIProjectFolder, IProject theSelectedFileParentIProject) throws Exception {

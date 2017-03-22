@@ -84,7 +84,7 @@ public class CreatePapyrusProjectAction implements IObjectActionDelegate {
 						tahh.createTheElementTypeConfigurations(theSelectedFilePath, theDestinationProjectFolder, theSelectedFileParentIProject);
 						subMonitor.split(10);
 						subMonitor.setTaskName("Generating the CSS.");
-						tahh.createTheCSSFile(theSelectedFilePath, theDestinationProjectFolder);
+						tahh.createTheCSSFile(theSelectedFilePath, theDestinationProjectFolder, theSelectedFileParentIProject);
 						subMonitor.split(10);
 						subMonitor.setTaskName("Generating the Types Configuration.");
 						tahh.createTheTypesConfigurations(theSelectedFilePath, theDestinationProjectFolder, theSelectedFileParentIProject);
