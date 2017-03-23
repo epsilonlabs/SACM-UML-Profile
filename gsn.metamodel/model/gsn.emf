@@ -19,6 +19,8 @@ package Commons {
     attr String name;
     attr Boolean uninstantiated;
     val Terminology.PlaceHolder[*] roles;
+    @Comment(text="Allows constraints to be added to the element")
+    val ImplementationConstraint[*] inplementationConstraint;
   }
 
   @Comment(text="UtilityElement supports the specification of additional information for a ModelElement")

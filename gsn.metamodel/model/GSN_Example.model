@@ -2,7 +2,7 @@
 <GSN_Argumentation:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GSN_Argumentation="http://www.goalstructuringnotation.info/1.0/argumentation" gid="m1">
   <argumentAsset xsi:type="GSN_Argumentation:Goal" gid="g1" content="Control System is acceptably safe to operate"/>
   <argumentAsset xsi:type="GSN_Argumentation:Context" gid="c1" content="Operating Role and Context"/>
-  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.0" target="//@argumentAsset.1"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.0" target="//@argumentAsset.1" selectionCondition=""/>
   <argumentAsset xsi:type="GSN_Argumentation:Context" gid="c2" content="Control System Definition"/>
   <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.0" target="//@argumentAsset.3"/>
   <argumentAsset xsi:type="GSN_Argumentation:Goal" gid="g2" content="All identified hazards have been eliminated or sufficiently mitigated"/>
