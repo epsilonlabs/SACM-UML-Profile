@@ -245,20 +245,6 @@ package Argumentation {
   abstract class AssertedInference extends AssertedRelationship {
   }
 
-  @Ecore(constraints="isValidSupportedBy")
-  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidSupportedBy="
-			self.source->forAll(s|(s.oclIsTypeOf(Goal)) or (s.oclIsTypeOf(Strategy))) and
-			self.target->forAll(t|(t.oclIsTypeOf(Goal)) or
-				(t.oclIsTypeOf(Strategy)) or
-				(t.oclIsTypeOf(Solution)) or
-				(t.oclIsTypeOf(AwayGoal)) or
-				(t.oclIsTypeOf(AwaySolution)) or
-				(t.oclIsTypeOf(Module)) or
-				(t.oclIsTypeOf(Contract))
-			)
-			and
-			self.source->size() = 1
-			")
   class SupportedBy extends AssertedRelationship {
   }
 
@@ -274,20 +260,6 @@ package Argumentation {
   abstract class AssertedContext extends AssertedRelationship {
   }
 
-  @Ecore(constraints="isValidInContextOf")
-  @"http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"(isValidInContextOf="
-			self.source->forAll(s|s.oclIsTypeOf(Goal) or s.oclIsTypeOf(Strategy)) and
-			self.target->forAll(t|(t.oclIsTypeOf(Context)) or 
-				(t.oclIsTypeOf(Assumption)) or 
-				(t.oclIsTypeOf(Justification)) or
-				(t.oclIsTypeOf(AwayGoal)) or
-				(t.oclIsTypeOf(AwayContext)) or
-				(t.oclIsTypeOf(Module))
-			)
-			and
-			self.source->size() <= 1 
-			and
-			self.target->size() <= 1")
   class InContextOf extends AssertedContext {
   }
 
