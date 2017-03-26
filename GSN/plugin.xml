@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<plugin>
+  <extension point="org.eclipse.papyrus.uml.extensionpoints.UMLProfile">
+    <profile description="GSN Profile" name="GSN Profile" path="pathmap://resources/GSN/model.profile.uml" provider="Epsilon"/>
+  </extension>
+  <extension point="org.eclipse.emf.ecore.uri_mapping">
+    <mapping source="pathmap://resources/GSN/" target="platform:/plugin/GSN/"/>
+  </extension>
+  <extension point="org.eclipse.papyrus.infra.viewpoints.policy.custom">
+    <contribution file="resources/GSNdiagrams.configuration" original="platform:/plugin/org.eclipse.papyrus.infra.viewpoints.policy/builtin/default.configuration"/>
+  </extension>
+  <extension point="org.eclipse.papyrus.infra.types.core.elementTypeSetConfiguration">
+    <elementTypeSet clientContextID="org.eclipse.papyrus.infra.services.edit.TypeContext" path="resources/diagramshapes.elementtypesconfigurations"/>
+  </extension>
+  <extension point="org.eclipse.papyrus.infra.types.core.elementTypeSetConfiguration">
+    <elementTypeSet clientContextID="org.eclipse.papyrus.infra.services.edit.TypeContext" path="resources/modelelement.typesconfigurations"/>
+  </extension>
+</plugin>

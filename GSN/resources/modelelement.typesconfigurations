@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ASCII"?>
+<elementtypesconfigurations:ElementTypeSetConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:applystereotypeadvice="http://www.eclipse.org/papyrus/uml/types/applystereotypeadvice/1.1" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.1" xmlns:stereotypematcher="http://www.eclipse.org/papyrus/uml/types/stereotypematcher/1.1" identifier="GSN.types" metamodelNsURI="http://www.eclipse.org/uml2/5.0.0/UML">
+  <elementTypeConfigurations xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" identifier="GSN.Solution" name="Solution" hint="UML::Class">
+    <iconEntry iconPath="/icons/full/obj16/Class.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <specializedTypesID>org.eclipse.papyrus.uml.Class</specializedTypesID>
+    <matcherConfiguration xsi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration">
+      <stereotypesQualifiedNames>GSN::Solution</stereotypesQualifiedNames>
+    </matcherConfiguration>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" identifier="GSN.Goal" name="Goal" hint="UML::Class">
+    <iconEntry iconPath="/icons/full/obj16/Class.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <specializedTypesID>org.eclipse.papyrus.uml.Class</specializedTypesID>
+    <matcherConfiguration xsi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration">
+      <stereotypesQualifiedNames>GSN::Goal</stereotypesQualifiedNames>
+    </matcherConfiguration>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" identifier="GSN.Justification" name="Justification" hint="UML::Class">
+    <iconEntry iconPath="/icons/full/obj16/Class.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <specializedTypesID>org.eclipse.papyrus.uml.Class</specializedTypesID>
+    <matcherConfiguration xsi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration">
+      <stereotypesQualifiedNames>GSN::Justification</stereotypesQualifiedNames>
+    </matcherConfiguration>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" identifier="GSN.Assumption" name="Assumption" hint="UML::Class">
+    <iconEntry iconPath="/icons/full/obj16/Class.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <specializedTypesID>org.eclipse.papyrus.uml.Class</specializedTypesID>
+    <matcherConfiguration xsi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration">
+      <stereotypesQualifiedNames>GSN::Assumption</stereotypesQualifiedNames>
+    </matcherConfiguration>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" identifier="GSN.Strategy" name="Strategy" hint="UML::Class">
+    <iconEntry iconPath="/icons/full/obj16/Class.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <specializedTypesID>org.eclipse.papyrus.uml.Class</specializedTypesID>
+    <matcherConfiguration xsi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration">
+      <stereotypesQualifiedNames>GSN::Strategy</stereotypesQualifiedNames>
+    </matcherConfiguration>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" identifier="GSN.Context" name="Context" hint="UML::Class">
+    <iconEntry iconPath="/icons/full/obj16/Class.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <specializedTypesID>org.eclipse.papyrus.uml.Class</specializedTypesID>
+    <matcherConfiguration xsi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration">
+      <stereotypesQualifiedNames>GSN::Context</stereotypesQualifiedNames>
+    </matcherConfiguration>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xsi:type="elementtypesconfigurations:SpecializationTypeConfiguration" identifier="GSN.SupportedBy" name="SupportedBy" hint="UML::Association">
+    <iconEntry iconPath="/icons/full/obj16/Association.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <specializedTypesID>org.eclipse.papyrus.uml.Association</specializedTypesID>
+    <matcherConfiguration xsi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration">
+      <stereotypesQualifiedNames>GSN::SupportedBy</stereotypesQualifiedNames>
+    </matcherConfiguration>
+  </elementTypeConfigurations>
+  <adviceBindingsConfigurations xsi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" identifier="GSN.solution" target="//@elementTypeConfigurations.0">
+    <stereotypesToApply stereotypeQualifiedName="GSN::Solution" updateName="true">
+      <requiredProfiles>GSN</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xsi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" identifier="GSN.goal" target="//@elementTypeConfigurations.1">
+    <stereotypesToApply stereotypeQualifiedName="GSN::Goal" updateName="true">
+      <requiredProfiles>GSN</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xsi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" identifier="GSN.justification" target="//@elementTypeConfigurations.2">
+    <stereotypesToApply stereotypeQualifiedName="GSN::Justification" updateName="true">
+      <requiredProfiles>GSN</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xsi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" identifier="GSN.assumption" target="//@elementTypeConfigurations.3">
+    <stereotypesToApply stereotypeQualifiedName="GSN::Assumption" updateName="true">
+      <requiredProfiles>GSN</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xsi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" identifier="GSN.strategy" target="//@elementTypeConfigurations.4">
+    <stereotypesToApply stereotypeQualifiedName="GSN::Strategy" updateName="true">
+      <requiredProfiles>GSN</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xsi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" identifier="GSN.context" target="//@elementTypeConfigurations.5">
+    <stereotypesToApply stereotypeQualifiedName="GSN::Context" updateName="true">
+      <requiredProfiles>GSN</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xsi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" identifier="GSN.supportedby" target="//@elementTypeConfigurations.6">
+    <stereotypesToApply stereotypeQualifiedName="GSN::SupportedBy" updateName="true">
+      <requiredProfiles>GSN</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+</elementtypesconfigurations:ElementTypeSetConfiguration>

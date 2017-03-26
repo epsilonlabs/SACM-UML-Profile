@@ -1,0 +1,99 @@
+[appliedStereotypes~=Solution], 
+[appliedStereotypes~=Goal], 
+[appliedStereotypes~=Justification], 
+[appliedStereotypes~=Assumption], 
+[appliedStereotypes~=Strategy], 
+[appliedStereotypes~=Context] { 
+	displayName:true;
+	elementIcon:false;
+	isNameWrap: true;
+	bold:true;
+	transparency:100;
+	followSVGSymbol:true;
+	displayIcon:false;
+}
+
+/* Hide compartment for all elements - just show the name and related icon. */
+Compartment {
+    visible:false;
+}
+
+/* Show symbol compartment so that text is "pushed" to upper boundary of element. */
+Compartment[kind="symbol"]  {
+    visible:true;
+}
+
+/* Default settings for "Symbol" shapes. */
+*.Symbol {
+	transparency:100;
+	followSVGSymbol:true;
+	displayIcon:false;
+}
+
+/* Turn on "floating label" for "Symbol" shapes. */
+*.Symbol > Label {
+	visible:true;
+}
+
+/* Turn off "stereotype label" for "Symbol" shapes. */
+*.Symbol > Label[type=StereotypeLabel] {
+	visible:false;
+}
+
+[appliedStereotypes~=Solution] {
+	svgFile: 'platform:/plugin/GSN/shapes/solution.svg';
+	/*
+	floatingLabelOffsetWidth:+23;
+    floatingLabelOffsetHeight:+80;
+	displayName:false;
+	*/
+}
+[appliedStereotypes~=Goal] {
+	svgFile: 'platform:/plugin/GSN/shapes/goal.svg';
+	/*
+	floatingLabelOffsetWidth:+23;
+    floatingLabelOffsetHeight:+80;
+	displayName:false;
+	*/
+}
+[appliedStereotypes~=Justification] {
+	svgFile: 'platform:/plugin/GSN/shapes/justification.svg';
+	/*
+	floatingLabelOffsetWidth:+23;
+    floatingLabelOffsetHeight:+80;
+	displayName:false;
+	*/
+}
+[appliedStereotypes~=Assumption] {
+	svgFile: 'platform:/plugin/GSN/shapes/assumption.svg';
+	/*
+	floatingLabelOffsetWidth:+23;
+    floatingLabelOffsetHeight:+80;
+	displayName:false;
+	*/
+}
+[appliedStereotypes~=Strategy] {
+	svgFile: 'platform:/plugin/GSN/shapes/strategy.svg';
+	/*
+	floatingLabelOffsetWidth:+23;
+    floatingLabelOffsetHeight:+80;
+	displayName:false;
+	*/
+}
+[appliedStereotypes~=Context] {
+	svgFile: 'platform:/plugin/GSN/shapes/context.svg';
+	/*
+	floatingLabelOffsetWidth:+23;
+    floatingLabelOffsetHeight:+80;
+	displayName:false;
+	*/
+}
+[appliedStereotypes~=SupportedBy] { 
+	routing:Rectilinear;
+	roundedBendpointsRadius:10;
+	
+}
+	[appliedStereotypes~=SupportedBy] {
+			followSVGSymbol:true;
+			svgFile: 'platform:/plugin/GSN/shapes/arrow.svg';
+	} 

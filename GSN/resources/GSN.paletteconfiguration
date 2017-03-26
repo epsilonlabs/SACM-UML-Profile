@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ASCII"?>
+<paletteconfiguration:PaletteConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:paletteconfiguration="http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.7" id="GSN.GSN" label="GSN Palette">
+  <drawerConfigurations id="GSN.nodes" label="GSN nodes" description="GSN nodes">
+    <ownedConfigurations xsi:type="paletteconfiguration:ToolConfiguration" id="Solution_node" label="Solution" description="Solution node">
+      <icon pluginID="GSN" iconPath="icons/solution.png"/>
+      <elementDescriptors elementTypeId="GSN.Solution_Shape"/>
+    </ownedConfigurations>
+    <ownedConfigurations xsi:type="paletteconfiguration:ToolConfiguration" id="Goal_node" label="Goal" description="Goal node">
+      <icon pluginID="GSN" iconPath="icons/goal.png"/>
+      <elementDescriptors elementTypeId="GSN.Goal_Shape"/>
+    </ownedConfigurations>
+    <ownedConfigurations xsi:type="paletteconfiguration:ToolConfiguration" id="Justification_node" label="Justification" description="Justification node">
+      <icon pluginID="GSN" iconPath="icons/justification.png"/>
+      <elementDescriptors elementTypeId="GSN.Justification_Shape"/>
+    </ownedConfigurations>
+    <ownedConfigurations xsi:type="paletteconfiguration:ToolConfiguration" id="Assumption_node" label="Assumption" description="Assumption node">
+      <icon pluginID="GSN" iconPath="icons/assumption.png"/>
+      <elementDescriptors elementTypeId="GSN.Assumption_Shape"/>
+    </ownedConfigurations>
+    <ownedConfigurations xsi:type="paletteconfiguration:ToolConfiguration" id="Strategy_node" label="Strategy" description="Strategy node">
+      <icon pluginID="GSN" iconPath="icons/strategy.png"/>
+      <elementDescriptors elementTypeId="GSN.Strategy_Shape"/>
+    </ownedConfigurations>
+    <ownedConfigurations xsi:type="paletteconfiguration:ToolConfiguration" id="Context_node" label="Context" description="Context node">
+      <icon pluginID="GSN" iconPath="icons/context.png"/>
+      <elementDescriptors elementTypeId="GSN.Context_Shape"/>
+    </ownedConfigurations>
+  </drawerConfigurations>
+  <drawerConfigurations id="GSN.edges" label="GSN edges" description="GSN edges">
+    <ownedConfigurations xsi:type="paletteconfiguration:ToolConfiguration" id="SupportedBy_edge" label="SupportedBy" description="SupportedBy edge" kind="ConnectionTool">
+      <elementDescriptors elementTypeId="GSN.SupportedBy_Edge"/>
+    </ownedConfigurations>
+  </drawerConfigurations>
+  <requiredProfiles>GSN</requiredProfiles>
+</paletteconfiguration:PaletteConfiguration>

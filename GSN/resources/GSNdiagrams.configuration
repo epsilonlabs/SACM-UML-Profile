@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ASCII"?>
+<configuration:PapyrusConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configuration="http://www.eclipse.org/papyrus/infra/viewpoints/configuration" xmi:id="_rS0MYAr3Eee8Vplex--qDg">
+  <viewpoints xsi:type="configuration:PapyrusViewpoint" xmi:id="_rS0MYQr3Eee8Vplex--qDg" name="Default Papyrus Viewpoint">
+    <modelKinds xsi:type="configuration:PapyrusDiagram" xmi:id="_rS0zcAr3Eee8Vplex--qDg" name="Papyrus GSN Diagram" icon="platform:/plugin/GSN/icons/g.png" implementationID="PapyrusUMLClassDiagram" categories="_rS6TAgr3Eee8Vplex--qDg" customPalette="platform:/plugin/GSN/resources/GSN.paletteconfiguration" customStyle="platform:/plugin/GSN/resources/GSNdiagram.css">
+      <modelRules xmi:id="_rS1agAr3Eee8Vplex--qDg">
+        <element href="http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+      </modelRules>
+      <owningRules xmi:id="_rS4d0Ar3Eee8Vplex--qDg">
+        <element href="http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+      </owningRules>
+      <childRules xmi:id="_rS6TAAr3Eee8Vplex--qDg"/>
+      <paletteRules xmi:id="_rS6TAQr3Eee8Vplex--qDg" permit="false" element="clazz.group.*"/>
+    </modelKinds>
+  </viewpoints>
+  <categories xmi:id="_rS6TAgr3Eee8Vplex--qDg" name="GSN"/>
+</configuration:PapyrusConfiguration>
