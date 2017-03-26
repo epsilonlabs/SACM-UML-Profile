@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GSN_Argumentation="http://www.goalstructuringnotation.info/1.0/argumentation" xsi:schemaLocation="http://www.goalstructuringnotation.info/1.0/argumentation gsn.ecore#//Argumentation">
+  <GSN_Argumentation:Goal name="This is goal 1."/>
+  <GSN_Argumentation:Goal name="This is Goal 2."/>
+</xmi:XMI>

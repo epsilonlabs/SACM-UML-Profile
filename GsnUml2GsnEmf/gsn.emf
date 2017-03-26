@@ -1,0 +1,362 @@
+@gmf
+@"http://www.eclipse.org/OCL/Import"(ecore="http://www.eclipse.org/emf/2002/Ecore")
+@namespace(uri="http://www.goalstructuringnotation.info/1.0", prefix="gsn")
+package GSN;
+
+@namespace(uri="http://www.goalstructuringnotation.info/1.0/commons", prefix="GSN_Commons")
+package Commons {
+  abstract class SACMElement {
+  }
+
+  abstract class ModelElement extends SACMElement {
+
+    attr String gid;
+    attr String name;
+    attr Boolean isAbstract;
+    
+    val Description description;
+    val ImplementationConstraint[*] inplementationConstraint;
+    val Note[*] note;
+    val TaggedValue[*] taggedValue;
+    
+    attr Boolean uninstantiated;
+  }
+
+  abstract class UtilityElement extends SACMElement {
+
+    attr String sExpression;
+
+    val Terminology.Expression[1] expression;
+  }
+
+  abstract class ImplementationConstraint extends UtilityElement {
+  }
+
+  abstract class Description extends UtilityElement {
+  }
+
+  abstract class Note extends UtilityElement {
+  }
+
+  abstract class TaggedValue extends UtilityElement {
+
+    attr String sKey;
+
+    val Terminology.Expression key;
+  }
+
+}
+
+@namespace(uri="http://www.goalstructuringnotation.info/1.0/packages", prefix="GSN_Packages")
+package Packages {
+  abstract class AssuranceCasePackage extends Artefact.ArtefactElement {
+
+    val AssuranceCasePackageCitation[*] assuranceCasePackageCitation;
+
+    val AssuranceCasePackage[*] assuranceCasePackage;
+
+    ref AssuranceCasePackageInterface[*] ~interface;
+
+    val Argumentation.ArgumentPackage[*] argumentPackage;
+
+    val Artefact.ArtefactPackage[*] artefactPackage;
+
+    val Terminology.TerminologyPackage[*] terminologyPackage;
+  }
+
+  abstract class AssuranceCasePackageInterface extends AssuranceCasePackage {
+  }
+
+  abstract class AssuranceCasePackageCitation extends AssuranceCasePackage {
+    ref AssuranceCasePackage[1] citedPackage;
+  }
+
+}
+
+@namespace(uri="http://www.goalstructuringnotation.info/1.0/terminology", prefix="GSN_Terminology")
+package Terminology {
+  abstract class TerminologyElement extends Commons.ModelElement {
+  }
+
+  abstract class TerminologyPackage extends TerminologyElement {
+
+    val TerminologyAsset[*] terminologyAsset;
+
+    val TerminologyPackage[*] terminologyPackage;
+
+    val TerminologyPackageCitation[*] terminologyPackageCitation;
+  }
+
+  abstract class TerminologyPackageCitation extends TerminologyPackage {
+
+    ref TerminologyPackage citedPackage;
+  }
+
+  abstract class TerminologyAsset extends TerminologyElement {
+  }
+
+  abstract class Category extends TerminologyAsset {
+  }
+
+  abstract class ExpressionElement extends TerminologyAsset {
+
+    ref Category[*] category;
+  }
+
+  abstract class Expression extends ExpressionElement {
+
+    attr String value;
+
+    val ExpressionElement[*] element;
+  }
+
+  abstract class Term extends ExpressionElement {
+
+    attr String value;
+
+    attr String externalReference;
+  }
+  
+  class PlaceHolder extends Term {
+  	
+  }
+
+  abstract class TerminologyAssetCitation extends ExpressionElement {
+    ref TerminologyAsset[1] citedElement;
+  }
+
+}
+
+@Ecore(invocationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", settingDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", validationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot")
+@namespace(uri="http://www.goalstructuringnotation.info/1.0/argumentation", prefix="GSN_Argumentation")
+package Argumentation {
+  abstract class ArgumentationElement extends Commons.ModelElement {
+
+    attr String content;
+  }
+
+  abstract class ArgumentPackage extends ArgumentationElement {
+    val ArgumentAsset[*] argumentAsset;
+
+    val ArgumentPackage[*] argumentPackage;
+
+    ref ArgumentPackageInterface[*] ~interface;
+
+    val ArgumentPackageCitation[*] argumentPackageCitation;
+  }
+
+  class Module extends ArgumentPackage {
+
+    val Module[*] module;
+  }
+
+  abstract class ArgumentPackageCitation extends ArgumentPackage {
+    ref ArgumentPackage[1] citedPackage;
+  }
+
+  abstract class ArgumentPackageBinding extends ArgumentPackage {
+
+    ref ArgumentPackage[2..*] participantPackage;
+  }
+
+  class Contract extends ArgumentPackageBinding {
+  }
+
+  abstract class ArgumentPackageInterface extends ArgumentPackage {
+  }
+
+  abstract class ArgumentAsset extends ArgumentationElement {
+  }
+
+  abstract class Assertion extends ArgumentAsset {
+  }
+
+  abstract class ArtefactElementCitation extends ArgumentAsset {
+    attr String externalReference;
+    ref Artefact.ArtefactElement citedArtefact;
+  }
+
+  class Solution extends ArtefactElementCitation {
+    attr Boolean isPublic;
+  }
+
+  abstract class ArgumentAssetCitation extends ArgumentAsset {
+
+    ref ArgumentAsset[1] citedAsset;
+  }
+
+  class AwayGoal extends ArgumentAssetCitation {
+    ref Goal awayGoal;
+    ref Module moduleIdentifier;
+  }
+
+  class AwaySolution extends ArgumentAssetCitation {
+    ref Solution awaySolution;
+    ref Module moduleIdentifier;
+  }
+
+  class AwayContext extends ArgumentAssetCitation {
+    ref Context awayContext;
+    ref Module moduleIdentifier;
+  }
+
+  abstract class Claim extends Assertion {
+  	attr Boolean assumed;
+  	attr Boolean toBeSupported;
+  }
+
+  class Goal extends Claim {
+    attr Boolean public;
+    attr Boolean undeveloped;
+    attr Boolean toBeSupportedByContract;
+  }
+
+  class Justification extends Claim {
+  }
+
+  class Assumption extends Claim {
+  }
+
+  abstract class ArgumentReasoning extends ArgumentAsset {
+      ref ArgumentPackage structure;
+  }
+
+  class Strategy extends ArgumentReasoning {
+    attr Boolean undeveloped;
+  }
+
+  class Context extends ArgumentAsset {
+    attr Boolean isPublic;
+    attr Boolean refersToExternalMaterial;
+  }
+
+  abstract class AssertedRelationship extends Assertion {
+
+    ref ArgumentAsset[*] source;
+
+    ref ArgumentAsset[*] target;
+    attr Integer requires = "-1";
+    attr Boolean many = "false";
+    attr String manyCondition;
+    attr Boolean optional = "false";
+    attr String selectionCondition;
+  }
+
+  abstract class AssertedInference extends AssertedRelationship {
+  }
+
+  class SupportedBy extends AssertedRelationship {
+  }
+
+  abstract class AssertedEvidence extends AssertedRelationship {
+  }
+
+  abstract class AssertedChallenge extends AssertedRelationship {
+  }
+
+  abstract class AssertedCounterEvidence extends AssertedRelationship {
+  }
+
+  abstract class AssertedContext extends AssertedRelationship {
+  }
+
+  class InContextOf extends AssertedContext {
+  }
+
+}
+
+@namespace(uri="http://www.goalstructuringnotation.info/1.0/artefact", prefix="GSN_Artefact")
+package Artefact {
+  abstract class ArtefactElement extends Commons.ModelElement {
+  }
+
+  abstract class ArtefactPackage extends ArtefactElement {
+
+    val ArtefactPackageCitation[*] artefactPackageCitation;
+
+    val ArtefactAsset[*] artefactAsset;
+
+    val ArtefactPackage[*] artefactPackage;
+    ref ArtefactPackageInterface[*] ~interface;
+  }
+
+  abstract class ArtefactPackageCitation extends ArtefactPackage {
+
+    ref ArtefactPackage[1] citedPackage;
+  }
+
+  abstract class ArtefactPackageBinding extends ArtefactPackage {
+
+    ref ArtefactPackage[2..*] participantpackage;
+  }
+
+  abstract class ArtefactPackageInterface extends ArtefactPackage {
+  }
+
+  abstract class ArtefactAsset extends ArtefactElement {
+  }
+
+  abstract class ArtefactAssetCitation extends ArtefactAsset {
+    ref ArtefactAsset[1] citedAsset;
+  }
+
+  abstract class Artefact extends ArtefactAsset {
+
+    attr String version;
+
+    attr EDate date;
+
+    val ArtefactProperty[*] artefactProperty;
+
+    val ArtefactEvent[*] artefactEvent;
+  }
+
+  abstract class ArtefactProperty extends ArtefactAsset {
+  }
+
+  abstract class ArtefactEvent extends ArtefactAsset {
+
+    attr EDate date;
+  }
+
+  abstract class Resource extends ArtefactAsset {
+
+    attr String location;
+  }
+
+  abstract class Activity extends ArtefactAsset {
+    attr EDate startTime;
+    attr EDate endTime;
+  }
+
+  abstract class Technique extends ArtefactAsset {
+  }
+
+  abstract class Participant extends ArtefactAsset {
+  }
+
+  abstract class ArtefactAssetRelationship extends ArtefactAsset {
+    ref ArtefactAsset[*] source;
+    ref ArtefactAsset[*] target;
+  }
+
+  abstract class ArtefactRelationship extends ArtefactAssetRelationship {
+  }
+
+  abstract class ActivityRelationship extends ArtefactAssetRelationship {
+  }
+
+  abstract class ArtefactActivityRelationship extends ArtefactAssetRelationship {
+  }
+
+  abstract class ArtefactTechniqueRelationship extends ArtefactAssetRelationship {
+  }
+
+  abstract class ParticipantRoleRelationship extends ArtefactAssetRelationship {
+  }
+
+  abstract class ArtefactResourceRelationship extends ArtefactAssetRelationship {
+  }
+
+}
+

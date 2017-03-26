@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GSN="http:///schemas/GSN/something/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/GSN/something/1 pathmap://resources/GSN/model.profile.uml#_q_dykQr3Eee8Vplex--qDg">
+  <uml:Model xmi:id="_8pGdABHtEeeCZ_M_N1i-sg" name="RootElement">
+    <packageImport xmi:id="_CeOdUBHuEeeCZ_M_N1i-sg">
+      <importedPackage xmi:type="uml:Profile" href="pathmap://resources/GSN/model.profile.uml#_q_dykAr3Eee8Vplex--qDg"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_KAAMsBHuEeeCZ_M_N1i-sg" name="Goal1">
+      <ownedAttribute xmi:id="_X25rEBHuEeeCZ_M_N1i-sg" name="justification1" type="_XSk2ABHuEeeCZ_M_N1i-sg" association="_X2jFwBHuEeeCZ_M_N1i-sg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_XSk2ABHuEeeCZ_M_N1i-sg" name="Justification1"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_X2jFwBHuEeeCZ_M_N1i-sg" name="SupportedBy1" memberEnd="_X25rEBHuEeeCZ_M_N1i-sg _X26SIBHuEeeCZ_M_N1i-sg">
+      <eAnnotations xmi:id="_X22nwBHuEeeCZ_M_N1i-sg" source="org.eclipse.papyrus">
+        <details xmi:id="_X23O0BHuEeeCZ_M_N1i-sg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_X26SIBHuEeeCZ_M_N1i-sg" name="goal1" type="_KAAMsBHuEeeCZ_M_N1i-sg" association="_X2jFwBHuEeeCZ_M_N1i-sg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Y1WQUBHuEeeCZ_M_N1i-sg" name="Solution1">
+      <ownedAttribute xmi:id="_aa_YchHuEeeCZ_M_N1i-sg" name="strategy1" type="_aCWO8BHuEeeCZ_M_N1i-sg" association="_aawH4BHuEeeCZ_M_N1i-sg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ZTWa8BHuEeeCZ_M_N1i-sg" name="Goal2">
+      <ownedAttribute xmi:id="_ZojO4BHuEeeCZ_M_N1i-sg" name="solution1" type="_Y1WQUBHuEeeCZ_M_N1i-sg" association="_ZoQT8BHuEeeCZ_M_N1i-sg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_ZoQT8BHuEeeCZ_M_N1i-sg" name="SupportedBy2" memberEnd="_ZojO4BHuEeeCZ_M_N1i-sg _ZokdABHuEeeCZ_M_N1i-sg">
+      <eAnnotations xmi:id="_Zoin0BHuEeeCZ_M_N1i-sg" source="org.eclipse.papyrus">
+        <details xmi:id="_Zoin0RHuEeeCZ_M_N1i-sg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_ZokdABHuEeeCZ_M_N1i-sg" name="goal2" type="_ZTWa8BHuEeeCZ_M_N1i-sg" association="_ZoQT8BHuEeeCZ_M_N1i-sg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_aCWO8BHuEeeCZ_M_N1i-sg" name="Strategy1"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_aawH4BHuEeeCZ_M_N1i-sg" name="SupportedBy3" memberEnd="_aa_YchHuEeeCZ_M_N1i-sg _aa__gBHuEeeCZ_M_N1i-sg">
+      <eAnnotations xmi:id="_aa_YcBHuEeeCZ_M_N1i-sg" source="org.eclipse.papyrus">
+        <details xmi:id="_aa_YcRHuEeeCZ_M_N1i-sg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_aa__gBHuEeeCZ_M_N1i-sg" name="solution1" type="_Y1WQUBHuEeeCZ_M_N1i-sg" association="_aawH4BHuEeeCZ_M_N1i-sg"/>
+    </packagedElement>
+    <profileApplication xmi:id="_JrFFkBHuEeeCZ_M_N1i-sg">
+      <eAnnotations xmi:id="_JrKlIBHuEeeCZ_M_N1i-sg" source="PapyrusVersion">
+        <details xmi:id="_JrKlIRHuEeeCZ_M_N1i-sg" key="Version" value="0.0.1"/>
+        <details xmi:id="_JrLzQBHuEeeCZ_M_N1i-sg" key="Comment" value=""/>
+        <details xmi:id="_JrLzQRHuEeeCZ_M_N1i-sg" key="Copyright" value=""/>
+        <details xmi:id="_JrLzQhHuEeeCZ_M_N1i-sg" key="Date" value="2017-02-01"/>
+        <details xmi:id="_JrLzQxHuEeeCZ_M_N1i-sg" key="Author" value=""/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_JrG6wBHuEeeCZ_M_N1i-sg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://resources/GSN/model.profile.uml#_q_dykQr3Eee8Vplex--qDg"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://resources/GSN/model.profile.uml#_q_dykAr3Eee8Vplex--qDg"/>
+    </profileApplication>
+  </uml:Model>
+  <GSN:Goal xmi:id="_KAR5gBHuEeeCZ_M_N1i-sg" base_Class="_KAAMsBHuEeeCZ_M_N1i-sg" name="This is goal 1."/>
+  <GSN:Justification xmi:id="_XS1UsBHuEeeCZ_M_N1i-sg" base_Class="_XSk2ABHuEeeCZ_M_N1i-sg"/>
+  <GSN:SupportedBy xmi:id="_X28uYBHuEeeCZ_M_N1i-sg" base_Association="_X2jFwBHuEeeCZ_M_N1i-sg"/>
+  <GSN:Solution xmi:id="_Y1dlEBHuEeeCZ_M_N1i-sg" base_Class="_Y1WQUBHuEeeCZ_M_N1i-sg"/>
+  <GSN:Goal xmi:id="_ZTbTcBHuEeeCZ_M_N1i-sg" base_Class="_ZTWa8BHuEeeCZ_M_N1i-sg" name="This is Goal 2."/>
+  <GSN:SupportedBy xmi:id="_ZolrIBHuEeeCZ_M_N1i-sg" base_Association="_ZoQT8BHuEeeCZ_M_N1i-sg"/>
+  <GSN:Strategy xmi:id="_aCbugBHuEeeCZ_M_N1i-sg" base_Class="_aCWO8BHuEeeCZ_M_N1i-sg"/>
+  <GSN:SupportedBy xmi:id="_abB0sBHuEeeCZ_M_N1i-sg" base_Association="_aawH4BHuEeeCZ_M_N1i-sg"/>
+</xmi:XMI>

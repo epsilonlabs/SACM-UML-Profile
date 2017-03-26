@@ -1,0 +1,5 @@
+rule Goal2Goal 
+	transform umlGoal: GSNUml!Goal
+	to emfGoal: GSNEmf!Goal {
+		emfGoal.name = umlGoal.name;	
+}
