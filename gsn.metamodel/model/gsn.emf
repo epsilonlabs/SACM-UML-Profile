@@ -1,4 +1,3 @@
-@gmf
 @"http://www.eclipse.org/OCL/Import"(ecore="http://www.eclipse.org/emf/2002/Ecore")
 @namespace(uri="http://www.goalstructuringnotation.info/1.0", prefix="gsn")
 package GSN;
@@ -23,9 +22,7 @@ package Commons {
   }
 
   abstract class UtilityElement extends SACMElement {
-
     attr String sExpression;
-
     val Terminology.Expression[1] expression;
   }
 
@@ -39,9 +36,7 @@ package Commons {
   }
 
   abstract class TaggedValue extends UtilityElement {
-
     attr String sKey;
-
     val Terminology.Expression key;
   }
 
@@ -50,17 +45,11 @@ package Commons {
 @namespace(uri="http://www.goalstructuringnotation.info/1.0/packages", prefix="GSN_Packages")
 package Packages {
   abstract class AssuranceCasePackage extends Artefact.ArtefactElement {
-
     val AssuranceCasePackageCitation[*] assuranceCasePackageCitation;
-
     val AssuranceCasePackage[*] assuranceCasePackage;
-
     ref AssuranceCasePackageInterface[*] ~interface;
-
     val Argumentation.ArgumentPackage[*] argumentPackage;
-
     val Artefact.ArtefactPackage[*] artefactPackage;
-
     val Terminology.TerminologyPackage[*] terminologyPackage;
   }
 
@@ -79,16 +68,12 @@ package Terminology {
   }
 
   abstract class TerminologyPackage extends TerminologyElement {
-
     val TerminologyAsset[*] terminologyAsset;
-
     val TerminologyPackage[*] terminologyPackage;
-
     val TerminologyPackageCitation[*] terminologyPackageCitation;
   }
 
   abstract class TerminologyPackageCitation extends TerminologyPackage {
-
     ref TerminologyPackage citedPackage;
   }
 
@@ -99,26 +84,21 @@ package Terminology {
   }
 
   abstract class ExpressionElement extends TerminologyAsset {
-
     ref Category[*] category;
   }
 
   abstract class Expression extends ExpressionElement {
-
     attr String value;
-
     val ExpressionElement[*] element;
   }
 
   abstract class Term extends ExpressionElement {
-
     attr String value;
-
     attr String externalReference;
+    ref Commons.ModelElement origin;
   }
   
-  class PlaceHolder extends Term {
-  	
+  class Role extends Term {
   }
 
   abstract class TerminologyAssetCitation extends ExpressionElement {
@@ -127,26 +107,20 @@ package Terminology {
 
 }
 
-@Ecore(invocationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", settingDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", validationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot")
 @namespace(uri="http://www.goalstructuringnotation.info/1.0/argumentation", prefix="GSN_Argumentation")
 package Argumentation {
   abstract class ArgumentationElement extends Commons.ModelElement {
-
     attr String content;
   }
 
   abstract class ArgumentPackage extends ArgumentationElement {
     val ArgumentAsset[*] argumentAsset;
-
     val ArgumentPackage[*] argumentPackage;
-
     ref ArgumentPackageInterface[*] ~interface;
-
     val ArgumentPackageCitation[*] argumentPackageCitation;
   }
 
   class Module extends ArgumentPackage {
-
     val Module[*] module;
   }
 
@@ -155,7 +129,6 @@ package Argumentation {
   }
 
   abstract class ArgumentPackageBinding extends ArgumentPackage {
-
     ref ArgumentPackage[2..*] participantPackage;
   }
 
@@ -169,6 +142,7 @@ package Argumentation {
   }
 
   abstract class Assertion extends ArgumentAsset {
+	//val Claim[*] metaClaim;
   }
 
   abstract class ArtefactElementCitation extends ArgumentAsset {
@@ -206,7 +180,7 @@ package Argumentation {
   }
 
   class Goal extends Claim {
-    attr Boolean public;
+    attr Boolean isPublic;
     attr Boolean undeveloped;
     attr Boolean toBeSupportedByContract;
   }
@@ -231,15 +205,13 @@ package Argumentation {
   }
 
   abstract class AssertedRelationship extends Assertion {
-
     ref ArgumentAsset[*] source;
-
     ref ArgumentAsset[*] target;
+    //ref ArgumentReasoning reasoning;
+    
     attr Integer requires = "-1";
     attr Boolean many = "false";
-    attr String manyCondition;
     attr Boolean optional = "false";
-    attr String selectionCondition;
   }
 
   abstract class AssertedInference extends AssertedRelationship {
@@ -271,22 +243,17 @@ package Artefact {
   }
 
   abstract class ArtefactPackage extends ArtefactElement {
-
     val ArtefactPackageCitation[*] artefactPackageCitation;
-
     val ArtefactAsset[*] artefactAsset;
-
     val ArtefactPackage[*] artefactPackage;
     ref ArtefactPackageInterface[*] ~interface;
   }
 
   abstract class ArtefactPackageCitation extends ArtefactPackage {
-
     ref ArtefactPackage[1] citedPackage;
   }
 
   abstract class ArtefactPackageBinding extends ArtefactPackage {
-
     ref ArtefactPackage[2..*] participantpackage;
   }
 
@@ -301,13 +268,9 @@ package Artefact {
   }
 
   abstract class Artefact extends ArtefactAsset {
-
     attr String version;
-
     attr EDate date;
-
     val ArtefactProperty[*] artefactProperty;
-
     val ArtefactEvent[*] artefactEvent;
   }
 
@@ -315,12 +278,10 @@ package Artefact {
   }
 
   abstract class ArtefactEvent extends ArtefactAsset {
-
     attr EDate date;
   }
 
   abstract class Resource extends ArtefactAsset {
-
     attr String location;
   }
 
