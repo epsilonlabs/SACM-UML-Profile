@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="ASCII"?>
+<GSN_Argumentation:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GSN_Argumentation="http://www.goalstructuringnotation.info/1.0/argumentation" name="M1">
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="G1" content="Unanticipated UA nose pitch down during descent and landing hazard is mitigated" undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="C1" content="Hazard analysis for the Swift UAS" refersToExternalMaterial="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.0" target="//@argumentAsset.1"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="C2" content="Descent phase operations using autopilot" refersToExternalMaterial="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.0" target="//@argumentAsset.3"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Assumption" name="A1" content="Automated landing is not attempted in crosswind conditoins"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.0" target="//@argumentAsset.5"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="S1" content="Argument by satisfaction of safety requirements" undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.0" target="//@argumentAsset.7"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="C3" content="Safety Requirements for Swift UAS" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.7" target="//@argumentAsset.9"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="G11" content="Pilot in command can override avionics to control UA" undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.7" target="//@argumentAsset.11"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="S3" content="Argument by system testing" undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.11" target="//@argumentAsset.13"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="G249" content="Required rate of descent is not exceeded" undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.7" target="//@argumentAsset.15"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="S110" content="Argument over allocated requirements" undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.15" target="//@argumentAsset.17"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="C156" content="Requirements allocation matrix" refersToExternalMaterial="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.17" target="//@argumentAsset.19"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="G6" content="Rapid thrust reduction does not occur" undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.17" target="//@argumentAsset.21"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="G4" content="UA flare altitude is not exceeded" undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.7" target="//@argumentAsset.23"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="G8" content="Requried landing pitch altitude is maintained during descent through touchdown" undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.7" target="//@argumentAsset.25"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="C10" content="UA flight dynamics - pitch altitude requirements for landing" refersToExternalMaterial="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.25" target="//@argumentAsset.27"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="C4" content="Safety requirement SAFR-005" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.25" target="//@argumentAsset.29"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="S108" content="Argument of requirements breakdown" undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.25" target="//@argumentAsset.31"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="C152" content="Requirements allocation matrix" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.31" target="//@argumentAsset.33"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="G2" content="The control surface positions during descent do not exceed their threshold values for descent" undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.31" target="//@argumentAsset.35"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="C14" content="Control surface threshold values" refersToExternalMaterial="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.35" target="//@argumentAsset.37"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="S2" content="Argument over requirements allocation" undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.35" target="//@argumentAsset.39"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="C6" content="Requirements allocation matrix" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.39" target="//@argumentAsset.41"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="C5" content="Functional decomposition for aircraft functions" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.39" target="//@argumentAsset.43"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="G10" content="Avionics provides the required actuator values during descent" undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.39" target="//@argumentAsset.45"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Assumption" name="A2" content="Avionics power system functions reliably"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.45" target="//@argumentAsset.47"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="C11" content="Avionics requirement sduring the descent phase" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.45" target="//@argumentAsset.49"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="S6" content="Argument over component breakdown" undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.45" target="//@argumentAsset.51"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="C15" content="Physical architecture for the Swift UAS" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.51" target="//@argumentAsset.53"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c16" content="avionics box architecture" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.51" target="//@argumentAsset.55"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="G52" content="Flight computer functions reliably" undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.51" target="//@argumentAsset.57"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="G53" content="Avionics embedded software responsible for..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.51" target="//@argumentAsset.59"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c18" content="Actuator..." refersToExternalMaterial="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.59" target="//@argumentAsset.61"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="S8" content="Argument by ..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.59" target="//@argumentAsset.63"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g55" content="simulation results show that..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.63" target="//@argumentAsset.65"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="s7" content="argument over..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.59" target="//@argumentAsset.67"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g56" content="servo actuator..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.67" target="//@argumentAsset.69"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g54" content="autopolit module ..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.67" target="//@argumentAsset.71"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Justification" name="j2" content="To specifically..."/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.71" target="//@argumentAsset.73"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Justification" name="j3" content="Actuator values..."/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.71" target="//@argumentAsset.75"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="s9" content="argument of requirements breakdown" undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.71" target="//@argumentAsset.77"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c19" content="autopilot module ..." refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.77" target="//@argumentAsset.79"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g59" content="the FMS module..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.77" target="//@argumentAsset.81"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g58" content="the autopilot module is ..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.77" target="//@argumentAsset.83"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g57" content="the ap component..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.77" target="//@argumentAsset.85"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="s10" content="argument ..." undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.85" target="//@argumentAsset.87"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c20" content="requirements breakdown for ap component" refersToExternalMaterial="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.87" target="//@argumentAsset.89"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g25" content="implementation of pid..." undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.87" target="//@argumentAsset.91"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c31" content="low level ..." refersToExternalMaterial="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.91" target="//@argumentAsset.93"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="s107" content="argument over..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.91" target="//@argumentAsset.95"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c149" content="variables representing..." refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.95" target="//@argumentAsset.97"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Justification" name="a8" content="command for landing is ..."/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.95" target="//@argumentAsset.99"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g23" content="implmenetation of pid ..." undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.95" target="//@argumentAsset.101"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Assumption" name="a9" content="informal assumption ..."/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.101" target="//@argumentAsset.103"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c150" content="requirements..." refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.101" target="//@argumentAsset.105"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g33" content="implementation of pid..." undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.95" target="//@argumentAsset.107"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c151" content="requirement ..." refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.107" target="//@argumentAsset.109"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Assumption" name="a5" content="informal assumption..."/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.107" target="//@argumentAsset.111"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g51" content="pilot in command..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.39" target="//@argumentAsset.113"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g9" content="motor controlelrs provide ..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.39" target="//@argumentAsset.115"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c12" content="actuator..." refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.115" target="//@argumentAsset.117"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c13" content="actuator spec" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.115" target="//@argumentAsset.119"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Assumption" name="a3" content="actuator power..."/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.115" target="//@argumentAsset.121"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="s4" content="argument over ..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.35" target="//@argumentAsset.123"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c7" content="physical architecture..." refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.123" target="//@argumentAsset.125"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c17" content="Wing structure design" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.123" target="//@argumentAsset.127"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g3" content="control surfaces..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.123" target="//@argumentAsset.129"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="G7" content="actuators are ..." undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.123" target="//@argumentAsset.131"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="s5" content="argument of pre..." undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.131" target="//@argumentAsset.133"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g50" content="readines of actuators.." undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.133" target="//@argumentAsset.135"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Solution" name="e1" content="flight day procedures"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.135" target="//@argumentAsset.137"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Solution" name="e2" content="pre-flight checklist"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.135" target="//@argumentAsset.139"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="G12" content="actuators batteries ..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.123" target="//@argumentAsset.141"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="G246" content="The Angle of attack required during descent is maintained" undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.31" target="//@argumentAsset.143"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c153" content="angle of attack required during descent" refersToExternalMaterial="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.143" target="//@argumentAsset.145"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c154" content="required airspeed during descent" refersToExternalMaterial="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.143" target="//@argumentAsset.147"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="s112" content="argument over ..." undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.143" target="//@argumentAsset.149"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c159" content="requirements allocation matrix" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.149" target="//@argumentAsset.151"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="G250" content="Avionics maintains the ..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.149" target="//@argumentAsset.153"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c160" content="avionics requirements during..." refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.153" target="//@argumentAsset.155"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="s109" content="argument over component breakdown" undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.153" target="//@argumentAsset.157"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c155" content="avionics box architecture" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.157" target="//@argumentAsset.159"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g248" content="avionics ..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.157" target="//@argumentAsset.161"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="s113" content="argument over" undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.161" target="//@argumentAsset.163"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g252" content="autopilot module.." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.163" target="//@argumentAsset.165"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Assumption" name="a10" content="chagnes to ..."/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.165" target="//@argumentAsset.167"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g251" content="autopilot module..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.163" target="//@argumentAsset.169"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c161" content="angle of attack" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.169" target="//@argumentAsset.171"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c162" content="UA flight dynamics" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.169" target="//@argumentAsset.173"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="s114" content="argument of..." undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.169" target="//@argumentAsset.175"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g254" content="the autopilot module..." undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.175" target="//@argumentAsset.177"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="s24" content="argument by review" undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.177" target="//@argumentAsset.179"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g255" content="specification for ..." undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.179" target="//@argumentAsset.181"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c40" content="value of calibration" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.181" target="//@argumentAsset.183"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c39" content="aircraft design team" refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.181" target="//@argumentAsset.185"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Solution" name="e6" content="outcome of review..."/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.181" target="//@argumentAsset.187"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g253" content="the calibration.." undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.175" target="//@argumentAsset.189"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="s25" content="argument of correct" undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.189" target="//@argumentAsset.191"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g60" content="pilot probe calibration..." undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.191" target="//@argumentAsset.193"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c38" content="wind tunnel..." refersToExternalMaterial="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.193" target="//@argumentAsset.195"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Solution" name="e5" content="data from wind.."/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="s115" content="argument that imp..." undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.169" target="//@argumentAsset.198"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c163" content="informal..." refersToExternalMaterial="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.198" target="//@argumentAsset.200"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="g256" content="implementation of the computation ..." refersToExternalMaterial="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.198" target="//@argumentAsset.202"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="s23" content="arugment by proof.." undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.202" target="//@argumentAsset.204"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c35" content="formal specification ..." refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.204" target="//@argumentAsset.206"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c164" content="implementatiion of the ..." refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.204" target="//@argumentAsset.208"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g257" content="the proof generated by..." undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.204" target="//@argumentAsset.210"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c36" content="autocert..." refersToExternalMaterial="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.210" target="//@argumentAsset.212"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c37" content="automatic theorem prover" refersToExternalMaterial="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.210" target="//@argumentAsset.214"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Solution" name="e4" content="proof for..."/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.210" target="//@argumentAsset.216"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g258" content="airspeed sensor ..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.157" target="//@argumentAsset.218"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c165" content="reliability requirements..." refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.218" target="//@argumentAsset.220"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="s116" content="argument over..." undeveloped="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.218" target="//@argumentAsset.222"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c166" content="airspeed sensor..." refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.222" target="//@argumentAsset.224"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c167" content="UAS physical..." refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.222" target="//@argumentAsset.226"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g260" content="initial ..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.222" target="//@argumentAsset.228"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g259" content="air data ..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.222" target="//@argumentAsset.230"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g5" content=" variance of the UA speed..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.7" target="//@argumentAsset.232"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c158" content="safety requirement..." refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.232" target="//@argumentAsset.234"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c8" content="landing approach..." refersToExternalMaterial="false"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.232" target="//@argumentAsset.236"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c9" content="landing profile for the..." refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.232" target="//@argumentAsset.238"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Strategy" name="s111" content="argument over allocated..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.232" target="//@argumentAsset.240"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Context" name="c157" content="requirements all..." refersToExternalMaterial="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:InContextOf" source="//@argumentAsset.240" target="//@argumentAsset.242"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="g247" content="propulsion systems..." undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:SupportedBy" source="//@argumentAsset.240" target="//@argumentAsset.244"/>
+</GSN_Argumentation:Module>

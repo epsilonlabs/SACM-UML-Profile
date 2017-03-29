@@ -20,7 +20,7 @@ package Commons {
 
   abstract class UtilityElement extends SACMElement {
     attr String sExpression;
-    val Terminology.Expression[1] expression;
+    val Terminology.Expression expression;
   }
 
   class ImplementationConstraint extends UtilityElement {
