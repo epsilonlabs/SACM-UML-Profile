@@ -28,7 +28,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ImplementationConstraint" abstract="true"
         eSuperTypes="#//Commons/UtilityElement"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Description" abstract="true" eSuperTypes="#//Commons/UtilityElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Description" eSuperTypes="#//Commons/UtilityElement"/>
     <eClassifiers xsi:type="ecore:EClass" name="Note" abstract="true" eSuperTypes="#//Commons/UtilityElement"/>
     <eClassifiers xsi:type="ecore:EClass" name="TaggedValue" abstract="true" eSuperTypes="#//Commons/UtilityElement">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="sKey" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -86,7 +86,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="category" upperBound="-1"
           eType="#//Terminology/Category"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true" eSuperTypes="#//Terminology/ExpressionElement">
+    <eClassifiers xsi:type="ecore:EClass" name="Expression" eSuperTypes="#//Terminology/ExpressionElement">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="element" upperBound="-1"
           eType="#//Terminology/ExpressionElement" containment="true"/>

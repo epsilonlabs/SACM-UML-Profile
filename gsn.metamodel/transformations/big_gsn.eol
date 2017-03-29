@@ -1,0 +1,254 @@
+var m = createModule("M1");
+
+var g1 = createGoal('G1', 'Unanticipated UA nose pitch down during descent and landing hazard is mitigated', false, m);
+var c1 = createContext('C1', 'Hazard analysis for the Swift UAS', false, m);
+createInContextOf(g1, c1, m);
+var c2 = createContext('C2', 'Descent phase operations using autopilot', false, m);
+createInContextOf(g1, c2, m);
+var a1 = createAssumption('A1', 'Automated landing is not attempted in crosswind conditoins', m);
+createInContextOf(g1, a1, m);
+var s1 = createStrategy('S1', 'Argument by satisfaction of safety requirements', true, m);
+createSupportedBy(g1, s1, m);
+var c3 = createContext('C3', 'Safety Requirements for Swift UAS', true, m);
+createInContextOf(s1, c3, m);
+var g11 = createGoal('G11', 'Pilot in command can override avionics to control UA', true, m);
+createSupportedBy(s1, g11, m);
+var s3 = createStrategy('S3', 'Argument by system testing', true, m);
+createSupportedBy(g11, s3, m); 
+
+var g249 = createGoal('G249', 'Required rate of descent is not exceeded', true, m);
+createSupportedBy(s1, g249, m);
+var s110 = createStrategy('S110', 'Argument over allocated requirements', false, m);
+createSupportedBy(g249, s110, m);
+var c156 = createContext('C156', 'Requirements allocation matrix', false, m);
+createInContextOf(s110, c156, m);
+var g6 = createGoal('G6', 'Rapid thrust reduction does not occur', true, m);
+createSupportedBy(s110, g6, m);
+
+var g4 = createGoal('G4', 'UA flare altitude is not exceeded' , true, m);
+createSupportedBy(s1, g4, m);
+
+var g8 = createGoal('G8', 'Requried landing pitch altitude is maintained during descent through touchdown', true, m);
+createSupportedBy(s1, g8, m);
+var c10 = createContext('C10', 'UA flight dynamics - pitch altitude requirements for landing', false, m);
+createInContextOf(g8, c10, m);
+var c4 = createContext('C4', 'Safety requirement SAFR-005', true, m);
+createInContextOf(g8, c4, m);
+var s108 = createStrategy('S108', 'Argument of requirements breakdown', true, m);
+createSupportedBy(g8, s108, m);
+var c152 = createContext('C152', 'Requirements allocation matrix', true, m);
+createInContextOf(s108, c152, m);
+
+var g2 = createGoal('G2', 'The control surface positions during descent do not exceed their threshold values for descent', true, m);
+createSupportedBy(s108, g2, m);
+var c14 = createContext('C14', 'Control surface threshold values', false, m);
+createInContextOf(s2, c14, m);
+
+var s2 = createStrategy('S2', 'Argument over requirements allocation', false, m);
+createSupportedBy(g2, s2, m);
+var c6 = createContext('C6', 'Requirements allocation matrix', true, m);
+createInContextOf(s2, c6, m);
+var c5 = createContext('C5', 'Functional decomposition for aircraft functions', true, m);
+createInContextOf(s2, c5, m);
+
+var g10 = createGoal('G10', 'Avionics provides the required actuator values during descent', false, m);
+createSupportedBy(s2, g10, m);
+var a2 = createAssumption('A2', 'Avionics power system functions reliably', m);
+createInContextOf(g10, a2, m);
+var c11 = createContext('C11', 'Avionics requirement sduring the descent phase', true, m);
+createInContextOf(g10, c11, m);
+var s6 = createStrategy('S6', 'Argument over component breakdown', true, m);
+createSupportedBy(g10, s6, m);
+var c15 = createContext('C15', 'Physical architecture for the Swift UAS', true, m);
+createInContextOf(s6, c15, m);
+var c16 = createContext('c16', 'avionics box architecture', true, m);
+createInContextOf(s6, c16, m);
+var g52 = createGoal('G52', 'Flight computer functions reliably', true, m);
+createSupportedBy(s6, g52, m);
+var g53 = createGoal('G53', 'Avionics embedded software responsible for...', true, m);
+createSupportedBy(s6, g53, m);
+var c18 = createContext('c18', 'Actuator...', false, m);
+createInContextOf(g53, c18, m);
+var s8 = createStrategy('S8', 'Argument by ...', true, m);
+createSupportedBy(g53, s8, m);
+var g55 = createGoal('g55', 'simulation results show that...', true, m);
+createSupportedBy(s8, g55, m);
+var s7 = createStrategy('s7', 'argument over...', true, m);
+createSupportedBy(g53, s7, m);
+var g56 = createGoal('g56', 'servo actuator...', true, m);
+createSupportedBy(s7, g56, m);
+var g54 = createGoal('g54', 'autopolit module ...', true, m);
+createSupportedBy(s7, g54, m);
+var j2 = createJustification('j2', 'To specifically...', m);
+createInContextOf(g54, j2, m);
+var j3 = createJustification('j3', 'Actuator values...', m);
+createInContextOf(g54, j3, m);
+var s9 = createStrategy('s9', 'argument of requirements breakdown', false, m);
+createSupportedBy(g54, s9);
+var c19 = createContext('c19', 'autopilot module ...', true, m);
+createInContextOf(s9, c19, m);
+var g59 = createGoal('g59', 'the FMS module...', true, m);
+createSupportedBy(s9, g59, m);
+var g58 = createGoal('g58', 'the autopilot module is ...', true, m);
+createSupportedBy(s9, g58, m);
+var g57 = createGoal('g57', 'the ap component...', true, m);
+createSupportedBy(s9, g57, m);
+var s10 = createStrategy('s10', 'argument ...', false, m);
+createSupportedBy(g57, s10, m);
+var c20 = createContext('c20', 'requirements breakdown for ap component', false, m);
+createInContextOf(s10, c20, m);
+var g25 = createGoal('g25', 'implementation of pid...', false, m);
+createSupportedBy(s10, g25, m);
+var c31 = createContext('c31', 'low level ...', false, m);
+createInContextOf(g25, c31, m);
+var s107 = createStrategy('s107', 'argument over...', true, m);
+createSupportedBy(g25, s107, m);
+var c149 = createContext('c149', 'variables representing...', true, m);
+createInContextOf(s107, c149, m);
+var a8 = createJustification('a8', 'command for landing is ...', m);
+createInContextOf(s107, a8, m);
+var g23 = createGoal('g23', 'implmenetation of pid ...', false, m);
+createSupportedBy(s107, g23, m);
+var a9 = createAssumption('a9', 'informal assumption ...', m);
+createInContextOf(g23, a9, m);
+var c150 = createContext('c150', 'requirements...', true, m);
+createInContextOf(g23, c150, m);
+var g33 = createGoal('g33', 'implementation of pid...', false, m);
+createSupportedBy(s107, g33, m);
+var c151 = createContext('c151', 'requirement ...', true, m);
+createInContextOf(g33, c151, m);
+var a5 = createAssumption('a5', 'informal assumption...', m);
+createInContextOf(g33, a5, m);
+
+var g51 = createGoal('g51', 'pilot in command...', true, m);
+createSupportedBy(s2, g151, m);
+var g9 = createGoal('g9', 'motor controlelrs provide ...', true, m);
+createSupportedBy(s2, g9, m);
+var c12 = createContext('c12', 'actuator...', true, m);
+createInContextOf(g9, c12);
+var c13 = createContext('c13', 'actuator spec', true, m);
+createInContextOf(g9, c13, m);
+var a3 = createAssumption('a3', 'actuator power...', m);
+createInContextOf(g9, a3, m);
+
+var s4 = createStrategy('s4', 'argument over ...', true, m);
+createSupportedBy(g2, s4, m);
+var c7 = createContext('c7', 'physical architecture...', true, m);
+createInContextOf(s4, c7, m);
+var c17 = createContext('c17', 'Wing structure design', true, m);
+createInContextOf(s4, c17, m);
+var g3 = createGoal('g3', 'control surfaces...', true, m);
+createSupportedBy(s4, g3, m);
+var g7 = createGoal('G7', 'actuators are ...', false, m);
+createSupportedBy(s4, g7, m);
+var s5 = createStrategy('s5', 'argument of pre...', false, m);
+createSupportedBy(g7, s5, m);
+var g50 = createGoal('g50', 'readines of actuators..', false, m);
+createSupportedBy(s5, g50, m);
+var e1 = createSolution('e1', 'flight day procedures', m);
+createSupportedBy(g50, e1, m);
+var e2 = createSolution('e2', 'pre-flight checklist', m);
+createSupportedBy(g50, e2, m);
+var g12 = createGoal('G12', 'actuators batteries ...', true, m);
+createSupportedBy(s4, g12, m);
+
+
+var g246 = createGoal('G246', 'The Angle of attack required during descent is maintained', false, m);
+createSupportedBy(s108, g246, m);
+var c153 = createContext('c153', 'angle of attack required during descent', false, m);
+createInContextOf(g246, c153, m);
+var c154 = createContext('c154', 'required airspeed during descent', false, m);
+createInContextOf(g246, c154, m);
+var s112 = createStrategy('s112', 'argument over ...', false, m);
+createSupportedBy(g246, s112, m);
+var c159 = createContext('c159', 'requirements allocation matrix', true, m);
+createInContextOf(s112, c159, m);
+var g250 = createGoal('G250', 'Avionics maintains the ...', true, m);
+createSupportedBy(s112, g250, m);
+
+
+
+
+
+
+operation createModule (name: String) : GSN!Module
+{
+	var m = new GSN!Module;
+	m.name = name;
+	return m;
+}
+
+operation createGoal(name: String, content: String, undev: Boolean, m: GSN!Module) : GSN!Goal
+{
+	var g = new GSN!Goal;
+	g.name = name;
+	g.content = content;
+	g.undeveloped = undev;
+	m.argumentAsset.add(g);
+	return g;
+}
+
+operation createStrategy(name: String, content: String, undev: Boolean , m: GSN!Module) : GSN!Goal
+{
+	var s = new GSN!Strategy;
+	s.name = name;
+	s.content = content;
+	s.undeveloped = undev;
+	m.argumentAsset.add(s);
+	return g;
+}
+
+operation createContext(name: String, content: String, external: Boolean, m: GSN!Module) : GSN!Context
+{
+	var c = new GSN!Context;
+	c.name = name;
+	c.content = content;
+	c.refersToExternalMaterial = external;
+	m.argumentAsset.add(c);
+	return c;
+}
+
+operation createAssumption(name: String, content: String, m: GSN!Module) : GSN!Assumption
+{
+	var a = new GSN!Assumption;
+	a.name = name;
+	a.content = content;
+	m.argumentAsset.add(a);
+	return a;
+}
+
+operation createJustficn(name: String, content: String, m: GSN!Module) : GSN!Justification {
+	var j = new GSN!Justification;
+	j.name = name;
+	j.content = content;
+	m.argumentAsset.add(j);
+	return j;
+}
+
+operation createSupportedBy(source: GSN!ArgumentAsset, target: GSN!ArgumentAsset, m: GSN!Module) : GSN!SupportedBy
+{
+	var sb = new GSN!SupportedBy;
+	sb.source.add(source);
+	sb.target.add(target);
+	m.argumentAsset.add(sb);
+	return sb;
+}
+
+operation createInContextOf(source: GSN!ArgumentAsset, target: GSN!ArgumentAsset, m: GSN!Module) : GSN!InContextOf
+{
+	var ioc = new GSN!InContextOf;
+	ioc.source.add(source);
+	ioc.target.add(target);
+	m.argumentAsset.add(ioc);
+	return ioc;
+}
+
+operation createSolution(name: String, content: String, m: GSN!Module) : GSN!Solution
+{
+	var s = new GSN!Solution;
+	s.name = name;
+	s.content = content;
+	m.argumentAsset.add(s);
+	return s;
+}
+

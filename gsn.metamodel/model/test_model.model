@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="ASCII"?>
 <GSN_Argumentation:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GSN_Argumentation="http://www.goalstructuringnotation.info/1.0/argumentation" xmi:id="_tFpMIAlbEeeH6OUiT87h2Q" gid="m1" content="My Module">
-  <argumentAsset xsi:type="GSN_Argumentation:Goal" xmi:id="_uw07kAlbEeeH6OUiT87h2Q" gid="G1" name="" content="Unanticipated UA nose pitch down during descent and landing hazard is mitigated" undeveloped="true"/>
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" xmi:id="_uw07kAlbEeeH6OUiT87h2Q" gid="G1" name="" content="Unanticipated UA nose pitch down during descent and landing hazard is mitigated" undeveloped="true">
+    <description xmi:id="_ypbt8BOlEeeDO9hh0X41FQ">
+      <expression xmi:id="_zbNwMBOlEeeDO9hh0X41FQ"/>
+    </description>
+  </argumentAsset>
   <argumentAsset xsi:type="GSN_Argumentation:Context" xmi:id="_lSYpMAlxEeeoS4pFvn3z-g" gid="C1" content="Hazard analysis for the Swift UAS"/>
   <argumentAsset xsi:type="GSN_Argumentation:InContextOf" xmi:id="_wsc4wAlxEeeoS4pFvn3z-g" source="_uw07kAlbEeeH6OUiT87h2Q" target="_lSYpMAlxEeeoS4pFvn3z-g"/>
   <argumentAsset xsi:type="GSN_Argumentation:Context" xmi:id="_tA0UgAlxEeeoS4pFvn3z-g" gid="C2" content="Descent phase operations using autopilot"/>
