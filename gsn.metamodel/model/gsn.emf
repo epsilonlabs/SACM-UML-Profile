@@ -29,7 +29,7 @@ package Commons {
   abstract class ImplementationConstraint extends UtilityElement {
   }
 
-  class Description extends UtilityElement {
+  abstract class Description extends UtilityElement {
   }
 
   abstract class Note extends UtilityElement {
@@ -176,7 +176,7 @@ package Argumentation {
 
   abstract class Claim extends Assertion {
   	attr Boolean assumed;
-  	attr Boolean toBeSupported;
+  	//attr Boolean toBeSupported;
   }
 
   class Goal extends Claim {
@@ -212,6 +212,7 @@ package Argumentation {
     attr Integer requires = "-1";
     attr Boolean many = "false";
     attr Boolean optional = "false";
+    val Terminology.Expression manyExpression;
   }
 
   abstract class AssertedInference extends AssertedRelationship {
