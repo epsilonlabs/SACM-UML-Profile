@@ -1,1 +1,19 @@
-Test
+[%
+var ePackName = Source!EPackage.all().first().name;
+var allAnnotatedStereotypes = Source!EClass.all().select(c|c.getEAnnotation("Node").isDefined() or c.getEAnnotation("Edge").isDefined());
+var allNodeStereotypes = Source!EClass.all().select(c|c.getEAnnotation("Node").isDefined());
+var allEdgeStereotypes = Source!EClass.all().select(a|a.getEAnnotation("Edge").isDefined());
+for (aNodeStereotype in allNodeStereotypes) { %]
+rule [%=aNodeStereotype.name%]UML2[%=aNodeStereotype.name%]EMF
+	transform s: UML[%=ePackName%]![%=aNodeStereotype.name%]
+	to t: EMF[%=ePackName%]![%=aNodeStereotype.name%] {
+		[%
+		for (attr in aNodeStereotype.getEAttributes()) { %]
+		t.[%=attr.name%] = s.[%=attr.name%];
+		[%
+		}
+		%]
+	}
+[%
+}
+%]
