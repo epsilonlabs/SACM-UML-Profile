@@ -63,7 +63,7 @@ public class CreateNEWPapyrusProjectAction implements IObjectActionDelegate {
 		try {
 			 IRunnableWithProgress op = new IRunnableWithProgress() {
 				public void run(IProgressMonitor monitor) {
-					SubMonitor subMonitor = SubMonitor.convert(monitor, 190);
+					SubMonitor subMonitor = SubMonitor.convert(monitor, 200);
 					try {
 						theDestinationIProject = tahh.createPluginProject(theSelectedFilePath);
 						theDestinationIProjectFolder = theDestinationIProject.getLocation().toOSString();
@@ -90,6 +90,9 @@ public class CreateNEWPapyrusProjectAction implements IObjectActionDelegate {
 						subMonitor.split(10);
 						subMonitor.setTaskName("Generating the Types Configuration.");
 						tahh.createTheTypesConfigurations(theSelectedFilePath, theDestinationIProjectFolder, theSelectedFileParentIProject);
+						subMonitor.split(10);
+						subMonitor.setTaskName("Generating the UML 2 EMF ETL file.");
+						tahh.createTheUml2EmfETLFile(theSelectedFilePath, theDestinationIProjectFolder, theSelectedFileParentIProject);
 						subMonitor.split(10);
 						subMonitor.setTaskName("Generating Profile related files.");
 						tahh.createTheModelProfileNotationFile(theDestinationIProjectFolder);

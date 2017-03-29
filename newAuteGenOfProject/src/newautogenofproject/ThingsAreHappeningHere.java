@@ -190,6 +190,23 @@ public class ThingsAreHappeningHere {
 	    }
 	}
 
+	public void createTheUml2EmfETLFile(String theSelectedFilePath, String theDestinationIProjectFolder, IProject theSelectedFileParentIProject) throws Exception {
+		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
+
+		EglFileGeneratingTemplateFactory factory = new EglFileGeneratingTemplateFactory();
+		EglTemplateFactoryModuleAdapter eglModule = new EglTemplateFactoryModuleAdapter(factory);
+
+		eglModule.getContext().getModelRepository().addModel(sourceModel);
+
+		java.net.URI EglFile = Activator.getDefault().getBundle().getResource("files/uml2emfETLfileGeneration.egl").toURI();
+
+		EglFileGeneratingTemplate template = (EglFileGeneratingTemplate) factory.load(EglFile);
+		template.process();
+		File target = new File(theDestinationIProjectFolder + File.separator + "resources" + File.separator + name
+				+ "uml2emf.etl");
+		target.createNewFile();
+		template.generate(target.toURI().toString());
+	}
 	public void createTheTypesConfigurations(String theSelectedFilePath, String theDestinationIProjectFolder, IProject theSelectedFileParentIProject) throws Exception {
 		// Our transformation
 		EmfModel sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
