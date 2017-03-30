@@ -13,7 +13,14 @@ rule [%=anAnnotatedClass.name%]UML2[%=anAnnotatedClass.name%]EMF
 		[%
 		}
 		%]
+		[%
+		for (ref in anAnnotatedClass.getEReferences()) { %]
+		t.[%=ref.name%].addAll(s.[%=ref.name%].equivalents().flatten());
+		[%
+		}
+		%]
 	}
-[%
+	[%
 }
 %]
+
