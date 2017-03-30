@@ -72,7 +72,7 @@ operation createOCLConstraintsForAssociation(newClass,s,c) {
 	createTheAssociationCheckEndTypeOCLConstraint(newClass,s,c);
 	//createTheAssociationCheckMultiplicityOCLConstraint(newClass,s,c);
 	//createTheAssociationCheckAggregationOCLConstraint(newClass,s,c);
-	//createTheAssociationNavigabilityOCLConstraint(newClass,s,c);
+	createTheAssociationNavigabilityOCLConstraint(newClass,s,c);
 }
 
 operation createTheAssociationCheckAggregationOCLConstraint(newClass,s,c) {
@@ -288,6 +288,23 @@ operation calculateTheBodyOfTheCheckEndTypesConstraint(s,c) {
 }
 
 operation calculateTheBodyOfTheCheckNavigabilityConstraint(s,c) {
+	var source;
+	var target;
+	if (c.isTypeOf(EcoreM2!EClass)) {
+		source = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("source");
+		target = c.eAnnotations.selectOne(ean|ean.source.equals("Edge")).details.get("target");
+	} else if (c.isTypeOf(EcoreM2!EReference)) {
+		source = c.eContainingClass.name;
+		target = c.etype.name;
+	}
+	return "let memberEnds = self.base_Association.memberEnd in let " + target +"End = " +
+	"memberEnds->select(type.oclIsKindOf(UML::Class) and type.oclAsType(UML::Class).extension_" + source +"->notEmpty()), " + source + "End = " +
+	"memberEnds->select(type.oclIsKindOf(UML::Class) and type.oclAsType(UML::Class).extension_" + target + "->notEmpty())in " +
+	"if " + source + "End->notEmpty() and " + target + "End->notEmpty() then " + source + "End->first().isNavigable() = " +
+	"true and " + target + "End->first().isNavigable() = false else false endif";
+}
+
+operation calculateTheBodyOfTheCheckNavigabilityConstraintTwo(s,c) {
 	var source;
 	var target;
 	if (c.isTypeOf(EcoreM2!EClass)) {
