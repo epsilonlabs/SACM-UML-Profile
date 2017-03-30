@@ -14,9 +14,9 @@ package Commons {
     attr Boolean isAbstract;
     
     val Description description;
-    val ImplementationConstraint[*] inplementationConstraint;
-    val Note[*] note;
-    val TaggedValue[*] taggedValue;
+    //val ImplementationConstraint[*] inplementationConstraint;
+    //val Note[*] note;
+    //val TaggedValue[*] taggedValue;
     
     attr Boolean uninstantiated;
   }
@@ -29,7 +29,7 @@ package Commons {
   abstract class ImplementationConstraint extends UtilityElement {
   }
 
-  abstract class Description extends UtilityElement {
+  class Description extends UtilityElement {
   }
 
   abstract class Note extends UtilityElement {
@@ -92,7 +92,7 @@ package Terminology {
     val ExpressionElement[*] element;
   }
 
-  abstract class Term extends ExpressionElement {
+  class Term extends ExpressionElement {
     attr String value;
     attr String externalReference;
     ref Commons.ModelElement origin;
@@ -180,6 +180,7 @@ package Argumentation {
   }
 
   class Goal extends Claim {
+  	val Terminology.Role roles;
     attr Boolean isPublic;
     attr Boolean undeveloped;
     attr Boolean toBeSupportedByContract;
@@ -213,6 +214,7 @@ package Argumentation {
     attr Boolean many = "false";
     attr Boolean optional = "false";
     val Terminology.Expression manyExpression;
+    val Terminology.Expression optionExpression;
   }
 
   abstract class AssertedInference extends AssertedRelationship {

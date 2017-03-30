@@ -11,7 +11,6 @@ post {
 	}
 }
 
-
 rule Module2ArgumentPackage
 	transform m:GSN!Module
 	to ap: SACM!ArgumentPackage {
@@ -32,33 +31,28 @@ rule Goal2Claim
 	//normal goal
 	if(g.undeveloped = false and g.toBeSupportedByContract = false and g.uninstantiated = false)
 	{
-		c.assumed = false;
-		c.isAbstract = false;
 	}
 	//Undeveloped Goal
 	else if(g.undeveloped = true and g.toBeSupportedByContract = false and g.uninstantiated = false)
 	{
-		c.assumed = false;
-		c.isAbstract = true;
+		c.taggedValue.add(createTaggedValueWithSimpleKey("undeveloped"));
 	}
 	//Uninstantiated Goal
 	else if(g.undeveloped = false and g.toBeSupportedByContract = false and g.uninstantiated = true)
 	{
-		c.assumed = true;
-		c.isAbstract = true;
+		c.taggedValue.add(createTaggedValueWithSimpleKey("uninstantiated"));
 	}
 	//ToBeSupportedByContract Goal
 	else if(g.undeveloped = false and g.toBeSupportedByContract = true and g.uninstantiated = false)
 	{
-		c.assumed = false;
-		c.isAbstract = false;
 		c.toBeSupported = true;
+		c.taggedValue.add(createTaggedValueWithSimpleKey("toBeSupportedByContract"));
 	}
 	else if(g.undeveloped = false and g.toBeSupportedByContract = true and g.uninstantiated = true)
 	{
-		c.assumed = true;
 		c.isAbstract = true;
 		c.toBeSupported = true;
+		c.taggedValue.add(createTaggedValueWithSimpleKey("toBeSupportedByContract"));
 	}
 }
 

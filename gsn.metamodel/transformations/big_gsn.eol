@@ -281,7 +281,9 @@ operation createGoal(name: String, content: String, undev: Boolean, m: GSN!Modul
 {
 	var g = new GSN!Goal;
 	g.name = name;
-	g.content = content;
+	var description = new GSN!Description;
+	description.sExpression = content;
+	g.description = description;
 	g.undeveloped = undev;
 	m.argumentAsset.add(g);
 	return g;
@@ -291,7 +293,9 @@ operation createStrategy(name: String, content: String, undev: Boolean , m: GSN!
 {
 	var s = new GSN!Strategy;
 	s.name = name;
-	s.content = content;
+	var description = new GSN!Description;
+	description.sExpression = content;
+	s.description = description;
 	s.undeveloped = undev;
 	m.argumentAsset.add(s);
 	return s;
@@ -301,7 +305,9 @@ operation createContext(name: String, content: String, external: Boolean, m: GSN
 {
 	var c = new GSN!Context;
 	c.name = name;
-	c.content = content;
+	var description = new GSN!Description;
+	description.sExpression = content;
+	c.description = description;
 	c.refersToExternalMaterial = external;
 	m.argumentAsset.add(c);
 	return c;
@@ -311,7 +317,9 @@ operation createAssumption(name: String, content: String, m: GSN!Module) : GSN!A
 {
 	var a = new GSN!Assumption;
 	a.name = name;
-	a.content = content;
+	var description = new GSN!Description;
+	description.sExpression = content;
+	a.description = description;
 	m.argumentAsset.add(a);
 	return a;
 }
@@ -319,7 +327,9 @@ operation createAssumption(name: String, content: String, m: GSN!Module) : GSN!A
 operation createJustification(name: String, content: String, m: GSN!Module) : GSN!Justification {
 	var j = new GSN!Justification;
 	j.name = name;
-	j.content = content;
+	var description = new GSN!Description;
+	description.sExpression = content;
+	j.description = description;
 	m.argumentAsset.add(j);
 	return j;
 }
@@ -346,7 +356,9 @@ operation createSolution(name: String, content: String, m: GSN!Module) : GSN!Sol
 {
 	var s = new GSN!Solution;
 	s.name = name;
-	s.content = content;
+	var description = new GSN!Description;
+	description.sExpression = content;
+	s.description = description;
 	m.argumentAsset.add(s);
 	return s;
 }

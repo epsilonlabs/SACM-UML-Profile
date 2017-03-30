@@ -13,12 +13,6 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAbstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//Commons/Description"
           containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="inplementationConstraint"
-          upperBound="-1" eType="#//Commons/ImplementationConstraint" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="note" upperBound="-1"
-          eType="#//Commons/Note" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="taggedValue" upperBound="-1"
-          eType="#//Commons/TaggedValue" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="uninstantiated" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="UtilityElement" abstract="true" eSuperTypes="#//Commons/SACMElement">
@@ -28,7 +22,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ImplementationConstraint" abstract="true"
         eSuperTypes="#//Commons/UtilityElement"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Description" abstract="true" eSuperTypes="#//Commons/UtilityElement"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Description" eSuperTypes="#//Commons/UtilityElement"/>
     <eClassifiers xsi:type="ecore:EClass" name="Note" abstract="true" eSuperTypes="#//Commons/UtilityElement"/>
     <eClassifiers xsi:type="ecore:EClass" name="TaggedValue" abstract="true" eSuperTypes="#//Commons/UtilityElement">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="sKey" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -167,6 +161,8 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="assumed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Goal" eSuperTypes="#//Argumentation/Claim">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="roles" eType="#//Terminology/Role"
+          containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="isPublic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="undeveloped" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="toBeSupportedByContract"
@@ -199,6 +195,8 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
           defaultValueLiteral="false"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="manyExpression" eType="#//Terminology/Expression"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="optionExpression" eType="#//Terminology/Expression"
           containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AssertedInference" abstract="true"
