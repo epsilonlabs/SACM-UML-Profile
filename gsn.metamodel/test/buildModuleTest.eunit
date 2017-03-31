@@ -1,0 +1,14 @@
+@Test
+operation checkSize()
+{
+	var argPackages = SACM!ArgumentPackage.all;
+	assertEquals(argPackages.size(), 1);
+}
+
+@Test
+operation checkName()
+{
+	var argPackages = SACM!ArgumentPackage.all;
+	assertEquals(argPackages.first.name, "M1"); 
+}
+

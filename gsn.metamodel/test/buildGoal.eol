@@ -1,0 +1,5 @@
+import "../transformations/GSNUtil.eol";
+
+var m = createModule("M1");
+
+var g = createGoal("G1", "System is safe, son!", false, m);

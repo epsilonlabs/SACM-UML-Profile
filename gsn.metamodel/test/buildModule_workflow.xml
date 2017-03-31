@@ -11,15 +11,38 @@
 		/>
 	</target>
 	
-
 	<target name="output">
 		<epsilon.emf.register file="../../sacm.emf/model/SACM.ecore" />
 		<epsilon.emf.loadModel
 			name="SACM"
-			read="true"
+			read="false"
 			store="true"
 			metamodeluri="http://www.omg.org/spec/SACM/2.0"
 			modelfile="../model/output.model"
+		/>
+	</target>
+	
+	
+	<target name="readOnly">
+		<epsilon.emf.register file="../../sacm.emf/model/SACM.ecore" />
+		<epsilon.emf.loadModel
+			name="SACM"
+			read="true"
+			store="false"
+			metamodeluri="http://www.omg.org/spec/SACM/2.0"
+			modelfile="../model/output.model"
+		/>
+	</target>
+	
+	<target name="disposeInput">
+		<epsilon.disposeModel
+			name="GSN"
+		/>
+	</target>
+		
+	<target name="disposeOutput">
+		<epsilon.disposeModel
+			name="GSN"
 		/>
 	</target>
 	
@@ -33,11 +56,35 @@
 			<model ref="SACM" />
 		</epsilon.etl>
 		
-		<epsilon.eunit src="buildModuleChecker.eunit">
+		<eclipse.refreshLocal resource="gsn.metamodel/model" depth="-1" />
+	</target>
+	
+	<target name="buildModuleTest" depends="readOnly">
+		<epsilon.eunit src="buildModuleTest.eunit">
 			<model ref = "SACM"/>
 		</epsilon.eunit>
+	</target>
+	
+	<target name="disposeAll" depends="disposeInput, disposeOutput">
+	</target>
+	
+	<target name="buildGoal" depends="input, output">
+		<epsilon.eol src="buildGoal.eol">
+			<model ref="GSN" />
+		</epsilon.eol>
+		
+		<epsilon.etl src="../transformations/GSN2SACM.etl">
+			<model ref="GSN" />
+			<model ref="SACM" />
+		</epsilon.etl>
 		
 		<eclipse.refreshLocal resource="gsn.metamodel/model" depth="-1" />
+	</target>
+	
+	<target name="buildGoalTest" depends="readOnly">
+		<epsilon.eunit src="buildGoalTest.eunit">
+			<model ref = "SACM"/>
+		</epsilon.eunit>
 	</target>
 	
 </project>

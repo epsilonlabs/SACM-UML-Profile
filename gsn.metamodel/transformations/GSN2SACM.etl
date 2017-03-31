@@ -27,7 +27,8 @@ rule Goal2Claim
 	transform g: GSN!Goal
 	to c: SACM!Claim {
 	c.name = g.name;
-	c.content = g.content;
+	
+	c.description = g.description.equivalent();
 	
 	//normal goal
 	if(g.undeveloped = false and g.toBeSupportedByContract = false and g.uninstantiated = false)
@@ -55,6 +56,30 @@ rule Goal2Claim
 		c.toBeSupported = true;
 		c.taggedValue.add(createTaggedValueWithSimpleKey("toBeSupportedByContract"));
 	}
+}
+
+rule Description2Description 
+	transform d1: GSN!Description
+	to d2: SACM!Description {
+	d2.sExpression = d1.sExpression;
+	if(d1.expression.isDefined())
+	{
+		d2.expression = d1.expression.equivalent();
+	}
+}
+
+rule Expression2Expression
+	transform e1: GSN!Expression
+	to e2: SACM!Expression {
+	e2.value = e1.value;
+	e2.element.addAll(e1.element.equivalent());
+}
+
+rule Term2Term
+	transform t1: GSN!Term
+	to t2: SACM!Term {
+	t2.value = t1.value;
+	t2.externalReference = t1.externalReference;
 }
 
 rule Solution2ArtefactElementCitation

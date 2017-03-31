@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
-<GSN_Argumentation:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:GSN_Argumentation="http://www.goalstructuringnotation.info/1.0/argumentation" name="M1"/>
+<GSN_Argumentation:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GSN_Argumentation="http://www.goalstructuringnotation.info/1.0/argumentation" name="M1">
+  <argumentAsset xsi:type="GSN_Argumentation:Goal" name="G1" undeveloped="false">
+    <description sExpression="System is safe, son!"/>
+  </argumentAsset>
+</GSN_Argumentation:Module>

@@ -1,8 +1,0 @@
-
-
-@Test
-operation checkSize()
-{
-	var argPackages = SACM!ArgumentPackage.all;
-	assertEquals(argPackages.size(), 1);
-}

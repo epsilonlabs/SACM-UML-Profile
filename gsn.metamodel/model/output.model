@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
-<SACM_Argumentation:ArgumentPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SACM_Argumentation="http://www.omg.org/spec/SACM/2.0/Argumentation" name="M1"/>
+<SACM_Argumentation:ArgumentPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SACM_Argumentation="http://www.omg.org/spec/SACM/2.0/Argumentation" name="M1">
+  <argumentAsset xsi:type="SACM_Argumentation:Claim" name="G1">
+    <description sExpression="System is safe, son!"/>
+  </argumentAsset>
+</SACM_Argumentation:ArgumentPackage>

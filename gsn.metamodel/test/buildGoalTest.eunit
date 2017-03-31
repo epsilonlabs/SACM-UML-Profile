@@ -1,0 +1,21 @@
+@Test
+operation checkSize()
+{
+	var claims = SACM!Claim.all;
+	assertEquals(claims.size(), 1);
+}
+
+@Test
+operation checkName()
+{
+	var claims = SACM!Claim.all;
+	assertEquals(claims.first.name, "G1"); 
+}
+
+@Test
+operation checkDescription()
+{
+	var claims = SACM!Claim.all;
+	var description =  claims.first.description;
+	assertEquals(description.sExpression,"System is safe, son!");
+}
