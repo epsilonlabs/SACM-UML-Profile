@@ -16,7 +16,7 @@
 		<epsilon.emf.register file="../../sacm.emf/model/SACM.ecore" />
 		<epsilon.emf.loadModel
 			name="SACM"
-			read="false"
+			read="true"
 			store="true"
 			metamodeluri="http://www.omg.org/spec/SACM/2.0"
 			modelfile="../model/output.model"
@@ -33,7 +33,11 @@
 			<model ref="SACM" />
 		</epsilon.etl>
 		
-		<!-- Force Eclipse to refresh our project so we can see the newly generated path.html file -->
-		<eclipse.refreshLocal resource="gsn.metamodel" depth="-1" />
+		<epsilon.eunit src="buildModuleChecker.eunit">
+			<model ref = "SACM"/>
+		</epsilon.eunit>
+		
+		<eclipse.refreshLocal resource="gsn.metamodel/model" depth="-1" />
 	</target>
+	
 </project>
