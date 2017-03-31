@@ -1,0 +1,4 @@
+import "../transformations/GSNUtil.eol";
+
+var m = createModule("M1");
+

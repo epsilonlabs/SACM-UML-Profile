@@ -13,6 +13,8 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAbstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//Commons/Description"
           containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="inplementationConstraint"
+          upperBound="-1" eType="#//Commons/ImplementationConstraint" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="uninstantiated" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="UtilityElement" abstract="true" eSuperTypes="#//Commons/SACMElement">
@@ -85,7 +87,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="element" upperBound="-1"
           eType="#//Terminology/ExpressionElement" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Term" abstract="true" eSuperTypes="#//Terminology/ExpressionElement">
+    <eClassifiers xsi:type="ecore:EClass" name="Term" eSuperTypes="#//Terminology/ExpressionElement">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="externalReference" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="origin" eType="#//Commons/ModelElement"/>
@@ -194,10 +196,6 @@
           defaultValueLiteral="false"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
           defaultValueLiteral="false"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="manyExpression" eType="#//Terminology/Expression"
-          containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="optionExpression" eType="#//Terminology/Expression"
-          containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AssertedInference" abstract="true"
         eSuperTypes="#//Argumentation/AssertedRelationship"/>

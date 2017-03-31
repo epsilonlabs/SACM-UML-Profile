@@ -14,7 +14,7 @@ package Commons {
     attr Boolean isAbstract;
     
     val Description description;
-    //val ImplementationConstraint[*] inplementationConstraint;
+    val ImplementationConstraint[*] inplementationConstraint;
     //val Note[*] note;
     //val TaggedValue[*] taggedValue;
     
@@ -213,8 +213,6 @@ package Argumentation {
     attr Integer requires = "-1";
     attr Boolean many = "false";
     attr Boolean optional = "false";
-    val Terminology.Expression manyExpression;
-    val Terminology.Expression optionExpression;
   }
 
   abstract class AssertedInference extends AssertedRelationship {
