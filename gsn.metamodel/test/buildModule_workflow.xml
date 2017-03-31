@@ -1,0 +1,39 @@
+<project default="buildModule">
+	
+	<target name="input">
+		<epsilon.emf.register file="../model/gsn.ecore" />
+		<epsilon.emf.loadModel
+			name="GSN"
+			read="false"
+			store="true"
+			metamodeluri="http://www.goalstructuringnotation.info/1.0"
+			modelfile="../model/input.model"
+		/>
+	</target>
+	
+
+	<target name="output">
+		<epsilon.emf.register file="../../sacm.emf/model/SACM.ecore" />
+		<epsilon.emf.loadModel
+			name="SACM"
+			read="false"
+			store="true"
+			metamodeluri="http://www.omg.org/spec/SACM/2.0"
+			modelfile="../model/output.model"
+		/>
+	</target>
+	
+	<target name="buildModule" depends="input, output">
+		<epsilon.eol src="buildModule.eol">
+			<model ref="GSN" />
+		</epsilon.eol>
+		
+		<epsilon.etl src="../transformations/GSN2SACM.etl">
+			<model ref="GSN" />
+			<model ref="SACM" />
+		</epsilon.etl>
+		
+		<!-- Force Eclipse to refresh our project so we can see the newly generated path.html file -->
+		<eclipse.refreshLocal resource="gsn.metamodel" depth="-1" />
+	</target>
+</project>

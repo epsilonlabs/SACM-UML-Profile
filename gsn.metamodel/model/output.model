@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="ASCII"?>
-<SACM_Packages:AssuranceCasePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SACM_Packages="http://www.omg.org/spec/SACM/2.0/Packages"/>
+<SACM_Argumentation:ArgumentPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SACM_Argumentation="http://www.omg.org/spec/SACM/2.0/Argumentation" name="M1"/>

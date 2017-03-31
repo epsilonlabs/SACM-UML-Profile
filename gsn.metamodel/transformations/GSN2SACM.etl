@@ -13,7 +13,8 @@ post {
 
 rule Module2ArgumentPackage
 	transform m:GSN!Module
-	to ap: SACM!ArgumentPackage {
+	to ap: SACM!ArgumentPackage{
+	"this is run".println();
 	if(m.uninstantiated = true)
 	{
 		ap.taggedValue.add(createTaggedValueWithSimpleKey("uninstantiated"));
