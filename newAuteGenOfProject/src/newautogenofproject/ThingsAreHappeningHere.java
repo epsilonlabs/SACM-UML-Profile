@@ -116,7 +116,7 @@ public class ThingsAreHappeningHere {
 		
 		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
 		allTheModels.addAll(Arrays.asList(sourceModel, targetModel, paletteConfigurationM2));
-		doTheETLTransformation(allTheModels, "files/paletteConfigurationGenerationM2M.etl");
+		doTheETLTransformation(allTheModels, "files/paletteConfigurationM2M.etl");
 		
 		// User's transformation, if any
 		sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
@@ -125,7 +125,7 @@ public class ThingsAreHappeningHere {
 				+ "resources" + File.separator + name + ".paletteconfiguration", "Target", "true", "true");
 		allTheModels.clear();
 		allTheModels.addAll(Arrays.asList(sourceModel, targetModel, paletteConfigurationM2));
-		doTheUsersETLTransformation(allTheModels, "paletteConfigurationGenerationM2M.etl", theSelectedFileParentIProject);
+		doTheUsersETLTransformation(allTheModels, "paletteConfigurationM2M.etl", theSelectedFileParentIProject);
 	}
 
 	public void createTheDiagramConfiguration(String theSelectedFilePath, String theDestinationIProjectFolder, IProject theSelectedFileParentIProject) throws Exception {
@@ -136,7 +136,7 @@ public class ThingsAreHappeningHere {
 		EmfMetaModel umlEcoreMetaModel = createAndLoadAnEmfMetaModel("http://www.eclipse.org/uml2/5.0.0/UML", "UMLEcore", "true", "false");
 		ArrayList<IModel> allTheModels = new ArrayList<IModel>();
 		allTheModels.addAll(Arrays.asList(sourceModel, targetModel, umlEcoreMetaModel));
-		doTheETLTransformation(allTheModels, "files/diagramsConfigurationGenerationM2M.etl");
+		doTheETLTransformation(allTheModels, "files/diagramsConfigurationM2M.etl");
 
 		// User's transformation, if any
 		sourceModel = createAndLoadAnEmfModel("http://www.eclipse.org/emf/2002/Ecore", theSelectedFilePath, "Source", "true", "false");
@@ -145,7 +145,7 @@ public class ThingsAreHappeningHere {
 		umlEcoreMetaModel = createAndLoadAnEmfMetaModel("http://www.eclipse.org/uml2/5.0.0/UML", "UMLEcore", "true", "false");
 		allTheModels.clear();
 		allTheModels.addAll(Arrays.asList(sourceModel, targetModel, umlEcoreMetaModel));
-		doTheUsersETLTransformation(allTheModels, "diagramsConfigurationGenerationM2M.etl", theSelectedFileParentIProject);
+		doTheUsersETLTransformation(allTheModels, "diagramsConfigurationM2M.etl", theSelectedFileParentIProject);
 	}
 
 	public void createTheCSSFile(String theSelectedFilePath, String theDestinationIProjectFolder, IProject theSelectedFileParentIProject) throws Exception {
