@@ -56,6 +56,11 @@ rule Goal2Claim
 		c.toBeSupported = true;
 		c.taggedValue.add(createTaggedValueWithSimpleKey("toBeSupportedByContract"));
 	}
+	
+	if(g.isPublic = true)
+	{
+		c.taggedValue.add(createTaggedValueWithSimpleKey("public"));
+	}
 }
 
 rule Description2Description 
@@ -90,6 +95,11 @@ rule Solution2ArtefactElementCitation
 	if(s.uninstantiated = true)
 	{
 		aec.taggedValue.add(createTaggedValueWithSimpleKey("uninstantiated"));
+	}
+	
+	if(s.isPublic = true)
+	{
+		aec.taggedValue.add(createTaggedValueWithSimpleKey("public"));
 	}
 }
 
@@ -133,6 +143,11 @@ rule Context2ArtefactElementCitation
 	{
 		aec.taggedValue.add(createTaggedValueWithSimpleKey("uninstantiated"));
 	}
+	
+	if(c.isPublic = true)
+	{
+		aec.taggedValue.add(createTaggedValueWithSimpleKey("public"));
+	}
 }
 
 rule Context2Claim 
@@ -151,6 +166,11 @@ rule Context2Claim
 	taggedValue.sKey = "isBasic";
 	claim.taggedValue.add(taggedValue);
 	//discuss
+	
+	if(context.isPublic = true)
+	{
+		claim.taggedValue.add(createTaggedValueWithSimpleKey("public"));
+	}
 }
 
 rule Justification2Claim
@@ -190,6 +210,7 @@ rule SupportedBy2AssertedEvidence
 	}
 	ae.source.addAll(sb.target.equivalent());
 	ae.target.addAll(sb.source.equivalent());
+	processConstraints(sb, ae);
 }
 
 rule SupportedBy2AssertedInference
@@ -201,7 +222,8 @@ rule SupportedBy2AssertedInference
 		ai.taggedValue.add(createTaggedValueWithSimpleKey("uninstantiated"));
 	}
 	ai.source.addAll(sb.target.equivalent());
-	ai.target.addAll(sb.source.equivalent());	
+	ai.target.addAll(sb.source.equivalent());
+	processConstraints(sb, ai);
 }
 
 rule InContextOf2AssertedContext
@@ -213,6 +235,58 @@ rule InContextOf2AssertedContext
 	}
 	ac.source.addAll(ico.target.equivalent());
 	ac.target.addAll(ico.source.equivalent());
+	processConstraints(ico, ac);
+}
+
+rule AwayGoal2ArgumentAssetCitation
+	transform ag: GSN!AwayGoal
+	to aac: SACM!ArgumentAssetCitation {
+	aac.name = ag.name;
+	acc.description = ag.description.equivalent();
+	acc.citedAsset = ag.awayGoal.equivalent();
+	processModuleIdentifier(ag, aac);
+}
+
+rule AwaySolution2ArgumentAssetCitation
+	transform awaySolution: GSN!AwaySolution
+	to aac: SACM!ArgumentAssetCitation {
+	aac.name = awaySolution.name;
+	acc.description = awaySolution.description.equivalent();
+	acc.citedAsset = awaySolution.awaySolution.equivalent();
+	processModuleIdentifier(awaySolution, aac);
+}
+
+rule AwayContext2ArgumentAssetCitation 
+	transform ac: GSN!AwayContext
+	to aac: SACM!ArgumentAssetCitation {
+	aac.name = ac.name;
+	acc.description = ac.description.equivalent();
+	acc.citedAsset = ac.awayContext.equivalent();
+	processModuleIdentifier(ac, aac);
+}
+
+rule ModuleReference2ArgumentPackageCitation 
+	transform mr: GSN!ModuleReference
+	to apc: SACM!ArgumentPackageCitation {
+	apc.citedPackage = mr.module.equivalent();
+	apc.description = mr.description.equivalent();
+}
+
+rule Contract2ArgumentPackageBinding
+	transform c: GSN!Contract
+	to	apb: SACM!ArgumentPackageBinding {
+	
+}
+
+operation processModuleIdentifier(aac1: GSN!ArgumentAssetCitation, aac2: SACM!ArgumentAssetCitation)
+{
+	if(aac1.moduleIdentifier.isDefined())
+	{
+		var taggedValue = new SACM!TaggedValue;
+		taggedValue.sKey = "Module Identifier";
+		taggedValue.sExpression = aac1.moduleIdentifier;
+		aac2.taggedValue.add(taggedValue);
+	}
 }
 
 operation getSupportedByForStrategyAsSource(strategy: GSN!Strategy)
@@ -228,7 +302,34 @@ operation getSupportedByForStrategyAsTarget(strategy: GSN!Strategy)
 	return allSupportedBy.select(sb|sb.target.includes(strategy));
 }
 
-@cached
+operation processConstraints(ar1: GSN!AssertedRelationship, ar2: SACM!AssertedRelationship)
+{
+	if(ar1.requires >= 0)
+	{
+		ar2.isAbstract = true;
+		var ic = new SACM!ImplementationConstraint;
+		ic.sExpression = "requires " + ar1.requires;
+		ar2.implementationConstraint.add(ic);
+	}
+	if(ar1.many = true)
+	{
+		var many = ar1.implementationConstraint.selectOne(ic|ic.xExpression = "many");
+		if(many.isDefined())
+		{
+			var expression = many.value;
+			var ic = new SACM!ImplementationConstraint;
+			ic.sExpression = "many " + expression;
+			ar2.implementationConstraint.add(ic);
+		}
+	}
+	if(ar1.optional = true)
+	{
+		var ic = new SACM!ImplementationConstraint;
+		ic.sExpression = "optional";
+		ar2.implementationConstraint.add(ic);
+	}
+}
+
 operation getAllSupportedBy()
 {
 	return GSN!SupportedBy.allInstances();

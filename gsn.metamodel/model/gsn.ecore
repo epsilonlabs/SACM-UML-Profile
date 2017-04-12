@@ -149,15 +149,18 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AwayGoal" eSuperTypes="#//Argumentation/ArgumentAssetCitation">
       <eStructuralFeatures xsi:type="ecore:EReference" name="awayGoal" eType="#//Argumentation/Goal"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="moduleIdentifier" eType="#//Argumentation/Module"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="moduleIdentifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AwaySolution" eSuperTypes="#//Argumentation/ArgumentAssetCitation">
       <eStructuralFeatures xsi:type="ecore:EReference" name="awaySolution" eType="#//Argumentation/Solution"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="moduleIdentifier" eType="#//Argumentation/Module"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="moduleIdentifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AwayContext" eSuperTypes="#//Argumentation/ArgumentAssetCitation">
       <eStructuralFeatures xsi:type="ecore:EReference" name="awayContext" eType="#//Argumentation/Context"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="moduleIdentifier" eType="#//Argumentation/Module"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="moduleIdentifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ModuleReference" eSuperTypes="#//Argumentation/ArgumentPackageCitation">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="module" eType="#//Argumentation/Module"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Claim" abstract="true" eSuperTypes="#//Argumentation/Assertion">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="assumed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>

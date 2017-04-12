@@ -151,7 +151,7 @@ package Argumentation {
   }
 
   class Solution extends ArtefactElementCitation {
-    attr Boolean isPublic;
+    attr Boolean isPublic = false;
   }
 
   abstract class ArgumentAssetCitation extends ArgumentAsset {
@@ -161,17 +161,21 @@ package Argumentation {
 
   class AwayGoal extends ArgumentAssetCitation {
     ref Goal awayGoal;
-    ref Module moduleIdentifier;
+    attr String moduleIdentifier;
   }
 
   class AwaySolution extends ArgumentAssetCitation {
     ref Solution awaySolution;
-    ref Module moduleIdentifier;
+   	attr String moduleIdentifier;
   }
 
   class AwayContext extends ArgumentAssetCitation {
     ref Context awayContext;
-    ref Module moduleIdentifier;
+    attr String moduleIdentifier;
+  }
+  
+  class ModuleReference extends ArgumentPackageCitation {
+  	ref Module module;
   }
 
   abstract class Claim extends Assertion {
@@ -181,7 +185,7 @@ package Argumentation {
 
   class Goal extends Claim {
   	val Terminology.Role roles;
-    attr Boolean isPublic;
+    attr Boolean isPublic = false;
     attr Boolean undeveloped;
     attr Boolean toBeSupportedByContract;
   }
@@ -201,7 +205,7 @@ package Argumentation {
   }
 
   class Context extends ArgumentAsset {
-    attr Boolean isPublic;
+    attr Boolean isPublic = false;
     attr Boolean refersToExternalMaterial;
   }
 
