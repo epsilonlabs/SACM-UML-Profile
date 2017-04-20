@@ -17,31 +17,12 @@ for (stereo in allClassStereotypes) {
 	displayIcon:false;
 }
 
-/* Hide compartment for all elements - just show the name and related icon. */
 Compartment {
     visible:false;
 }
 
-/* Show symbol compartment so that text is "pushed" to upper boundary of element. */
 Compartment[kind="symbol"]  {
     visible:true;
-}
-
-/* Default settings for "Symbol" shapes. */
-*.Symbol {
-	transparency:100;
-	followSVGSymbol:true;
-	displayIcon:false;
-}
-
-/* Turn on "floating label" for "Symbol" shapes. */
-*.Symbol > Label {
-	visible:true;
-}
-
-/* Turn off "stereotype label" for "Symbol" shapes. */
-*.Symbol > Label[type=StereotypeLabel] {
-	visible:false;
 }
 
 [%
@@ -50,11 +31,6 @@ if (stereo.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("sh
 %]
 [appliedStereotypes~=[%=stereo.name%]] {
 	svgFile: 'platform:/plugin/[%=ePackName%]/[%=stereo.eAnnotations.selectOne(ean|ean.source.equals("Node")).details.get("shape")%]';
-	/*
-	floatingLabelOffsetWidth:+23;
-    floatingLabelOffsetHeight:+80;
-	displayName:false;
-	*/
 }
 [%
 }
