@@ -265,7 +265,7 @@ rule AwayContext2ArgumentAssetCitation
 	processModuleIdentifier(ac, aac);
 }
 
-rule ModuleReference2ArgumentPackageCitation 
+rule ModuleReference2ArgumentPacArkageCitation 
 	transform mr: GSN!ModuleReference
 	to apc: SACM!ArgumentPackageCitation {
 	apc.citedPackage = mr.module.equivalent();

@@ -1,14 +1,16 @@
 <!-- This project shows several ways EUnit can be used to test an ETL M2M transformation. -->
 <project>
 
+	<property name="project.location" location="${basedir}/../" />
+	
 	<property name="models.location" location="${basedir}/../model" />
 	<property name="input.model.location" location="${models.location}/input.model" />
 	<property name="output.model.location" location="${models.location}/output.model" />
+	
+	
 
-	<property name="metamodels.location" location="${basedir}/resources/metamodels" />
-	<property name="elements.metamodel.location" location="${metamodels.location}/elements.ecore" />
-	<property name="graph.metamodel.location" location="${metamodels.location}/graph.ecore" />
-	<property name="tree.metamodel.location" location="${metamodels.location}/tree.ecore" />
+	<property name="gsn.metamodel.location" location="${models.location}/gsn.ecore" />
+	<property name="sacm.metamodel.location" location="${basedir}/../../sacm.emf/model/SACM.ecore" />
 	<property name="graph.metamodel.uri" value="Graph" />
 	<property name="tree.metamodel.uri" value="Tree" />
 
