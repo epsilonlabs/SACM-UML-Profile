@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/gsn.metamodel/src" modelPluginID="gsn.metamodel"
+    modelName="GSN" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>gsn.ecore</foreignModel>
+  <genPackages prefix="GSN" disposableProviderFactory="true" ecorePackage="gsn.ecore#/">
+    <nestedGenPackages prefix="Commons" disposableProviderFactory="true" ecorePackage="gsn.ecore#//Commons">
+      <genClasses image="false" ecoreClass="gsn.ecore#//Commons/SACMElement"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Commons/ModelElement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Commons/ModelElement/gid"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Commons/ModelElement/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Commons/ModelElement/isAbstract"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Commons/ModelElement/description"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Commons/ModelElement/inplementationConstraint"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Commons/ModelElement/uninstantiated"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Commons/UtilityElement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Commons/UtilityElement/sExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Commons/UtilityElement/expression"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Commons/ImplementationConstraint"/>
+      <genClasses ecoreClass="gsn.ecore#//Commons/Description"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Commons/Note"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Commons/TaggedValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Commons/TaggedValue/sKey"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Commons/TaggedValue/key"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Packages" disposableProviderFactory="true" ecorePackage="gsn.ecore#//Packages">
+      <genClasses image="false" ecoreClass="gsn.ecore#//Packages/AssuranceCasePackage">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Packages/AssuranceCasePackage/assuranceCasePackageCitation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Packages/AssuranceCasePackage/assuranceCasePackage"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Packages/AssuranceCasePackage/interface"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Packages/AssuranceCasePackage/argumentPackage"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Packages/AssuranceCasePackage/artefactPackage"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Packages/AssuranceCasePackage/terminologyPackage"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Packages/AssuranceCasePackageInterface"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Packages/AssuranceCasePackageCitation">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Packages/AssuranceCasePackageCitation/citedPackage"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Terminology" disposableProviderFactory="true" ecorePackage="gsn.ecore#//Terminology">
+      <genClasses image="false" ecoreClass="gsn.ecore#//Terminology/TerminologyElement"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Terminology/TerminologyPackage">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Terminology/TerminologyPackage/terminologyAsset"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Terminology/TerminologyPackage/terminologyPackage"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Terminology/TerminologyPackage/terminologyPackageCitation"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Terminology/TerminologyPackageCitation">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Terminology/TerminologyPackageCitation/citedPackage"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Terminology/TerminologyAsset"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Terminology/Category"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Terminology/ExpressionElement">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Terminology/ExpressionElement/category"/>
+      </genClasses>
+      <genClasses ecoreClass="gsn.ecore#//Terminology/Expression">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Terminology/Expression/value"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Terminology/Expression/element"/>
+      </genClasses>
+      <genClasses ecoreClass="gsn.ecore#//Terminology/Term">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Terminology/Term/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Terminology/Term/externalReference"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Terminology/Term/origin"/>
+      </genClasses>
+      <genClasses ecoreClass="gsn.ecore#//Terminology/Role"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Terminology/TerminologyAssetCitation">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Terminology/TerminologyAssetCitation/citedElement"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Argumentation" disposableProviderFactory="true" ecorePackage="gsn.ecore#//Argumentation">
+      <genClasses image="false" ecoreClass="gsn.ecore#//Argumentation/ArgumentationElement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Argumentation/ArgumentationElement/content"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Argumentation/ArgumentPackage">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Argumentation/ArgumentPackage/argumentAsset"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Argumentation/ArgumentPackage/argumentPackage"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Argumentation/ArgumentPackage/interface"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Argumentation/ArgumentPackage/argumentPackageCitation"/>
+      </genClasses>
+      <genClasses ecoreClass="gsn.ecore#//Argumentation/Module">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Argumentation/Module/module"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Argumentation/ArgumentPackageCitation">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Argumentation/ArgumentPackageCitation/citedPackage"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Argumentation/ArgumentPackageBinding">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Argumentation/ArgumentPackageBinding/participantPackage"/>
+      </genClasses>
+      <genClasses ecoreClass="gsn.ecore#//Argumentation/Contract"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Argumentation/ArgumentPackageInterface"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Argumentation/ArgumentAsset"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Argumentation/Assertion"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Argumentation/ArtefactElementCitation">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Argumentation/ArtefactElementCitation/externalReference"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Argumentation/ArtefactElementCitation/citedArtefact"/>
+      </genClasses>
+      <genClasses ecoreClass="gsn.ecore#//Argumentation/Solution">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Argumentation/Solution/isPublic"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Argumentation/ArgumentAssetCitation">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Argumentation/ArgumentAssetCitation/citedAsset"/>
+      </genClasses>
+      <genClasses ecoreClass="gsn.ecore#//Argumentation/AwayGoal">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Argumentation/AwayGoal/awayGoal"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Argumentation/AwayGoal/moduleIdentifier"/>
+      </genClasses>
+      <genClasses ecoreClass="gsn.ecore#//Argumentation/AwaySolution">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Argumentation/AwaySolution/awaySolution"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Argumentation/AwaySolution/moduleIdentifier"/>
+      </genClasses>
+      <genClasses ecoreClass="gsn.ecore#//Argumentation/AwayContext">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Argumentation/AwayContext/awayContext"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Argumentation/AwayContext/moduleIdentifier"/>
+      </genClasses>
+      <genClasses ecoreClass="gsn.ecore#//Argumentation/ModuleReference">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Argumentation/ModuleReference/module"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Argumentation/Claim">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Argumentation/Claim/assumed"/>
+      </genClasses>
+      <genClasses ecoreClass="gsn.ecore#//Argumentation/Goal">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Argumentation/Goal/roles"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Argumentation/Goal/isPublic"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Argumentation/Goal/undeveloped"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Argumentation/Goal/toBeSupportedByContract"/>
+      </genClasses>
+      <genClasses ecoreClass="gsn.ecore#//Argumentation/Justification"/>
+      <genClasses ecoreClass="gsn.ecore#//Argumentation/Assumption"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Argumentation/ArgumentReasoning">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Argumentation/ArgumentReasoning/structure"/>
+      </genClasses>
+      <genClasses ecoreClass="gsn.ecore#//Argumentation/Strategy">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Argumentation/Strategy/undeveloped"/>
+      </genClasses>
+      <genClasses ecoreClass="gsn.ecore#//Argumentation/Context">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Argumentation/Context/isPublic"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Argumentation/Context/refersToExternalMaterial"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Argumentation/AssertedRelationship">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Argumentation/AssertedRelationship/source"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Argumentation/AssertedRelationship/target"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Argumentation/AssertedRelationship/requires"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Argumentation/AssertedRelationship/many"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Argumentation/AssertedRelationship/optional"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Argumentation/AssertedInference"/>
+      <genClasses ecoreClass="gsn.ecore#//Argumentation/SupportedBy"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Argumentation/AssertedEvidence"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Argumentation/AssertedChallenge"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Argumentation/AssertedCounterEvidence"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Argumentation/AssertedContext"/>
+      <genClasses ecoreClass="gsn.ecore#//Argumentation/InContextOf"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Artefact" disposableProviderFactory="true" ecorePackage="gsn.ecore#//Artefact">
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/ArtefactElement"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/ArtefactPackage">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Artefact/ArtefactPackage/artefactPackageCitation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Artefact/ArtefactPackage/artefactAsset"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Artefact/ArtefactPackage/artefactPackage"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Artefact/ArtefactPackage/interface"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/ArtefactPackageCitation">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Artefact/ArtefactPackageCitation/citedPackage"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/ArtefactPackageBinding">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Artefact/ArtefactPackageBinding/participantpackage"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/ArtefactPackageInterface"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/ArtefactAsset"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/ArtefactAssetCitation">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Artefact/ArtefactAssetCitation/citedAsset"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/Artefact">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Artefact/Artefact/version"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Artefact/Artefact/date"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Artefact/Artefact/artefactProperty"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gsn.ecore#//Artefact/Artefact/artefactEvent"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/ArtefactProperty"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/ArtefactEvent">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Artefact/ArtefactEvent/date"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/Resource">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Artefact/Resource/location"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/Activity">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Artefact/Activity/startTime"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gsn.ecore#//Artefact/Activity/endTime"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/Technique"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/Participant"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/ArtefactAssetRelationship">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Artefact/ArtefactAssetRelationship/source"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gsn.ecore#//Artefact/ArtefactAssetRelationship/target"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/ArtefactRelationship"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/ActivityRelationship"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/ArtefactActivityRelationship"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/ArtefactTechniqueRelationship"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/ParticipantRoleRelationship"/>
+      <genClasses image="false" ecoreClass="gsn.ecore#//Artefact/ArtefactResourceRelationship"/>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

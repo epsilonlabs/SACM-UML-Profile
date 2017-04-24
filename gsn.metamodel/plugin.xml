@@ -10,35 +10,40 @@
       <!-- @generated gsn -->
       <package
             uri="http://www.goalstructuringnotation.info/1.0/commons"
-            class="GSN.Commons.CommonsPackage"/>
+            class="GSN.Commons.CommonsPackage"
+            genModel="model/gsn.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated gsn -->
       <package
             uri="http://www.goalstructuringnotation.info/1.0/packages"
-            class="GSN.Packages.PackagesPackage"/>
+            class="GSN.Packages.PackagesPackage"
+            genModel="model/gsn.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated gsn -->
       <package
             uri="http://www.goalstructuringnotation.info/1.0/terminology"
-            class="GSN.Terminology.TerminologyPackage"/>
+            class="GSN.Terminology.TerminologyPackage"
+            genModel="model/gsn.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated gsn -->
       <package
             uri="http://www.goalstructuringnotation.info/1.0/argumentation"
-            class="GSN.Argumentation.ArgumentationPackage"/>
+            class="GSN.Argumentation.ArgumentationPackage"
+            genModel="model/gsn.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated gsn -->
       <package
             uri="http://www.goalstructuringnotation.info/1.0/artefact"
-            class="GSN.Artefact.ArtefactPackage"/>
+            class="GSN.Artefact.ArtefactPackage"
+            genModel="model/gsn.genmodel"/>
    </extension>
 
 </plugin>

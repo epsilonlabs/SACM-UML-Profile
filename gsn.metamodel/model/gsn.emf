@@ -247,7 +247,7 @@ package Artefact {
   abstract class ArtefactElement extends Commons.ModelElement {
   }
 
-  abstract class ArtefactPackage extends ArtefactElement {
+  abstract class ~ArtefactPackage extends ArtefactElement {
     val ArtefactPackageCitation[*] artefactPackageCitation;
     val ArtefactAsset[*] artefactAsset;
     val ArtefactPackage[*] artefactPackage;
